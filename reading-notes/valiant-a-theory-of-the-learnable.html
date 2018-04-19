@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2018-04-19 Thu 06:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notes on Valiant's <i>A Theory of the Learnable</i></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Shon Feder" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Notes on Valiant's <i>A Theory of the Learnable</i></h1>
+<p>
+Valiant, L. G., A theory of the learnable, Communications of the ACM, 27(11), 1134–1142 (1984).  <a href="http://dx.doi.org/10.1145/1968.1972">http://dx.doi.org/10.1145/1968.1972</a>
+</p>
+
+<div id="outline-container-orgd7c1a5c" class="outline-2">
+<h2 id="orgd7c1a5c">tl;dr</h2>
+<div class="outline-text-2" id="text-orgd7c1a5c">
+<p>
+"this paper attempts to explore the limits of what is learnable as allowed by
+algorithmic complexity (1138)"
+</p>
+
+<p>
+Valiant proposes a "precise model &#x2026; for modeling the commonplace phenomenon
+of [learning]" and aims to make possible a "learnability theory" on par with
+"computability theory" (1134).
+</p>
+
+<p>
+"The results of <i>learnability theory</i> would then indicate the maximum
+granularity of the single concepts that can be acquired without programming.
+(1136)"
+</p>
+</div>
+<div id="outline-container-orge44587b" class="outline-3">
+<h3 id="orge44587b">Results:</h3>
+<div class="outline-text-3" id="text-orge44587b">
+<dl class="org-dl">
+<dt>Negative</dt><dd>The class of learnable "concepts" is severely circumscribed.</dd>
+<dt>Positive</dt><dd>Demonstrates some classes of "concepts" learnable in polynomial
+time.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3651fdd" class="outline-2">
+<h2 id="org3651fdd">Historical Relevance</h2>
+<div class="outline-text-2" id="text-org3651fdd">
+</div>
+<div id="outline-container-orgd5a79d2" class="outline-3">
+<h3 id="orgd5a79d2">Theoretical relevance</h3>
+<div class="outline-text-3" id="text-orgd5a79d2">
+</div>
+<div id="outline-container-orgf7d05f6" class="outline-4">
+<h4 id="orgf7d05f6">Generally helped initiate "Computational Learning Theory"</h4>
+<div class="outline-text-4" id="text-orgf7d05f6">
+<p>
+Generally, it has been credited with inaugurating the field of <i>computational
+learning theory</i> (<a class='org-ref-reference' href="#wigderson09_leslie_valian">wigderson09_leslie_valian</a>). Computational learning
+theory studies the "design and analysis of machine learning algorithms".
+Philosophically, it also seems to be a computational theory of <i>learning</i>.
+</p>
+</div>
+
+<div id="outline-container-org2133d5a" class="outline-5">
+<h5 id="org2133d5a">Compared with "statistical learning theory"</h5>
+<div class="outline-text-5" id="text-org2133d5a">
+<p>
+This appears to be one of the two main theoretical frameworks used to inform
+practical developments in machine learning. The other is <i>statistical
+learning theory</i>.
+</p>
+
+<blockquote>
+<p>
+<b>Computational learning</b>, more concretely the probably approximately correct
+(PAC) framework, answers questions like: how many training examples are needed
+for a learner to learn with high probability a good hypothesis? how much
+computational effort do I need to learn with high probability such hypothesis?
+It does not deal with the concrete classifier you are working with. It is
+about what you can and cannot learn with some samples at hand.
+</p>
+
+<p>
+In <b>statistical learning theory</b> you rather answer questions of the sort: how
+many training samples will the classifier misclassify before it has converged
+to a good hypothesis? i.e. how hard is it to train a classifier, and what
+warranties do I have on its performance. (<a href="https://stats.stackexchange.com/questions/63077/statistical-learning-theory-vs-computational-learning-theory">SO Answer</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org85b6a1e" class="outline-4">
+<h4 id="org85b6a1e">In particular, it introduced PAC</h4>
+<div class="outline-text-4" id="text-org85b6a1e">
+<p>
+This paper introduced "Probably Approximately Correct learning" (PAC
+learning). PAC is one of the principle approaches to computational learning
+theory. In PAC,
+</p>
+
+<blockquote>
+<p>
+the learner receives samples and must select a generalization function
+(called the hypothesis) from a certain class of possible functions. The goal
+is that, with high probability (the "probably" part), the selected function
+will have low generalization error (the "approximately correct" part). The
+learner must be able to learn the concept given any arbitrary approximation
+ratio, probability of success, or distribution of the samples. (<a href="https://en.wikipedia.org/wiki/Probably_approximately_correct_learning">wikipedia</a>)
+</p>
+</blockquote>
+
+<p>
+PAC is credited with introduction concepts concerning computational
+complexity into machine learning, with its focus on learners finding
+<i>efficient</i> procedures.
+</p>
+</div>
+
+<div id="outline-container-orgc0b0625" class="outline-5">
+<h5 id="orgc0b0625">Other approaches to computational learning theory</h5>
+<div class="outline-text-5" id="text-orgc0b0625">
+<blockquote>
+<ul class="org-ul">
+<li><b>Exact learning</b>, proposed by Dana Angluin;</li>
+<li><b>VC theory</b>, proposed by Vladimir Vapnik and Alexey Chervonenkis;</li>
+<li><b>Bayesian inference</b>;</li>
+<li><b>Algorithmic learning theory</b>, from the work of E. Mark Gold;</li>
+<li><b>Online machine learning</b>, from the work of Nick Littlestone.</li>
+</ul>
+<p>
+(<a href="https://en.wikipedia.org/wiki/Computational_learning_theory">wikipedia</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1967500" class="outline-3">
+<h3 id="org1967500">Practical relevance</h3>
+<div class="outline-text-3" id="text-org1967500">
+<p>
+Foundations of <a href="https://en.wikipedia.org/wiki/Boosting_(machine_learning)">boosting</a> which is "a general method for improving the accuracy
+of any given learning  algorithm" (<a href="https://link.springer.com/chapter/10.1007%2F978-0-387-21579-2_9">Schapire</a>).
+</p>
+</div>
+</div>
+<div id="outline-container-orgbd4427a" class="outline-3">
+<h3 id="orgbd4427a">Summary</h3>
+<div class="outline-text-3" id="text-orgbd4427a">
+<p>
+So we are looking at (one pillar of) <i>the theoretical foundations</i> of machine
+learning, which has also had some important practical import.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org91800e0" class="outline-2">
+<h2 id="org91800e0">structure</h2>
+<div class="outline-text-2" id="text-org91800e0">
+<ol class="org-ol">
+<li>Defines learning as "the process of deducing a [reasonably efficient]
+program for performing a task from information that does not provide an
+explicit description of such a program" (1142).</li>
+<li>Narrowly constrain the tasks to "recognizing whether a <i>concept</i> (or
+predicate) is true or not for given data" &#x2013; within certain probabilistic bounds.
+<ol class="org-ol">
+<li>To learn <code>Q</code> means to deduce a program which can say whether <code>Q</code> is true
+of some given data.</li>
+<li>Bounds: "never outputs [ <code>True</code> ] when it should not, but outputs [
+<code>True</code> ] almost always when it should".</li>
+</ol></li>
+<li>Defines a <i>learning machine</i>: <i>learning protocol</i> * <i>deduction procedure</i>
+<ol class="org-ol">
+<li><i>learning protocol</i> acquires tagged input</li>
+<li><i>deduction procedure</i> produces a program for recognizing data</li>
+<li><i>learning machine</i> : data -&gt; programs</li>
+</ol></li>
+<li>Specifies a <i>learning protocol</i> for boolean functions</li>
+<li>Specifies <i>learnability</i> of programs that identify boolean functions given
+boolean variables as inputs.
+<ol class="org-ol">
+<li>So our <b>ourt</b> learning machine: data = boolean variables &amp; program =
+"concept recognizer"</li>
+</ol></li>
+<li>Presents the probabilistic criteria used to measure success of programs.</li>
+<li>Shows how to deduce three kinds of programs: (bounded) CNF, DNF, and
+"mu-expressions" (seem to be mixed conjunctions and disjunctions?).</li>
+<li>Offers concluding Remarks</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgb113942" class="outline-2">
+<h2 id="orgb113942">Tips</h2>
+<div class="outline-text-2" id="text-orgb113942">
+</div>
+<div id="outline-container-org6f98b6b" class="outline-3">
+<h3 id="org6f98b6b">Normal forms</h3>
+<div class="outline-text-3" id="text-org6f98b6b">
+<p>
+(See Wikipedia on <a href="https://en.wikipedia.org/wiki/Conjunctive_normal_form">CNV</a> and <a href="https://en.wikipedia.org/wiki/Disjunctive_normal_form">DNV</a>)
+</p>
+
+<p>
+Used in automated theorem proving.
+</p>
+</div>
+
+<div id="outline-container-orgd118307" class="outline-4">
+<h4 id="orgd118307">CNF (Conjunctive Normal Form)</h4>
+<div class="outline-text-4" id="text-orgd118307">
+<p>
+"an <b>AND</b> of <b>ORs</b>"
+</p>
+
+<p>
+E.g., \[ (A\lor \neg B\lor \neg C)\land (\neg D\lor E\lor F) \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc074925" class="outline-4">
+<h4 id="orgc074925">DNF (Disjunctive Normal Form)</h4>
+<div class="outline-text-4" id="text-orgc074925">
+<p>
+"an <b>OR</b> of <b>ANDs</b>"
+</p>
+
+<p>
+E.g., \[ (A\land \neg B\land \neg C)\lor (\neg D\land E\land F) \]
+</p>
+
+<p>
+Additionally "A DNF formula is in <b>full disjunctive normal</b> form if each of
+its variables appears exactly once in every conjunction"
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc36edf8" class="outline-3">
+<h3 id="orgc36edf8">Bernoulli trial</h3>
+<div class="outline-text-3" id="text-orgc36edf8">
+<blockquote>
+<p>
+Bernoulli trial (or binomial trial) is a random experiment with exactly two
+possible outcomes, "success" and "failure", in which the probability of
+success is the same every time the experiment is conducted (<a href="https://en.wikipedia.org/wiki/Bernoulli_trial">wikipedia</a>)
+</p>
+</blockquote>
+
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="wigderson09_leslie_valian">[wigderson09_leslie_valian]</a> <a name="wigderson09_leslie_valian"></a>Avi Wigderson, The work of Leslie Valiant, nil, in in: Proceedings of the 41st annual ACM symposium on Symposium on
+                  theory of computing - STOC '09, edited by (2009)</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2018 Shon Feder.<br>
+Last updated 2018-04-19 Thu 06:51. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.9).
+</div>
+</div>
+</body>
+</html>
