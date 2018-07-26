@@ -227,28 +227,6 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -267,44 +245,50 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Notes on Girard's <i>The Blind Spot</i></h1>
 <p>
-Girard, J., <i>The Blind Spot: Lectures on Logic</i> (2011),: European Mathematical
-Society.
+Martin-Löf, Per, &amp; Sambin, G., <i>Intuitionistic type theory</i> (1984), :
+Bibliopolis Napoli.
 </p>
 
-
+<div id="outline-container-org8611f23" class="outline-2">
+<h2 id="org8611f23">Reconciling Formal Foundations with the Infinite</h2>
+<div class="outline-text-2" id="text-org8611f23">
 <p>
-Girard's writing and ideas are thrilling, but often gnomic.
-</p>
-
-
-<div id="outline-container-orga327ce2" class="outline-2">
-<h2 id="orga327ce2">§1.2.2 The hilbertian project</h2>
-<div class="outline-text-2" id="text-orga327ce2">
-</div>
-<div id="outline-container-org11ca4a1" class="outline-3">
-<h3 id="org11ca4a1">"recessive formula"</h3>
-<div class="outline-text-3" id="text-org11ca4a1">
-<p>
-Girard talks of "<i>recessive</i> formula", which have the form of "universal
-(in)equations" such as "\( \forall n \ldotp (n + 1)^2 = n^2 + 2n + 1 \) or \(
-   \forall n \forall p \forall q \ldotp n^2 + p^2 \neq q^2 \)".
-I cannot find any discussion of "recessive formula" outside of Girard, so I
-am a bit perplexed on these&#x2026;
-</p>
-
-<p>
-I worry that this might simply be a typo, and the word was supposed to be
-"recursive". If so, then this typo is escaped notice despite half a dozen
-uses in the passage.
+The core problematic addressed in the work, that which intuitionistic type
+theory (ITT) is meant to be an answer to, is that of raising a firm formal
+foundation of mathematical reasoning which is consistent, complete <b>over
+it's domain</b>, and capable of grounding reasoning over infinite domains.
 </p>
 </div>
+</div>
+
+<div id="outline-container-orgfe31241" class="outline-2">
+<h2 id="orgfe31241">Putting Form and Meaning Together</h2>
+<div class="outline-text-2" id="text-orgfe31241">
+<blockquote>
+<p>
+We will avoid keeping form and meaning (content) apart. Instead we will  at the
+same time display certain forms of judgment and inference that re used in
+mathematical proofs and explain them semantically. Thus we make explicit what is
+usually implicitly taken for granted. When one treats logic as any other branch
+of mathematics, as in the metamathematical tradition originated by Hilbert, such
+judgments and inferences are only partially and formally represented in the
+so-called object language, while they are implicitly used, as in any other
+branch of mathematics, in the so-called metalanguage.
+</p>
+</blockquote>
+
+<p>
+This practice of developing the meanings and use of judgment at the same time,
+expecting the one to inform the other through the process of the exposition and
+use is familiar and essential to the continental philosophical tradition.
+</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2018 Shon Feder.<br>
-Last updated 2018-06-09 Sat 13:00. <br>
+Last updated 2018-07-15 Sun 20:16. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.11).
 </div>
 </div>
