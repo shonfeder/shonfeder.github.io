@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-08-19 Sun 22:17 -->
+<!-- 2019-01-14 Mon 07:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reading List</title>
@@ -161,6 +161,19 @@
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
   .inlinetask {
     padding: 10px;
     border: 2px solid gray;
@@ -250,13 +263,14 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orga918677">Currently Reading</a>
 <ul>
-<li><a href="#org46a8c46">An Introduction to Mathematics</a></li>
-<li><a href="#org2cdaede">Miscomputation in Software: Learning to live with errors</a></li>
-<li><a href="#org945457c">Intuitionistic Type Theory</a></li>
+<li><a href="#org6d1201d">The Purely Functional Software Deployment Model</a></li>
 </ul>
 </li>
 <li><a href="#orgdc10db7">Will Read</a>
 <ul>
+<li><a href="#org945457c">Intuitionistic Type Theory</a></li>
+<li><a href="#org46a8c46">An Introduction to Mathematics</a></li>
+<li><a href="#org2cdaede">Miscomputation in Software: Learning to live with errors</a></li>
 <li><a href="#org55376a5">Logic -&gt; TypeTheory+</a>
 <ul>
 <li><a href="#org7bed914">Software Foundations: Logical Foundations</a></li>
@@ -279,8 +293,14 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgc7d939e">Have Read</a>
 <ul>
+<li><a href="#org8ec63ee">2019</a>
+<ul>
+<li><a href="#org0101769">Constructive Mathematics and Computer Programming</a></li>
+</ul>
+</li>
 <li><a href="#org8f9e689">2018</a>
 <ul>
+<li><a href="#org7368204">Build systems a la carte</a></li>
 <li><a href="#org9dcbd50">Networks: A Very Short Introduction</a></li>
 <li><a href="#orgc8929ad">"Marx's Concept Of Socialism" from Eric Fromm's <i>Marx's Concept of Man</i></a></li>
 <li><a href="#orgdc7d0f2">The Triumph of Types: Principia Mathematica's Impact on Computer Science</a></li>
@@ -308,6 +328,36 @@ intend to read in the coming months (and years).
 <h2 id="orga918677">Currently Reading</h2>
 <div class="outline-text-2" id="text-orga918677">
 </div>
+<div id="outline-container-org6d1201d" class="outline-3">
+<h3 id="org6d1201d">The Purely Functional Software Deployment Model</h3>
+<div class="outline-text-3" id="text-org6d1201d">
+<p>
+(ref: <a class='org-ref-reference' href="#DBLP:phd/basesearch/Dolstra06">DBLP:phd/basesearch/Dolstra06</a>)
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdc10db7" class="outline-2">
+<h2 id="orgdc10db7">Will Read</h2>
+<div class="outline-text-2" id="text-orgdc10db7">
+<p>
+Texts in this list are not being actively read, but they may have been started
+or partially read. They are, in any case, yet to be completed.
+</p>
+</div>
+<div id="outline-container-org945457c" class="outline-3">
+<h3 id="org945457c">Intuitionistic Type Theory</h3>
+<div class="outline-text-3" id="text-org945457c">
+<p>
+(ref: <a class='org-ref-reference' href="#martin1984intuitionistic">martin1984intuitionistic</a>)
+</p>
+
+<p>
+<a href="reading-notes/martin-lof-itt.html">Notes</a>
+</p>
+</div>
+</div>
+
 <div id="outline-container-org46a8c46" class="outline-3">
 <h3 id="org46a8c46">An Introduction to Mathematics</h3>
 <div class="outline-text-3" id="text-org46a8c46">
@@ -327,28 +377,6 @@ intend to read in the coming months (and years).
 (ref: <a class='org-ref-reference' href="#Petricek_2017">Petricek_2017</a>)
 </p>
 </div>
-</div>
-<div id="outline-container-org945457c" class="outline-3">
-<h3 id="org945457c">Intuitionistic Type Theory</h3>
-<div class="outline-text-3" id="text-org945457c">
-<p>
-(ref: <a class='org-ref-reference' href="#martin1984intuitionistic">martin1984intuitionistic</a>)
-</p>
-
-<p>
-<a href="reading-notes/martin-lof-itt.html">Notes</a>
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgdc10db7" class="outline-2">
-<h2 id="orgdc10db7">Will Read</h2>
-<div class="outline-text-2" id="text-orgdc10db7">
-<p>
-Texts in this list are not being actively read, but they may have been started
-or partially read. They are, in any case, yet to be completed.
-</p>
 </div>
 <div id="outline-container-org55376a5" class="outline-3">
 <h3 id="org55376a5">Logic -&gt; TypeTheory+</h3>
@@ -465,9 +493,73 @@ liable to move back to one of the other lists.
 </p>
 </div>
 
+<div id="outline-container-org8ec63ee" class="outline-3">
+<h3 id="org8ec63ee">2019</h3>
+<div class="outline-text-3" id="text-org8ec63ee">
+</div>
+<div id="outline-container-org0101769" class="outline-4">
+<h4 id="org0101769">Constructive Mathematics and Computer Programming</h4>
+<div class="outline-text-4" id="text-org0101769">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2019-01-13 Sun&gt;</span></span>
+</p>
+
+<p>
+(ref: <a class='org-ref-reference' href="#Martin_L_f_1982">Martin_L_f_1982</a>)
+</p>
+</div>
+
+<div id="outline-container-orgd69c685" class="outline-5">
+<h5 id="orgd69c685">On the semantics of lazy evaluation</h5>
+<div class="outline-text-5" id="text-orgd69c685">
+<blockquote>
+<p>
+The term lazy has is appropriate because only as few computation steps are
+made as are absolutely necessary to bring an expression into canonical form.
+However, what turns out to be of no significance, it is no longer the case
+that an expressions cannot have a value unless all its parts have values.
+For example, <code>a'</code> has itself as value even if <code>a</code> has no value. What is
+significant, though, is that the principle of Frege's referred to earlier,
+namely that the value of an expression depends only on the values of its
+parts, is irretrievably lost. To make the language work in spite of this
+loss has been one of the most serious difficulties in the design of the
+theory of types. (172)
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org4b1b632" class="outline-5">
+<h5 id="org4b1b632">From the discussion notes after the chapter</h5>
+<div class="outline-text-5" id="text-org4b1b632">
+<blockquote>
+<p>
+&#x2026; if propositions were interpreted as domains and truth as non-emptiness,
+every proposition would come out true. This is why I could not think of
+dealing with partial elements and functions, that is, possibly
+non-terminating programs, before I had freed myself from the interpretation
+of propositions as types. (184)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
 <div id="outline-container-org8f9e689" class="outline-3">
 <h3 id="org8f9e689">2018</h3>
 <div class="outline-text-3" id="text-org8f9e689">
+</div>
+<div id="outline-container-org7368204" class="outline-4">
+<h4 id="org7368204">Build systems a la carte</h4>
+<div class="outline-text-4" id="text-org7368204">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2018-11-15 Thu&gt;</span></span>
+</p>
+
+<p>
+(ref <a class='org-ref-reference' href="#Mokhov_2018">Mokhov_2018</a>)
+</p>
+</div>
 </div>
 <div id="outline-container-org9dcbd50" class="outline-4">
 <h4 id="org9dcbd50">Networks: A Very Short Introduction</h4>
@@ -659,9 +751,9 @@ Motto: "Perceptual inferences become causal rules"
 </p>
 </div>
 
-<div id="outline-container-orgd83cacc" class="outline-5">
-<h5 id="orgd83cacc">Chapters read</h5>
-<div class="outline-text-5" id="text-orgd83cacc">
+<div id="outline-container-orgc2de481" class="outline-5">
+<h5 id="orgc2de481">Chapters read</h5>
+<div class="outline-text-5" id="text-orgc2de481">
 <ul class="org-ul">
 <li>"Marx on the History of his Opinions"</li>
 <li>"Discovering Hegel"</li>
@@ -683,9 +775,9 @@ Motto: "Perceptual inferences become causal rules"
 </p>
 </div>
 
-<div id="outline-container-orgc2de481" class="outline-5">
-<h5 id="orgc2de481">Chapters read</h5>
-<div class="outline-text-5" id="text-orgc2de481">
+<div id="outline-container-orgd8833da" class="outline-5">
+<h5 id="orgd8833da">Chapters read</h5>
+<div class="outline-text-5" id="text-orgd8833da">
 <ul class="org-ul">
 <li>"The Inoperative Community"</li>
 <li>"Literary Communism"</li>
@@ -699,8 +791,8 @@ Motto: "Perceptual inferences become causal rules"
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2018 Shon Feder.<br>
-Last updated 2018-08-19 Sun 22:17. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.1.13).
+Last updated 2019-01-14 Mon 07:13. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.2).
 </div>
 </div>
 </body>
