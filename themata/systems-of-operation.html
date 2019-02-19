@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-02-19 Tue 07:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Seed of the Shell: From Human Computers to Communal Computing</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Shon Feder" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">The Seed of the Shell: From Human Computers to Communal Computing</h1>
+
+<div id="outline-container-org520560a" class="outline-2">
+<h2 id="org520560a">Outline</h2>
+<div class="outline-text-2" id="text-org520560a">
+</div>
+<div id="outline-container-orge659832" class="outline-3">
+<h3 id="orge659832">The Artificial Intelligence</h3>
+<div class="outline-text-3" id="text-orge659832">
+<blockquote>
+<p>
+NATURE (The Art whereby God hath made and governes the World) is by the <i>Art</i>
+of man, as in many other things, so in this also imitated, that it can make
+an Artificial Animal. For seeing life is but a motion of Limbs, the
+beginning whereof is in some principall part within; why may not we say, that
+all <i>Automata</i> (Engines that move themselves by springs and wheels as doth a
+watch) have an artificial life? For what is the <i>Heart</i>, but a <i>Spring</i>; and
+the <i>Nerves</i>, but so many <i>Strings</i>; and the <i>Joynts</i>, but so many <i>Wheels</i>,
+giving motion to the whole Body, such as was intended by the Artificer? <i>Art</i>
+goes yet further, imitating that Rationall and most excellent worke of
+Nature, <i>Man</i>. For by Art is created that great LEVIATHAN called a
+COMMON-WEALTH, or STATE, (in latine CIVITAS) which is but an Artificiall
+Man&#x2026; <a class='org-ref-reference' href="#9780140431957">9780140431957</a>
+</p>
+</blockquote>
+
+<p>
+According to Hobbes, The original artificial intelligence is the political
+state.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7114b3a" class="outline-3">
+<h3 id="org7114b3a">Computing Humans: Turing's Machines</h3>
+<div class="outline-text-3" id="text-org7114b3a">
+<p>
+Turing's <i>On Computable Numbers</i> minimizes and analyzes the process of
+manual computation, <i>as it was performed by human computers</i>. His analysis
+was sufficiently precise and detailed, that it could be translated into an
+"Automata", thus giving us the automatic computer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org189615a" class="outline-3">
+<h3 id="org189615a">Computers as Humans: The ENEAC</h3>
+</div>
+
+<div id="outline-container-org2e65c5e" class="outline-3">
+<h3 id="org2e65c5e">Humans Operating Computers: The IBM 701</h3>
+</div>
+
+<div id="outline-container-org26f70c7" class="outline-3">
+<h3 id="org26f70c7">Systemization of Computer Operation: ??</h3>
+</div>
+
+<div id="outline-container-orgaaaca14" class="outline-3">
+<h3 id="orgaaaca14">Sharing Time with the Automatic Operating System: MULTICS</h3>
+</div>
+
+<div id="outline-container-orge69c123" class="outline-3">
+<h3 id="orge69c123">Communal Computing: UNIX</h3>
+</div>
+
+<div id="outline-container-org236879b" class="outline-3">
+<h3 id="org236879b">Subsequent and Future Unfoldings:</h3>
+<div class="outline-text-3" id="text-org236879b">
+<ul class="org-ul">
+<li>Personal Computing</li>
+<li>Networked Computing</li>
+<li>"Cloud" computing</li>
+<li>Containerization/DevOps/Monorepos etc
+<ul class="org-ul">
+<li>Engineering the engineering organization into a box</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org451c107" class="outline-2">
+<h2 id="org451c107">Themes</h2>
+<div class="outline-text-2" id="text-org451c107">
+</div>
+<div id="outline-container-orgefdd4c4" class="outline-3">
+<h3 id="orgefdd4c4">Internalization</h3>
+<div class="outline-text-3" id="text-orgefdd4c4">
+<p>
+Most of the things we currently think of as parts of a computer used to be
+considered as ancillary devices. These have all been miniaturized,
+accelerated, automated, and internalized.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd89438f" class="outline-3">
+<h3 id="orgd89438f">The Mechanical Turk:</h3>
+</div>
+</div>
+
+<div id="outline-container-orgaadd07e" class="outline-2">
+<h2 id="orgaadd07e">Questions</h2>
+<div class="outline-text-2" id="text-orgaadd07e">
+</div>
+<div id="outline-container-orgb5cd503" class="outline-3">
+<h3 id="orgb5cd503">What is a shell?</h3>
+<div class="outline-text-3" id="text-orgb5cd503">
+<p>
+If your familiar with the computery sense of <i>shell</i>, there's a good chance
+you think a shell is something particular to a command-line terminal
+environment. In that case, you can join me and others I've talked to in being
+delightfully surprised to learn that shell, even in the narrow computery
+sense, is a much more general thing: "a user interface for access to an
+operating system's services"<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>.
+</p>
+
+<p>
+The vast majority of computer users toil their entire computing day away
+inside an infamous shell that is generally unrecognized as such: <a href="https://en.wikipedia.org/wiki/Windows_shell">the Windows
+shell</a>. The terminal-bound <a href="https://en.wikipedia.org/wiki/Command-line_interface">CLIs</a> often taken to be synonymous with <i>shell</i>
+simpliciter are only a special case of a much more general concept in the
+architecture of human-computer interface.
+</p>
+
+<p>
+This concept has an interesting history and, as I will try to show,
+fascinating and important implications for how we think about the use of and
+interface with computers.
+</p>
+</div>
+
+<div id="outline-container-org6b48784" class="outline-4">
+<h4 id="org6b48784">Neat shells: <a href="https://www.doc.ic.ac.uk/~tora/Kevlar/index.cgi">https://www.doc.ic.ac.uk/~tora/Kevlar/index.cgi</a></h4>
+<div class="outline-text-4" id="text-org6b48784">
+<p>
+consult <a href="http://www.gnu.org/software/emacs/manual/html_mono/eshell.html">http://www.gnu.org/software/emacs/manual/html_mono/eshell.html</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaf03d53" class="outline-3">
+<h3 id="orgaf03d53">Why go deeper into the shell?</h3>
+<div class="outline-text-3" id="text-orgaf03d53">
+<p>
+The aim of this remark is to solidify and share my personal meditation on the
+history, nature, and implications of the shell concept. Though I am
+primarily concerned with computer shells, a deeper understanding of their
+characteristics and potential can be nurtured by some early attention to more
+general senses of the term <i>shell</i>.
+</p>
+
+<p>
+The most concrete sense of the word is the one with physical significance.
+The most technical physical sense, used by engineers to describe a structural
+pattern, is remarkably abstract:
+</p>
+
+<blockquote>
+<p>
+A shell is a type of structural element which is characterized by its
+geometry, being a three-dimensional solid whose thickness is very small when
+compared with other dimensions
+—<a href="https://en.wikipedia.org/wiki/Shell_(structure)"> wikipedia.org</a>
+</p>
+</blockquote>
+
+<p>
+Here, <i>shell</i> is taken to describe a vast class of three-dimensional solids.
+<b>Why does it matter?</b>&#x2026;
+</p>
+
+<p>
+To recall the more mundane and more concrete senses, we can appeal to the
+term's etymology.
+</p>
+
+<p>
+According to <a href="http://www.etymonline.com/index.php?term=shell&amp;allowed_in_frame=0">etymonline.org</a>, the earliest etymon of <i>shell</i> is the speculated
+Proto-Indo-European root <i>*skel-</i>, "to cut". This root claims common ground
+for a number of Germanic words with a similar sound, including the Old
+English <i>scealu</i>, "shell, husk", and others meaning "piece cut off, rind, egg
+shell", "peel", and "tile", tied to words like <i>*skaljo</i>, <i>skyl</i>, and
+<i>schelle</i>. The unifying concept suggested by etymonline is that of a
+"covering that splits off". A couple common notions take shape through these
+ancient determinations: A shell protects, hides or covers, or did so once. A
+shell is removable.
+</p>
+
+<p>
+Common senses of the term settle down to mark a topic congruent with our
+target sense as the English usage goes on:
+</p>
+
+<pre class="example">
+Sense of "mere exterior" is from 1650s; that of "hollow framework" is
+from 1791. Meaning "structure for a band or orchestra" is attested
+from 1938.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5ef1795" class="outline-3">
+<h3 id="org5ef1795">What's the difference between a shell and a cli in general?</h3>
+<div class="outline-text-3" id="text-org5ef1795">
+<p>
+A shell, in the computing sense, is not synonymous with a command line
+interface (CLI). Most CLIs are not shells (though most CLI are probably
+launched by a shell) and the most widely used shell is not a CLI.
+</p>
+
+<p>
+A shell is a program that provides an interface for a user to interact with
+an operating system. True to the etymological coincidence of 'shell' and
+'husk' in the Old English <i>scaelu</i>, the shell is so called because it was the
+<a href="https://en.wikipedia.org/wiki/Husk">husk</a> enclosing the operating system's <i>kernel</i>.
+</p>
+
+<p>
+This is a potent metaphor. Let's press the underlying analogy until it
+breaks, so we can see what it's made of.
+</p>
+
+<p>
+A husk is a shell that protects a seed. We sometimes think and talk as if the
+seed itself were the germ whence plants grow, but that's incorrect: plants
+grow from their <i>embryo</i>, the <i>germ</i>. A seed's destiny is to transport and
+preserve its germ until it can find fertile ground. Having found a place
+where it can settle, the seed nourishes the germ. As the germ develops into a
+seedling, the latter should break free of the shell. Thence, the germ quickly
+outgrows and consumes its kernel. If all goes will, the newly sprouted
+seedling will realize a self-sufficient form of growth, and begin feeding on
+intake from the world at large.
+</p>
+
+<p>
+A seed's husk provides protective enclosure while the seed itself nurtures
+and enables the development of the germ: given the proper conditions, this
+trinity will sprout, take root, and grow into something miraculously
+different. If a shell encloses an operating system's kernel, providing an
+interface to the user, where, if at all, do we find the analog of the germ,
+the computer's embryo? What, if anything, does this become in the optimal
+conditions?
+</p>
+</div>
+
+<div id="outline-container-org0e8c111" class="outline-4">
+<h4 id="org0e8c111">The seed of the <i>kernel</i> concept lies in the origin of the operating system</h4>
+<div class="outline-text-4" id="text-org0e8c111">
+<p>
+In a nutshell, a <i>kernel</i> is a seed program at the core of an operating
+system. The kernel maintains complete control over everything in the system,
+and orchestrates access to the underlying hardware, on which the
+computations are actually orchestrated.
+</p>
+
+<p>
+To develop an understanding of the kernel concept adequate to nurturing a
+robust understanding of the shell concept, we'll have to cultivate an
+understanding of the kernel concept that is more expansive. It is one thing
+to say "the kernel is the core of an operating system". It is another thing
+to know what an operating system is, why operating systems have cores, what
+kind of operations an operating system performs, and what kind of system it
+operates.
+</p>
+
+<p>
+We are digging for insights into the essence of the concepts rather than
+technical details about how the things that now bear those names happen to
+be constituted. Suppose I were capable of explaining the intricate technical
+details of the Linux kernel, the exact mechanisms by which it relates to,
+and is accessible from, a popular shell like Bash or Zsh, and how these
+things stand in relation to a given Linux distribution. (I am <i>not</i> but
+let's suppose I were.) This explanation would not tell us much about the
+nature of an operating system in the <i>abstract</i>. It would tell us nothing
+about the kernel concept as such and provide very little insight into the
+essential nature and promise of the shell. To get at these things, we want a
+<i><a href="https://en.wikipedia.org/wiki/Genealogy_(philosophy)">genealogical inquiry</a></i>.
+</p>
+
+<p>
+The origin of the shell concept lies in that of time sharing systems. Time
+sharing systems were a pivotal innovation on the operating system: in
+essence, modern kernels are just the persistent form of the original
+operating systems. The origin of these foundational systems lies in the
+complex social and mechanical constellations of the old computing machine
+rooms.
+</p>
+
+<p>
+In order to get a visceral sense of why these machine rooms gave birth to
+operating and time sharing systems, we need a concrete understanding of what
+it was like to work with those beasts.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org38bd3c0" class="outline-4">
+<h4 id="org38bd3c0">A system for efficiently operating a computing machine that fills a room</h4>
+<div class="outline-text-4" id="text-org38bd3c0">
+<p>
+<img src="static/img/IBM701_in_a_machine_room.jpg" alt="IBM701_in_a_machine_room.jpg" />
+<a href="http://www.columbia.edu/cu/computinghistory/701.html">http://www.columbia.edu/cu/computinghistory/701.html</a>
+</p>
+
+<p>
+In the 1950s, computing machines where gigantic, expensive, and rare. Robert
+L. Patrick worked on developing some of the earliest operating systems and
+the operational practices that preceded systematic automation. In 1987,
+Patrick was asked by ??? to prepare a paper<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> reflecting on his work
+developing systems for operating these kinds of devices.
+</p>
+
+<p>
+The roots of this work go back to 1954, wrote Patrick. At that time, he was
+working on an IBM 701. The 701 was IBM's first commercial scientific
+computer. It rented for over $23,000 a month and filled a 40 foot by 40 foot
+room. It was a "single sequencing machine", meaning it could only execute
+one stage of a computation task at a time: e.g., if it was reading input, it
+was <b>only</b> reading input, not processing anything, until the entire input
+was consumed. Like other machines of this era, it was composed of an
+interrelated system of heterogeneous storage and processing devices that
+needed lots of attention and manual care: a typical configuration
+consisted of
+</p>
+
+<ul class="org-ul">
+<li>a punch card reader</li>
+<li>a punch card puncher (for machine-readable output)</li>
+<li>a 150-line-per-minute printer (for human-readable output)</li>
+<li>an internal memory <b>OF WHAT SORT?</b> of 2,000 36-bit words <b>WHICH IS HOW MUCH?</b>,</li>
+<li>four magnetic tapes</li>
+<li>a magnetic drum</li>
+</ul>
+
+<p>
+Operating these bohemoths was intricate, complex, and fraught:
+</p>
+
+<pre class="example">
+The typical mode of operating was programmer present and at the operating
+console. When a programmer got ready for a test shot, he or she signed up
+on a first-in, first-out list, much like the list at a crowded restaurant.
+The programmer then checked progress frequently to estimate when he would
+reach the top. When his time got close, he stod by with card deck in hand.
+When the previous person finished or ran out of alloted time or abruptly
+crashed, the next programmer rushed in, checked that the proper board was
+installed in the card reader, checked that the proper board was installed in
+the printer, checked that the proper board was installed on the punch, hung
+a magnetic tape ..., punched in on a mechanical time clock, addressed the
+console, set some switches, loaded his punched card deck in the card reader,
+prayed the first card would not jam, and pressed the load button to invoke
+the bootstrap sequence.
+
+If all went well, you could load a typical deck of about 300 cards and begin
+the execution of your first instruction about 5 minutes after entering the
+machine room. If only one person did all this set up and got going in five
+minutes, he bustled around the machine room like a whirling dervish.
+</pre>
+
+<p>
+According to Patrick's account, the preparation and setup rarely went
+perfectly. Butter-fingered programmers were prone to squander the entirety
+of their test time fumbling the setup and correcting for mishaps. This was
+costly: in addition to squandering the programmer's time, the tedious and
+error prone load times wasted compute time. Operating the computer was a
+manual processes and if operators worked twelve hours a day, seven days per
+week, with a rental price of $23,000 per month, compute time would still be
+priced at about $67 per hour. (That's in 1954 dollars. In 2017, it would be
+about $620 per hour.)
+</p>
+
+<p>
+This was the muck in which the operating system took root. The earliest
+steps made towards systematization recounted by Patrick were simple measures
+to improve the reliability and efficiency of operation: e.g., organizing
+programmer-operators to work in teams so there was always an assistant or
+standardizing plug boards to reduce the need for switching. Some important
+technical improvements also contributed. Most worthy of note, perhaps, was
+the advent of "interpretive programming packages", such as
+[Speedcoding](<a href="https://en.wikipedia.org/wiki/Speedcoding">https://en.wikipedia.org/wiki/Speedcoding</a>). These "high-level"
+languages abstracted away from hardware instructions, providing a
+human-readable language for specifying machines programs.
+</p>
+
+<p>
+The specification of an operating system was for the IBM 704, developed as a
+collaborative effort between GM and North Western ?? and the SHARE group
+???. I will provide the highlights from Patrick's highlights, to give a
+sense for what exactly an operating system consisted in:
+</p>
+</div>
+
+<div id="outline-container-orgc34964a" class="outline-5">
+<h5 id="orgc34964a">The sound of one of these computing rooms</h5>
+<div class="outline-text-5" id="text-orgc34964a">
+<p>
+From the first business computer LEO:
+<a href="http://www.leo-computers.org.uk/images/leo-oz.mp3">http://www.leo-computers.org.uk/images/leo-oz.mp3</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org87fe102" class="outline-3">
+<h3 id="org87fe102">Why do all the different shells run in the same terminal emulator?</h3>
+</div>
+<div id="outline-container-orgb17da73" class="outline-3">
+<h3 id="orgb17da73">Why are there no really great "next generation" shell+terminal systems?</h3>
+</div>
+</div>
+
+<div id="outline-container-orgc67090e" class="outline-2">
+<h2 id="orgc67090e">Introduction</h2>
+<div class="outline-text-2" id="text-orgc67090e">
+</div>
+<div id="outline-container-org7f1b2ab" class="outline-3">
+<h3 id="org7f1b2ab">Motivation</h3>
+<div class="outline-text-3" id="text-org7f1b2ab">
+<p>
+I was recently made aware that I had a very shallow understanding of the
+standard Linux command line interface (CLI) shell. As I began studying
+to overcome this superficiality, I discovered that the term <i>shell</i> invokes
+deep historical and conceptual roots and that its contemporary relevance
+extends well beyond the standard CLI's in use by IT professionals.
+</p>
+
+<p>
+If you haven't had occasion to do a deep dive into the concept of a shell,
+you might harbor the same kind of misconceptions I did. You might think that
+a shell is a CLI in general, or that a shell has something to do with
+Unix-like environments in particular (which has a kernel of truth, but only
+for historical reasons). You might know that that there are different *nix
+shells — such as <i>sh</i>, <i>bash</i>, and <i>zsh</i> —
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0fe8d34" class="outline-2">
+<h2 id="org0fe8d34">Origins</h2>
+<div class="outline-text-2" id="text-org0fe8d34">
+</div>
+<div id="outline-container-org23e414d" class="outline-3">
+<h3 id="org23e414d">The origins of Unix/Linux shells lie in CTSS</h3>
+<div class="outline-text-3" id="text-org23e414d">
+</div>
+<div id="outline-container-orge2262f1" class="outline-4">
+<h4 id="orge2262f1">Denise Richie</h4>
+<div class="outline-text-4" id="text-orge2262f1">
+<p>
+The UNIX Time-sharing System A Retrospective*
+</p>
+
+<p>
+&gt; In most ways UNIX is a very conservative system. Only a handful of its
+ideas are genuinely new. In fact, a good case can be made that it is in
+essence a modern implementation of MIT's CTSS system [1]. This claim is
+intended as a compliment to both UNIX and CTSS. Today, more than fifteen
+years after CTSS was born, few of the interactive systems we know of are
+superior to it in ease of use; many are inferior in basic design.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43f87a9" class="outline-3">
+<h3 id="org43f87a9">Time Sharing Systems</h3>
+<div class="outline-text-3" id="text-org43f87a9">
+<blockquote>
+<p>
+Time-sharing was a misnomer. While it did allow the sharing of a central
+computer, its success derives from the ability to share other resources: data,
+programs, concepts. It cracked a critical path bottleneck for writing and
+debugging programs. In theory this could have been achieved as well with a
+direct access approach. In practice it could not.
+</p>
+
+<p>
+Direct access hems users in a static framework. Evolution is unfrequent and
+controlled by central and distant agents. Creativity is out of the user's hand.
+</p>
+
+<p>
+Time sharing, as it became popular, is a living organism in which any user, with
+various degrees of expertise, can create new objects, test them, and make them
+available to others, without administrative control and hassle. With the
+internet experience, this no longer need be substantiated.
+</p>
+
+<p>
+— <a href="http://www.multicians.org/shell.html">Louis Pouzin</a>
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+CTSS was developed during 1963 and 64. I was at MIT on the computer center staff
+at that time. After having written dozens of commands for CTSS, I reached the
+stage where I felt that commands should be usable as building blocks for writing
+more commands, just like subroutine libraries. Hence, I wrote "RUNCOM", a sort
+of shell driving the execution of command scripts, with argument substitution.
+The tool became instantly most popular, as it became possible to go home in the
+evening while leaving behind long runcoms executing overnight.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgf5992a9" class="outline-3">
+<h3 id="orgf5992a9">Commands and Scripts</h3>
+<div class="outline-text-3" id="text-orgf5992a9">
+<p>
+The shell, at it's root, is an interface for issuing commands and observing
+the effects of their execution.
+</p>
+
+<p>
+If we have a sequence of commands we issue often, to many different actors,
+we might get sick of repeating ourselves so much. Then we may want to write
+a single script which records the sequence of commands, and then simply
+instruct each actor to follow the same script.
+</p>
+
+<p>
+Segue to <i>composing</i> scripts via the <code>script</code> command that simply records
+scripts.
+</p>
+</div>
+
+<div id="outline-container-org813dd82" class="outline-4">
+<h4 id="org813dd82">RUNCOM</h4>
+<div class="outline-text-4" id="text-org813dd82">
+<p>
+:URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
+</p>
+
+<pre class="example">
+From Brian Kernighan and Dennis Ritchie: "There was a facility that would
+execute a bunch of commands stored in a file; it was called runcom for 'run
+commands', and the file began to be called 'a runcom'. rc in Unix is a
+fossil from that usage."[1]
+
+</pre>
+
+<pre class="example">
+Tom Van Vleck, a Multics engineer, has also reminisced about the
+extension rc: "The idea of having the command processing shell be an
+ordinary slave program came from the Multics design, and a predecessor
+program on CTSS by Louis Pouzin called RUNCOM, the source of the '.rc'
+suffix on some Unix configuration files."[2]
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org325f948" class="outline-2">
+<h2 id="org325f948"><span class="todo TODO">TODO</span> Terminology</h2>
+<div class="outline-text-2" id="text-org325f948">
+<p>
+Integrate&#x2026;
+</p>
+
+<blockquote>
+<p>
+shell (n.):
+</p>
+
+<p>
+Old English <i>sciell</i>, <i>scill</i>, Anglian <i>scell</i> "seashell, eggshell," related to Old
+English <i>scealu</i> "shell, husk," from Proto-Germanic <i>*skaljo</i> "piece cut off; shell;
+scale" (source also of West Frisian <i>skyl</i> "peel, rind," Middle Low German <i>schelle</i>
+"pod, rind, egg shell," Gothic <i>skalja</i> "tile"), with the shared notion of
+"covering that splits off," from PIE root *(s)kel- (1) "to cut, cleave" (source
+also of Old Church Slavonic <i>skolika</i> "shell," Russian <i>skala</i> "bark, rind;" see
+scale (n.1)). Italian <i>scaglia</i> "chip" is from Germanic.
+</p>
+
+<p>
+Sense of "mere exterior" is from 1650s; that of "hollow framework" is from 1791.
+Meaning "structure for a band or orchestra" is attested from 1938. Military use
+(1640s) was first of hand grenades, in reference to the metal case in which the
+gunpowder and shot were mixed; the notion is of a "hollow object" filled with
+explosives. Hence shell shock, first recorded 1915. Shell game "a swindle" is
+from 1890, from a version of three-card monte played with a pea and walnut
+shells.
+</p>
+
+<p>
+— <a href="http://www.etymonline.com/index.php?term=shell&amp;allowed_in_frame=0">etymonline.com</a>
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org2a7ab55" class="outline-2">
+<h2 id="org2a7ab55"><span class="todo TODO">TODO</span> Notes</h2>
+<div class="outline-text-2" id="text-org2a7ab55">
+</div>
+<div id="outline-container-orgff5074a" class="outline-3">
+<h3 id="orgff5074a">McCarthy:</h3>
+<div class="outline-text-3" id="text-orgff5074a">
+<p>
+<a href="http://www-formal.stanford.edu/jmc/history/timesharing/timesharing.html">http://www-formal.stanford.edu/jmc/history/timesharing/timesharing.html</a>
+</p>
+
+<p>
+&gt; By time-sharing, I meant an operating system that permits each user of a
+computer to behave as though he were in sole control of a computer, not
+necessarily identical with the machine on which the operating system is running.
+</p>
+
+<p>
+&gt; giving each user continuous access to the machine
+</p>
+
+<p>
+&gt; The major technical error of my 1959 ideas was an underestimation of the
+computer capacity required for time-sharing. I still don't understand where all
+the computer time goes in time-sharing installations, and neither does anyone
+else.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org09973d7" class="outline-3">
+<h3 id="org09973d7">Ken Thompson</h3>
+<div class="outline-text-3" id="text-org09973d7">
+<p>
+On Multics
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Multics#Novel_ideas">https://en.wikipedia.org/wiki/Multics#Novel_ideas</a>
+</p>
+
+<p>
+&gt; "the things that I liked enough (about Multics) to actually take were the
+hierarchical file system and the shell—a separate process that you can replace
+with some other process."
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9cc7179" class="outline-3">
+<h3 id="org9cc7179">Talk "Early days of Unix and design of sh by Stephen R. Bourne"</h3>
+<div class="outline-text-3" id="text-org9cc7179">
+</div>
+<div id="outline-container-org8eef57f" class="outline-4">
+<h4 id="org8eef57f"><code>sh</code> as a language:</h4>
+<div class="outline-text-4" id="text-org8eef57f">
+</div>
+<div id="outline-container-orge77b2fd" class="outline-5">
+<h5 id="orge77b2fd">Typeless</h5>
+</div>
+<div id="outline-container-orgfbe33db" class="outline-5">
+<h5 id="orgfbe33db">Strings are "first class and only citizen"</h5>
+<div class="outline-text-5" id="text-orgfbe33db">
+<p>
+Because it's meant to be both interactive and scripting. This is why strings are
+front and center and sole: built around typing commands in at the terminal.
+</p>
+
+<p>
+"It's just doing string processing most of the time."
+</p>
+</div>
+</div>
+<div id="outline-container-orgdcad41f" class="outline-5">
+<h5 id="orgdcad41f">Command substitution</h5>
+</div>
+<div id="outline-container-org76a0027" class="outline-5">
+<h5 id="org76a0027">Commands vs. functions</h5>
+<div class="outline-text-5" id="text-org76a0027">
+<p>
+Functions weren't added initially. Bourne views this as an oversight.
+</p>
+</div>
+</div>
+<div id="outline-container-org59edd7f" class="outline-5">
+<h5 id="org59edd7f">An "Expression Language"</h5>
+</div>
+</div>
+</div>
+<div id="outline-container-org9149d5b" class="outline-3">
+<h3 id="org9149d5b">Dimensions of the Shell UI:</h3>
+<div class="outline-text-3" id="text-org9149d5b">
+<ol class="org-ol">
+<li>input ::  a string of characters on a single line</li>
+<li>view port ::  an arbitrary number of lines of strings</li>
+<li>interface ::  1 &amp; 2 plus time: starting and stopping process, back-grounding
+processes, etc.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org534935d" class="outline-3">
+<h3 id="org534935d">Exercises/Examples</h3>
+<div class="outline-text-3" id="text-org534935d">
+</div>
+<div id="outline-container-orgad71ac8" class="outline-4">
+<h4 id="orgad71ac8">combine two files, sorting their lines, into a third</h4>
+<div class="outline-text-4" id="text-orgad71ac8">
+<div class="org-src-container">
+<pre class="src src-bash">
+cat file1 file2 | sort &gt; file3
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga7dc350" class="outline-3">
+<h3 id="orga7dc350">Principles</h3>
+<div class="outline-text-3" id="text-orga7dc350">
+<blockquote>
+<p>
+
+</p>
+
+<p>
+Both filters and pipes demonstrate a basic UNIX principle: Expect the output of
+every program to become the input of another, yet unknown, program to combine
+simple tools to perform complex tasks.
+</p>
+
+<p>
+— <a href="http://cis.rit.edu/class/simg211/unixintro/Shell.html">http://cis.rit.edu/class/simg211/unixintro/Shell.html</a>
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org4eedc9c" class="outline-3">
+<h3 id="org4eedc9c">Handy Command</h3>
+<div class="outline-text-3" id="text-org4eedc9c">
+<dl class="org-dl">
+<dt>Search for a command that starts with <code>s</code> in the command history</dt><dd><code>!s</code></dd>
+<dt>(no term)</dt><dd>Find out what commands could be used: <code>compgen</code></dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf3b1c85" class="outline-2">
+<h2 id="orgf3b1c85">Further Resources</h2>
+<div class="outline-text-2" id="text-orgf3b1c85">
+<dl class="org-dl">
+<dt>Unix intro on the shell</dt><dd><a href="http://cis.rit.edu/class/simg211/unixintro/Shell.html">http://cis.rit.edu/class/simg211/unixintro/Shell.html</a></dd>
+<dt>AT&amp;T archive of Bell Labs documentary on the UNIX operating system</dt><dd><a href="https://www.youtube.com/watch?v=XvDZLjaCJuw">https://www.youtube.com/watch?v=XvDZLjaCJuw</a></dd>
+<dt>Compiling and running a fortran program on an IBM 1401</dt><dd><a href="https://www.youtube.com/watch?v=uFQ3sajIdaM">https://www.youtube.com/watch?v=uFQ3sajIdaM</a> (The technology here may seem
+relatively primitive, and this is quite fascinating in its own right.
+However, that hides the really interesting point for our purposes: The
+point is not that this tech is old, the point is that these old ways show
+the core functionality of the computer in stark, material detail, but
+every aspect of these manual processes is still essential to the computer
+on which you're reading this. We have improved the way these processes
+are executed, making them much smaller, quicker, and fully automated, but
+the same procedures are still at work).</dd>
+<dt>Demo and explanation of the history and anatomy of the 1401</dt><dd><a href="https://www.youtube.com/watch?v=VQueCt114Gk">https://www.youtube.com/watch?v=VQueCt114Gk</a></dd>
+<dt>Computer Pioneers: Pioneer Computers Part 1</dt><dd><a href="https://www.youtube.com/watch?v=qundvme1Tik">https://www.youtube.com/watch?v=qundvme1Tik</a></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org3180f7b" class="outline-2">
+<h2 id="org3180f7b">Illustrations</h2>
+<div class="outline-text-2" id="text-org3180f7b">
+
+<div class="figure">
+<p><img src="shell-studies-setup.png" alt="shell-studies-setup.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1d06847" class="outline-2">
+<h2 id="org1d06847">Blog post sketches</h2>
+<div class="outline-text-2" id="text-org1d06847">
+</div>
+<div id="outline-container-orge289c07" class="outline-3">
+<h3 id="orge289c07">Growing into my Shell</h3>
+<div class="outline-text-3" id="text-orge289c07">
+</div>
+<div id="outline-container-org859865b" class="outline-4">
+<h4 id="org859865b">Neat shells:</h4>
+<div class="outline-text-4" id="text-org859865b">
+<dl class="org-dl">
+<dt>experimental graphical shell</dt><dd><a href="https://www.doc.ic.ac.uk/~tora/Kevlar/index.cgi">https://www.doc.ic.ac.uk/~tora/Kevlar/index.cgi</a></dd>
+<dt>a strongly, statically types shell</dt><dd><a href="http://www.samnip.ps/tush/">http://www.samnip.ps/tush/</a></dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orgbc6e63c" class="outline-4">
+<h4 id="orgbc6e63c">Commands and Scripts</h4>
+<div class="outline-text-4" id="text-orgbc6e63c">
+<p>
+The shell, at it's root, is an interface for issuing commands and observing the effects of their execution.
+</p>
+
+<p>
+If we have a sequence of commands we issue often, to many different actors, we might get sick of repeating ourselves so much. Then we may want to write a single script which records the sequence of commands, and then simply instruct each actor to follow the same script.
+</p>
+
+<p>
+Segue to <i>composing</i> scripts via the <code>script</code> command that simply records scripts.
+</p>
+</div>
+
+<div id="outline-container-org5da4fa8" class="outline-5">
+<h5 id="org5da4fa8">RUNCOM</h5>
+<div class="outline-text-5" id="text-org5da4fa8">
+<p>
+:URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
+</p>
+
+<p>
+&gt; From Brian Kernighan and Dennis Ritchie: "There was a facility that would execute a bunch of commands stored in a file; it was called runcom for 'run commands', and the file began to be called 'a runcom'. rc in Unix is a fossil from that usage."[1]
+</p>
+
+<p>
+&gt; Tom Van Vleck, a Multics engineer, has also reminisced about the extension rc: "The idea of having the command processing shell be an ordinary slave program came from the Multics design, and a predecessor program on CTSS by Louis Pouzin called RUNCOM, the source of the '.rc' suffix on some Unix configuration files."[2]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org67ebe00" class="outline-4">
+<h4 id="org67ebe00">Denise Richie</h4>
+<div class="outline-text-4" id="text-org67ebe00">
+<p>
+The UNIX Time-sharing System: A Retrospective*
+</p>
+
+<p>
+&gt; In most ways UNIX is a very conservative system. Only a handful of its ideas
+are genuinely new. In fact, a good case can be made that it is in essence a
+modern implementation of MIT's CTSS system [1]. This claim is intended as a
+compliment to both UNIX and CTSS. Today, more than fifteen years after CTSS was
+born, few of the interactive systems we know of are superior to it in ease of
+use; many are inferior in basic design.
+</p>
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://en.wikipedia.org/wiki/Shell_(computing)">https://en.wikipedia.org/wiki/Shell_(computing)</a>
+</p>
+
+<p class="footpara">
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="9780140431957">[9780140431957]</a> <a name="9780140431957"></a>Thomas Hobbes, Leviathan (Penguin Classics), Penguin Classics (1982).</li>
+</ul>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<a href="http://www.rand.org/content/dam/rand/pubs/papers/2008/P7316.pdf">http://www.rand.org/content/dam/rand/pubs/papers/2008/P7316.pdf</a>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2018 Shon Feder.<br>
+Last updated 2019-02-19 Tue 07:58. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.2).
+</div>
+</div>
+</body>
+</html>

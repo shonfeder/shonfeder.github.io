@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-02-19 Tue 07:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notes on the History of Structural Proof Theory</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Shon Feder" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Notes on the History of Structural Proof Theory</h1>
+
+<div id="outline-container-orgc51191b" class="outline-2">
+<h2 id="orgc51191b"><span class="todo TODO">TODO</span> Select Title</h2>
+<div class="outline-text-2" id="text-orgc51191b">
+</div>
+<div id="outline-container-orgdcd0247" class="outline-3">
+<h3 id="orgdcd0247">On Ideal Elements in Structural and Axiomatic Proof Theory</h3>
+</div>
+</div>
+
+<div id="outline-container-orgb3a307a" class="outline-2">
+<h2 id="orgb3a307a"><span class="todo TODO">TODO</span> Add Date</h2>
+<div class="outline-text-2" id="text-orgb3a307a">
+<p>
+I mentioned Paul Hertz's work on axiom systems to a friend a couple weeks ago.
+He asked if this work was in response to Gödel's incompleteness theorems. I
+couldn't reconstruct the time-line then, but found the question intriguing: what
+is the connection between Gödel's work and Hertz's? I did a bit of reading
+around this question, and I am presenting some of the interesting aspects of my
+findings here. I have glossed over most of Gödel's side of the equation, because
+that history tends to be well known.
+</p>
+
+<p>
+So, <i>iiuc</i>&#x2026;
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3526f05" class="outline-2">
+<h2 id="org3526f05">The superficial history</h2>
+<div class="outline-text-2" id="text-org3526f05">
+<p>
+Hilbert's program was advanced in the early 1920s. Granted a sufficient number
+of caveats, the program can be understood as a formalistic one: proof theory ala
+Hilbert should explain how a finite number of rules governing a finite number of
+signs can provide an immanent grounding for the provability of all mathematical
+reasoning. Gödel's incompleteness theorems, published in 1931, proved the
+impossibility of most of Hilbert's program (at least as Hilbert himself
+conceived of it).
+</p>
+
+<p>
+The kind of proof theory called for by Hilbert's program is often designated
+<b>axiomatic proof theory</b>.
+</p>
+
+<p>
+Paul Hertz is, arguably, the progenitor of the structural analysis of proofs
+that Gentzen utilized in order to develop <b>structural proof theory</b> (see Javier
+Legris' <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=4&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiU76j4sI7TAhUl6IMKHWNADUwQFggpMAM&amp;url=http%3A%2F%2Fiiep-baires.econ.uba.ar%2Fdescargas.php%3Fs%3Dpublicaciones%26f%3D21&amp;usg=AFQjCNEsshNaICQy_K7Cwlg5SWO3tOFPMw&amp;sig2=k6RsugTDd1iP-9kG5weFiw">/Paul Hertz and the Origins of Structural Reasoning</a>/). Hertz published
+his work, <i>On Axiomatic Systems for Arbitrary Systems of Sentences</i>, in 1922.
+In <a href="https://www.deutsche-biographie.de/gnd11675446X.html#ndbcontent">a short biography</a> by Hilbert's collaborator <a href="https://en.wikipedia.org/wiki/Paul_Bernays">Paul Barneys</a>, Barneys wrote of
+<i>On Axiomiatic Systems&#x2026;</i>,
+</p>
+
+<blockquote>
+<p>
+Hier führte er viele methodisch wichtige Begriffsbildungen ein und gelangte zu
+mathematisch prägnanten Ergebnissen. Diese Untersuchungen sind Vorläufer
+verschiedener neuerer Forschungen zur mathematischen Logik und Axiomatik,
+insbesondere hat G. Gentzens Sequenzenkalkul von den H.schen Betrachtungen über
+Satzsysteme seinen Ausgang genommen.
+</p>
+
+<p>
+Here he introduced many methodologically important conceptual developments and
+arrived at mathematically incisive results. These investigations were
+forerunners of various new researches into mathematical logic and axiomatics, in
+particular, G. Gentzen's sequent calculus took its starting point from Hertz's
+work on sentence systems.
+</p>
+
+<p>
+[/Please pardon my inexpert translation./]
+</p>
+</blockquote>
+
+<p>
+Gentzen's work was, according to a reductive formulation, the application of
+Hertz's approach and core methodology to the problematic set out by Hilbert.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6bd093d" class="outline-2">
+<h2 id="org6bd093d">A deeper comparison of the approaches</h2>
+<div class="outline-text-2" id="text-org6bd093d">
+</div>
+<div id="outline-container-org04cc229" class="outline-3">
+<h3 id="org04cc229">Hilbert's Finitism</h3>
+<div class="outline-text-3" id="text-org04cc229">
+<p>
+I want to understand with greater precision and depth what Hilbert had in
+mind.
+</p>
+
+<p>
+The vision Hilbert's program hoped to realize was colored throughout by
+<b>finitism</b>. This is first and foremost a metaphysical position.
+</p>
+
+<p>
+It is an interesting and striking contrast to the work of Leibniz, Bolzano,
+and Cantor.
+</p>
+
+<blockquote>
+<p>
+&#x2026;the definitive clarification of <i>the nature of the infinite</i>, instead of
+pertaining just to the sphere of specialized scientific interests, is needed
+for <i>the dignity of the human intellect</i> itself. (185)
+</p>
+</blockquote>
+
+<p>
+After arguing against the reality of infinitude in physics, he turns to the
+question of whether "the infinite occupies a justified place <i>in our
+thinking</i>".
+</p>
+
+<blockquote>
+<p>
+We encounter a completely different and quite unique conception of the notion
+of infinity in the important and fruitful method of <i>ideal elements</i>. &#x2026;
+These ideal "infinite" elements have the advantage of making the system of
+connection laws as simple and perspicuous as possible. Moreover, because of
+the symmetry between a point a straight line, there results the very fruitful
+principle of duality for geometry. (187)
+</p>
+</blockquote>
+
+<p>
+The function and &lt;saving grace&gt; of infinite <i>ideal elements</i> is the
+facilitation of simplicity, perspicuity, and symmetry.
+</p>
+
+<blockquote>
+<p>
+Let us remember that <i>we are mathematicians</i> and that as mathematicians we
+have often been in precarious situations from which we have been rescued by
+the ingenious method of ideal elements. Just as <code>i=√-1</code> was introduced to
+preserve in the simplest form the laws of algebra &#x2026; similarly, to preserve
+the simple formal rules of ordinary Aristotelian logic, we must <i>supplement
+the finitary statements with ideal statements</i>. &#x2026;
+</p>
+
+<p>
+How do we obtain <i>ideal statements</i>?
+(<i>On the Infinite</i>, 195)
+</p>
+</blockquote>
+
+<p>
+Hilbert's work actually ends up being much more like a <i>phenomenology</i>, it
+seems to me.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org72cf51e" class="outline-3">
+<h3 id="org72cf51e"><span class="todo TODO">TODO</span> Focus on the idea of <i>Ideal Elements</i> in Hilbert and Hertz</h3>
+</div>
+
+<div id="outline-container-orgcbdaa8c" class="outline-3">
+<h3 id="orgcbdaa8c">Hertz's Structuralism</h3>
+<div class="outline-text-3" id="text-orgcbdaa8c">
+<p>
+Whereas Hilbert sought a tenable set of axioms to provide a self-evident
+ground for formal proofs of consistency etc., Hertz inquired into the mere
+<b>topology</b> of axiom systems in general. The opening paragraph of the 1922
+paper conveys this:
+</p>
+
+<blockquote>
+<p>
+Whenever a system of sentences is recognized to be valid, it is often not
+necessary to convey each and every sentence to memory; it is sufficient to
+choose some of them from which the rest can follow. Such sentences, as is
+generally known, are called axioms. The choice of these axioms is to a
+certain degree arbitrary. One can ask, however, if the property of a system
+of sentences to have several axioms systems is interconnected with other
+remarkable properties, and if there are systematic approaches to find, as the
+case may be, that axiomatic system which contains the least possible number
+of sentences. (<i>Universal Logic</i>, 11)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3ac5316" class="outline-2">
+<h2 id="org3ac5316">Speculating and Opining</h2>
+<div class="outline-text-2" id="text-org3ac5316">
+</div>
+<div id="outline-container-org6ce5449" class="outline-3">
+<h3 id="org6ce5449">Gentzen's work tames the radicality of Hertz's program</h3>
+</div>
+<div id="outline-container-orgb48964f" class="outline-3">
+<h3 id="orgb48964f">Gentzen thus constraints Hertz's vision, but in a way that advances the spirit of Hilbert's program.</h3>
+</div>
+<div id="outline-container-org0bc56b9" class="outline-3">
+<h3 id="org0bc56b9">Gödel constrains Hilbert's vision in a way that calls for a revision of the letter of his Program.</h3>
+</div>
+</div>
+
+<div id="outline-container-org98cfc0c" class="outline-2">
+<h2 id="org98cfc0c">References</h2>
+<div class="outline-text-2" id="text-org98cfc0c">
+</div>
+<div id="outline-container-org4413bb8" class="outline-3">
+<h3 id="org4413bb8">Universal Logic</h3>
+</div>
+<div id="outline-container-orgb6e0293" class="outline-3">
+<h3 id="orgb6e0293">Philosophy of Mathematics</h3>
+</div>
+<div id="outline-container-org3fd5f0a" class="outline-3">
+<h3 id="org3fd5f0a">On Axiomatics Systems for Arbitrary Systems of Sentences</h3>
+</div>
+<div id="outline-container-orgd6891bd" class="outline-3">
+<h3 id="orgd6891bd"><a href="https://plato.stanford.edu/entries/proof-theory-development/#NatDedSeqCal">https://plato.stanford.edu/entries/proof-theory-development/#NatDedSeqCal</a></h3>
+</div>
+<div id="outline-container-org807f6c5" class="outline-3">
+<h3 id="org807f6c5"><a href="https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)">https://en.wikipedia.org/wiki/Formalism_(philosophy_of_mathematics)</a>#Hilbert.27s<sub>formalism</sub></h3>
+</div>
+<div id="outline-container-orgb7ad24b" class="outline-3">
+<h3 id="orgb7ad24b"><a href="https://en.wikipedia.org/wiki/G%C3%B6del's_incompleteness_theorems">https://en.wikipedia.org/wiki/Gödel's_incompleteness_theorems</a></h3>
+</div>
+<div id="outline-container-orgce0ce69" class="outline-3">
+<h3 id="orgce0ce69"><a href="https://en.wikipedia.org/wiki/Proof_theory">https://en.wikipedia.org/wiki/Proof_theory</a></h3>
+</div>
+<div id="outline-container-org4314f9a" class="outline-3">
+<h3 id="org4314f9a"><a href="https://en.wikipedia.org/wiki/Paul_Bernays">https://en.wikipedia.org/wiki/Paul_Bernays</a></h3>
+</div>
+<div id="outline-container-org142679c" class="outline-3">
+<h3 id="org142679c"><a href="https://plato.stanford.edu/entries/hilbert-program/#Hilbert:26">https://plato.stanford.edu/entries/hilbert-program/#Hilbert:26</a></h3>
+</div>
+<div id="outline-container-org05913d3" class="outline-3">
+<h3 id="org05913d3"><a href="https://www.deutsche-biographie.de/gnd11675446X.html#ndbcontent">https://www.deutsche-biographie.de/gnd11675446X.html#ndbcontent</a></h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2018 Shon Feder.<br>
+Last updated 2017-04-07 Fri 10:55. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="https://orgmode.org">Org</a> mode 9.2).
+</div>
+</div>
+</body>
+</html>
