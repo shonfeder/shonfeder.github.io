@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-04 Thu 17:24 -->
+<!-- 2019-09-15 Sun 02:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lazy Evaluation in Ocaml: A Cheat Sheet</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Shon Feder" />
+<meta name="author" content="um" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -261,16 +262,16 @@ for the JavaScript code in this tag.
 Notes to remind a forgetful OCaml user of the ways of laziness.
 </p>
 
-<div id="outline-container-org2493b3d" class="outline-2">
-<h2 id="org2493b3d">Basic concepts</h2>
-<div class="outline-text-2" id="text-org2493b3d">
+<div id="outline-container-orgc63b71c" class="outline-2">
+<h2 id="orgc63b71c">Basic concepts</h2>
+<div class="outline-text-2" id="text-orgc63b71c">
 <p>
-Skip this if you're just looking for recipes and a refresher on use
+Skip this if you&rsquo;re just looking for recipes and a refresher on use
 </p>
 </div>
-<div id="outline-container-orgcf7ff06" class="outline-3">
-<h3 id="orgcf7ff06">The Lazy Type and its Values: <code>lazy_t</code>, <code>Lazy.t</code>, and <code>lazy</code></h3>
-<div class="outline-text-3" id="text-orgcf7ff06">
+<div id="outline-container-org1a95b59" class="outline-3">
+<h3 id="org1a95b59">The Lazy Type and its Values: <code>lazy_t</code>, <code>Lazy.t</code>, and <code>lazy</code></h3>
+<div class="outline-text-3" id="text-org1a95b59">
 <p>
 OCaml has built in support for memoized lazy evaluation. Three artifacts are
 all we need to take advantage of this feature:
@@ -286,28 +287,28 @@ type <code>'a</code> to values of type <code>'a lazy_t</code>.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">utop <span style="color: #f0e68c;">#</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span><span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span>
-
-utop <span style="color: #f0e68c;">#</span> <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ce537a; font-weight: bold;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7; font-weight: bold;">of</span> int <span style="color: #ce537a; font-weight: bold;">Lazy.</span>t<span style="color: #ff4500;">;;</span>
-<span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ce537a; font-weight: bold;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7; font-weight: bold;">of</span> int lazy_t
-
-utop <span style="color: #f0e68c;">#</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span><span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> t <span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span>
+<pre class="src src-ocaml"><code>     utop # <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : int lazy_t = <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span></code>
+<code></code>
+<code>     utop # <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> int <span style="color: #ECBE7B;">Lazy.</span>t<span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> int lazy_t</code>
+<code></code>
+<code>     utop # <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)<span style="color: #ff4500;">;;</span></code>
+<code>     - : t = <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)</code>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge7216ac" class="outline-3">
-<h3 id="orge7216ac">Lazy values and thunks</h3>
-<div class="outline-text-3" id="text-orge7216ac">
+<div id="outline-container-org2a80aad" class="outline-3">
+<h3 id="org2a80aad">Lazy values and thunks</h3>
+<div class="outline-text-3" id="text-org2a80aad">
 <p>
 <code>'a Lazy.t</code> ≢ <code>unit -&gt; 'a</code>
 </p>
 
 <p>
-OCaml's Lazy values are akin to thunks (deferred evaluations by means of
+OCaml&rsquo;s Lazy values are akin to thunks (deferred evaluations by means of
 nullary functions), but they are not equivalent.
 </p>
 
@@ -316,36 +317,36 @@ That is, given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">a</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #bc6ec5; font-weight: bold;">b</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #4f97d7;">()</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #a45bad;">3</span>
+<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">a</span> = <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">b</span> = <span style="color: #51afef;">fun</span> () -&gt; <span style="color: #da8548; font-weight: bold;">3</span></code>
 </pre>
 </div>
 
 <p>
-it's true that
+it&rsquo;s true that
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #4f97d7;">()</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">assert</span> <span style="color: #4f97d7;">(</span>force a <span style="color: #f0e68c;">=</span> b <span style="color: #bc6ec5;">()</span><span style="color: #4f97d7;">)</span>
+<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> () = <span style="color: #51afef;">assert</span> (force a = b ())</code>
 </pre>
 </div>
 
 <p>
-However, because OCaml's built-in laziness memoizes the results of forced
+However, because OCaml&rsquo;s built-in laziness memoizes the results of forced
 evaluation, side effecting behavior can alter the computations that use
 thunks in a way that diverges from those that use <code>lazy</code>. E.g.,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">utop <span style="color: #f0e68c;">#</span> <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">c</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #4f97d7;">(</span>print_endline <span style="color: #2d9574;">"Evaluating!"</span><span style="color: #f0e68c;">;</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span><span style="color: #ff4500;">;;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">c</span> <span style="color: #f0e68c;">:</span> int lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">lazy</span><span style="color: #f0e68c;">&gt;</span>
-
-utop <span style="color: #f0e68c;">#</span> force c<span style="color: #ff4500;">;;</span>
-<span style="color: #b2b2b2; background-color: #292b2e;">Evaluating</span><span style="color: #f0e68c;">!</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span>
-
-utop <span style="color: #f0e68c;">#</span> force c<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span>
+<pre class="src src-ocaml"><code>     utop # <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">c</span> = <span style="color: #51afef;">lazy</span> (print_endline <span style="color: #98be65;">"Evaluating!"</span>; <span style="color: #da8548; font-weight: bold;">2</span>)<span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">c</span> : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<code></code>
+<code>     utop # force c<span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #bbc2cf; background-color: #21242b;">Evaluating</span><span style="color: #f0e68c;">!</span></code>
+<code>     - : int = <span style="color: #da8548; font-weight: bold;">2</span></code>
+<code></code>
+<code>     utop # force c<span style="color: #ff4500;">;;</span></code>
+<code>     - : int = <span style="color: #da8548; font-weight: bold;">2</span></code>
 </pre>
 </div>
 
@@ -356,49 +357,49 @@ totally different results when dealing with impure programs:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">utop <span style="color: #f0e68c;">#</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">lazy_incr</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">int </span><span style="color: #4f97d7;">ref</span><span style="color: #ce537a; font-weight: bold;"> </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> unit </span><span style="color: #ce537a; font-weight: bold;">Lazy.</span><span style="color: #ce537a; font-weight: bold;">t </span><span style="color: #f0e68c;">=</span>
-    <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #7590db;">r</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #4f97d7;">(</span>incr r<span style="color: #4f97d7;">)</span>
-
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">thunk_incr</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">int </span><span style="color: #4f97d7;">ref</span><span style="color: #ce537a; font-weight: bold;"> </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> unit </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> unit </span><span style="color: #f0e68c;">=</span>
-  <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #7590db;">r</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #4f97d7;">()</span> <span style="color: #f0e68c;">-&gt;</span> incr r
-
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">ref_a</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">ref</span> <span style="color: #a45bad;">1</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">ref_b</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">ref</span> <span style="color: #a45bad;">1</span>
-
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">lazy_incr_ref_a</span>  <span style="color: #f0e68c;">=</span> lazy_incr ref_a
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">thunk_incr_ref_b</span> <span style="color: #f0e68c;">=</span> thunk_incr ref_b
-<span style="color: #ff4500;">;;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">lazy_incr</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">-&gt;</span> unit lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">fun</span><span style="color: #f0e68c;">&gt;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">thunk_incr</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">-&gt;</span> unit <span style="color: #f0e68c;">-&gt;</span> unit <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">fun</span><span style="color: #f0e68c;">&gt;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">ref_a</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">}</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">ref_b</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">}</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">lazy_incr_ref_a</span> <span style="color: #f0e68c;">:</span> unit lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">lazy</span><span style="color: #f0e68c;">&gt;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">thunk_incr_ref_b</span> <span style="color: #f0e68c;">:</span> unit <span style="color: #f0e68c;">-&gt;</span> unit <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">fun</span><span style="color: #f0e68c;">&gt;</span>
-
-utop <span style="color: #f0e68c;">#</span> ref_a<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> ref_b<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> force lazy_incr_ref_a<span style="color: #f0e68c;">;</span> ref_a<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> thnk_incr_ref_b <span style="color: #4f97d7;">()</span><span style="color: #f0e68c;">;</span> ref_b<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> force lazy_incr_ref_a<span style="color: #f0e68c;">;</span> ref_a<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> thunk_incr_ref_b <span style="color: #4f97d7;">()</span><span style="color: #f0e68c;">;</span> ref_b<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> force lazy_incr_ref_a<span style="color: #f0e68c;">;</span> ref_a<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">}</span>
-
-utop <span style="color: #f0e68c;">#</span> thunk_incr_ref_b <span style="color: #4f97d7;">()</span><span style="color: #f0e68c;">;</span> ref_b<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #4f97d7;">ref</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7;">{</span>contents <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">4</span><span style="color: #4f97d7;">}</span>
+<pre class="src src-ocaml"><code>     utop #</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">lazy_incr</span> :<span style="color: #ECBE7B;"> int </span><span style="color: #c678dd;">ref</span><span style="color: #ECBE7B;"> -&gt; unit </span><span style="color: #ECBE7B;">Lazy.</span><span style="color: #ECBE7B;">t </span>=</code>
+<code>         <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">r</span> -&gt; <span style="color: #51afef;">lazy</span> (incr r)</code>
+<code></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">thunk_incr</span> :<span style="color: #ECBE7B;"> int </span><span style="color: #c678dd;">ref</span><span style="color: #ECBE7B;"> -&gt; unit -&gt; unit </span>=</code>
+<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">r</span> -&gt; <span style="color: #51afef;">fun</span> () -&gt; incr r</code>
+<code></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">ref_a</span> = <span style="color: #c678dd;">ref</span> <span style="color: #da8548; font-weight: bold;">1</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">ref_b</span> = <span style="color: #c678dd;">ref</span> <span style="color: #da8548; font-weight: bold;">1</span></code>
+<code></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>  = lazy_incr ref_a</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">thunk_incr_ref_b</span> = thunk_incr ref_b</code>
+<code>     <span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">lazy_incr</span> : int <span style="color: #c678dd;">ref</span> -&gt; unit lazy_t = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">thunk_incr</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> -&gt; unit -&gt; unit = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">ref_a</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">ref_b</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">lazy_incr_ref_a</span> : <span style="color: #dcaeea;">unit</span> lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">thunk_incr_ref_b</span> : <span style="color: #dcaeea;">unit</span> -&gt; unit = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thnk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thunk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">3</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code></code>
+<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thunk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
+<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">4</span>}</code>
 </pre>
 </div>
 
@@ -411,59 +412,59 @@ memoized result on each subsequent call. However, the thunk will increment the
 </div>
 </div>
 
-<div id="outline-container-org0df2dfd" class="outline-2">
-<h2 id="org0df2dfd">How to make&#x2026;</h2>
-<div class="outline-text-2" id="text-org0df2dfd">
+<div id="outline-container-org9adda23" class="outline-2">
+<h2 id="org9adda23">How to make&#x2026;</h2>
+<div class="outline-text-2" id="text-org9adda23">
 </div>
-<div id="outline-container-org4b319fb" class="outline-3">
-<h3 id="org4b319fb">a deferred value</h3>
-<div class="outline-text-3" id="text-org4b319fb">
+<div id="outline-container-orgc31c9f0" class="outline-3">
+<h3 id="orgc31c9f0">a deferred value</h3>
+<div class="outline-text-3" id="text-orgc31c9f0">
 <div class="org-src-container">
-<pre class="src src-ocaml">utop <span style="color: #f0e68c;">#</span> <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">deferred_value</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #4f97d7;">(</span>print_endline <span style="color: #2d9574;">"Now evaluating!"</span><span style="color: #f0e68c;">;</span> <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span><span style="color: #ff4500;">;;</span>
-<span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #bc6ec5; font-weight: bold;">deferred_value</span> <span style="color: #f0e68c;">:</span> int lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">lazy</span><span style="color: #f0e68c;">&gt;</span>
-
-utop <span style="color: #f0e68c;">#</span> deferred_value<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int lazy_t <span style="color: #f0e68c;">=</span> <span style="color: #f0e68c;">&lt;</span><span style="color: #4f97d7; font-weight: bold;">lazy</span><span style="color: #f0e68c;">&gt;</span>
-
-utop <span style="color: #f0e68c;">#</span> force deferred_value<span style="color: #ff4500;">;;</span>
-<span style="color: #b2b2b2; background-color: #292b2e;">Now</span> evaluating<span style="color: #f0e68c;">!</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">3</span>
-
-utop <span style="color: #f0e68c;">#</span> force deferred_value<span style="color: #ff4500;">;;</span>
-<span style="color: #f0e68c;">-</span> <span style="color: #f0e68c;">:</span> int <span style="color: #f0e68c;">=</span> <span style="color: #a45bad;">3</span> <span style="color: #2aa1ae; background-color: #292e34;">(* </span><span style="color: #2aa1ae; background-color: #292e34;">retrieves the memoized result </span><span style="color: #2aa1ae; background-color: #292e34;">*)</span>
+<pre class="src src-ocaml"><code>     utop # <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">deferred_value</span> = <span style="color: #51afef;">lazy</span> (print_endline <span style="color: #98be65;">"Now evaluating!"</span>; <span style="color: #da8548; font-weight: bold;">3</span>)<span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">deferred_value</span> : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<code></code>
+<code>     utop # deferred_value<span style="color: #ff4500;">;;</span></code>
+<code>     - : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<code></code>
+<code>     utop # force deferred_value<span style="color: #ff4500;">;;</span></code>
+<code>     <span style="color: #bbc2cf; background-color: #21242b;">Now</span> evaluating<span style="color: #f0e68c;">!</span></code>
+<code>     - : int = <span style="color: #da8548; font-weight: bold;">3</span></code>
+<code></code>
+<code>     utop # force deferred_value<span style="color: #ff4500;">;;</span></code>
+<code>     - : int = <span style="color: #da8548; font-weight: bold;">3</span> <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">retrieves the memoized result </span><span style="color: #5B6268;">*)</span></code>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdc06df8" class="outline-3">
-<h3 id="orgdc06df8">a type that includes deferred evaluations</h3>
-<div class="outline-text-3" id="text-orgdc06df8">
+<div id="outline-container-orgeb4fd63" class="outline-3">
+<h3 id="orgeb4fd63">a type that includes deferred evaluations</h3>
+<div class="outline-text-3" id="text-orgeb4fd63">
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ce537a; font-weight: bold;">'a deferred</span> <span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7; font-weight: bold;">of</span> 'a <span style="color: #ce537a; font-weight: bold;">Lazy.</span>t
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">deffered_value</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">int deferred </span><span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">T</span> <span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">lazy</span> <span style="color: #a45bad;">3</span><span style="color: #4f97d7;">)</span>
+<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">'a deferred</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> 'a <span style="color: #ECBE7B;">Lazy.</span>t</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">deffered_value</span> :<span style="color: #ECBE7B;"> int deferred </span>= <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)</code>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orge0b37e8" class="outline-3">
-<h3 id="orge0b37e8">a lazy list</h3>
-<div class="outline-text-3" id="text-orge0b37e8">
+<div id="outline-container-orge05f3c4" class="outline-3">
+<h3 id="orge05f3c4">a lazy list</h3>
+<div class="outline-text-3" id="text-orge05f3c4">
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ce537a; font-weight: bold;">'a stream</span> <span style="color: #f0e68c;">=</span> <span style="color: #b2b2b2; background-color: #292b2e;">Cons</span> <span style="color: #4f97d7; font-weight: bold;">of</span> 'a <span style="color: #f0e68c;">*</span> 'a stream <span style="color: #ce537a; font-weight: bold;">Lazy.</span>t
-
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">cons</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">'a </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a stream </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a stream </span><span style="color: #f0e68c;">=</span>
-  <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #7590db;">x s</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #b2b2b2; background-color: #292b2e;">Cons</span> <span style="color: #4f97d7;">(</span>x<span style="color: #f0e68c;">,</span> <span style="color: #4f97d7; font-weight: bold;">lazy</span> s<span style="color: #4f97d7;">)</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">head</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">'a stream </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a </span><span style="color: #f0e68c;">=</span>
-  <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #4f97d7;">(</span><span style="color: #b2b2b2; background-color: #292b2e;">Cons</span><span style="color: #7590db;"> </span><span style="color: #bc6ec5;">(</span><span style="color: #7590db;">x</span><span style="color: #f0e68c;">,</span><span style="color: #7590db;"> _</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #f0e68c;">-&gt;</span> x
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #7590db;">tail</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">'a stream </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a stream </span><span style="color: #f0e68c;">=</span>
-  <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #4f97d7;">(</span><span style="color: #b2b2b2; background-color: #292b2e;">Cons</span><span style="color: #7590db;"> </span><span style="color: #bc6ec5;">(</span><span style="color: #7590db;">_</span><span style="color: #f0e68c;">,</span><span style="color: #7590db;"> s</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ce537a; font-weight: bold;">Lazy.</span>force s
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">rec</span> <span style="color: #7590db;">take</span> <span style="color: #f0e68c;">:</span> <span style="color: #ce537a; font-weight: bold;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a stream </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ce537a; font-weight: bold;"> 'a list </span><span style="color: #f0e68c;">=</span>
-  <span style="color: #4f97d7; font-weight: bold;">fun</span> <span style="color: #7590db;">n s</span> <span style="color: #f0e68c;">-&gt;</span>
-    <span style="color: #4f97d7; font-weight: bold;">if</span> n <span style="color: #f0e68c;">&lt;</span> <span style="color: #a45bad;">1</span>
-    <span style="color: #4f97d7; font-weight: bold;">then</span> <span style="color: #4f97d7;">[]</span>
-    <span style="color: #4f97d7; font-weight: bold;">else</span> head s <span style="color: #f0e68c;">::</span> take <span style="color: #4f97d7;">(</span>pred n<span style="color: #4f97d7;">)</span> <span style="color: #4f97d7;">(</span>tail s<span style="color: #4f97d7;">)</span>
+<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">'a stream</span> = <span style="color: #bbc2cf; background-color: #21242b;">Cons</span> <span style="color: #51afef;">of</span> 'a * 'a stream <span style="color: #ECBE7B;">Lazy.</span>t</code>
+<code></code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">cons</span> :<span style="color: #ECBE7B;"> 'a -&gt; 'a stream -&gt; 'a stream </span>=</code>
+<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #dcaeea;">s</span> -&gt; <span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (x, <span style="color: #51afef;">lazy</span> s)</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">head</span> :<span style="color: #ECBE7B;"> 'a stream -&gt; 'a </span>=</code>
+<code>       <span style="color: #51afef;">fun</span> (<span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (<span style="color: #dcaeea;">x</span>, <span style="color: #dcaeea;">_</span>)) -&gt; x</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">tail</span> :<span style="color: #ECBE7B;"> 'a stream -&gt; 'a stream </span>=</code>
+<code>       <span style="color: #51afef;">fun</span> (<span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (<span style="color: #dcaeea;">_</span>, <span style="color: #dcaeea;">s</span>)) -&gt; <span style="color: #ECBE7B;">Lazy.</span>force s</code>
+<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">rec</span> <span style="color: #dcaeea;">take</span> :<span style="color: #ECBE7B;"> int -&gt; 'a stream -&gt; 'a list </span>=</code>
+<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">n</span> <span style="color: #dcaeea;">s</span> -&gt;</code>
+<code>         <span style="color: #51afef;">if</span> n &lt; <span style="color: #da8548; font-weight: bold;">1</span></code>
+<code>         <span style="color: #51afef;">then</span> <span style="color: #bbc2cf; background-color: #21242b;">[]</span></code>
+<code>         <span style="color: #51afef;">else</span> head s <span style="color: #bbc2cf; background-color: #21242b;">::</span> take (pred n) (tail s)</code>
 </pre>
 </div>
 </div>
@@ -472,9 +473,9 @@ utop <span style="color: #f0e68c;">#</span> force deferred_value<span style="col
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
-Copyright 2018 Shon Feder.<br>
-Last updated 2018-06-09 Sat 13:18. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2.3).
+Copyright 2018 um.<br>
+Last updated 2018-06-09 Sat 15:18. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
 </body>

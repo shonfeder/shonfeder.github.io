@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-04-04 Thu 17:27 -->
+<!-- 2019-09-15 Sun 02:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Shon Feder" />
+<meta name="author" content="um" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -258,9 +259,9 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title"><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></h1>
 
-<div id="outline-container-orgbfc3b44" class="outline-2">
-<h2 id="orgbfc3b44">Intro</h2>
-<div class="outline-text-2" id="text-orgbfc3b44">
+<div id="outline-container-org57efecc" class="outline-2">
+<h2 id="org57efecc">Intro</h2>
+<div class="outline-text-2" id="text-org57efecc">
 <p>
 These notes record the steps I took to set up a simple continuous integration
 system for an OCaml project using CircleCI.
@@ -277,39 +278,39 @@ superseded by something better.
 </p>
 </div>
 
-<div id="outline-container-org3213afb" class="outline-3">
-<h3 id="org3213afb">How to use this note</h3>
-<div class="outline-text-3" id="text-org3213afb">
+<div id="outline-container-org284564d" class="outline-3">
+<h3 id="org284564d">How to use this note</h3>
+<div class="outline-text-3" id="text-org284564d">
 <ul class="org-ul">
-<li>You can follow step-by-step if this is all new to you and you're starting
+<li>You can follow step-by-step if this is all new to you and you&rsquo;re starting
 from scratch.</li>
 <li>You should skip anything you already understand or already have configured.</li>
-<li>If you have any questions, find that anything doesn't work correctly, or
+<li>If you have any questions, find that anything doesn&rsquo;t work correctly, or
 think that anything could be improved, Please open an issue or a PR on <a href="https://github.com/shonfeder/synechepedia/blob/master/themata/programming/super-simple-ci-for-ocaml-on-circleci.org">the
 source repository for these notes</a>.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga513c78" class="outline-3">
-<h3 id="orga513c78">My approach to basic CI</h3>
-<div class="outline-text-3" id="text-orga513c78">
+<div id="outline-container-org35752e2" class="outline-3">
+<h3 id="org35752e2">My approach to basic CI</h3>
+<div class="outline-text-3" id="text-org35752e2">
 </div>
-<div id="outline-container-org45daa4f" class="outline-4">
-<h4 id="org45daa4f">Maximal Flexibility</h4>
-<div class="outline-text-4" id="text-org45daa4f">
+<div id="outline-container-orgbc2d2b0" class="outline-4">
+<h4 id="orgbc2d2b0">Maximal Flexibility</h4>
+<div class="outline-text-4" id="text-orgbc2d2b0">
 <p>
 I want a drop-in CI configuration that will provide quick builds for all my
 projects with no fuss. I am therefore inclined to opt for a relatively
-heavyweight container configuration, so I needn't fiddle with common
+heavyweight container configuration, so I needn&rsquo;t fiddle with common
 dependencies for every project.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5bf47ef" class="outline-4">
-<h4 id="org5bf47ef">Minimal CI Configuration</h4>
-<div class="outline-text-4" id="text-org5bf47ef">
+<div id="outline-container-orgfbb63d3" class="outline-4">
+<h4 id="orgfbb63d3">Minimal CI Configuration</h4>
+<div class="outline-text-4" id="text-orgfbb63d3">
 <p>
 IMO, the current state of CI configuration and management is pretty
 miserable. The state of the art in build systems and package management is
@@ -322,57 +323,57 @@ the CI configuration and in the build system and package manager.
 </div>
 </div>
 
-<div id="outline-container-org6332e5e" class="outline-2">
-<h2 id="org6332e5e">Prerequisites</h2>
-<div class="outline-text-2" id="text-org6332e5e">
+<div id="outline-container-org8e5fda3" class="outline-2">
+<h2 id="org8e5fda3">Prerequisites</h2>
+<div class="outline-text-2" id="text-org8e5fda3">
 </div>
-<div id="outline-container-org7430f6c" class="outline-3">
-<h3 id="org7430f6c">A GitHub repository for the project</h3>
+<div id="outline-container-orgfd5925b" class="outline-3">
+<h3 id="orgfd5925b">A GitHub repository for the project</h3>
 </div>
-<div id="outline-container-orgd011256" class="outline-3">
-<h3 id="orgd011256">A CircleCI account with access to your repository</h3>
-<div class="outline-text-3" id="text-orgd011256">
+<div id="outline-container-org32affe9" class="outline-3">
+<h3 id="org32affe9">A CircleCI account with access to your repository</h3>
+<div class="outline-text-3" id="text-org32affe9">
 <p>
 See <a href="https://circleci.com/docs/2.0/getting-started/">https://circleci.com/docs/2.0/getting-started/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org0ded34a" class="outline-3">
-<h3 id="org0ded34a">An OCaml project built with dune</h3>
-<div class="outline-text-3" id="text-org0ded34a">
+<div id="outline-container-org1e4694b" class="outline-3">
+<h3 id="org1e4694b">An OCaml project built with dune</h3>
+<div class="outline-text-3" id="text-org1e4694b">
 <p>
 See <a href="https://dune.readthedocs.io/en/latest/quick-start.html">https://dune.readthedocs.io/en/latest/quick-start.html</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org04759e7" class="outline-2">
-<h2 id="org04759e7">Setup</h2>
-<div class="outline-text-2" id="text-org04759e7">
+<div id="outline-container-orgd511a0b" class="outline-2">
+<h2 id="orgd511a0b">Setup</h2>
+<div class="outline-text-2" id="text-orgd511a0b">
 </div>
-<div id="outline-container-orga1603ec" class="outline-3">
-<h3 id="orga1603ec">A minimally testable project</h3>
-<div class="outline-text-3" id="text-orga1603ec">
+<div id="outline-container-org0b2bdde" class="outline-3">
+<h3 id="org0b2bdde">A minimally testable project</h3>
+<div class="outline-text-3" id="text-org0b2bdde">
 <p>
 Where <code>.</code> is the root directory of your project:
 </p>
 
 <pre class="example">
-.
-├── .circleci
-│   └── config.yml
-├── dune-project
-├── myproject.install
-├── myproject.opam
-└── test
-    ├── dune
-    └── mytest.ml
+<code>   .</code>
+<code>   ├── .circleci</code>
+<code>   │   └── config.yml</code>
+<code>   ├── dune-project</code>
+<code>   ├── myproject.install</code>
+<code>   ├── myproject.opam</code>
+<code>   └── test</code>
+<code>       ├── dune</code>
+<code>       └── mytest.ml</code>
 </pre>
 </div>
 
-<div id="outline-container-orga470050" class="outline-4">
-<h4 id="orga470050">The top-level directories and files</h4>
-<div class="outline-text-4" id="text-orga470050">
+<div id="outline-container-orgf34b464" class="outline-4">
+<h4 id="orgf34b464">The top-level directories and files</h4>
+<div class="outline-text-4" id="text-orgf34b464">
 <dl class="org-dl">
 <dt><code>.circleci</code></dt><dd>The configuration for your CI consulted by the CircleCI
 service</dd>
@@ -391,9 +392,9 @@ sections.
 </div>
 </div>
 
-<div id="outline-container-orgf520a45" class="outline-3">
-<h3 id="orgf520a45">Configure opam to install your package</h3>
-<div class="outline-text-3" id="text-orgf520a45">
+<div id="outline-container-org0b9e054" class="outline-3">
+<h3 id="org0b9e054">Configure opam to install your package</h3>
+<div class="outline-text-3" id="text-org0b9e054">
 <p>
 A minimal package configuration for our example
 </p>
@@ -403,22 +404,22 @@ A minimal package configuration for our example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-opam"><span style="color: #4f97d7; font-weight: bold;">opam-version</span>: <span style="color: #2d9574;">"2.0"</span>
-<span style="color: #4f97d7; font-weight: bold;">name</span>: <span style="color: #2d9574;">"myproject"</span>
-<span style="color: #4f97d7; font-weight: bold;">version</span>: <span style="color: #2d9574;">"0.1"</span>
-<span style="color: #4f97d7; font-weight: bold;">synopsis</span>: <span style="color: #2d9574;">"Description of my project"</span>
-<span style="color: #4f97d7; font-weight: bold;">maintainer</span>: <span style="color: #2d9574;">"Me <a href="mailto:my.self%40sub.domain">&lt;my.self@sub.domain&gt;</a>"</span>
-<span style="color: #4f97d7; font-weight: bold;">depends</span>: <span style="color: #4f97d7;">[</span>
-  <span style="color: #2d9574;">"ocaml"</span> <span style="color: #bc6ec5;">{</span> <span style="color: #a45bad;">build</span> <span style="color: #bc6ec5;">}</span>
-  <span style="color: #2d9574;">"ocamlfind"</span> <span style="color: #bc6ec5;">{</span> <span style="color: #a45bad;">build</span> <span style="color: #bc6ec5;">}</span>
-  <span style="color: #2d9574;">"dune"</span> <span style="color: #bc6ec5;">{</span> <span style="color: #a45bad;">build</span> &amp; &gt;= <span style="color: #2d9574;">"1.5.0"</span> <span style="color: #bc6ec5;">}</span>
-
-  <span style="color: #2d9574;">"base"</span> <span style="color: #bc6ec5;">{</span> &gt;= <span style="color: #2d9574;">"0.12.0"</span> <span style="color: #bc6ec5;">}</span>
-  <span style="color: #2d9574;">"alcotest"</span> <span style="color: #bc6ec5;">{</span> <span style="color: #a45bad;">with-test</span> <span style="color: #bc6ec5;">}</span>
-<span style="color: #4f97d7;">]</span>
-<span style="color: #4f97d7; font-weight: bold;">build</span>: <span style="color: #4f97d7;">[</span>
-  <span style="color: #bc6ec5;">[</span><span style="color: #2d9574;">"dune"</span> <span style="color: #2d9574;">"build"</span> <span style="color: #2d9574;">"-p"</span> <span style="color: #7590db;">name</span><span style="color: #bc6ec5;">]</span>
-<span style="color: #4f97d7;">]</span>
+<pre class="src src-tuareg-opam"><code>     <span style="color: #dcaeea;">opam-version</span>: <span style="color: #98be65;">"2.0"</span></code>
+<code>     <span style="color: #dcaeea;">name</span>: <span style="color: #98be65;">"myproject"</span></code>
+<code>     <span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"0.1"</span></code>
+<code>     synopsis: <span style="color: #98be65;">"Description of my project"</span></code>
+<code>     maintainer: <span style="color: #98be65;">"Me <a href="mailto:my.self%40sub.domain">&lt;my.self@sub.domain&gt;</a>"</span></code>
+<code>     depends: [</code>
+<code>       <span style="color: #98be65;">"ocaml"</span> { <span style="color: #a9a1e1;">build</span> }</code>
+<code>       <span style="color: #98be65;">"ocamlfind"</span> { <span style="color: #a9a1e1;">build</span> }</code>
+<code>       <span style="color: #98be65;">"dune"</span> { <span style="color: #a9a1e1;">build</span> &amp; &gt;= <span style="color: #98be65;">"1.5.0"</span> }</code>
+<code></code>
+<code>       <span style="color: #98be65;">"base"</span> { &gt;= <span style="color: #98be65;">"0.12.0"</span> }</code>
+<code>       <span style="color: #98be65;">"alcotest"</span> { <span style="color: #a9a1e1;">with-test</span> }</code>
+<code>     ]</code>
+<code>     <span style="color: #a9a1e1;">build</span>: [</code>
+<code>       [<span style="color: #98be65;">"dune"</span> <span style="color: #98be65;">"build"</span> <span style="color: #98be65;">"-p"</span> <span style="color: #dcaeea;">name</span>]</code>
+<code>     ]</code>
 </pre>
 </div>
 
@@ -427,19 +428,19 @@ A minimal package configuration for our example
 <code>dune</code> — should be included in all projects,</li>
 <li>but the <code>base</code> and <code>alcotest</code> dependencies are only included as examples
 of, respectively, an external library dependency and a test dependency.
-(For the sake of minimality, these dependencies aren't actually used in the
+(For the sake of minimality, these dependencies aren&rsquo;t actually used in the
 example project.)</li>
 </ul>
 </div>
-<div id="outline-container-orgb4b0614" class="outline-4">
-<h4 id="orgb4b0614">Validate your opam configuration</h4>
-<div class="outline-text-4" id="text-orgb4b0614">
+<div id="outline-container-orgaec95c7" class="outline-4">
+<h4 id="orgaec95c7">Validate your opam configuration</h4>
+<div class="outline-text-4" id="text-orgaec95c7">
 <p>
 To validate the syntax and configuration your opam package, run
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ opam lint
+<pre class="src src-sh"><code>      $ opam lint</code>
 </pre>
 </div>
 
@@ -449,29 +450,29 @@ some warnings for missing fields. You can supply these if you wish. Consult
 opam packaging documentation for more info.
 </p>
 </div>
-<div id="outline-container-org91d687f" class="outline-5">
-<h5 id="org91d687f"><span class="todo TODO">TODO</span> Supply link to opam packaging reference</h5>
+<div id="outline-container-org6b34bf9" class="outline-5">
+<h5 id="org6b34bf9"><span class="todo TODO">TODO</span> Supply link to opam packaging reference</h5>
 </div>
 </div>
 
-<div id="outline-container-org73e367e" class="outline-4">
-<h4 id="org73e367e">Locally test the installation</h4>
-<div class="outline-text-4" id="text-org73e367e">
+<div id="outline-container-org93e77d4" class="outline-4">
+<h4 id="org93e77d4">Locally test the installation</h4>
+<div class="outline-text-4" id="text-org93e77d4">
 <p>
 To locally test the installation from within the root directory of your
 project, run
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh">$ opam install . --with-test -y
+<pre class="src src-sh"><code>      $ opam install . --with-test -y</code>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb3adb4" class="outline-3">
-<h3 id="orgcb3adb4">Configure dune to run your tests</h3>
-<div class="outline-text-3" id="text-orgcb3adb4">
+<div id="outline-container-orgc409073" class="outline-3">
+<h3 id="orgc409073">Configure dune to run your tests</h3>
+<div class="outline-text-3" id="text-orgc409073">
 <p>
 The following setup provides a minimum configuration for failing test:
 </p>
@@ -481,8 +482,8 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-jbuild"><span style="color: #4f97d7;">(</span>test
- <span style="color: #bc6ec5;">(</span><span style="color: #bc6ec5; font-weight: bold;">name</span> mytest<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+<pre class="src src-tuareg-jbuild"><code>     (test</code>
+<code>      (<span style="color: #c678dd;">name</span> mytest))</code>
 </pre>
 </div>
 
@@ -491,26 +492,26 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #4f97d7;">()</span> <span style="color: #f0e68c;">=</span> <span style="color: #4f97d7; font-weight: bold;">assert</span> <span style="color: #a45bad;">false</span>
+<pre class="src src-tuareg"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> () = <span style="color: #51afef;">assert</span> <span style="color: #a9a1e1;">false</span></code>
 </pre>
 </div>
 
 <p>
 We can run our tests locally with <code>$ dune runtest</code>. The resulting failure
-isn't pretty, but it proves the point:
+isn&rsquo;t pretty, but it proves the point:
 </p>
 
 <pre class="example">
-$ dune runtest
-      mytest alias test/runtest (exit 2)
-(cd _build/default/test &amp;&amp; ./mytest.exe)
-Fatal error: exception Assert_failure("test/mytest.ml", 1, 9)
+<code>    $ dune runtest</code>
+<code>          mytest alias test/runtest (exit 2)</code>
+<code>    (cd _build/default/test &amp;&amp; ./mytest.exe)</code>
+<code>    Fatal error: exception Assert_failure("test/mytest.ml", 1, 9)</code>
 </pre>
 </div>
 
-<div id="outline-container-org407fc43" class="outline-4">
-<h4 id="org407fc43"><span class="todo TODO">TODO</span> Provide link</h4>
-<div class="outline-text-4" id="text-org407fc43">
+<div id="outline-container-org54e540c" class="outline-4">
+<h4 id="org54e540c"><span class="todo TODO">TODO</span> Provide link</h4>
+<div class="outline-text-4" id="text-org54e540c">
 <p>
 Follow the dune documentation on configuring and running tests with your
 preferred testing tools.
@@ -518,41 +519,41 @@ preferred testing tools.
 </div>
 </div>
 </div>
-<div id="outline-container-orgbd48434" class="outline-3">
-<h3 id="orgbd48434">Write your CircleCI configuration</h3>
-<div class="outline-text-3" id="text-orgbd48434">
+<div id="outline-container-orga7ef970" class="outline-3">
+<h3 id="orga7ef970">Write your CircleCI configuration</h3>
+<div class="outline-text-3" id="text-orga7ef970">
 <p>
 <code>$ cat .circleci/config.yml</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #7590db;">version</span>: 2
-<span style="color: #7590db;">jobs</span>:
-  <span style="color: #7590db;">build</span>:
-    <span style="color: #7590db;">docker</span>:
-      - <span style="color: #7590db;">image</span>: shonfeder/ocaml-ci-docker
-
-    <span style="color: #7590db;">steps</span>:
-      - checkout
-
-      - <span style="color: #7590db;">run</span>:
-          <span style="color: #7590db;">name</span>: Install Package Dependencies
-          <span style="color: #7590db;">command</span>: opam install . --with-test -y
-
-      - <span style="color: #7590db;">run</span>:
-          <span style="color: #7590db;">name</span>: Run tests
-          <span style="color: #7590db;">command</span>: |
-            <span style="color: #2d9574;">eval $(opam env)</span>
-<span style="color: #2d9574;">            dune runtest</span>
+<pre class="src src-yaml"><code>    <span style="color: #dcaeea;">version</span>: 2</code>
+<code>    <span style="color: #dcaeea;">jobs</span>:</code>
+<code>      <span style="color: #dcaeea;">build</span>:</code>
+<code>        <span style="color: #dcaeea;">docker</span>:</code>
+<code>          - <span style="color: #dcaeea;">image</span>: shonfeder/ocaml-ci-docker</code>
+<code></code>
+<code>        <span style="color: #dcaeea;">steps</span>:</code>
+<code>          - checkout</code>
+<code></code>
+<code>          - <span style="color: #dcaeea;">run</span>:</code>
+<code>              <span style="color: #dcaeea;">name</span>: Install Package Dependencies</code>
+<code>              <span style="color: #dcaeea;">command</span>: opam install . --with-test -y</code>
+<code></code>
+<code>          - <span style="color: #dcaeea;">run</span>:</code>
+<code>              <span style="color: #dcaeea;">name</span>: Run tests</code>
+<code>              <span style="color: #dcaeea;">command</span>: |</code>
+<code>                <span style="color: #98be65;">eval $(opam env)</span></code>
+<code><span style="color: #98be65;">                dune runtest</span></code>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2a8bf57" class="outline-2">
-<h2 id="org2a8bf57">Conclusion</h2>
-<div class="outline-text-2" id="text-org2a8bf57">
+<div id="outline-container-orgd661695" class="outline-2">
+<h2 id="orgd661695">Conclusion</h2>
+<div class="outline-text-2" id="text-orgd661695">
 <p>
 Voila: super simple CI for OCaml on CircleCI.
 </p>
@@ -563,9 +564,9 @@ get a project up and running with CI.
 </p>
 </div>
 
-<div id="outline-container-org2ac4615" class="outline-3">
-<h3 id="org2ac4615">Anticipated improvements <code>[0/5]</code></h3>
-<div class="outline-text-3" id="text-org2ac4615">
+<div id="outline-container-org3c06a16" class="outline-3">
+<h3 id="org3c06a16">Anticipated improvements <code>[0/5]</code></h3>
+<div class="outline-text-3" id="text-org3c06a16">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Local caching of build artifacts and built dependencies</li>
 <li class="off"><code>[&#xa0;]</code> A smaller Docker base image</li>
@@ -575,9 +576,9 @@ get a project up and running with CI.
 </div>
 </div>
 
-<div id="outline-container-orgf402a75" class="outline-3">
-<h3 id="orgf402a75">A more robust examples</h3>
-<div class="outline-text-3" id="text-orgf402a75">
+<div id="outline-container-orgfab22ca" class="outline-3">
+<h3 id="orgfab22ca">A more robust examples</h3>
+<div class="outline-text-3" id="text-orgfab22ca">
 <ul class="org-ul">
 <li><a href="https://github.com/shonfeder/ocobs">https://github.com/shonfeder/ocobs</a></li>
 </ul>
@@ -587,9 +588,9 @@ get a project up and running with CI.
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
-Copyright 2018 Shon Feder.<br>
-Last updated 2019-04-04 Thu 17:27. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2.3).
+Copyright 2018 um.<br>
+Last updated 2019-04-04 Thu 19:27. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
 </body>
