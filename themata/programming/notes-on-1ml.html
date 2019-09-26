@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-26 Thu 00:24 -->
+<!-- 2019-09-26 Thu 00:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>Notes on 1ML</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,17 +258,179 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
+<h1 class="title">Notes on 1ML</h1>
+<p>
+<a href="https://people.mpi-sws.org/~rossberg/1ml/">1ML</a> is an experimental dialect of <a href="https://en.wikipedia.org/wiki/ML_(programming_language)">ML</a>. It&rsquo;s aim and principle distinguishing
+feature is the unification of the module and core languages into a single level.
+</p>
+
+<p>
+I find ML modules important and interesting for reasons I will try to articulate
+in <a href="the-measure-of-a-module.html">The Measure of a Module</a>. These notes record aspects and properties of 1ML
+which I have learned and discovered while studying the theory and implementation
+of the language.
+</p>
+
+<div id="outline-container-org2375460" class="outline-2">
+<h2 id="org2375460">Comments</h2>
+<div class="outline-text-2" id="text-org2375460">
 <ul class="org-ul">
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
+<li><code>(; ... ;)</code> designate wrapped (possibly inline) comments</li>
+<li><code>;;</code> designates the start of a comment that extends to the end of a line</li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-org9f842cc" class="outline-2">
+<h2 id="org9f842cc">Modules</h2>
+<div class="outline-text-2" id="text-org9f842cc">
+<p>
+According to one perspective, in 1ML &ldquo;everything is just (&lsquo;a mode of use of&rsquo;)
+modules&rdquo; (<a href="https://people.mpi-sws.org/~rossberg/1ml/">Rossberg</a>). Therefore, in thinking through the nature of 1ML, it is
+reasonable that we begin with its modules.
+</p>
+</div>
+
+<div id="outline-container-org47cb9c5" class="outline-3">
+<h3 id="org47cb9c5">Module definition syntax</h3>
+<div class="outline-text-3" id="text-org47cb9c5">
+<p>
+To define a named module, we follow the following schema:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>ModuleName (; : MODULE_TYPE ;) = {</code>
+<code> ;; declarations and definitions</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+The <code>MODULE_TYPE</code> and <code>declarations and defintions</code> are commented out to
+indicate that they are optional.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org27a4d89" class="outline-3">
+<h3 id="org27a4d89">The empty module</h3>
+<div class="outline-text-3" id="text-org27a4d89">
+<p>
+The minimal module is the empty module. We can assign <code>M</code> to be the empty module
+thus:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>M = {};</code>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57d724a" class="outline-3">
+<h3 id="org57d724a">Module types</h3>
+<div class="outline-text-3" id="text-org57d724a">
+<p>
+In MLs, every value have a type. In 1ML, modules are values, so they too have a
+type.
+</p>
+
+<p>
+Consider module <code>M</code> with one type declaration and two value definitions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>M = {</code>
+<code>  type t = (int, text);</code>
+<code>  x = 5;</code>
+<code>  y = (x, "five");</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+1ML will infer the following <i>type</i> for the module:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>M : {</code>
+<code>  type t = (int, text);</code>
+<code>  x : int;</code>
+<code>  y : (int, text);</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+Unsurprisingly, the type of a module is just the types of all the values which
+that module provides together with the types declared in the module. Note that
+the module&rsquo;s type is based on what it <code>provides</code>, not what it contains. This is
+an important distinction because we can seal information into modules by
+specifying types for the modules which omit some content:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>M : { type t; y: t; } = {</code>
+<code>  type t = (int, text);</code>
+<code>  x = 5;</code>
+<code>  y = (x, "five");</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+Since the above module specifies a type for the module that excludes <code>x</code>, <code>x</code> is
+no longer available from outside of the module:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>1ML&gt; result = M.y</code>
+<code>result : (int, text);</code>
+<code>1ML&gt; result = M.x</code>
+<code>stdin:1.10-1.13: field `x' unbound in expression</code>
+</pre>
+</div>
+
+<p>
+We can also seal in the types, which results in <b>abstract types</b>. To seal in
+types, we specify the module signature using <code>:&gt;</code>, thus
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>M :&gt; { type t; y: t; } = {</code>
+<code>  type t = (int, text);</code>
+<code>  x = 5;</code>
+<code>  y = (5, "five");</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+The internal structure of the type <code>M.t</code> is now hidden from the outside world.
+We&rsquo;ll see the implications of this in the following section.
+</p>
+
+<p>
+The two key points to take away form this brief discussion of 1ML modules:
+</p>
+
+<ul class="org-ul">
+<li>A module is a value in 1ML.</li>
+<li>Every module has a type.</li>
+<li>The <i>type</i> of a module specifies the module&rsquo;s public interface.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org41a7b3e" class="outline-3">
+<h3 id="org41a7b3e"><span class="todo TODO">TODO</span> A concrete example: implementing a stack</h3>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2018 um.<br>
-Last updated 2019-09-26 Thu 00:24. <br>
+Last updated 2019-09-25 Wed 23:58. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>

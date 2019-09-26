@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-26 Thu 00:24 -->
+<!-- 2019-09-26 Thu 00:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>The Measure of a Module</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,17 +258,132 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
-<ul class="org-ul">
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
-</ul>
+<h1 class="title">The Measure of a Module</h1>
+<p>
+<b>WIP</b>
+</p>
+
+<blockquote>
+<p>
+<b>module</b> (n.)
+</p>
+
+<p>
+1580s, &ldquo;allotted measure,&rdquo; a sense now obsolete, from Middle French <i>module</i>
+(1540s) or directly from Latin <i>modulus</i> &ldquo;small measure,&rdquo; diminutive of <i>modus</i>
+&ldquo;measure, manner&rdquo; (from PIE root <i>\*med-</i> &ldquo;take appropriate measures&rdquo;). Sense of
+&ldquo;a standard measure to regulate proportions&rdquo; is from 1620s. Meaning
+&ldquo;interchangeable part&rdquo; is recorded by 1955, via the notion of &ldquo;length chosen as
+the basis for the dimensions of parts of a building &#x2026;
+</p>
+
+<p>
+(<a href="https://www.etymonline.com/word/module#etymonline_v_17382">etymonline.com</a>)
+</p>
+</blockquote>
+
+<p>
+What is a module?
+</p>
+
+<p>
+The spirit of the ML module system, traces back to an effort to &ldquo;give structured
+descriptions of theories&rdquo;.
+</p>
+
+<p>
+In &ldquo;Modules for Standard ML&rdquo; McQueen writes:
+</p>
+
+<blockquote>
+<p>
+This proposal is based on the fruits of a long collaboration with Rod Burstall
+on prototype designs for modules in Hope [MAC81], and on theoretical
+investigations with Ravi Sethi and Gordon Plotkin [MAC82, MAC84] that were
+motivated by those designs. The module designs for Hope were in turn influenced
+by the Clear specification language of Burstall and Goguen [BUR77].&rsquo;&rsquo;
+</p>
+
+<p>
+TODO ref
+</p>
+</blockquote>
+
+
+<p>
+[BUR77] refers to Burstall and Goguen&rsquo;s paper &ldquo;Putting theories together to make
+specifications.&rdquo; The first line reads:
+</p>
+
+<blockquote>
+<p>
+We have been developing a language in which you can give structured
+descriptions of theories.
+</p>
+
+<p>
+TODO ref
+</p>
+</blockquote>
+
+<p>
+Their elaboration of the concept of a &ldquo;theory&rdquo; and the motives behind that work
+are of great importance.
+</p>
+
+<p>
+ML modules are composable, nestable, inheritable, and parametric environments.
+</p>
+
+<div id="outline-container-org9337302" class="outline-2">
+<h2 id="org9337302"><span class="todo TODO">TODO</span> Relation to Objects</h2>
+<div class="outline-text-2" id="text-org9337302">
+<p>
+The notion of a module as a theory (a set or collection of sets with operators
+over them) stands in defiance of joe Armstrong&rsquo;s differentiation
+between FP and OOP in terms of weather or not you package functions and data
+structures together.
+</p>
+
+<p>
+Parametric modules, especially when they can be 1st class, enable idioms which
+are reminiscent of OOP. E.G.:
+</p>
+</div>
+
+<div id="outline-container-org54a5ab8" class="outline-3">
+<h3 id="org54a5ab8"><span class="todo TODO">TODO</span> Example</h3>
+</div>
+<div id="outline-container-org139cd48" class="outline-3">
+<h3 id="org139cd48"><span class="todo TODO">TODO</span> Clarify theory vs. model.</h3>
+<div class="outline-text-3" id="text-org139cd48">
+<p>
+However, there is at least one critical formal difference &#x2013; unbounded recursion
+&#x2013; and one critical theoretical difference &#x2013; paramtetric modules let us
+represent <b>ideal objects</b> as theories vs. whereas OOP uses the concept of
+objects to&#x2026;
+</p>
+
+<p>
+How does modularity relate to SOLID?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9cf190a" class="outline-2">
+<h2 id="org9cf190a"><span class="todo TODO">TODO</span> Explain modules as an existential type quantification</h2>
+<div class="outline-text-2" id="text-org9cf190a">
+<p>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2018 um.<br>
-Last updated 2019-09-26 Thu 00:24. <br>
+Last updated 2019-09-25 Wed 17:47. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
