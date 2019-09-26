@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-26 Thu 00:23 -->
+<!-- 2019-09-26 Thu 00:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
@@ -286,7 +285,7 @@ of the language.
 <div class="outline-text-2" id="text-org9f842cc">
 <p>
 According to one perspective, in 1ML &ldquo;everything is just (&lsquo;a mode of use of&rsquo;)
-modules&rdquo; (<a href="https://people.mpi-sws.org/~rossberg/1ml/">Rossberg</a>). Therefore, in thinking through the nature of 1ML, it is
+modules&rdquo; (<a href="https://people.mpi-sws.org/~rossberg/1ml/">Rossberg</a>). Therefore, in thinking through the nature of 1ML it is
 reasonable that we begin with its modules.
 </p>
 </div>
@@ -295,7 +294,7 @@ reasonable that we begin with its modules.
 <h3 id="org47cb9c5">Module definition syntax</h3>
 <div class="outline-text-3" id="text-org47cb9c5">
 <p>
-To define a named module, we follow the following schema:
+To define a named module, we follow this schema:
 </p>
 
 <div class="org-src-container">
@@ -331,8 +330,8 @@ thus:
 <h3 id="org57d724a">Module types</h3>
 <div class="outline-text-3" id="text-org57d724a">
 <p>
-In MLs, every value have a type. In 1ML, modules are values, so they too have a
-type.
+In dialects of ML, every value has a type. Modules are values in 1ML, so they
+too have a type.
 </p>
 
 <p>
@@ -349,7 +348,8 @@ Consider module <code>M</code> with one type declaration and two value definitio
 </div>
 
 <p>
-1ML will infer the following <i>type</i> for the module:
+Since we opted out of specifying a type for <code>M</code>, 1ML will infer the following
+type for the module:
 </p>
 
 <div class="org-src-container">
@@ -363,10 +363,13 @@ Consider module <code>M</code> with one type declaration and two value definitio
 
 <p>
 Unsurprisingly, the type of a module is just the types of all the values which
-that module provides together with the types declared in the module. Note that
-the module&rsquo;s type is based on what it <code>provides</code>, not what it contains. This is
-an important distinction because we can seal information into modules by
-specifying types for the modules which omit some content:
+that module provides together with the types declared in the module.
+</p>
+
+<p>
+Note that the module&rsquo;s type is based on what it <code>provides</code>, not what it
+contains. This is an important distinction, because we can seal information into
+modules by specifying module types that omit some of the module&rsquo;s contents:
 </p>
 
 <div class="org-src-container">
@@ -411,7 +414,7 @@ We&rsquo;ll see the implications of this in the following section.
 </p>
 
 <p>
-The two key points to take away form this brief discussion of 1ML modules:
+The key points to take away form this brief discussion of 1ML modules:
 </p>
 
 <ul class="org-ul">
@@ -430,7 +433,7 @@ The two key points to take away form this brief discussion of 1ML modules:
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2018 um.<br>
-Last updated 2019-09-25 Wed 23:58. <br>
+Last updated 2019-09-26 Thu 00:32. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
