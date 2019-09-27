@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-27 Fri 09:08 -->
+<!-- 2019-09-27 Fri 13:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
@@ -426,14 +426,234 @@ The key points to take away form this brief discussion of 1ML modules:
 </div>
 
 <div id="outline-container-org41a7b3e" class="outline-3">
-<h3 id="org41a7b3e"><span class="todo TODO">TODO</span> A concrete example: implementing a stack</h3>
+<h3 id="org41a7b3e">A concrete example: implementing a stack</h3>
+<div class="outline-text-3" id="text-org41a7b3e">
+<p>
+Fair warning: the following code is a working implemention that can be run in
+Rossberg&rsquo;s <a href="https://github.com/rossberg/1ml">prototype interpreter</a>. As Rossberg notes in the README for the
+project
+</p>
+
+<blockquote>
+<ul class="org-ul">
+<li>The language is very basic, and misses lots of features you would expect from
+a real ML, especially datatypes.</li>
+<li>It is slow and probably buggy. In particular, type checking is implemented
+very naively, as a direct transliteration of the rules, with no worries about
+efficiency. Type inference is best considered work in progress. :)</li>
+</ul>
+</blockquote>
+
+<p>
+To the list of missing features we can add the critical UI feature of pattern
+matching.
+</p>
+
+<p>
+As a result of these limitations, the following code is less clear than it
+otherwise could be (and eventually will be!) in a more robust implementation.
+</p>
+</div>
+
+<div id="outline-container-orgec19645" class="outline-4">
+<h4 id="orgec19645">Specifying the ADT</h4>
+<div class="outline-text-4" id="text-orgec19645">
+<blockquote>
+<p>
+One of the most importnat features of modern programming is abstract data types
+(hereafter, ADTs), which encapsulate some data within a module, providing access
+to it only through operations that are associated with the module.
+</p>
+
+<p>
+<a class='org-ref-reference' href="#goguen1999tossing">goguen1999tossing</a>
+</p>
+</blockquote>
+
+<p>
+For an ADT essence is form, since ADTs are defined by specification of their
+interface, and this only gives the externally visible form while saying nothing
+on the matter of implementation. So let&rsquo;s recite the specification of a stack,
+here expressed in terms of the module type:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>type STACK = {</code>
+<code>  type t a;</code>
+<code>  empty 'a : t a;</code>
+<code>  push 'a : t a -&gt; a -&gt; t a;</code>
+<code></code>
+<code>  ;; Only needed to work around bug in type checker that's preventing use of the</code>
+<code>  ;; clearer and more concise type declaration:</code>
+<code>  ;; pop 'a: t a -&gt; opt (t a, a)</code>
+<code>  type pair a = (t a, a);</code>
+<code>  pop 'a : t a -&gt; opt (pair a);</code>
+<code></code>
+<code>  isEmpty 'a : t a -&gt; bool;</code>
+<code>  size 'a : t a -&gt; int;</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+Uncoded into words:
+</p>
+
+<ul class="org-ul">
+<li>A stack is a <code>type t</code> of some values of another type <code>a</code>.</li>
+<li>For all types <code>a</code> (the &ldquo;for all&rdquo; here signaled by the <code>'</code>),
+we have an <code>empty</code> stack (of type <code>t a</code>). E.g., if <code>int</code> is a type, then we
+have an <code>empty</code> stack of type <code>t int</code>.</li>
+<li>For all types <code>a</code>, if we are given a stack (<code>t a</code>) and a value of type <code>a</code>,
+then we can <code>push</code> the value onto the stack.</li>
+<li>Let&rsquo;s us call the type <code>(t a, a)</code> (which is a pair with  a stack as its first
+element and a value that could be an element of the stack as its second
+element) <code>pair a</code>.</li>
+<li>For all types <code>a</code>, if we have a stack <code>t a</code>, we can <code>pop</code> off the first
+element to get an optional pair <code>some (s, x) : opt (pair a)</code> consisting of the
+stack remaining after the first element is removed together with the removed
+element itself. Or, if the given stack is empty to start with, getting <code>none :
+  pair a</code>.</li>
+<li>For all types <code>a</code>, given a stack <code>t a</code>, we can check if it <code>isEmpty</code>.</li>
+<li>For all types <code>a</code>, given a stack <code>t a</code>, we can discover it&rsquo;s <code>size</code>.</li>
+</ul>
+
+<p>
+This elaboration cheats in some constraints that are <b>not</b> captured in the
+interface defined by the module&rsquo;s type. For instance, the type doesn&rsquo;t tell us
+that the second item of the pair <code>pop s</code> comes from the stack <code>s</code>, nor does it
+say that the new stack returned as the first item in that pair must have the
+returned element removed. These are further specifications that we could encode
+in a language with dependent types, but part of 1ML&rsquo;s aim is to realize first
+class modules without recourse to dependent types.
+</p>
+
+<p>
+As a complement to the long term pursuit of fully dependent typing disciplines,
+programmers in the ML tradition have developed methods of using properly
+abstracted types to create &ldquo;trusted kernels&rdquo;. This practice provides strong
+guarantees of reliable behavior without having to tangle with the complex (and
+still nascent) challenges of full dependent typing. (For more on this practice,
+see Oleg&rsquo;s <a href="http://okmij.org/ftp/Computation/lightweight-static-guarantees.html">Leightweight Static Guarantees</a>).
+</p>
+
+<p>
+In our specification of the stack ADT above we say nothing at all about the
+internal structure of <code>type t a</code>. Consequently, nothing is revealed or claimed
+about the way the stack is actually implemented or represented inside the
+module. Therefore, it is impossible for a user of a module satisfying that
+signature to violate the invariants which we put into our implementation. Before
+considering examples of this safety in practice, let&rsquo;s look at the
+implementation:
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgef7a8da" class="outline-4">
+<h4 id="orgef7a8da">Implementing the ADT</h4>
+<div class="outline-text-4" id="text-orgef7a8da">
+<div class="org-src-container">
+<pre class="src src-1ml"><code>Stack :&gt; STACK = {</code>
+<code>  type t a = {size: int; content: list a};</code>
+<code></code>
+<code>  empty 'a = {size = 0; content = List.nil};</code>
+<code></code>
+<code>  push 'a (s : t a) x =</code>
+<code>    let size' = s.size + 1 in</code>
+<code>    let content' = s.content in</code>
+<code>    {size = size' + 1; content = List.cons x content'};</code>
+<code></code>
+<code>  peek 'a (s : t a) =</code>
+<code>    let content = s.content in</code>
+<code>    List.head content;</code>
+<code></code>
+<code>  type pair a = (t a, a);</code>
+<code></code>
+<code>  pop 'a (s : t a) =</code>
+<code>    let content = s.content in</code>
+<code>    caseopt (List.tail content)</code>
+<code>      (fun () =&gt; Opt.none)</code>
+<code>      (fun content' =&gt; caseopt (List.head content)</code>
+<code>        (fun () =&gt; Opt.none)</code>
+<code>        (fun x =&gt;</code>
+<code>          let size' = s.size - 1 in</code>
+<code>          let s' = {size = size'; content = content'} in</code>
+<code>          Opt.some (s', x)));</code>
+<code></code>
+<code>  isEmpty 'a (s : t a) =</code>
+<code>    let content = s.content in</code>
+<code>    List.isNil content;</code>
+<code></code>
+<code>  size 'a (s : t a) = s.size</code>
+<code>};</code>
+</pre>
+</div>
+
+<p>
+The stack is implemented as a record holding the current <code>size</code> of the stack and
+the <code>content</code> of the stack, represented as a list. There&rsquo;s nothing interesting
+going on here, and I suspect this implementation is largely self-explanatory for
+anyone familiar with typed functional programming.
+</p>
+
+<p>
+The likely exception is the definition for <code>pop</code>. The <code>caseopt</code> in use there is
+the way case analysis is encoded in 1ML in absence of pattern matching. It took
+me some time to come to grips with how to read these functions, so I offer the
+following annotated elaboration:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>    ;; equivalent to a case statement in Haskell or OCaml, `caseopt` is a</code>
+<code>    ;; function which performs case analysis of values of type `opt`.</code>
+<code>    caseopt (List.tail content)</code>
+<code></code>
+<code>      ;; Matches the `none` alternative.</code>
+<code>      (fun () =&gt; Opt.none)</code>
+<code></code>
+<code>      ;; Matches the `some x` alternative, binding the value of the</code>
+<code>      ;; `x` to the `content` variable in the head of the lambda.</code>
+<code>      (fun content' =&gt; caseopt (List.head content)</code>
+<code></code>
+<code>        ;; This is just a nested case analysis for the other optional value</code>
+<code>        (fun () =&gt; Opt.none)</code>
+<code>        (fun x =&gt;</code>
+<code>          let size' = s.size - 1 in</code>
+<code>          let s' = {size = size'; content = content'} in</code>
+<code>          Opt.some (s', x)));</code>
+</pre>
+</div>
+
+<p>
+Once pattern matching and record field punning is implemented, <code>pop</code> could look
+like something like this:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-1ml"><code>  pop 'a (s : t a) =</code>
+<code>    match List.tail s.content with</code>
+<code>    | none         =&gt; none</code>
+<code>    | some content =&gt; match List.head content with</code>
+<code>      | none   =&gt; none</code>
+<code>      | some x =&gt; some ({size = s.size - 1; content}, x)</code>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org44fb98e" class="outline-4">
+<h4 id="org44fb98e"><span class="todo TODO">TODO</span> On abstract types, sealing, and security</h4>
+</div>
+<div id="outline-container-org3087f26" class="outline-4">
+<h4 id="org3087f26"><span class="todo TODO">TODO</span> Wait, why do the modules look just like the records?</h4>
+</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-26 Thu 00:32. <br>
+Last updated 2019-09-27 Fri 13:26. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
