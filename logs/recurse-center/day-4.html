@@ -7,7 +7,7 @@
 <!-- 2019-09-26 Thu 23:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>Day 4: Exhaustion</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,18 +257,164 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
+<h1 class="title">Day 4: Exhaustion</h1>
+<blockquote>
+<p>
+Our goal is to show once and for all that, contrary to popular belief (even
+among experts in the field!), the semantics of ML modules is immediately
+accessible to anyone familiar with System Fω, the higher-order polymorphic
+λ-calculus.
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+<i>ML modules are merely a particular mode of use of System Fω.</i>
+(cite:Rossberg<sub>2010</sub>)
+</p>
+</blockquote>
+
+<div id="outline-container-org2c969d3" class="outline-2">
+<h2 id="org2c969d3">Vibe</h2>
+<div class="outline-text-2" id="text-org2c969d3">
+<p>
+Tuckered out and feeling a bit numb. I need to turtle a bit tomorrow and recover
+from all the lovely (but quite intense) social engagement.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf85f3bf" class="outline-2">
+<h2 id="orgf85f3bf">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgf85f3bf">
+<p>
+Due to over-extending myself over the last three days, I wasn&rsquo;t able to stay on
+task with my planned goals today. I did manage to make some meaningful progress
+however.
+</p>
+
+<p>
+By the third page of cite:Rossberg<sub>2010</sub> (the epigraph to this entry) is was
+clear that I would need improve my graphs of System Fω in order to work
+effectively on 1Ml. This has motivated me to see through ongoing studies into
+typed lambda calculi, and push forward quickly until I have covered the left
+face of the lambda cube:
+</p>
+
+
+<div class="figure">
+<p><object type="image/svg+xml" data="https://en.wikipedia.org/wiki/Lambda_cube#/media/File:Lambda_Cube_img.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7fd8da" class="outline-3">
+<h3 id="orge7fd8da">PLT: Type Theory</h3>
+<div class="outline-text-3" id="text-orge7fd8da">
+<p>
+I spent some time working on the <a href="http://gallium.inria.fr/~fpottier/menhir/">menhir</a> parser-generator for my WIP experiments
+in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a>. For a long while I&rsquo;ve been stuck on a
+<a href="https://www.gnu.org/software/bison/manual/html_node/Shift_002fReduce.html">shift/reduce ambiguity</a> arising from this grammar rule:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-tuareg-menhir"><code><span style="color: #c678dd;">term</span>:</code>
+<code>  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span></code>
+<code>  | m = term; n = term</code>
+<code>    { Term.app m n}</code>
+<code>  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span></code>
+</pre>
+</div>
+
+<p>
+This rule is meant to say that any two juxtaposed terms are to be parsed as
+function application. However, due to the necessarily recursive definition of
+terms and the lack of an operator to use for indicating precedence of grouping,
+menhir doesn&rsquo;t know if a sequence such as <code>l m n</code> should be parsed into the
+correct left-associative expression <code>Term.app((Term.app l m) n)</code> or the
+incorrect, right associative <code>Term.app(l Term.app(m n))</code>.
+</p>
+
+<p>
+I finally came across <a href="http://www.minjiezha.com/tech/2011/01/18/A-Simple-Lambda-Calculus-Evaluator-II.html">a resource</a> that described a solution to a similar problem
+(also in a lambda calculus interpreter, but with different syntax). What we want
+is a way to clearly instruct the parser generator that term application should
+be left-associative. To achieve this, we restructure the rule to ensure that
+the parser is left-recursive on the first term of the application:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-tuareg-menhir"><code><span style="color: #c678dd;">terms</span>:</code>
+<code>  | m = terms; n = term</code>
+<code>    { Term.app m n }</code>
+<code>  | t = term;</code>
+<code>    { t }</code>
+<code><span style="color: #c678dd;">term</span>: <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">singular terms here </span><span style="color: #5B6268;">*/</span></code>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd3930ac" class="outline-3">
+<h3 id="orgd3930ac">Category theory</h3>
+<div class="outline-text-3" id="text-orgd3930ac">
 <ul class="org-ul">
-<li><a href="day-4.html">Day 4: Exhaustion</a> &#x2014; 2019-09-26</li>
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
+<li>CT reading group: folks presented motivating reasons behind their desires to
+learn Category Theory.</li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-org3f9781a" class="outline-3">
+<h3 id="org3f9781a">Writing</h3>
+<div class="outline-text-3" id="text-org3f9781a">
+<ul class="org-ul">
+<li>Created a <a href="https://joaotavora.github.io/yasnippet/snippet-development.html">yas snippet</a> to generate the template for these logs. Getting savy with
+yas snippets should improve the spead and quality of writing and code in general.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org30a7195" class="outline-2">
+<h2 id="org30a7195">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org30a7195">
+</div>
+<div id="outline-container-orgba11b2a" class="outline-3">
+<h3 id="orgba11b2a">PLT: 1ML × Type Theory</h3>
+<div class="outline-text-3" id="text-orgba11b2a">
+<ul class="org-ul">
+<li>Study and take notes on the distinction between small and large types in 1ML</li>
+<li>Continue reading cite:Rossberg<sub>2010</sub></li>
+<li>Begin working on tuple type-checking error</li>
+<li>Begin trying to fix the biggest type-checking bug I found today</li>
+<li>Finish parser for λ⟶</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8fb465b" class="outline-3">
+<h3 id="org8fb465b">Writing</h3>
+<div class="outline-text-3" id="text-org8fb465b">
+<ul class="org-ul">
+<li>Write up implementation of stack</li>
+<li>Write up notes on small vs. large types</li>
+</ul>
+
+<p>
+bibliography:~/Dropbox/bibliography/references.bib
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-26 Thu 23:16. <br>
+Last updated 2019-09-26 Thu 22:59. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
