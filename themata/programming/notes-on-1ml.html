@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-27 Fri 13:40 -->
+<!-- 2019-09-27 Fri 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
@@ -513,8 +513,8 @@ element) <code>pair a</code>.</li>
 <li>For all types <code>a</code>, if we have a stack <code>t a</code>, we can <code>pop</code> off the first
 element to get an optional pair <code>some (s, x) : opt (pair a)</code> consisting of the
 stack remaining after the first element is removed together with the removed
-element itself. Or, if the given stack is empty to start with, getting <code>none :
-  pair a</code>.</li>
+element itself. Unless, if the given stack is empty to start with, in which
+case we end up with <code>none : opt (pair a)</code>.</li>
 <li>For all types <code>a</code>, given a stack <code>t a</code>, we can check if it <code>isEmpty</code>.</li>
 <li>For all types <code>a</code>, given a stack <code>t a</code>, we can discover it&rsquo;s <code>size</code>.</li>
 </ul>
@@ -654,7 +654,7 @@ like something like this:
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-27 Fri 13:40. <br>
+Last updated 2019-09-27 Fri 20:27. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
