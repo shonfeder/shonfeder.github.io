@@ -7,7 +7,7 @@
 <!-- 2019-09-29 Sun 16:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Day 6: Weekend 1.1</title>
+<title>Day 7: Weekend 1.2</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,162 +257,67 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Day 6: Weekend 1.1</h1>
+<h1 class="title">Day 7: Weekend 1.2</h1>
 <blockquote>
 <p>
-The inconveniences of daily life are not the significant problems.
-</p>
 
-<p>
-The world that scrolls past you on Twitter is not the real world.
-</p>
-
-<p>
-You cannot calibrate your sense of what’s valuable and necessary to the current
-fashions in your field.
-</p>
-
-<p>
-(<a href="http://worrydream.com/ClimateChange/">Bret Victor</a>)
 </p>
 </blockquote>
 
-<p>
-I have found the daily logs quite interesting and helpful. I decided I will try
-extending them through the weekends.
-</p>
-
-<div id="outline-container-orgd49c876" class="outline-2">
-<h2 id="orgd49c876">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgd49c876">
+<div id="outline-container-orgbfdbbb7" class="outline-2">
+<h2 id="orgbfdbbb7">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgbfdbbb7">
 </div>
-<div id="outline-container-org123d8ad" class="outline-3">
-<h3 id="org123d8ad">PLT</h3>
-<div class="outline-text-3" id="text-org123d8ad">
+<div id="outline-container-orge14e675" class="outline-3">
+<h3 id="orge14e675">Community</h3>
 </div>
-<div id="outline-container-org1cb14dd" class="outline-4">
-<h4 id="org1cb14dd">λ⟶</h4>
-<div class="outline-text-4" id="text-org1cb14dd">
+<div id="outline-container-org37b1e3e" class="outline-3">
+<h3 id="org37b1e3e">PLT: 1ML × Type Theory</h3>
+</div>
+<div id="outline-container-org31207da" class="outline-3">
+<h3 id="org31207da">Category theory</h3>
+</div>
+<div id="outline-container-orgcfebde8" class="outline-3">
+<h3 id="orgcfebde8">Tooling</h3>
+<div class="outline-text-3" id="text-orgcfebde8">
 <p>
-I implemented <code>let</code> bindings for the λ⟶ implementation in <a href="https://gitlab.com/shonfeder/themis/blob/master/lib/parse.ml">themis</a>. This should
-have been trivial, since <code>let x = foo in bar</code> is equivalent to the combined
-abstraction and application <code>(λx. bar) foo</code>, so the implementation can simply
-amount to the grammar rule
+<code>org-publish</code> was taking an absurd amount of time to publish updates. <a href="https://bastibe.de/2014-05-07-speeding-up-org-publishing.html">Bastion
+Bechtold&rsquo;s note</a> describing how they diagnosed and fixed a similar slowdown
+helped guide me. The main trick was running the profiler to reveal what was
+causing the slowdown:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-menhir"><code>  exp:</code>
-<code>  | LET; x = ID; COLON; t = typ; EQ; n = terms; IN; m = exp</code>
-<code>    { Term.app (Term.lam x t m) n }</code>
+<pre class="src src-emacs-lisp"><code><span style="color: #51afef;">(</span><span style="color: #51afef;">progn</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">profiler-start</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">cpu</span><span style="color: #c678dd;">)</span> <span style="color: #c678dd;">(</span>function-to-profile<span style="color: #c678dd;">)</span> <span style="color: #c678dd;">(</span>profiler-report<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span></code>
 </pre>
 </div>
 
 <p>
-which transforms the let binding into the equivalent applied abstraction.
-</p>
-
-<p>
-However, I forgot to arrange the rules of my lexer generator to tokenize the
-<code>let</code> and <code>in</code> keywords <b>before</b> looking for identifiers, and menhir&rsquo;s default
-error messages for unparsable input includes no information whatsoever, so I was
-stumped for some time trying to figure out what was wrong. I finally wrote up
-an auxiliary function to display the result of lexing, which made the problem
-apparent immediately.
+After fixing the cause of the slowdown, the time needed to publish these org
+files to HTML is down by at least 75%.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc2ef15b" class="outline-4">
-<h4 id="orgc2ef15b">Systems F and Fω</h4>
-<div class="outline-text-4" id="text-orgc2ef15b">
+<div id="outline-container-orgc9d063e" class="outline-3">
+<h3 id="orgc9d063e">Writing</h3>
+</div>
+</div>
+
+<div id="outline-container-org0ac7b32" class="outline-2">
+<h2 id="org0ac7b32">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org0ac7b32">
+</div>
+<div id="outline-container-orgb4d5dd8" class="outline-3">
+<h3 id="orgb4d5dd8">PLT: 1ML × Type Theory</h3>
+</div>
+<div id="outline-container-orgbc0550d" class="outline-3">
+<h3 id="orgbc0550d">Community</h3>
+</div>
+<div id="outline-container-org321ec13" class="outline-3">
+<h3 id="org321ec13">Writing</h3>
+<div class="outline-text-3" id="text-org321ec13">
 <p>
-I read on and around <a href="https://en.wikipedia.org/wiki/System_F">systems F and Fω</a>. I am studying typed lambda calculi out of
-<a class='org-ref-reference' href="#rob2014type">rob2014type</a>, which is a wonderfully clear and illuminating introduction to
-the subject. However, I like to skim over primary texts too when I can find
-them, as I find it insightful to see the context in which concepts first find
-their place in the world. System F was independently developed by Jeav-Yves
-Girard and John C. Reynolds. Since Girard&rsquo;s work is in French, and I am
-unfortunately frenchless, I started looking over Reynold&rsquo;s
-<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>. I&rsquo;ll dig into both TTFP and Reynold&rsquo;s paper more
-tomorrow.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0c93594" class="outline-3">
-<h3 id="org0c93594">Community</h3>
-<div class="outline-text-3" id="text-org0c93594">
-<p>
-I read Bret Victor&rsquo;s <a href="http://worrydream.com/ClimateChange/">What can a technologist do about climate change?</a>,
-recommended by a recurser in a zulip chat. It was illuminating, inspiring and
-frightening. Given my own skill set and background, the recommendations for
-tooling under the section <a href="http://worrydream.com/ClimateChange/#media-writing">model-driving authoring</a> seem most attainable and
-inline with the ways I work and think.
-</p>
-
-<p>
-However, I was surprised to find virtually no discussion of the need to change
-basic values, concepts, and presuppositions. It is focused almost exclusively on
-encouraging innovative tech solutions that will allow us to maintain the status
-quo. As a counter balance, I want to spend some of tomorrow reading up on
-<a href="https://en.wikipedia.org/wiki/Degrowth">Degrwoth</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org1fbdbae" class="outline-3">
-<h3 id="org1fbdbae">Writing</h3>
-<div class="outline-text-3" id="text-org1fbdbae">
-<p>
-I removed the &ldquo;Vibe&rdquo; section of my template. That was fitting and needful when I
-was hyper-sensitized and full of feeling, but requiring a statement on vibe when
-I&rsquo;m not vibrating feels forced.
-</p>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-org773e9f2" class="outline-2">
-<h2 id="org773e9f2">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org773e9f2">
-<p>
-Surfing trip!
-</p>
-</div>
-
-<div id="outline-container-org709ce0a" class="outline-3">
-<h3 id="org709ce0a">PLT</h3>
-<div class="outline-text-3" id="text-org709ce0a">
-<ul class="org-ul">
-<li>Continue reading up on System F</li>
-<li>Add type checking and maybe term finding to the simply typed lc</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org6798128" class="outline-3">
-<h3 id="org6798128">Community</h3>
-<div class="outline-text-3" id="text-org6798128">
-<ul class="org-ul">
-<li>Read up on degrowth</li>
-</ul>
-
-<p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="rob2014type">[rob2014type]</a> <a name="rob2014type"></a>Rob Nederpelt & Geuvers, Type Theory and Formal Proof: An Introduction, Cambridge University Press (2014).</li>
-<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
-  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
-  author =       John C. Reynolds,
-  booktitle =    Lecture Notes in Computer Science,
-  doi =          10.1007/3-540-06859-7_148,
-  pages =        408-425,
-  publisher =    Springer Berlin Heidelberg,
-  series =       Lecture Notes in Computer Science,
-  title =        Towards a theory of type structure,
-  url =          https://doi.org/10.1007/3-540-06859-7_148,
-  year =         1974,
-</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -421,7 +326,7 @@ Surfing trip!
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-29 Sun 16:28. <br>
+Last updated 2019-09-29 Sun 16:37. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
