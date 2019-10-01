@@ -7,7 +7,7 @@
 <!-- 2019-09-30 Mon 23:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>Day 8: Unsure</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,17 +257,156 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
+<h1 class="title">Day 8: Unsure</h1>
+<blockquote>
+<p>
+The counterpart of abstraction is <i>application</i>.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#rob2014type">rob2014type</a>)
+</p>
+</blockquote>
+
+<p>
+I must not neglect application: I cannot abide theory without praxis. And yet, a
+properly critical theory should be praxis and application is impossible without
+antecedent abstraction. I must keep this tension and problematic in mind,
+without letting the lust for palpable production undermine my intention to
+cultivate theoretical foundations. <i>Counterparts are clearly not contraries.</i>
+</p>
+
+<div id="outline-container-orgdb3cc2b" class="outline-2">
+<h2 id="orgdb3cc2b">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgdb3cc2b">
+</div>
+<div id="outline-container-org07df150" class="outline-3">
+<h3 id="org07df150">PLT</h3>
+<div class="outline-text-3" id="text-org07df150">
+</div>
+<div id="outline-container-org2927d81" class="outline-4">
+<h4 id="org2927d81">Simplified Themis ABT library</h4>
+<div class="outline-text-4" id="text-org2927d81">
+<p>
+Abstract Binding Trees (ABTs) extend abstract syntax trees (ASTs) with logic to
+handle variable binding. The motivation is as follows: Nearly every interesting
+programming language has some concept of a variable which can be bound and
+substituted out. Rather than reimplimenting binding and substitution logic for
+every language we implement, we should be able to implement this logic once, and
+reuse that in all of our languages. Thus, the ABT abstract data type gives tools
+for forming an abstract syntax for representing the structure of our language
+that includes a readymade mechanism for dealing with variables.
+</p>
+
+<p>
+See <a href="https://semantic-domain.blogspot.com/2015/03/abstract-binding-trees.html">Neel Krishnaswami</a>&rsquo;s post on the subject for more details, including notes on
+the history of the technique and an example implementation.
+</p>
+
+<p>
+I have been developing a little ABT library as a side effect of my lambda
+calculi implementations in <a href="https://gitlab.com/shonfeder/themis">themis</a>. Prior to today, the ABT library was leaking
+some abstraction into the representation of the syntax generated for a
+particular language, requiring the user (me) to check and deal with values which
+were only needed internally. I plugged that abstraction leak in
+<a href="https://gitlab.com/shonfeder/themis/commit/960dc6d314041838a2ae2c6165ae9db48258a7db">commit/960dc6d314041838a2ae2c6165ae9db48258a7db</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb9bc612" class="outline-4">
+<h4 id="orgb9bc612">λ⟶</h4>
+<div class="outline-text-4" id="text-orgb9bc612">
+<p>
+I finished adding type checking and term finding to the implementing of λ⟶ in
+themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e">commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e</a> . The API for the
+<code>Check</code> module is as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Check</span> : <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
+<code>  <span style="color: #83898d;">(** Check and infer various properties *)</span></code>
+<code></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_type</span> : <span style="color: #ECBE7B;">Derivation.Ctx.</span>t -&gt; <span style="color: #ECBE7B;">Term.</span>t -&gt; <span style="color: #ECBE7B;">Type.</span>t option</code>
+<code>  <span style="color: #83898d;">(** [infer_type ctx term] is [Some type] if [type] can be derived for the</span></code>
+<code><span style="color: #83898d;">      [term] in the given [ctx]. Otherwise, it is [None]. *)</span></code>
+<code></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_term</span> : <span style="color: #ECBE7B;">Derivation.Ctx.</span>t -&gt; <span style="color: #ECBE7B;">Type.</span>t -&gt; <span style="color: #ECBE7B;">Derivation.</span>judgment option</code>
+<code>  <span style="color: #83898d;">(** [infer_term ctx type] is [Some term] if [term] can be synthesized to</span></code>
+<code><span style="color: #83898d;">      inhabit the [type] in the given [ctx]. Otherwise, it is [None]. *)</span></code>
+<code></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">typing</span> : <span style="color: #ECBE7B;">Derivation.</span>judgment -&gt; bool</code>
+<code>  <span style="color: #83898d;">(** [typing j] is [true] if a derivation can be found proving the judgment [j]</span><span style="color: #ffffff; background-color: brightblack;">.</span><span style="color: #83898d;">*)</span></code>
+<code></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">well_typed</span> : <span style="color: #a9a1e1;">?ctx</span>:<span style="color: #ECBE7B;">Derivation.Ctx.</span>t -&gt; <span style="color: #ECBE7B;">Term.</span>t -&gt; <span style="color: #ECBE7B;">Derivation.</span>t option</code>
+<code>  <span style="color: #83898d;">(** [well_typed term] is [Some derivation] if a type can inferred for [term]</span></code>
+<code><span style="color: #83898d;">      and a [derivation] can be built demonstrating that the [term] has that</span></code>
+<code><span style="color: #83898d;">      type in the given [ctx].</span></code>
+<code></code>
+<code><span style="color: #83898d;">      [ctx] defaults to an empty context. *)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span> = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+</pre>
+</div>
+
+<p>
+It&rsquo;s not <i>really</i> a reliable implementation of these checks, because I haven&rsquo;t
+rigged up the property based tests to &ldquo;verify&rdquo; correctness. But I&rsquo;ve manually
+checked that they yield the expected results on select terms in the interpreter
+and, most importantly, I feel pretty confident in my understanding of these
+algorithms. I&rsquo;m going to postpone tests for their correctness for the sake of
+moving on to the implementation of λ2 tomorrow.
+</p>
+
+<p>
+I also finished reading Chapter 2 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a>, whence I took my
+instruction on the implementation of the above. I&rsquo;m getting started with Chapter
+3 tonight.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a2dc41" class="outline-2">
+<h2 id="org8a2dc41">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org8a2dc41">
+</div>
+<div id="outline-container-org0dbe74f" class="outline-3">
+<h3 id="org0dbe74f">PLT</h3>
+<div class="outline-text-3" id="text-org0dbe74f">
+</div>
+<div id="outline-container-org45f6e50" class="outline-4">
+<h4 id="org45f6e50">Begin implementing λ2</h4>
+<div class="outline-text-4" id="text-org45f6e50">
+<p>
+I think I&rsquo;ve learned some lessons from my implementations of λ and λ⟶, and there
+are some things I want to do differently as I dig in to λ2 to improve and
+expedite the process:
+</p>
+
 <ul class="org-ul">
-<li><a href="day-8.html">Day 8: Unsure</a> &#x2014; 2019-09-30</li>
-<li><a href="day-7.html">Day 7: Weekend 1.2</a> &#x2014; 2019-09-29</li>
-<li><a href="day-6.html">Day 6: Weekend 1.1</a> &#x2014; 2019-09-28</li>
-<li><a href="day-5.html">Day 5: Abstraction</a> &#x2014; 2019-09-27</li>
-<li><a href="day-4.html">Day 4: Exhaustion</a> &#x2014; 2019-09-26</li>
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
+<li>Define the parser and pretty printer first</li>
+<li>Write all unit tests using the parser and pretty printer (property based tests
+should still generate terms via manipulation of the ABT)</li>
+<li>Don&rsquo;t get distracted by premature generalization of the framework and tooling
+around the language implementation, just drive forward with the
+implementation. After it is done, I&rsquo;ll refactor out common elements with the
+other implementations.</li>
 </ul>
+</div>
+</div>
+<div id="outline-container-orgac6dc66" class="outline-4">
+<h4 id="orgac6dc66">Finish Chapter 2 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a></h4>
+<div class="outline-text-4" id="text-orgac6dc66">
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="rob2014type">[rob2014type]</a> <a name="rob2014type"></a>Rob Nederpelt & Geuvers, Type Theory and Formal Proof: An Introduction, Cambridge University Press (2014).</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
