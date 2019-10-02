@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-01 Tue 23:24 -->
+<!-- 2019-10-01 Tue 23:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 9: Capturing the Notion of Parametricity</title>
@@ -262,14 +262,18 @@ for the JavaScript code in this tag.
 Today was spent implementing <i>System F</i>, also known as the <i>polymorphic lambda
 calculus</i>, or λ2. I am studying System F as a prerequisite for a solid grasp of
 System Fω, which is itself a prerequisite for moving forward with my planned
-work on 1ML. My studies today turned up an interesting clue to a deep connection
-between the original motive driving Reynolds work on the polymorphic lambda
-calculus and the pursuit of modularity. The latter has been one of the driving
-urges of my life for at least a decade, and it is at the root of my interest in
-1ML. I have recorded some notes here on what I learned, which I will eventually
-end up reworking and incorporating into my <a href="file:///home/sf/Dropbox/synechepedia/org/themata/programming/the-measure-of-a-module.html">notes on modularity</a>.
+work on 1ML. My studies today turned up an interesting clue connecting the
+original motive driving Reynolds&rsquo; work on the polymorphic lambda calculus with
+the pursuit of modularity. The latter has been one of the driving urges of my
+life for at least a decade, and it is at the root of my interest in 1ML. I have
+made some notes in this entry recording what I learned. (I expect I will
+eventually end up reworking and incorporating them into my WIP <a href="file:///home/sf/Dropbox/synechepedia/org/themata/programming/the-measure-of-a-module.html">notes on
+modularity</a>).
 </p>
 
+<div id="outline-container-org853a306" class="outline-2">
+<h2 id="org853a306">A few notes on the history of System F</h2>
+<div class="outline-text-2" id="text-org853a306">
 <p>
 Jean-Yves Girard first defined System F in his PhD thesis in 1972. Writting
 about that work around 2010, Girard characterized the calculus thus:
@@ -403,6 +407,8 @@ alignment with its primary objective and purpose.
 <p>
 More on this in the future&#x2026;
 </p>
+</div>
+</div>
 
 <div id="outline-container-org6971d94" class="outline-2">
 <h2 id="org6971d94">Today&rsquo;s Progress</h2>
@@ -416,9 +422,9 @@ expectations around feasible output.
 </p>
 </div>
 
-<div id="outline-container-org3897d42" class="outline-3">
-<h3 id="org3897d42">PLT</h3>
-<div class="outline-text-3" id="text-org3897d42">
+<div id="outline-container-orga39fc30" class="outline-3">
+<h3 id="orga39fc30">PLT</h3>
+<div class="outline-text-3" id="text-orga39fc30">
 </div>
 <div id="outline-container-orgfe5e47b" class="outline-4">
 <h4 id="orgfe5e47b">Themis</h4>
@@ -463,7 +469,7 @@ in <a class='org-ref-reference' href="#rob2014type">rob2014type</a>.
 
 <p>
 The basic tools for working with a derivations in a calculi can now be generated
-for use an elaborated derivation module with
+for use in an module defining derivation rules with
 </p>
 
 <div class="org-src-container">
@@ -487,6 +493,8 @@ calculus.
 <li>Defined a parser using ocamllex and menhir</li>
 <li>Wrote unit tests for the parser</li>
 <li>Started writing the type checker</li>
+<li>Finished reading Chapter 3 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a>, which presents λ2</li>
+<li>Spent some time reading Girard and Reynolds, both very fun :)</li>
 </ul>
 </div>
 </div>
@@ -522,9 +530,9 @@ today. That&rsquo;s great progress :)
 <h2 id="org88bef91">Tomorrow&rsquo;s Program</h2>
 <div class="outline-text-2" id="text-org88bef91">
 </div>
-<div id="outline-container-orga39fc30" class="outline-3">
-<h3 id="orga39fc30">PLT</h3>
-<div class="outline-text-3" id="text-orga39fc30">
+<div id="outline-container-org2a8abd6" class="outline-3">
+<h3 id="org2a8abd6">PLT</h3>
+<div class="outline-text-3" id="text-org2a8abd6">
 <ul class="org-ul">
 <li>Finish implementing λ2</li>
 <li>Read Chapter 4 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a></li>
@@ -587,7 +595,7 @@ Girard&rsquo;s.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-10-01 Tue 23:23. <br>
+Last updated 2019-10-01 Tue 23:33. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
