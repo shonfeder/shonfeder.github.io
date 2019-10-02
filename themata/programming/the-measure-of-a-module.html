@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-27 Fri 09:09 -->
+<!-- 2019-10-01 Tue 23:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Measure of a Module</title>
@@ -304,7 +304,7 @@ by the Clear specification language of Burstall and Goguen [BUR77].&rsquo;&rsquo
 </p>
 
 <p>
-TODO ref
+<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>
 </p>
 </blockquote>
 
@@ -321,7 +321,7 @@ descriptions of theories.
 </p>
 
 <p>
-TODO ref
+<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>
 </p>
 </blockquote>
 
@@ -333,6 +333,72 @@ are of great importance.
 <p>
 ML modules are composable, nestable, inheritable, and parametric environments.
 </p>
+
+<div id="outline-container-org6a3f71d" class="outline-2">
+<h2 id="org6a3f71d"><span class="todo TODO">TODO</span> Modularity and parametricity</h2>
+<div class="outline-text-2" id="text-org6a3f71d">
+<p>
+Reynolds introduced λ2 in the 1974 paper &ldquo;Towards a theory of type structure&rdquo;
+(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>). In that paper, the innovation explained in the
+preceding is described as a solution to &ldquo;the old but neglected problem of
+polymorphic functions&rdquo;, but this problem is only given secondary importance. The
+principle aim of the work is to formalize a theory of representation
+independence for programs in order to ensure a program can maintain the seam
+<i>meaning</i> regardless of the internal representation of its primitive types:
+</p>
+
+<blockquote>
+<p>
+We start with the belief that the meaning of syntactically valid program in a
+&ldquo;type-correct&rdquo; language should never depend upon the particular representations
+used to implement its primitive types.
+</p>
+
+<p>
+&#x2026; this property of reference independence should hold for user-defined types
+as well as primitive types. The introduction of a user-defined type <code>t</code> should
+partition a program into an &ldquo;outer&rdquo; region in which <code>t</code> behaves like a primitive
+type and is manipulated by various primitive operations which are used but not
+defined, and an &ldquo;inner&rdquo; region in which the representation of <code>t</code> is defined in
+terms of other types, and the primitive operations on <code>t</code> are defined in terms
+of this representation. We expect that the meaning of such a program will remain
+unchanged if the inner region is altered by changing the representation of the
+type and redfining its primitive operations in a consistent manner.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+In providing polymorphic functions, we also provide user-defined types. &#x2026; Suppose
+we with to represent complex numbers by pairs of reals, and to represent
+magnitude and the square root of -1 by the expressions
+</p>
+
+<p>
+addrep : (real × real) × (real × real) -&gt; (real × real)
+magnrep : (real × real) -&gt; real
+irep : (real × real)
+</p>
+
+<p>
+This representation can be specified by the expression
+</p>
+
+<p>
+(Λcmp. λadd : cmp × cmp -&gt; cmp. λmagn : cmp -&gt; real. λi : cmp. outer)
+    [real × real] (addrep) (magnrep) (irep) .
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+</p>
+</blockquote>
+</div>
+</div>
 
 <div id="outline-container-org9337302" class="outline-2">
 <h2 id="org9337302"><span class="todo TODO">TODO</span> Relation to Objects</h2>
@@ -374,7 +440,24 @@ How does modularity relate to SOLID?
 <h2 id="org9cf190a"><span class="todo TODO">TODO</span> Explain modules as an existential type quantification</h2>
 <div class="outline-text-2" id="text-org9cf190a">
 <p>
-<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="macqueen84_modul_ml">[macqueen84_modul_ml]</a> <a name="macqueen84_modul_ml"></a>David MacQueen, Modules for standard ML, nil, in in: Proceedings of the 1984 ACM Symposium on LISP and functional
+                  programming - LFP '84, edited by (1984)</li>
+<li><a id="Burstall:1977:PTT:1622943.1623045">[Burstall:1977:PTT:1622943.1623045]</a> <a name="Burstall:1977:PTT:1622943.1623045"></a>Burstall & Goguen, Putting Theories Together to Make Specifications, 1045-1058, in in: Proceedings of the 5th International Joint Conference on
+                  Artificial Intelligence - Volume 2, edited by Morgan Kaufmann Publishers Inc. (1977)</li>
+<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
+  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
+  author =       John C. Reynolds,
+  booktitle =    Lecture Notes in Computer Science,
+  doi =          10.1007/3-540-06859-7_148,
+  pages =        408-425,
+  publisher =    Springer Berlin Heidelberg,
+  series =       Lecture Notes in Computer Science,
+  title =        Towards a theory of type structure,
+  url =          https://doi.org/10.1007/3-540-06859-7_148,
+  year =         1974,
+</li>
+</ul>
 </p>
 </div>
 </div>
@@ -382,7 +465,7 @@ How does modularity relate to SOLID?
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-25 Wed 17:47. <br>
+Last updated 2019-10-01 Tue 23:23. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
