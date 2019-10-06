@@ -7,7 +7,7 @@
 <!-- 2019-10-05 Sat 22:26 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Day 13: Weekend 2.2</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,31 +257,266 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Day 13: Weekend 2.2</h1>
+<blockquote>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+&#x2026;the &ldquo;knowledge&rdquo; which we have in our great scientific systems is not genuine
+knowledge. It is mere possibility and has no form but the aesthetic or practical
+form it takes in discourse. The &ldquo;knowledge&rdquo; we have in our intuitions of
+individuals alone is not knowledge. It is also aesthetic or mystical. True
+knowledge is achieved only when ideas, or concepts, are discovered in or apply
+to individual wholes, in our terms, when parameters measure actuality.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#buchanan2014possibility">buchanan2014possibility</a>)
 </p>
 </blockquote>
-<blockquote id="whitehead93#2">
+
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+As I noted yesterday, I took Friday to let my mind relax and wander. I&rsquo;m trying
+to re-engage with poetics, poetic thinking, and various other antidotes to the
+enframing of information technologies.
+</p>
+
+<div id="outline-container-org81b1f16" class="outline-2">
+<h2 id="org81b1f16">Some notes</h2>
+<div class="outline-text-2" id="text-org81b1f16">
+<p>
+These are some notes I scribbled last night. These are just flights of fancy,
+and should all be proceeded with something like &ldquo;I wonder if&#x2026;&rdquo;
+</p>
+</div>
+
+<div id="outline-container-org8bd3672" class="outline-3">
+<h3 id="org8bd3672">Existential stuff</h3>
+<div class="outline-text-3" id="text-org8bd3672">
+<p>
+Non-existence as annihilation is neither the negation nor the dual of
+the singular, subjective existence. The dual of being singular is being in
+common: being in community.
+</p>
+
+<p>
+In death, nither the being nor having been of a subject is annihilated. Though
+their continued presence is terminated. The non-existence of the subject
+entailed by mortality is only a determinate negation of the persistence of the
+subject in time. It is determinate in that something entirely new is created in
+the passing away: distinct absence. In the experience of losing a companions it
+is absolutely clear that death is not an annihilation, because the weight and
+extraordinary, horrible novelty of their absence is utterly imposing an
+inescapable. Whatever else may or may not happen to the dead, for the living,
+their presence is transmuted into a sui generis absence.
+</p>
+
+<p>
+Nietzsche&rsquo;s eternal return though experiment can be read as an analysis of
+Spinoza&rsquo;s <a href="https://en.wikipedia.org/wiki/Sub_specie_aeternitatis">sub specie aeternitatis</a>. It uses subjective imagination to bootstrap
+our myopic self-concern and infantile repetition compulsion into a glimpse of
+the eternality of existence qua structure.
+</p>
+
+<p>
+In the Spinozistic view, mind and body are but two modes out of the infinite
+modes that express the absolute infinitude of substance. In this system, the
+being of a singular subject must also find expression in infinite other modes.
+</p>
+
+<p>
+In general, humanity as a whole does not seem to believe that it deserves to
+live well. We must become convinced that we deserve to live well so that will
+demand that our communities be structured to meet this demand.
+</p>
+
+<p>
+Forms of compliance and complicity masquerade as kindness.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge6cdbcf" class="outline-3">
+<h3 id="orge6cdbcf">Type theory stuff</h3>
+<div class="outline-text-3" id="text-orge6cdbcf">
+<blockquote>
+<p>
+<b>Existence.</b> One can instead contend that [the existence of] objects are
+ anterior to their type, seen as an essence. This is the viewpoint of
+ <i>subtyping</i>, this is also the viewpoint of ludics: an object may have several
+ types, be representative of several essences. Their <i>locativity</i> becomes
+ essential.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>)
 </p>
 </blockquote>
+
+<p>
+I suspect&#x2026;
+</p>
+
+<p>
+A type system is a functor from types to terms. Parametric types give natural
+transformations over functors to simply typed terms. There are also other
+important ways of tracing natural transformations between sets of typeable
+terms. Subtyping lets us establish and specify some of these and, in fact,
+Girard presents polymorphism as a subspecies of subtyping:
+</p>
+
+<blockquote>
+<p>
+Polymorphism is the observation that the same λ-term can admit several types.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>, 135)
+</p>
+</blockquote>
+
+<p>
+The jiggering and exploring of various type systems is all in pursuit of an
+ideal sweet spot that will let us prove everything we think we should be able to
+while eliminating forms of expression that become unwieldy and undermine our
+capacity to reason about the system at all. Type systems also provide an
+important interface abstracting over lambda terms. When we reason about terms of
+type <code>int -&gt; int</code> we can draw inferences about an infinite class of potential
+functions while maintaining a birds eye view.
+</p>
+
+<p>
+Does it make sense to look for types that range over patterns and structures
+that hold between subtypes?
+</p>
+
+<p>
+From the subtyping view, the addition of linear types expanded the class of
+terms our types can provide an interface to, allowing new distinctions (maybe
+also allowing terms untypeable in other systems into the domain?).
+</p>
+
+<p>
+There are types correlating interfaces between systems of types. This is what
+Goguen advocates in <a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org79bcfdb" class="outline-3">
+<h3 id="org79bcfdb">Structure and stuff</h3>
+<div class="outline-text-3" id="text-org79bcfdb">
+<p>
+Girard&rsquo;s <a class='org-ref-reference' href="#girard11">girard11</a> culminates in a formal theory of <i>transcendental
+inter-subjectivity</i>.
+</p>
+
+<p>
+Encodings usually embed a &ldquo;fuller&rdquo; structure into a dimensions of relation in a
+more meager structure. Consider a binary array of length <code>n</code>. If we want to
+record an index of <code>n</code> things, we can just correlate each thing with a position
+in the array, and store the index at that location. This will give us a sequence
+of indexes to the objects. But this is a merely linear storage mechanism.
+Instead, we can associate each distinct entity with a combination of bits, and
+this will let us encode 2<sup>n</sup> distinct entities, greatly increasing the number of
+individual entities we can distinguish. But we buy that increased capacity by
+sacrificing the ability to encode information about the sequence or order
+holding between those entities.
+</p>
+
+<p>
+I suspect this is a general dynamic and that, in general, <b>reification trades
+structure for enumeration</b>. I suspect individuation consists of something like
+natural transformations collapsing parallel subsections of a continuum into
+phenomenological singularities.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4304b44" class="outline-2">
+<h2 id="org4304b44">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org4304b44">
+</div>
+<div id="outline-container-orgdf0bf81" class="outline-3">
+<h3 id="orgdf0bf81">Community</h3>
+<div class="outline-text-3" id="text-orgdf0bf81">
+<p>
+Met with a number of recursers and local Haskell programmers at the monthly
+Haskell Cohack
+</p>
+</div>
+</div>
+<div id="outline-container-org7a6e921" class="outline-3">
+<h3 id="org7a6e921">OCaml Ecosystem</h3>
+<div class="outline-text-3" id="text-org7a6e921">
+<p>
+I made good headway on porting Haskell&rsquo;s <code>Data.These</code> to OCaml. Most of the work
+has involved working out how to translate Haskell&rsquo;s type-class based
+specification of algebraic structures into OCaml&rsquo;s module-based specifications.
+It&rsquo;s fun and very illuminating.
+</p>
+</div>
+</div>
+<div id="outline-container-org57d6435" class="outline-3">
+<h3 id="org57d6435">Writing</h3>
+<div class="outline-text-3" id="text-org57d6435">
+<p>
+I wrote the above notes!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfe879d5" class="outline-2">
+<h2 id="orgfe879d5">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgfe879d5">
+<p>
+I&rsquo;ll mostly be spending the day with my spouse.
+</p>
+</div>
+
+<div id="outline-container-org2f3375b" class="outline-3">
+<h3 id="org2f3375b">PLT</h3>
+<div class="outline-text-3" id="text-org2f3375b">
+<p>
+Spend some time reading <a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge9b871d" class="outline-3">
+<h3 id="orge9b871d">OCaml Ecosystem</h3>
+<div class="outline-text-3" id="text-orge9b871d">
+<p>
+I&rsquo;ll continue work on <code>These</code> when I get a chance.
+</p>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="buchanan2014possibility">[buchanan2014possibility]</a> <a name="buchanan2014possibility"></a>Buchanan, Possibility, Routledge (2014).</li>
+<li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
+<li><a id="Programming91typesas">[Programming91typesas]</a> <a name="Programming91typesas"></a>Joseph Goguen Programming & Joseph Goguen, Types as Theories, 357-390, in in: Topology and Category Theory in Computer Science, edited by (1991)</li>
+<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
+  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
+  author =       John C. Reynolds,
+  booktitle =    Lecture Notes in Computer Science,
+  doi =          10.1007/3-540-06859-7_148,
+  pages =        408-425,
+  publisher =    Springer Berlin Heidelberg,
+  series =       Lecture Notes in Computer Science,
+  title =        Towards a theory of type structure,
+  url =          https://doi.org/10.1007/3-540-06859-7_148,
+  year =         1974,
+</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2019-10-05 Sat 22:26. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
