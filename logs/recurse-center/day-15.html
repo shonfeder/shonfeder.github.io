@@ -4,10 +4,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-07 Mon 22:53 -->
+<!-- 2019-10-07 Mon 23:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Day 15: Procedural Generation of Nested Places</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,31 +257,149 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Day 15: Procedural Generation of Nested Places</h1>
+<blockquote>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+The very understanding of spatiality as paradigmatically a concept of physical
+theory, and so as primarily tied to physical extension, must represent a
+fundamental obstacle to any attempt to arrive at a view of place as a
+philosophically significant concept. &#x2026; the analysis of place must encompass a
+broader analysis of space that does not restrict space merely to the sense
+associated with notions of physical extension and position. Arriving at an
+adequate account of place, then, requires a rethinking of space also.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#malpas07_place">malpas07_place</a>)
 </p>
 </blockquote>
-<blockquote id="whitehead93#2">
-<p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
-</p>
-</blockquote>
+
+<div id="outline-container-org7a9714e" class="outline-2">
+<h2 id="org7a9714e">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org7a9714e">
 </div>
+<div id="outline-container-org8710c1a" class="outline-3">
+<h3 id="org8710c1a">Community</h3>
+<div class="outline-text-3" id="text-org8710c1a">
+<p>
+I was lucky enough to enjoy <b>2</b> wonderful pairing sessions today.
+</p>
+
+<ul class="org-ul">
+<li>In the first session, we got to practice Haskell while working over some good
+foundational algorithms on lists. I had a bunch of fun, and learned and
+relearned some important principles.</li>
+<li>In the second, we made tangible initial progress on implementing a procedural
+dungeon generator. This was a blast and very illuminating. I&rsquo;m going to keep
+working on this as a fun and instructive side project.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org310c7da" class="outline-3">
+<h3 id="org310c7da">PLT: 1ML</h3>
+<div class="outline-text-3" id="text-org310c7da">
+<ul class="org-ul">
+<li>Got the remote repo up to date with changes I&rsquo;ve been making on my fork</li>
+<li>Moved my project planing notes into the fork. You can see them <a href="https://github.com/shonfeder/1ml/blob/interlude/PROJECT.org">here</a>.</li>
+<li>I made some actual progress on the 1ML type checking bug that&rsquo;s currently in
+my cross hairs. I&rsquo;ve been <a href="https://github.com/shonfeder/1ml/blob/interlude/PROJECT.org#next-type-checking-error-reads-access-of-module-values-as-if-it-were-the-module-itself-being-supplied-as-a-value">documenting the bug hunt</a> pretty carefully, so I&rsquo;ll
+be able to reuse the debugging techniques I&rsquo;m discovering along the way later
+with ease. <b>Documentation is Automation!<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2612df5" class="outline-3">
+<h3 id="org2612df5">Writing</h3>
+<div class="outline-text-3" id="text-org2612df5">
+<p>
+I received some very encouraging feedback on this log.
+</p>
+
+<p>
+The feedback came along with a great suggestion for a missing feature: a way of
+tracking what reported progress is contributing to which project. I suspect I
+can achieve such a thing with some basic use of org-mode tags. I&rsquo;ve added the
+idea to my todo list.
+</p>
+
+<p>
+We also discussed difficulties around writing in general, the risks of writing
+publically, and the ambiguous nature of mixing genuine self-expression with
+instrumental self-promotion.
+</p>
+
+<p>
+This rambling mess of a log a manifestation of my own attempts to develop a
+writing practice, and to overcome the stifling forces of unrealistic expectation
+and scope creep. So far so good, in that writing is happening. However, I&rsquo;m
+still very far from feeling confident in my abilities to write λ <i>needs</i> .[what
+<i>needs</i> to be written to communicate what <i>needs</i> to be communicated]<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>.
+Perhaps once I feel more confident in my ability to write coherently towards a
+particular purpose, I&rsquo;ll try to summarize how well this method of bootstrapping
+such a habit has worked for me (or hasn&rsquo;t).
+</p>
+
+<p>
+In the meantime, I am very grateful for the people who have shared insight into
+their own writing process, shared their own writing, encouraged writing in
+general, offered feedback, or invited the opportunity to give feedback.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org95ad393" class="outline-2">
+<h2 id="org95ad393">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org95ad393">
+</div>
+<div id="outline-container-orgc30c2dc" class="outline-3">
+<h3 id="orgc30c2dc">PLT</h3>
+<div class="outline-text-3" id="text-orgc30c2dc">
+<ul class="org-ul">
+<li>Focused work on the 1ML type checking bug</li>
+<li>Discussing CT prior to Wednesday&rsquo;s meeting</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc643b81" class="outline-3">
+<h3 id="orgc643b81">Community</h3>
+<div class="outline-text-3" id="text-orgc643b81">
+<ul class="org-ul">
+<li>Signed up to give a non-technical talk on critical theory. I&rsquo;ll need to prep for
+this!</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://cacm.acm.org/magazines/2018/6/228040-documentation-is-automation/abstract">https://cacm.acm.org/magazines/2018/6/228040-documentation-is-automation/abstract</a>
+</p>
+
+<p class="footpara">
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="malpas07_place">[malpas07_place]</a> <a name="malpas07_place"></a>Malpas, Place and experience : a philosophical topography, Cambridge University Press (2007).</li>
+</ul>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+A jokey experiment in parameterizing the value of a word without the
+usual boilerplate phrase: &ldquo;for some value of <i>x</i>&rdquo;. Probably a failed experiment.
+</p></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2019-10-07 Mon 22:53. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
