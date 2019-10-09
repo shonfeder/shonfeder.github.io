@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-10-08 Tue 20:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 16: The Command to Control Praxis</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="um" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Day 16: The Command to Control Praxis</h1>
+<blockquote>
+<p>
+&ldquo;&#x2026; In Galileo&rsquo;s mathematization of nature, <i>nature itself</i> is idealized on the
+model of the new mathematics. In modern terms, it becomes a mathematical
+manifold&rdquo; [Horkheimer and Adorno are here quoting from <a class='org-ref-reference' href="#husserl70_europ">husserl70_europ</a>].
+Thought is reified as an autonomous, automatic process, aping the machine it has
+itself produced, so that it can finally be replaced by the machine.
+Enlightenment pushed aside the classical demand to &ldquo;think thinking&rdquo; &#x2026; because
+it distracted philosophers from the command to control praxis. Mathematical
+procedure became a kind of ritual of thought. Despite its axiomatic
+self-limitation, it installed itself as necessary and objective: mathematics
+made thought into a thing &#x2013; a tool, to use its own term.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, 19)
+</p>
+</blockquote>
+
+<p>
+I spent most of the day prepping for a non-technical talk on Critical Theory.
+However, I bailed on giving the presentation, because I didn&rsquo;t feel capable of
+doing the topic justice. I&rsquo;m also unsure that the non-technical talks are an
+appropriate forum for the topic.
+</p>
+
+<p>
+Spending the day reading critical theory meant reconnecting with the weighty and
+all important question of whether the enlightenment can realize its promiss of
+emancipated human communities and a reconciliation with (and redemption of)
+nature, or whether it will tend towards ever more exacting exploitation and
+perfected systems of control. With this concern rekindled, I found it difficult
+to get excited about the minutia of wonky technical puzzles.
+</p>
+
+<p>
+Still, I managed to identify the root cause of the 1ML bug I&rsquo;ve been
+investigating.
+</p>
+
+<p>
+(I&rsquo;m currently questioning the value of the daily check-in posts I&rsquo;ve been
+writing. Perhaps I&rsquo;ll have an idea of how to improve or adjust this tomorrow.)
+</p>
+
+<p>
+Here are notes I collected in preparation for the aborted presentation:
+</p>
+
+<div id="outline-container-org57968d4" class="outline-2">
+<h2 id="org57968d4">Notes around critical theory</h2>
+<div class="outline-text-2" id="text-org57968d4">
+</div>
+<div id="outline-container-org583b1b5" class="outline-3">
+<h3 id="org583b1b5">Motive</h3>
+<div class="outline-text-3" id="text-org583b1b5">
+<p>
+We are contributing to a massive, incredibly complex machine. We have virtually
+no idea of how our contributions will be used or what they will lead to. This is
+dangerous. Probably more dangerous than we can comprehend.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c542cc" class="outline-3">
+<h3 id="org6c542cc">Early modern figures important for the foundations of critical theory</h3>
+<div class="outline-text-3" id="text-org6c542cc">
+</div>
+<div id="outline-container-org236b25f" class="outline-4">
+<h4 id="org236b25f">Spinoza</h4>
+<div class="outline-text-4" id="text-org236b25f">
+<ul class="org-ul">
+<li>Committed to egalitarian and emancipatory politics.</li>
+<li>Advanced an outlook that unified theory and praxis.</li>
+<li>Helped develop a science of the affects.</li>
+<li>Huge influence on Hegel.</li>
+<li>Remarkably (for his time): Not imperialist. Not racist.</li>
+<li><p>
+Unfortunately (as I learned today): Misogynist. Classist. <a href="https://parentingforsocialchange.com/common-oppression-of-childhood-html/">Adultist</a>.
+</p>
+
+<blockquote>
+<p>
+Yet if nature had made women equal to men, and had given them equal strength of
+mind and intellectual ability, in which human power and therefore human right
+mainly consists, surely among so many different nations some would be found
+where both sexes ruled on equal terms, and others where the men were ruled by
+the women and brought up in such a manner that they had less ability. But since
+this has nowhere happened, I am fully entitled to assert that women have not the
+same right as men by nature, but are necessarily inferior to them
+</p>
+
+<p>
+(Spinoza in <i>A Political Treatise</i> Taken from <a href="https://spinozaauthor.wordpress.com/books-by-spinozaauthor-margaret-gullan-whur/articles-on-spinoza-by-margaret-gullan-whur/spinoza-and-the-equality-of-women/">Margret Gullan-Whur&rsquo;s Spinoza
+and the Equality of Women</a>)
+</p>
+</blockquote></li>
+</ul>
+
+<p>
+It is tempting to say that Spinoza deformed the emancipatory essence of his
+theoretical insights by bowing them to &ldquo;fact&rdquo; inferred from history:
+</p>
+
+<p>
+However, Gullan-Whur dispels this easy accommodation
+</p>
+
+<blockquote>
+<p>
+a closer look at the argument reveals that Spinoza could in fact be proceeding
+typically. For, in claiming that women re necessarily mentally weaker than men,
+he invokes the logical and causal necessity which are for him equivalent, and
+which dictate the laws of nature. &#x2026; Used by Spinoza the cause/reason equation
+constitutes a principle of sufficient reason.
+</p>
+
+<p>
+(<a href="https://spinozaauthor.wordpress.com/books-by-spinozaauthor-margaret-gullan-whur/articles-on-spinoza-by-margaret-gullan-whur/spinoza-and-the-equality-of-women/">Spinoza and the Equality of Women</a>)
+</p>
+</blockquote>
+
+<p>
+For the purpose of this short reflection on critical theory, the key move noted
+by Gullan-Whur is &ldquo;his metaphysical equivalence of human power with human
+right.&rdquo; This equivalence opens the way for the nightmare of purely instrumental
+reason to crush all tenderness and caring out of social relations and rights.
+</p>
+
+<p>
+Gullan-Whur ends up arguing that this regressive view is <b>not</b> consistent with
+his metaphysical and ethical positions in the Ethics. I&rsquo;m not entirely
+convinced, however. That bit about equating power with right and allowing an
+avenue for deducing reason from causation is all a bit troubling.
+</p>
+</div>
+</div>
+<div id="outline-container-org99a318c" class="outline-4">
+<h4 id="org99a318c">Kant</h4>
+<div class="outline-text-4" id="text-org99a318c">
+<ul class="org-ul">
+<li>Articulated the key methodological notions of <b>critical philosophy</b>.</li>
+<li>Innovated dialectical critique as a way of diagnosing untenable ideas.</li>
+<li>At least racist, imperialist, and misogynist.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orge6f19f3" class="outline-4">
+<h4 id="orge6f19f3">Hegel</h4>
+<div class="outline-text-4" id="text-orge6f19f3">
+<ul class="org-ul">
+<li>Radicalized critical philosophy by emphasizing the genetic and historical aspects of reason.</li>
+<li>Advanced dialectic reason as a way of generating new ideas</li>
+<li>At least racist and imperialist.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga038345" class="outline-3">
+<h3 id="orga038345">Modern Figures</h3>
+<div class="outline-text-3" id="text-orga038345">
+</div>
+<div id="outline-container-org17c48cb" class="outline-4">
+<h4 id="org17c48cb">Weber</h4>
+</div>
+<div id="outline-container-org4d50eab" class="outline-4">
+<h4 id="org4d50eab">Marx</h4>
+</div>
+<div id="outline-container-orgf748a22" class="outline-4">
+<h4 id="orgf748a22">Nietzsche</h4>
+</div>
+<div id="outline-container-org3fd6a95" class="outline-4">
+<h4 id="org3fd6a95">Freud</h4>
+</div>
+<div id="outline-container-org3e97ab7" class="outline-4">
+<h4 id="org3e97ab7">Lukacs</h4>
+</div>
+<div id="outline-container-orgd085397" class="outline-4">
+<h4 id="orgd085397">Frankfurt School</h4>
+</div>
+</div>
+
+<div id="outline-container-org0490f56" class="outline-3">
+<h3 id="org0490f56">Contemporary figures and traditions</h3>
+<div class="outline-text-3" id="text-org0490f56">
+<p>
+The Frankfurt School championed the term &ldquo;Critical Theory&rdquo;, but what they
+practiced and refined and reworked is only the legacy of a critical, reflective
+reason which was common to a broad trend in European philosophical thought. The
+preceding genealogical sketch is stupidly male and partial. But it is easier to
+find more representative and diverse contemporary figures and schools of thought
+that are practicing critical theory. Some examples:
+</p>
+</div>
+
+<div id="outline-container-org51c83ad" class="outline-4">
+<h4 id="org51c83ad"><a href="https://www.google.com/search?client=firefox-b-1-d&amp;q=angela+davis">Angela Davis</a></h4>
+<div class="outline-text-4" id="text-org51c83ad">
+<p>
+Student of Marcuse in the US and studied with Adorno in Germany.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org889f869" class="outline-4">
+<h4 id="org889f869">Critical Pedagogy</h4>
+<div class="outline-text-4" id="text-org889f869">
+<blockquote>
+<p>
+Critical pedagogy is a philosophy of education and social movement that has
+developed and applied concepts from critical theory and related traditions to
+the field of education and the study of culture.
+</p>
+</blockquote>
+<p>
+<a href="https://en.wikipedia.org/wiki/Critical_pedagogy">Wikipedia</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org88f1251" class="outline-4">
+<h4 id="org88f1251">Critical race theory</h4>
+<div class="outline-text-4" id="text-org88f1251">
+<pre class="example">
+<code>uses critical theory to examine society and culture as they relate to</code>
+<code>categorizations of race, law, and power</code>
+</pre>
+<p>
+<a href="https://en.wikipedia.org/wiki/Critical_race_theory">Wikipedia</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd0bf69a" class="outline-4">
+<h4 id="orgd0bf69a"><a href="https://www.plutobooks.com/blog/social-reproduction-theory-ferguson/">Social Reproduction Theory</a></h4>
+<div class="outline-text-4" id="text-orgd0bf69a">
+<blockquote>
+<p>
+Key to social reproduction theory (SRT) is an understanding of the ‘production
+of goods and services and the production of life are part of one integrated
+process’, or in other words: acknowledging that race and gender oppression occur
+capitalistically.
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orgf6a0422" class="outline-4">
+<h4 id="orgf6a0422"><a href="https://en.wikipedia.org/wiki/Queer_theory">Queer Theory</a></h4>
+<div class="outline-text-4" id="text-orgf6a0422">
+<blockquote>
+<p>
+a field of critical theory that emerged in the early 1990s out of the fields of
+queer studies and women&rsquo;s studies. Queer theory includes both queer readings of
+texts and the theorization of &rsquo;queerness&rsquo; itself. &#x2026; queer theory builds both
+upon feminist challenges to the idea that gender is part of the essential self
+and upon gay/lesbian studies&rsquo; close examination of the socially constructed
+nature of sexual acts and identities.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge9263f8" class="outline-3">
+<h3 id="orge9263f8">Notes from <i>The Dialectic of Enlightenment</i></h3>
+<div class="outline-text-3" id="text-orge9263f8">
+<blockquote>
+<p>
+The dialectic of enlightenment is culminating in objective madness.
+</p>
+
+<p>
+<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>
+</p>
+</blockquote>
+
+
+<blockquote>
+<p>
+The increase in economic productivity which creates the conditions for a more
+just world also affords the technical apparatus and the social groups
+controlling it a disproportionate advantage over the rest of the population.
+&#x2026; In the unjust state of society the powerlessness and pliability of the
+masses increase with the quantity of goods allocated to them. The materially
+considerable and socially paltry rise in the standard of living of the lower
+classes is reflected in the <b>hypocritical</b> propagation of intellect. Intellect&rsquo;s
+true concern is a negation of reification. It must perish when it is solidified
+into a cultural asset and handed out for consumption purposes. The flood of
+precise information and brand-new amusements make people smarter and more stupid
+at once.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+What is at issue here is not culture as a value &#x2026; but the necessity for
+enlightenment to reflect on itself if humanity is not to be totally betrayed.
+What is at stake is not conservation of the past but the fulfillment of past
+hopes.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org6f18c59" class="outline-3">
+<h3 id="org6f18c59">Traditional and Critical Theory</h3>
+<div class="outline-text-3" id="text-org6f18c59">
+<p>
+My aim was to elucidate this point, but I didn&rsquo;t make it&#x2026;.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcc14292" class="outline-3">
+<h3 id="orgcc14292">Children are the most oppressed humans</h3>
+<div class="outline-text-3" id="text-orgcc14292">
+<p>
+In general, there is no accepted or reliable technique for parenting which does
+not make recourse to oppressive and authoritarian measures. We cannot help
+propagating oppression, because we don&rsquo;t know how to propagate without
+oppressing.
+</p>
+
+<blockquote>
+<p>
+We may have had loving parents and caring teachers. However, in our culture
+and society, the dominant paradigm is one of adults controlling the lives of
+children. Even if done with love, this control and domination fundamentally
+disempowers children.
+</p>
+
+<p>
+Our paradigm teaches children to question themselves and rely on authority
+figures to make decisions for them and to tell them what is right. The need for
+autonomy and self-determination is sacrificed to the need for order and
+productivity. Indoctrination into this kind of world-view is easier if the power
+of children is dismissed and disregarded.
+</p>
+
+<p>
+(<a href="https://parentingforsocialchange.com/common-oppression-of-childhood-html/">Teresa Graham Brett</a>)
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org46d115a" class="outline-3">
+<h3 id="org46d115a">Exhaustion</h3>
+<div class="outline-text-3" id="text-org46d115a">
+<blockquote>
+<p>
+I imagine that I am nostalgic today because so few people seem to believe that
+anybody has any revolutionary potential left.
+</p>
+
+<p>
+(<a href="https://pages.gseis.ucla.edu/faculty/kellner/Illumina%20Folder/Angela_Davis%5B1%5D%5B1%5D.pdf">Angela Davis</a>)
+</p>
+</blockquote>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="husserl70_europ">[husserl70_europ]</a> <a name="husserl70_europ"></a>Husserl, The crisis of European sciences and transcendental  phenomenology : an introduction to phenomenological  philosophy, Northwestern University Press (1970).</li>
+<li><a id="horkheimer02_dialec">[horkheimer02_dialec]</a> <a name="horkheimer02_dialec"></a>Horkheimer, Dialectic of enlightenment : philosophical fragments, Stanford University Press (2002).</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2019-10-08 Tue 20:18. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+</div>
+</div>
+</body>
+</html>
