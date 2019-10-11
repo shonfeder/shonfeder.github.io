@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -7,7 +8,7 @@
 <!-- 2019-10-10 Thu 22:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Measure of a Module</title>
+<title>Finishing Work on the Incomplete</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,231 +258,247 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">The Measure of a Module</h1>
+<h1 class="title">Finishing Work on the Incomplete</h1>
 <p>
-<b>WIP</b>
+<b>NOTE</b> I don&rsquo;t like this scribbling and I feel it may be dumb, trivial, and
+stupidly clever. However, self-censorship and leaving half-formed things piling
+up in corners of my hard-drive is currently a bigger problem that producing poor
+quality writing (which I&rsquo;m not asking anyone to read in any case &#x2013; so little
+harm done).
 </p>
 
+<p>
+These notes are aimed at the problem of unfinished work in the context of an
+inexhaustible project.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+<p>
+In the following, I assume that we share a common aim in life: to help realize a
+way of being together that is kind and nurturing and, in its flourishing,
+encourages all others to flourish.
+</p>
+
+<p>
+I postulate (1) that there is no limit to the compassion and kindness we can
+achieve (<a href="excerpts/distention-of-the-heart.html">Cf.</a>) and (2) that the importance of this mission calls for an intensity
+of focus and depth of thoughtfulness which is also limitless.
+</p>
+
+<p>
+Thus, what we want to do and the ways we must do it preclude the possibility of
+completion. Yet, if we spend our few remaining decades<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> tinkering at
+this and that facet of the endeavor, leaving partially worked surfaces, half
+finished forms, and tools and plans scattered around, we will fail to realize
+any improvement or make any useful contributions. Worse, such wasted work might
+clutter the work sites and contribute to confusion. Though completion is
+impossible, some measure of finish is necessary.
+</p>
+
+<p>
+On the other hand, if we simply get busy executing items of work evidently
+susceptible to completion, our efforts are likely to be wasted, or, worse, they
+will work effectively towards the degradation of our potential for peace and
+kindness. The worst fate for humanity is not extinction, it is becoming <a href="https://en.wikipedia.org/wiki/Borg">borg</a>.
+Contributions that enhance our systems of power without embedding an immanent
+critique to protect against the malicious use of that power are <i>ultimately
+irresponsible</i>.
+</p>
+
+<p>
+There must<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup> be a way of executing finishable work that builds towards
+our incompletable aim. Therefore, a clear distinction must be made between
+<b>finishing</b> and <b>completing</b>. As is often the case, the etyma lead the way:
+</p>
+
+<div id="outline-container-orgc4bd22d" class="outline-2">
+<h2 id="orgc4bd22d">Finishing</h2>
+<div class="outline-text-2" id="text-orgc4bd22d">
 <blockquote>
 <p>
-<b>module</b> (n.)
+finish (v.)
 </p>
 
 <p>
-1580s, &ldquo;allotted measure,&rdquo; a sense now obsolete, from Middle French <i>module</i>
-(1540s) or directly from Latin <i>modulus</i> &ldquo;small measure,&rdquo; diminutive of <i>modus</i>
-&ldquo;measure, manner&rdquo; (from PIE root <i>\*med-</i> &ldquo;take appropriate measures&rdquo;). Sense of
-&ldquo;a standard measure to regulate proportions&rdquo; is from 1620s. Meaning
-&ldquo;interchangeable part&rdquo; is recorded by 1955, via the notion of &ldquo;length chosen as
-the basis for the dimensions of parts of a building &#x2026;
+late 14c., &ldquo;to bring to an end;&rdquo; mid-15c., &ldquo;to come to an end&rdquo; (intransitive),
+from Old French <i>finiss-</i>, present participle stem of <i>fenir</i> &ldquo;stop, finish,
+come to an end; die&rdquo; (13c.), from Latin <i>finire</i> &ldquo;to limit, set bounds; put an
+end to; come to an end,&rdquo; from <i>finis</i> &ldquo;that which divides, a boundary, border,&rdquo;
+figuratively &ldquo;a limit, an end, close, conclusion; an extremity, highest point;
+greatest degree,&rdquo; which is of unknown origin, perhaps related to &ldquo;figere&rdquo; &ldquo;to
+fasten, fix&rdquo; (see fix (v.)). Meaning &ldquo;to kill, terminate the existence of&rdquo; is
+from 1755.
 </p>
 
 <p>
-(<a href="https://www.etymonline.com/word/module#etymonline_v_17382">etymonline.com</a>)
-</p>
-</blockquote>
-
-<blockquote>
-<p>
-The term, parameter, etymologically, and literally, means a &ldquo;measure with
-respect to&rdquo;.
-</p>
-
-<p>
-&#x2026;
-</p>
-
-<p>
-A property is a parameter, or a notatoinal device for exhibiting a parameter.
-</p>
-</blockquote>
-
-
-<p>
-What is a module?
-</p>
-
-<p>
-The spirit of the ML module system, traces back to an effort to &ldquo;give structured
-descriptions of theories&rdquo;.
-</p>
-
-<p>
-In &ldquo;Modules for Standard ML&rdquo; McQueen writes:
-</p>
-
-<blockquote>
-<p>
-This proposal is based on the fruits of a long collaboration with Rod Burstall
-on prototype designs for modules in Hope [MAC81], and on theoretical
-investigations with Ravi Sethi and Gordon Plotkin [MAC82, MAC84] that were
-motivated by those designs. The module designs for Hope were in turn influenced
-by the Clear specification language of Burstall and Goguen [BUR77].&rsquo;&rsquo;
-</p>
-
-<p>
-<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>
-</p>
-</blockquote>
-
-
-<p>
-[BUR77] refers to Burstall and Goguen&rsquo;s paper &ldquo;Putting theories together to make
-specifications.&rdquo; The first line reads:
-</p>
-
-<blockquote>
-<p>
-We have been developing a language in which you can give structured
-descriptions of theories.
-</p>
-
-<p>
-<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>
+<a href="https://www.etymonline.com/word/finish">(etymonline)</a>
 </p>
 </blockquote>
 
 <p>
-Their elaboration of the concept of a &ldquo;theory&rdquo; and the motives behind that work
-are of great importance.
+The roots of &rsquo;finish&rsquo; meant to &ldquo;bring to an end&rdquo;, and originally to limit and
+bound. To bring something to an end, we set a boundary and then take the thing
+to that limit. Think of finishing a race, crossing the finish line: someone
+decided a certain spot should mark the boundary, and they marked the limit with
+a line. The racer finishes by crossing the line.
 </p>
 
 <p>
-ML modules are composable, nestable, inheritable, and parametric environments.
-</p>
-
-<div id="outline-container-org6a3f71d" class="outline-2">
-<h2 id="org6a3f71d"><span class="todo TODO">TODO</span> Modularity and parametricity</h2>
-<div class="outline-text-2" id="text-org6a3f71d">
-<p>
-Reynolds introduced λ2 in the 1974 paper &ldquo;Towards a theory of type structure&rdquo;
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>). In that paper, the innovation explained in the
-preceding is described as a solution to &ldquo;the old but neglected problem of
-polymorphic functions&rdquo;, but this problem is only given secondary importance. The
-principle aim of the work is to formalize a theory of representation
-independence for programs in order to ensure a program can maintain the seam
-<i>meaning</i> regardless of the internal representation of its primitive types:
+When working construction, we called the last productive stage of a project the
+&ldquo;finish work&rdquo;. This was the work done to clean up all the rough edges, cover up
+the joins, fill the holes, apply the paint, etc. The <a href="https://encyclopedia2.thefreedictionary.com/Finishing+Work">The Great Soviet Dictionary</a>
+defines &rsquo;finishing work&rsquo; thus:
 </p>
 
 <blockquote>
 <p>
-We start with the belief that the meaning of syntactically valid program in a
-&ldquo;type-correct&rdquo; language should never depend upon the particular representations
-used to implement its primitive types.
-</p>
-
-<p>
-&#x2026; this property of reference independence should hold for user-defined types
-as well as primitive types. The introduction of a user-defined type <code>t</code> should
-partition a program into an &ldquo;outer&rdquo; region in which <code>t</code> behaves like a primitive
-type and is manipulated by various primitive operations which are used but not
-defined, and an &ldquo;inner&rdquo; region in which the representation of <code>t</code> is defined in
-terms of other types, and the primitive operations on <code>t</code> are defined in terms
-of this representation. We expect that the meaning of such a program will remain
-unchanged if the inner region is altered by changing the representation of the
-type and redfining its primitive operations in a consistent manner.
-</p>
-
-<p>
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+(in construction), a group of construction operations relating to the exterior
+and interior finishing of buildings and structures to enhance their service and
+aesthetic qualities. Finishing work is the concluding stage of construction; in
+many cases, the overall quality of a building or structure being put into
+service depends on the quality of its execution. The main types of finishing
+work include facing, plastering, flooring (and parquetry), painting,
+wallpapering, and glazing.
 </p>
 </blockquote>
 
+<p>
+What is finished is not perfected! If you&rsquo;ve ever seen a racer crawl across the
+finish line, or had a peak into the space between your walls, then you know
+finishing can be executed despite aspects remaining imperfect or subpar. But
+without the finish the home would not be livable and the racer could never
+escape their race.
+</p>
+
+<p>
+To be finished is to be terminated with a measure of elegance.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org046ec72" class="outline-2">
+<h2 id="org046ec72">Completing</h2>
+<div class="outline-text-2" id="text-org046ec72">
 <blockquote>
 <p>
-In providing polymorphic functions, we also provide user-defined types. &#x2026; Suppose
-we with to represent complex numbers by pairs of reals, and to represent
-magnitude and the square root of -1 by the expressions
+complete (adj.)
 </p>
 
 <p>
-addrep : (real × real) × (real × real) -&gt; (real × real)
-magnrep : (real × real) -&gt; real
-irep : (real × real)
+late 14c., &ldquo;having no deficiency, wanting no part or element; perfect in kind or
+quality; finished, ended, concluded,&rdquo; from Old French <i>complet</i> &ldquo;full,&rdquo; or
+directly from Latin <i>completus</i>, past participle of <i>complere</i> &ldquo;to fill up,
+complete the number of (a legion, etc.),&rdquo; transferred to &ldquo;fulfill, finish (a
+task),&rdquo; from <i>com</i>-, here probably as an intensive prefix + <i>plere</i> &ldquo;to fill&rdquo;
+(from PIE root *pele- (1) &ldquo;to fill&rdquo;).
 </p>
 
 <p>
-This representation can be specified by the expression
-</p>
-
-<p>
-(Λcmp. λadd : cmp × cmp -&gt; cmp. λmagn : cmp -&gt; real. λi : cmp. outer)
-    [real × real] (addrep) (magnrep) (irep) .
-</p>
-
-<p>
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+<a href="https://www.etymonline.com/word/complete">(etymonline)</a>
 </p>
 </blockquote>
-</div>
-</div>
-
-<div id="outline-container-org1e9f8ee" class="outline-2">
-<h2 id="org1e9f8ee"><span class="todo TODO">TODO</span> Relation to Objects</h2>
-<div class="outline-text-2" id="text-org1e9f8ee">
-<p>
-The notion of a module as a theory (a set or collection of sets with operators
-over them) stands in defiance of joe Armstrong&rsquo;s differentiation
-between FP and OOP in terms of weather or not you package functions and data
-structures together.
-</p>
 
 <p>
-Parametric modules, especially when they can be 1st class, enable idioms which
-are reminiscent of OOP. E.G.:
-</p>
-</div>
-
-<div id="outline-container-orgacc6b20" class="outline-3">
-<h3 id="orgacc6b20"><span class="todo TODO">TODO</span> Example</h3>
-</div>
-<div id="outline-container-org8d5dbaa" class="outline-3">
-<h3 id="org8d5dbaa"><span class="todo TODO">TODO</span> Clarify theory vs. model.</h3>
-<div class="outline-text-3" id="text-org8d5dbaa">
-<p>
-However, there is at least one critical formal difference &#x2013; unbounded recursion
-&#x2013; and one critical theoretical difference &#x2013; paramtetric modules let us
-represent <b>ideal objects</b> as theories vs. whereas OOP uses the concept of
-objects to&#x2026;
-</p>
-
-<p>
-How does modularity relate to SOLID?
+&lt;This part is inducing paralysis. Let&rsquo;s same I&rsquo;m leaving it blank as a sly,
+ironic gesture.&gt;
 </p>
 </div>
 </div>
+
+<div id="outline-container-org786e81f" class="outline-2">
+<h2 id="org786e81f">Terminology</h2>
+<div class="outline-text-2" id="text-org786e81f">
+<p>
+So let the terminology be settled thus:
+</p>
+
+<p>
+<b>Finishing</b> is a matter of termination, particularly of determination. In order
+to finish, a terminus must have been decided and finishing is the act of
+carrying the work to that terminal. What is finished may still be extended
+further or improved upon, as the limit set was likely more or less arbitrary,
+and not at all an ideal limit.
+</p>
+
+<p>
+<b>Completing</b> is a matter of fulfillment and exhaustive satisfaction. In order to
+achieve completion, all defects must be removed, all parts present. Completion
+suggestion conclusion and so the closure of any need for further work. What is
+complete is over and done with, and no longer susceptible to improvement or
+advance.
+</p>
+</div>
 </div>
 
-<div id="outline-container-orgaea1e40" class="outline-2">
-<h2 id="orgaea1e40"><span class="todo TODO">TODO</span> Explain modules as an existential type quantification</h2>
-<div class="outline-text-2" id="text-orgaea1e40">
+<div id="outline-container-orgd3d20ab" class="outline-2">
+<h2 id="orgd3d20ab">A Measure of Satisfaction</h2>
+<div class="outline-text-2" id="text-orgd3d20ab">
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="macqueen84_modul_ml">[macqueen84_modul_ml]</a> <a name="macqueen84_modul_ml"></a>David MacQueen, Modules for standard ML, nil, in in: Proceedings of the 1984 ACM Symposium on LISP and functional
-                  programming - LFP '84, edited by (1984)</li>
-<li><a id="Burstall:1977:PTT:1622943.1623045">[Burstall:1977:PTT:1622943.1623045]</a> <a name="Burstall:1977:PTT:1622943.1623045"></a>Burstall & Goguen, Putting Theories Together to Make Specifications, 1045-1058, in in: Proceedings of the 5th International Joint Conference on
-                  Artificial Intelligence - Volume 2, edited by Morgan Kaufmann Publishers Inc. (1977)</li>
-<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
-  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
-  author =       John C. Reynolds,
-  booktitle =    Lecture Notes in Computer Science,
-  doi =          10.1007/3-540-06859-7_148,
-  pages =        408-425,
-  publisher =    Springer Berlin Heidelberg,
-  series =       Lecture Notes in Computer Science,
-  title =        Towards a theory of type structure,
-  url =          https://doi.org/10.1007/3-540-06859-7_148,
-  year =         1974,
-</li>
+In order to finish work towards our incompletable goal, it is necessary that
+we understand how the work can satisfy some aspect of our aim. But it is not
+required that the work complete the project, nor even that the work be complete
+in its own narrow range. <i>Completion is not required for useful work!</i> But
+<b>finish</b> is critical. Without <i>finishing work</i>, even a solid, well conceived
+structure can be virtually useless.
+</p>
+
+<p>
+In order to contribute useful work towards the aim of realizing a kind and
+nurturing way of being together, it is vital that we learn how to measure out
+portions of what must be done and delimit those chunks with a finish. In the
+context of IT, the finish generally pertains to the <i>interface</i> (the API and
+UI). Generalizing the other way, the finish can be seen as interface between
+ongoing work and whatever is left incomplete.
+</p>
+
+<p>
+I need to explore this line of thinking further, but I must bring these notes to
+close at this point, because they are an exercise in finishing.
+</p>
+
+<p>
+Further work to be done:
+</p>
+
+<ul class="org-ul">
+<li>explore the principles for this kind of &ldquo;measuring out&rdquo;</li>
+<li>explore the concept of embedding immanent critiques in work to protect against
+the malicious use of power</li>
+<li>elaborate a theory of the (or an understanding of the module as theory)
+that helps explain how these units of finished work can form larger
+composites, and thus build towards the goal. Cf. <a href="programming/the-measure-of-a-module.html">The Measure of a Module</a>.</li>
 </ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+I took these notes in order to analyze and exorcise blockages in my
+own workflow. However, they are written from an intersubjective view point to
+help counter the idiotic tendencies of self-obsessed naval gazing.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+However many you have left, they are infinitesimally few relative
+to the scope of this mission.
 </p>
+
+<p class="footpara">
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+&ldquo;must&rdquo; here expressing a practical necessity.
+</p></div></div>
+
+
 </div>
-</div>
-</div>
+</div></div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-10-09 Wed 03:59. <br>
+Last updated 2019-10-10 Thu 18:47. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
