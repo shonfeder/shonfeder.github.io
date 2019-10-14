@@ -7,7 +7,7 @@
 <!-- 2019-10-14 Mon 00:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>Day 21: Documentation and Tests (+ My Hope)</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,29 +257,109 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
+<h1 class="title">Day 21: Documentation and Tests (+ My Hope)</h1>
+<blockquote>
+<p>
+I came to theory because I was hurting—the pain within me was so intense that I
+could not go on living. I came to theory desperate, wanting to comprehend—to
+grasp what was happening around and within me. Most importantly, I wanted to
+make the hurt go away. I saw in theory then a location for healing.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#hooks94_teach">hooks94_teach</a>, 59)
+</p>
+</blockquote>
+
+<p>
+Here&rsquo;s a shot at articulating my greatest hope for what I might contribute to
+before I die: to work towards ways of mediating the tension between <i>poetic
+origination</i> and <i>technical formation</i> in service of a communitarian
+emancipation of our <i>existential thrown and givenness</i>. This needs
+dejargonification (or rejargonification balanced by a reciprocal poeticization),
+but it points in the direction I want to go.
+</p>
+
+<p>
+A mediating way is still a far off goal for me. The best I am usually able to
+muster is a vacillation. For the last few days, as a compensation for last
+week&rsquo;s swerve into Critical Theory, I&rsquo;ve had my head locked into seemingly
+soulless technical tasks. It&rsquo;s been a lovely <a href="https://en.wiktionary.org/wiki/lotophagous#English">lotophagous</a> diversion.
+</p>
+
+<p>
+Meanwhile, I&rsquo;ve been sticking evocative excerpts atop my posts as sign posts to
+remind me of where I am to turn back towards. Around midweek, I hope revisit
+these snippets and thread themtogether with associations that seem relevant at
+that time.
+</p>
+
+<p>
+This weekend was devoted to quality time with the S.O. and hacking on [These]
+and its dependencies.
+</p>
+
+<div id="outline-container-orgcb5d95c" class="outline-2">
+<h2 id="orgcb5d95c">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgcb5d95c">
+</div>
+<div id="outline-container-orge7abaee" class="outline-3">
+<h3 id="orge7abaee">PLT</h3>
+<div class="outline-text-3" id="text-orge7abaee">
 <ul class="org-ul">
-<li><a href="day-21.html">Day 21: Documentation and Tests (+ My Hope)</a> &#x2014; 2019-10-13</li>
-<li><a href="day-20.html">Day 20: This, That, and These</a> &#x2014; 2019-10-12</li>
-<li><a href="day-19.html">Day 19:</a> &#x2014; 2019-10-11</li>
-<li><a href="day-18.html">Day 18: Incomplete and Incommunicado</a> &#x2014; 2019-10-10</li>
-<li><a href="day-16.html">Day 16: The Command to Control Praxis</a> &#x2014; 2019-10-08</li>
-<li><a href="day-15.html">Day 15: Procedural Generation of Nested Places</a> &#x2014; 2019-10-07</li>
-<li><a href="day-14.html">Day 14: Weekend Whoops</a> &#x2014; 2019-10-06</li>
-<li><a href="day-13.html">Day 13: Weekend 2.2</a> &#x2014; 2019-10-05</li>
-<li><a href="day-12.html">Day 12: Weekend 2.1</a> &#x2014; 2019-10-04</li>
-<li><a href="day-11.html">Day 11: Enframing</a> &#x2014; 2019-10-03</li>
-<li><a href="day-10.html">Day 10: Checking</a> &#x2014; 2019-10-02</li>
-<li><a href="day-9.html">Day 9: Capturing the Notion of Parametricity</a> &#x2014; 2019-10-01</li>
-<li><a href="day-8.html">Day 8: Unsure</a> &#x2014; 2019-09-30</li>
-<li><a href="day-7.html">Day 7: Weekend 1.2</a> &#x2014; 2019-09-29</li>
-<li><a href="day-6.html">Day 6: Weekend 1.1</a> &#x2014; 2019-09-28</li>
-<li><a href="day-5.html">Day 5: Abstraction</a> &#x2014; 2019-09-27</li>
-<li><a href="day-4.html">Day 4: Exhaustion</a> &#x2014; 2019-09-26</li>
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
+<li>Began documenting [These] and writing out property based tests. I have about
+%50 coverage on both fronts.</li>
+<li>Set up the test suite for the [Alg] library, which provides OCaml signatures and
+implementations for the most pervasive algebraic structures used in Haskell&rsquo;s
+typeclassed world. [These] depends on [Alg], so I&rsquo;ll actually need to finish
+testing, documenting, and packaging this up as a prerequisite to completing
+[These].</li>
 </ul>
+</div>
+</div>
+<div id="outline-container-org6ac123f" class="outline-3">
+<h3 id="org6ac123f">Writing</h3>
+<div class="outline-text-3" id="text-org6ac123f">
+<p>
+I didn&rsquo;t make any time to think on write on the topics I&rsquo;d hoped to. I&rsquo;ll put
+this on hold until I wrap up the work on packaging and documenting [These] and
+[Alg].
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org825e152" class="outline-2">
+<h2 id="org825e152">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org825e152">
+</div>
+<div id="outline-container-org452a0c7" class="outline-3">
+<h3 id="org452a0c7">PLT</h3>
+<div class="outline-text-3" id="text-org452a0c7">
+<ul class="org-ul">
+<li>Write a library of [qCheck] generators for all the algebraic structures
+defined in [Alg].</li>
+<li>Implement property based tests for all the structures in [Alg] ensuring that
+they respect the &ldquo;laws&rdquo; dictated in the Haskell documentation.</li>
+<li>Setup remote gitlab repos for both [Alg] and [These]</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org860a083" class="outline-3">
+<h3 id="org860a083">Community</h3>
+<div class="outline-text-3" id="text-org860a083">
+<ul class="org-ul">
+<li>Get advice on packaging from more experienced OCamlers at RC.</li>
+</ul>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="hooks94_teach">[hooks94_teach]</a> <a name="hooks94_teach"></a>hooks, Teaching to transgress : education as the practice of freedom, Routledge (1994).</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
