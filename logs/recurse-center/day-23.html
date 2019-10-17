@@ -7,7 +7,7 @@
 <!-- 2019-10-17 Thu 00:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Recurse Center Logs</title>
+<title>Day 23: Fuzzy</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,36 +257,157 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Recurse Center Logs</h1>
+<h1 class="title">Day 23: Fuzzy</h1>
+<p>
+Feeling fuzzy today. Posting any how, just to keep up the ritual.
+</p>
+
+<div id="outline-container-org2ef82de" class="outline-2">
+<h2 id="org2ef82de">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org2ef82de">
+</div>
+<div id="outline-container-org6a6e68d" class="outline-3">
+<h3 id="org6a6e68d">Community</h3>
+<div class="outline-text-3" id="text-org6a6e68d">
 <ul class="org-ul">
-<li><a href="day-24.html">Day 24</a> &#x2014; 2019-10-17</li>
-<li><a href="day-23.html">Day 23: Fuzzy</a> &#x2014; 2019-10-15</li>
-<li><a href="day-21.html">Day 21: Documentation and Tests (+ My Hope)</a> &#x2014; 2019-10-13</li>
-<li><a href="day-20.html">Day 20: This, That, and These</a> &#x2014; 2019-10-12</li>
-<li><a href="day-19.html">Day 19:</a> &#x2014; 2019-10-11</li>
-<li><a href="day-18.html">Day 18: Incomplete and Incommunicado</a> &#x2014; 2019-10-10</li>
-<li><a href="day-16.html">Day 16: The Command to Control Praxis</a> &#x2014; 2019-10-08</li>
-<li><a href="day-15.html">Day 15: Procedural Generation of Nested Places</a> &#x2014; 2019-10-07</li>
-<li><a href="day-14.html">Day 14: Weekend Whoops</a> &#x2014; 2019-10-06</li>
-<li><a href="day-13.html">Day 13: Weekend 2.2</a> &#x2014; 2019-10-05</li>
-<li><a href="day-12.html">Day 12: Weekend 2.1</a> &#x2014; 2019-10-04</li>
-<li><a href="day-11.html">Day 11: Enframing</a> &#x2014; 2019-10-03</li>
-<li><a href="day-10.html">Day 10: Checking</a> &#x2014; 2019-10-02</li>
-<li><a href="day-9.html">Day 9: Capturing the Notion of Parametricity</a> &#x2014; 2019-10-01</li>
-<li><a href="day-8.html">Day 8: Unsure</a> &#x2014; 2019-09-30</li>
-<li><a href="day-7.html">Day 7: Weekend 1.2</a> &#x2014; 2019-09-29</li>
-<li><a href="day-6.html">Day 6: Weekend 1.1</a> &#x2014; 2019-09-28</li>
-<li><a href="day-5.html">Day 5: Abstraction</a> &#x2014; 2019-09-27</li>
-<li><a href="day-4.html">Day 4: Exhaustion</a> &#x2014; 2019-09-26</li>
-<li><a href="day-3.html">Day 3: Focusing</a> &#x2014; 2019-09-25</li>
-<li><a href="day-2.html">Day 2: Disorientation</a> &#x2014; 2019-09-24</li>
-<li><a href="day-1.html">Day 1: Orientation</a> &#x2014; 2019-09-23</li>
+<li>Nice coffee chat, discussed community and music making.</li>
+<li>Delightful and thought provoking non-technical talks.</li>
 </ul>
+</div>
+</div>
+<div id="outline-container-orga3b9585" class="outline-3">
+<h3 id="orga3b9585">PLT</h3>
+<div class="outline-text-3" id="text-orga3b9585">
+<p>
+More time documenting and testing <code>Alg</code>. It&rsquo;s been a quite involved process. A
+lot of the time has been devoted to developing a nice abstraction for the
+testing harness, which will hopefully expedite completion on the rest of the
+library.
+</p>
+
+<p>
+I&rsquo;ve made two decisions in the implementation that I&rsquo;m fairly pleased with for
+the moment.
+</p>
+
+<p>
+First, each specification of an algebraic structure includes a module called
+<code>Law</code> that defines predicates expressing the laws that should hold for
+implementations of that structure. E.g., here is the signature for the <code>Law</code>
+module for <code>Functor</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #83898d;">(** [Law] notes the laws that should be obeyed by any instantiation of</span></code>
+<code><span style="color: #83898d;">    {{!module-type:S} Functor} in the form of predicates that should be true</span></code>
+<code><span style="color: #83898d;">    for any arguments of the appropriate type.</span></code>
+<code></code>
+<code><span style="color: #83898d;">    You can use {!module:Alg_qcheck.Functor} to generate property based tests of</span></code>
+<code><span style="color: #83898d;">    these laws for new modules satisfying this interface.</span></code>
+<code></code>
+<code><span style="color: #83898d;">    @param F An implementation of a {{!module-type: S} Functor} *)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Law</span> <span style="color: #dcaeea;">(F :</span><span style="color: #ECBE7B;"> S</span><span style="color: #dcaeea;">) </span><span style="color: #83898d;">(** *)</span> : <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
+<code></code>
+<code>  <span style="color: #83898d;">(** [identity x]: [F.map ~f:Fun.id x = Fun.id x] *)</span></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">identity</span> : 'a <span style="color: #ECBE7B;">F.</span>t -&gt; bool</code>
+<code></code>
+<code>  <span style="color: #83898d;">(** [composition f g x]: [F.map ~f:(f % g) x = (F.map ~f % F.map ~f:g) x]</span></code>
+<code></code>
+<code><span style="color: #83898d;">      where [%] is composition. *)</span></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">composition</span> : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c <span style="color: #ECBE7B;">F.</span>t -&gt; bool</code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+</pre>
+</div>
+
+<p>
+This is generating decent documentation that is quite tightly coupled with the
+code. It also gives the user predicates they can use for testing their
+implementations in <i>ad hoc</i> ways.
+</p>
+
+<p>
+Second, I have been building out an auxiliary library <code>Alg_qcheck</code> that
+generates <code>QCheck</code> property based tests of all a structure&rsquo;s laws.
+</p>
+
+<p>
+Here is what it looks like when using the library to generate tests for some
+implementations of <code>Functor</code> (note that the user has to supply a module that
+includes the functor implementation together with a way of getting an arbitrary
+value of that functor):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">functor_laws</span> =</code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">open </span><span style="color: #ECBE7B;">Alg_qcheck.Functor</span> <span style="color: #f5deb3; font-weight: bold;">in</span></code>
+<code>  [</code>
+<code>    suite <span style="color: #98be65;">"Functor Laws for Option"</span></code>
+<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Option</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = option</code>
+<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code></code>
+<code>    suite <span style="color: #98be65;">"Functor Laws for List"</span></code>
+<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.List</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = list</code>
+<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code></code>
+<code>    suite <span style="color: #98be65;">"Functor Laws for Array"</span></code>
+<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Array</span></code>
+<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = array</code>
+<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code>  ]</code>
+</pre>
+</div>
+
+<p>
+And the output of the tests:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-console"><code>[OK]                Functor Laws for Option              0   Functor: Identity - [map id = id] for int.</code>
+<code>[OK]                Functor Laws for Option              1   Functor: Identity - [map id = id] for int list.</code>
+<code>[OK]                Functor Laws for Option              2   Functor: Composition - [map (f . g) = (map f) . (map g)] for int.</code>
+<code>[OK]                Functor Laws for Option              3   Functor: Composition - [map (f . g) = (map f) . (map g)] for int list.</code>
+<code>[OK]                Functor Laws for List                0   Functor: Identity - [map id = id] for int.</code>
+<code>[OK]                Functor Laws for List                1   Functor: Identity - [map id = id] for int list.</code>
+<code>[OK]                Functor Laws for List                2   Functor: Composition - [map (f . g) = (map f) . (map g)] for int.</code>
+<code>[OK]                Functor Laws for List                3   Functor: Composition - [map (f . g) = (map f) . (map g)] for int list.</code>
+<code>[OK]                Functor Laws for Array               0   Functor: Identity - [map id = id] for int.</code>
+<code>[OK]                Functor Laws for Array               1   Functor: Identity - [map id = id] for int list.</code>
+<code>[OK]                Functor Laws for Array               2   Functor: Composition - [map (f . g) = (map f) . (map g)] for int.</code>
+<code>[OK]                Functor Laws for Array               3   Functor: Composition - [map (f . g) = (map f) . (map g)] for int list.</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4a8971b" class="outline-2">
+<h2 id="org4a8971b">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org4a8971b">
+</div>
+<div id="outline-container-org3ca00e1" class="outline-3">
+<h3 id="org3ca00e1">PLT</h3>
+<div class="outline-text-3" id="text-org3ca00e1">
+<p>
+Finish up documenting and testing [Alg], hopefully open a PR to publish the
+package in the <code>opam</code> repository.
+</p>
+
+<p>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-10-17 Thu 00:51. <br>
+Last updated 2019-10-15 Tue 22:55. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
