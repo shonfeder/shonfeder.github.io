@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-10-18 Fri 13:19 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day 25: Other Structures In Other Words</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="um" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Day 25: Other Structures In Other Words</h1>
+<blockquote>
+<p>
+Interviewer: Could you give us a broad justification of why category theory may
+be so useful?
+</p>
+
+<p>
+William Lawvere: Everyday human activities such as building a house on a hill by
+a stream, laying a network of telephone conduits, navigating the solar system,
+require plans that can work. Planning any such undertaking requires the
+development of thinking about space. Each development involves many steps of
+thought and many related geometrical constructions on spaces. Because of the
+necessary multistep nature of thinking about space, uniquely mathematical
+measures must be taken to make it reliable. Only explicit principles of thinking
+(logic) and explicit principles of of space (geometry) can guarantee
+reliability. The great advance made by the theory [of categories] invented 60
+years ago by Eilenberg and Mac Lane permitted making the principles of logic and
+geometry explicit; this was accomplished by discovering the common form of logic
+and geometry so that the principles of the relation between the two are also
+explicit. They solved a problem opened 2300 years earlier by Aristotle with his
+initial inroads into making explicit the Categories of Concepts. In the 21st
+century, their solution is applicable not only to plane geometry and to medieval
+syllogisms, but also to infinite-dimensional spaces of transformations, to
+&ldquo;spaces&rdquo; of data, and to other conceptual tools that are applied thousands of
+times a day. The form of the principles of both logic and geometry was
+discovered by categorists to rest on &ldquo;naturality&rdquo; of the transformations between
+spaces and transformations within thought.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#picado2007interview">picado2007interview</a>)
+</p>
+</blockquote>
+
+<div id="outline-container-org3b0bf3a" class="outline-2">
+<h2 id="org3b0bf3a">Naming Problems</h2>
+<div class="outline-text-2" id="text-org3b0bf3a">
+<p>
+I have been working on an OCaml library for representing computationally useful
+<a href="https://en.wikipedia.org/wiki/Algebraic_structure">algebraic structures</a> as composable modules.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> The library
+involves lots of module-level programming and is modeled after Haskell&rsquo;s
+representation of such structures in its typeclasses. The techniques I&rsquo;m using
+for representing these structures in OCaml modules have been demonstrated and
+developed by numerous people already, and I am borrowing from (and referencing)
+their work. My only contribution is in taking the time to go through the tree of
+Haskell typeclasses and leverage those techniques to port the structures into a
+documented, tested, and packaged OCaml library.
+</p>
+
+<p>
+Up to this point, I have implemented a non-trivial core of common structures and
+I have been making use of these in my OCaml port of <a href="https://github.com/shonfeder/these"><code>These</code></a>. I am currently
+doing the <a href="../../themata/finishing-the-incomplete.html">finishing work</a> required to prepare the library for publication.
+</p>
+
+<p>
+The provisional name for this library has been <code>Alg</code>, short for &ldquo;algebra&rdquo;, short
+for &ldquo;algebraic structure&rdquo;. However, a fruitful discussion with a seasoned OCaml
+contributor convinced me that I should be mindful of the price of realestate in
+the opam package repository namespace. <i>Alg</i> is a pretty pricey string: it is
+brief, early in the alphabet, and evocative enough it might be used for a dozen
+other things. In contrast, the library I have been developing is quite
+experimental<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> and my initial implementation is likely to be
+utterly imperfect<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>. It doesn&rsquo;t seem fitting that I should colonize
+such a precious plot of signs. So I&rsquo;ve been hunting for a more suitable name.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge5121c4" class="outline-2">
+<h2 id="orge5121c4">&ldquo;What&rsquo;s in a name?&rdquo;</h2>
+<div class="outline-text-2" id="text-orge5121c4">
+<p>
+Why does the name matter? Why not just pick some clunky, explicit phrase like
+<code>experimental_algebraic_structures</code>, or a cute, vaguely meaningful portmanteau
+like <code>meowlgebra</code>?
+</p>
+
+<p>
+The cliched rhetorical question &ldquo;What&rsquo;s in a name?&rdquo; is usually taken to
+denigrate names, but it is drawn from <a href="https://en.wikipedia.org/wiki/A_rose_by_any_other_name_would_smell_as_sweet">this famous passage in <i>Romeo and Juliet</i></a>:
+</p>
+
+<blockquote>
+<p>
+<b>Juliet:</b>
+</p>
+
+<p>
+O Romeo, Romeo! wherefore art thou Romeo? Deny thy father and refuse thy name;
+Or, if thou wilt not, be but sworn my love, And I&rsquo;ll no longer be a Capulet
+</p>
+
+<p>
+<b>Romeo:</b>
+</p>
+
+<p>
+[Aside] Shall I hear more, or shall I speak at this?
+</p>
+
+<p>
+<b>Juliet:</b>
+</p>
+
+<p>
+&rsquo;Tis but thy name that is my enemy; Thou art thyself, though not a Montague.
+What&rsquo;s Montague? It is nor hand, nor foot, Nor arm, nor face, nor any other part
+Belonging to a man. O, be some other name! What&rsquo;s in a name? That which we call
+a rose By any other name would smell as sweet; So Romeo would, were he not Romeo
+call&rsquo;d, Retain that dear perfection which he owes Without that title. Romeo,
+doff thy name, And for that name which is no part of thee Take all myself.
+</p>
+
+<p>
+<b>Romeo:</b>
+</p>
+
+<p>
+I take thee at thy word: Call me but love, and I&rsquo;ll be new baptized; Henceforth
+I never will be Romeo.
+</p>
+</blockquote>
+
+<p>
+This passage does not demonstrate the insignificance of names. On the contrary,
+it presents a scenario in which names are of decisive importance. Romeo&rsquo;s name
+marks him as an enemy because &rsquo;Mantague&rsquo; brands him as a foe of the Capulets.
+The famous line, &ldquo;That which we call a rose/By any other name would smell as
+sweet;&rdquo; clearly claims that the sense properties of objects are not affected by
+their names (tho I suspect in a world where roses were called &ldquo;shit-blossoms&rdquo;,
+they might smell a bit like doo doo). However, the whole exchange revolves
+around the fact that appelations reflect and help actualize important structures
+in reality.
+</p>
+
+<p>
+Names work to reinforce social orders and designate belonging, which is why
+Juliet conjoins &ldquo;Deny thy father&rdquo; with &ldquo;refuse they name&rdquo; as if they these acts
+where inseparable. While names are not essential properties of people (or most
+other things) (&ldquo;that name which is no part of thee&rdquo;), they nonetheless bind
+beings into relationships that form structures with a very real being of their
+own. Romeo and Juliet&rsquo;s rebelion against their families&rsquo; feud presents a claim
+for the independent value of freely chosen, dyadic, romantic relations. It even
+asserts the superior value of this personal dyadic structure over the structures
+of familial and political affiliation into which we are thrown in being born.
+According to Juliet, the person can be extricated from the bondage to their
+inherited enmity, emancipated from the <a href="https://en.wikipedia.org/wiki/Fasces">fascistic</a> structure of their family (or
+nation), because the tribe is not a part of the person:
+</p>
+
+<pre class="example">
+<code>'Tis but thy name that is my enemy; Thou art thyself, though not a Montague.</code>
+<code>What's Montague? It is nor hand, nor foot, Nor arm, nor face, nor any other part</code>
+<code>Belonging to a man.</code>
+</pre>
+
+<p>
+Yet the name <b>is</b> a part of those fascistic structures, which is why it seems
+one pays for such emancipation by forsaking one&rsquo;s given name &#x2013; &ldquo;O, be some
+other name!&rdquo; &#x2013; and being reborn through renaming &ldquo;Call me but love, and I&rsquo;ll be
+new baptized;/ Henceforth I never will be Romeo.&rdquo;
+</p>
+
+<p>
+Thought moves through language<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup> and finds its ways through systems
+of signs<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup>. These systems suggest certain possibilities and
+foreclose others. Since the significance of names comes from their situation
+within networks of differentiation, naming enacts a positioning of the named
+thing in a space of proximate thoughts.
+</p>
+
+<p>
+What is in a name? A passage from the named thing to a situation in a network of
+associated thoughts and recollections which bind beings into objective,
+intersubjective, and purely subjective structures of possibility.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2b5ca3a" class="outline-2">
+<h2 id="org2b5ca3a">Giving Names is Making Metaphor</h2>
+<div class="outline-text-2" id="text-org2b5ca3a">
+<p>
+To name a newborn (person, thing, or thought) is almost always to give it the
+name of something else. Initially, no thing or person can name itself. As a
+rule, a precondition of a name coming to belong to something (&ldquo;my name&rdquo;, &ldquo;your
+name&rdquo;, &ldquo;its name&rdquo;) is that someone first &ldquo;names it after&rdquo; some other thing(s).
+According to Aristotle in the <i>Poetics</i>, this is the very definition of
+metaphor : “Metaphor consists in giving the thing a name that belongs to
+something else” (1457b). Aristotle states quite explicitly that making metaphor
+sets the named thing in relation to that after which it is named, and, moreover,
+that it is an art that cannot be taught:
+</p>
+
+<pre class="example">
+<code>the greatest thing by far is to be a master of metaphor. It is the one thing</code>
+<code>that cannot be learnt from others; and it is also a sign of genius, since a good</code>
+<code>metaphor implies an intuitive perception of the similarity in dissimilars</code>
+<code></code>
+<code>(cite:aristotle84_arist, 1459a)</code>
+</pre>
+
+<p>
+I&rsquo;ll postulate here that to recognize &ldquo;similarity in dissimilars&rdquo;, can only be
+achieved through identification of structural correspondence<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>. To
+bestow upon <i>A</i> a name that belongs to <i>B</i> is to establish a way for thought.
+This way has the potential to &ldquo;<a href="https://www.etymonline.com/search?q=metaphor">carry thought across</a>&rdquo; from consideration of the
+singular being of <i>A</i> to the being of <i>B</i> (or broadly to all those things which
+bear the name). This brings thoughts of <i>A</i> into the same constellations that
+we&rsquo;ve formed for the circulation of our thoughts of <i>B</i>. Naming is thus a speech
+act which transforms the topology of being, insofar as the connectedness of
+beings is mutually determined with the connectedness of thoughts.
+</p>
+
+<p>
+When we <i>misname</i> a thing, we misplace it into the complex of structures that
+contribute to the determination of being. This can effect a deformation of the
+orders of being and impose real ruptures in the proper connectedness of things
+(at least insofar as intersubjectivity contributes to the constitution of
+reality). Making bad metaphor miscarries thought, since it actualizes relations
+between thoughts that are &ldquo;unnatural&rdquo;, in the sense that they disrupt the
+coorelation of &ldquo;transformations between spaces and transformations within
+thought&rdquo;.
+</p>
+
+<p>
+I don&rsquo;t know if this yields any insight for the reader (or for myself), but it
+at least presents one account of why naming <i>well</i> is hard and why it matters.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c64d07" class="outline-2">
+<h2 id="org2c64d07">Making the Name from the Connections</h2>
+<div class="outline-text-2" id="text-org2c64d07">
+<p>
+This ramble records traces of the many sources I&rsquo;ve dipped into as I&rsquo;ve worked
+to discover a suitable name for the nascent library. My reading took me through
+Haskell docs, Wikipedia articles, articles by and about William Lawvere,
+articles by and about Hermann Grassmann, old writings from my unfinished thesis,
+(where I found the Aristotle excerpted above), numerous dictionaries, and I even
+followed a cliche to Shakespear&rsquo;s most overrated play. I have managed to
+convince myself that naming matters: I believe that the metaphorizing nature of
+name-bestowal, and the situatedness it determines, places the practice of naming
+as one poetic analog of the formal techniques pursued and developed in category
+theory. The common concern is to discover (and improve) the &ldquo;naturalness&rdquo; that
+allows transformations of being (spaces) and transformations of thought to align
+in accordance with a <a href="https://en.wikipedia.org/wiki/Pre-established_harmony">harmony</a> (which we may hope for as eventual rather than
+posit as pre-established).
+</p>
+
+<p>
+But, did this wandering way help me come up with a suitable name? Yes! Just a
+moment ago &#x2013; as I was laughing at myself for how much time I spent digging
+around in marginalia and stringing together arguably frivolous connections, only
+to turn up empty handed &#x2013; my thoughts wound around in a way that resemble this
+sequence:
+</p>
+
+<blockquote>
+<p>
+Well, what have I learned through my reading and writing today?
+</p>
+
+<p>
+A name should help situate the named thing in it&rsquo;s proper relations. In the act
+of naming we help establish order in the structures of thought, in the hopes
+that they reflect and can <b>effect</b> the structures of being in ways that we deem
+to be good and natural. So, think on what this library properly is, how it
+works, and what it does. What names can we give to it (names which must first
+belong to other things) that will help guide it into connection with the things
+among which it belongs?
+</p>
+</blockquote>
+
+<p>
+I let my attention float over some source code and then &#x2013; eureka &#x2013; inspiration
+struck! I present to you <a href="https://github.com/shonfeder/alg_structs"><code>alg_structs</code></a>
+</p>
+
+<pre class="example">
+<code></code>
+</pre>
+
+<p>
+At first glance, this name appears stupidly obvious: It&rsquo;s just an abbreviation
+for &ldquo;algebraic structures&rdquo;! I noted that <code>Alg</code> was an abbreviation for this
+phrase way back &#x2013; hours of writing and studying ago &#x2013; in paragraph one.
+</p>
+
+<p>
+On further consideration, you&rsquo;ll probably realize that it is not only stupidly
+obvious and overly literal, it is also longish and ugly sounding. It doesn&rsquo;t
+even look pretty.
+</p>
+
+<p>
+However, you may not have noticed that it is also a <i>pun</i>! :P
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb77f725" class="outline-2">
+<h2 id="orgb77f725">Modules, Sigs, and Structs, and Algebraic Theories</h2>
+<div class="outline-text-2" id="text-orgb77f725">
+<p>
+In OCaml, a <code>module</code> is specified by a <code>sig</code> and implemented as a <code>struct</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Some_module</span> : <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
+<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value specifications... </span><span style="color: #5B6268;">*)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span> = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value bindings... </span><span style="color: #5B6268;">*)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+</pre>
+</div>
+
+<p>
+This is all in accord with the ML module system that was developed in the early
+80s. The spirit of the ML module system traces back to an effort to &ldquo;give
+structured descriptions of theories&rdquo;, and the theories that are to be described
+are &ldquo;algebraic theories&rdquo; as developed by Lawvere.
+</p>
+
+<p>
+In &ldquo;Modules for Standard ML&rdquo;, which proposes all of the most important aspects
+of ML modules, David McQueen wrote:
+</p>
+
+<blockquote>
+<p>
+This proposal is based on the fruits of a long collaboration with Rod Burstall
+on prototype designs for modules in Hope [MAC81], and on theoretical
+investigations with Ravi Sethi and Gordon Plotkin [MAC82, MAC84] that were
+motivated by those designs. The module designs for Hope were in turn influenced
+by the Clear specification language of Burstall and Goguen [BUR77].
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>)
+</p>
+</blockquote>
+
+<p>
+&ldquo;[BUR77]&rdquo; refers to Burstall and Goguen&rsquo;s paper &ldquo;Putting theories together to
+make specifications.&rdquo; The first line reads:
+</p>
+
+<blockquote>
+<p>
+We have been developing a language in which you can give structured
+descriptions of theories.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>)
+</p>
+</blockquote>
+
+<p>
+Under the section &ldquo;What we mean by a theory&rdquo;, they explain
+</p>
+
+<blockquote>
+<p>
+The notion of theory is a loose intuitive one in mathematics. There should be
+axioms, rules of inference and theorems, but the language in which they are
+expressed is open to choice. &#x2026; We have chosen an algebraic notion of theory,
+due to Lawvere (1963) [references his 1963 thesis <i>Functorial Semantics Of Algebraic
+Theories</i> (<a class='org-ref-reference' href="#lawvere63_funct_seman_algeb_theor">lawvere63_funct_seman_algeb_theor</a>)] &#x2026;
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>, 1047)
+</p>
+</blockquote>
+
+<p>
+Later they give their definition of a theory and an algebra:
+</p>
+
+<blockquote>
+<p>
+A <span class="underline">theory</span> is a signature together with a set of equations closed under
+inference by reflexivity, transitivity and symmetry of equality and by
+substitution.
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+The interpretations of a theory are algebras, where an algebra is a collection
+of sets, one for each sort, with a function over these sets assigned to each
+operator of the theory.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>, 1048)
+</p>
+</blockquote>
+
+<p>
+OCaml modules are faithful to this design.
+</p>
+
+<p>
+The <code>sig</code> specifies the signature, which Burstall and Goguen define as &ldquo;a set of
+sort names and a set of operator symbols, each with a given sequence of sorts
+for its arguments and sequence of sorts for its results (1047)&rdquo;. This is
+precisely what ML signatures specify, tho we now say <i>type</i> where they said
+<i>sort</i>.
+</p>
+
+<p>
+The <code>struct</code> provides the set of equations. The reflexivity, transitivity and
+symmetry of equations is taken care of by the typed lambda calculus.
+</p>
+
+<p>
+I intend to explore the concepts and implications of these connections at
+length, and have begun gathering notes in <a href="../../themata/programming/the-measure-of-a-module.html">The Measure of a Module</a>. For now, I&rsquo;ll
+leave it at this: <code>alg_structs</code> aims to provide a library of computationally
+interesting algebraic structures. It represents these structures as modules
+implemented via <code>structs</code> and specified via <code>sigs</code>. The roots of the ML module
+system trace back to an effort to specify programs via algebraic theories. This
+traces out a little lopsided (perhaps spiralling?) circle, and I think that&rsquo;s a
+good sign: the punning in the name reflects the nesting of similar structures,
+and I&rsquo;m comfortable with taking that as proxy for naturalness.
+</p>
+
+<p>
+Finally, the name is fitting since the preponderance of <code>structs</code> needed to
+specify relatively simple algebraic structures is gonna have users exclaiming
+&ldquo;ALl these God damn STRUCTS?!&rdquo; Here&rsquo;s an example of an implementation of
+semigroup for <code>Option</code> types:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Option</span> = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #dcaeea;">(S :</span><span style="color: #ECBE7B;"> S</span><span style="color: #dcaeea;">) </span>: <span style="color: #ECBE7B;">S</span> <span style="color: #f5deb3; font-weight: bold;">with type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Seed</span> = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>      <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t</code>
+<code>      <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">op</span> <span style="color: #dcaeea;">a</span> <span style="color: #dcaeea;">b</span> =</code>
+<code>        <span style="color: #51afef;">match</span> a  , b <span style="color: #51afef;">with</span></code>
+<code>        | <span style="color: #bbc2cf; background-color: #21242b;">None</span>   , b      -&gt; b</code>
+<code>        | a      , <span style="color: #bbc2cf; background-color: #21242b;">None</span>   -&gt; a</code>
+<code>        | <span style="color: #bbc2cf; background-color: #21242b;">Some</span> a , <span style="color: #bbc2cf; background-color: #21242b;">Some</span> b -&gt; <span style="color: #bbc2cf; background-color: #21242b;">Some</span> (<span style="color: #ECBE7B;">S.</span>op a b)</code>
+<code>    <span style="color: #f5deb3; font-weight: bold;">end</span></code>
+<code></code>
+<code>    <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Make (Seed)</span></code>
+<code>  <span style="color: #f5deb3; font-weight: bold;">end</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+</pre>
+</div>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="picado2007interview">[picado2007interview]</a> <a name="picado2007interview"></a>Picado, An interview with F. William Lawvere, <i>Bulletin of International Center for Mathematics</i>, <b>12</b>, 23-27 (2007).</li>
+<li><a id="macqueen84_modul_ml">[macqueen84_modul_ml]</a> <a name="macqueen84_modul_ml"></a>David MacQueen, Modules for standard ML, nil, in in: Proceedings of the 1984 ACM Symposium on LISP and functional
+                  programming - LFP '84, edited by (1984)</li>
+<li><a id="Burstall:1977:PTT:1622943.1623045">[Burstall:1977:PTT:1622943.1623045]</a> <a name="Burstall:1977:PTT:1622943.1623045"></a>Burstall & Goguen, Putting Theories Together to Make Specifications, 1045-1058, in in: Proceedings of the 5th International Joint Conference on
+                  Artificial Intelligence - Volume 2, edited by Morgan Kaufmann Publishers Inc. (1977)</li>
+<li><a id="lawvere63_funct_seman_algeb_theor">[lawvere63_funct_seman_algeb_theor]</a> <a name="lawvere63_funct_seman_algeb_theor"></a>Lawvere, Functorial Semantics of Algebraic Theories, <i>Proceedings of the National Academy of Sciences</i>, <b>50(5)</b>, 869-872 (1963). <a href="https://doi.org/10.1073/pnas.50.5.869">link</a>. <a href="http://dx.doi.org/10.1073/pnas.50.5.869">doi</a>.</li>
+</ul>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+It is very commun to use <a href="https://en.wikipedia.org/wiki/Monad_(functional_programming)">monadic</a> contructs in idiomatic OCaml
+and applicative functors and monoids show up too, albeit less often. However, I
+have neither encountered or found any published OCaml libraries that provide
+support for structures such as semigroups, traversable/foldable and other more
+exotic or subtle structures.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+afaik, there is not yet any evidence to suggest fine
+grained use of algebraic structures will be as effective in OCaml as it is in
+Hasekll.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+My motivation for building up this library is partially to
+improve my understanding of the algebraic structures which are known to be
+useful for computation.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <div class="footpara"><p class="footpara">
+Which is not to say it doesn&rsquo;t also move through other media.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <div class="footpara"><p class="footpara">
+This is the central precept of semiotics.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <div class="footpara"><p class="footpara">
+One might argue that recognition of the same or similar qualia
+appearing in two different compounds is not predicated on structural
+correspondence. But I would respond that differentiation of discrete qualitative
+unities presupposes a structuring operation that articulates the continuum of
+possible qualities. Of course, this amounts to a rejection of any sort of
+qualitative atomism on my part.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2019-10-18 Fri 13:12. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+</div>
+</div>
+</body>
+</html>

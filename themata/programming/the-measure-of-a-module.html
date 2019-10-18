@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-12 Sat 00:59 -->
+<!-- 2019-10-18 Fri 13:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Measure of a Module</title>
@@ -314,12 +314,28 @@ A property is a parameter, or a notatoinal device for exhibiting a parameter.
 <h3 id="org303a74b">Notes</h3>
 <div class="outline-text-3" id="text-org303a74b">
 <p>
-The spirit of the ML module system, traces back to an effort to &ldquo;give structured
-descriptions of theories&rdquo;.
+In OCaml, a <code>module</code> is specified by a <code>sig</code> and implemented as a <code>struct</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Some_module</span> : <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
+<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value specifications... </span><span style="color: #5B6268;">*)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span> = <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value bindings... </span><span style="color: #5B6268;">*)</span></code>
+<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+</pre>
+</div>
+
+<p>
+This is all in accord with the ML module system that was developed in the early
+80s. The spirit of the ML module system traces back to an effort to &ldquo;give
+structured descriptions of theories&rdquo;, and the theories that are to be described
+are &ldquo;algebraic theories&rdquo; as developed by Lawvere.
 </p>
 
 <p>
-In &ldquo;Modules for Standard ML&rdquo; McQueen writes:
+In &ldquo;Modules for Standard ML&rdquo;, which proposes all of the most important aspects
+of ML modules, David McQueen wrote:
 </p>
 
 <blockquote>
@@ -328,18 +344,17 @@ This proposal is based on the fruits of a long collaboration with Rod Burstall
 on prototype designs for modules in Hope [MAC81], and on theoretical
 investigations with Ravi Sethi and Gordon Plotkin [MAC82, MAC84] that were
 motivated by those designs. The module designs for Hope were in turn influenced
-by the Clear specification language of Burstall and Goguen [BUR77].&rsquo;&rsquo;
+by the Clear specification language of Burstall and Goguen [BUR77].
 </p>
 
 <p>
-<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>
+(<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>)
 </p>
 </blockquote>
 
-
 <p>
-[BUR77] refers to Burstall and Goguen&rsquo;s paper &ldquo;Putting theories together to make
-specifications.&rdquo; The first line reads:
+&ldquo;[BUR77]&rdquo; refers to Burstall and Goguen&rsquo;s paper &ldquo;Putting theories together to
+make specifications.&rdquo; The first line reads:
 </p>
 
 <blockquote>
@@ -349,7 +364,65 @@ descriptions of theories.
 </p>
 
 <p>
-<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>
+(<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>)
+</p>
+</blockquote>
+
+<p>
+Under the section &ldquo;What we mean by a theory&rdquo;, they explain
+</p>
+
+<blockquote>
+<p>
+The notion of theory is a loose intuitive one in mathematics. There should be
+axioms, rules of inference and theorems, but the language in which they are
+expressed is open to choice. &#x2026; We have chosen an algebraic notion of theory,
+due to Lawvere (1963) [references his 1963 thesis <i>Functorial Semantics Of Algebraic
+Theories</i> (<a class='org-ref-reference' href="#lawvere63_funct_seman_algeb_theor">lawvere63_funct_seman_algeb_theor</a>)] &#x2026;
+</p>
+
+<p>
+(1047)
+</p>
+</blockquote>
+
+<p>
+Later they give their definition of a theory and an algebra:
+</p>
+
+<blockquote>
+<p>
+A <span class="underline">theory</span> is a signature together with a set of equations closed under
+inference by reflexivity, transitivity and symmetry of equality and by
+substitution.
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+The interpretations of a theory are algebras, where an algebra is a collection
+of sets, one for each sort, with a function over these sets assigned to each
+operator of the theory.
+</p>
+
+<p>
+(1048)
+</p>
+</blockquote>
+
+<p>
+A central concern in their effort is to ensure that theories can be composed out
+of smaller components:
+</p>
+
+<blockquote>
+<p>
+As soon as [theories] get to be interesting they become incomprehensible. We
+wind up with a large set of equations that no-one can understand and which are
+almost certainly wrong. So we must build our theories up from small intelligible
+pieces. For this we need
 </p>
 </blockquote>
 
@@ -357,6 +430,16 @@ descriptions of theories.
 Their elaboration of the concept of a &ldquo;theory&rdquo; and the motives behind that work
 are of great importance.
 </p>
+
+<p>
+To flesh out these definitions, I present (what I believe to be) examples of
+corresponding language constructs in OCaml:
+</p>
+
+<p>
+&#x2026;
+</p>
+
 
 <p>
 ML modules are composable, nestable, inheritable, and parametric environments.
@@ -476,6 +559,7 @@ How does modularity relate to SOLID?
                   programming - LFP '84, edited by (1984)</li>
 <li><a id="Burstall:1977:PTT:1622943.1623045">[Burstall:1977:PTT:1622943.1623045]</a> <a name="Burstall:1977:PTT:1622943.1623045"></a>Burstall & Goguen, Putting Theories Together to Make Specifications, 1045-1058, in in: Proceedings of the 5th International Joint Conference on
                   Artificial Intelligence - Volume 2, edited by Morgan Kaufmann Publishers Inc. (1977)</li>
+<li><a id="lawvere63_funct_seman_algeb_theor">[lawvere63_funct_seman_algeb_theor]</a> <a name="lawvere63_funct_seman_algeb_theor"></a>Lawvere, Functorial Semantics of Algebraic Theories, <i>Proceedings of the National Academy of Sciences</i>, <b>50(5)</b>, 869-872 (1963). <a href="https://doi.org/10.1073/pnas.50.5.869">link</a>. <a href="http://dx.doi.org/10.1073/pnas.50.5.869">doi</a>.</li>
 <li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
   DATE_ADDED =   Sat Sep 28 20:57:41 2019,
   author =       John C. Reynolds,
@@ -496,7 +580,7 @@ How does modularity relate to SOLID?
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-10-11 Fri 12:22. <br>
+Last updated 2019-10-17 Thu 23:28. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
