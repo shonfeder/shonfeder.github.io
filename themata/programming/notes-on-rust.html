@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -7,7 +8,7 @@
 <!-- 2019-12-15 Sun 14:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Notes on Rust</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,31 +258,42 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Notes on Rust</h1>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+Notes on learning Rust.
 </p>
-</blockquote>
-<blockquote id="whitehead93#2">
+
+<div id="outline-container-org9c479c5" class="outline-2">
+<h2 id="org9c479c5">Resources</h2>
+<div class="outline-text-2" id="text-org9c479c5">
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+These are the resources which have been most useful for me. You might also find
+them especially useful if, like me, you have experience with type-theoretic
+functional programming (OCaml, Haskell, SML, F#, etc.) and vanilla, weakly
+typed, procedural programming (C), but still find yourself tormenting (or being
+tormented by) the borrow checker, and struggling with various clunky
+infelicities of the heavily typed imperative idioms required for rust.
 </p>
-</blockquote>
+</div>
+
+<div id="outline-container-org01af1af" class="outline-3">
+<h3 id="org01af1af"><a href="https://limpet.net/mbrubeck/2019/02/07/rust-a-unique-perspective.html">Rust: A unique perspective</a></h3>
+<div class="outline-text-3" id="text-org01af1af">
+<p>
+This short essay re-frames the imperative notions of mutability and immutable
+borrowing and lifetimes in terms of the more declarative and structural concepts
+of uniqueness and sharing. As promissed in the intro, it helps illuminate
+reasons <b>why</b> the mutable/immutable borrowing and ownership constructs behave as
+they do.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2019-12-15 Sun 14:12. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
