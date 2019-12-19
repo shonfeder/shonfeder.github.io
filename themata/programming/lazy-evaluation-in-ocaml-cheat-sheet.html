@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-10 Thu 22:38 -->
+<!-- 2019-12-18 Wed 22:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lazy Evaluation in Ocaml: A Cheat Sheet</title>
@@ -287,14 +287,14 @@ type <code>'a</code> to values of type <code>'a lazy_t</code>.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     utop # <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : int lazy_t = <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span></code>
+<pre class="src src-ocaml"><code>     utop # lazy 3;;</code>
+<code>     - : int lazy_t = lazy 3</code>
 <code></code>
-<code>     utop # <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> int <span style="color: #ECBE7B;">Lazy.</span>t<span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> int lazy_t</code>
+<code>     utop # type t = T of int Lazy.t;;</code>
+<code>     type t = T of int lazy_t</code>
 <code></code>
-<code>     utop # <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)<span style="color: #ff4500;">;;</span></code>
-<code>     - : t = <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)</code>
+<code>     utop # T (lazy 3);;</code>
+<code>     - : t = T (lazy 3)</code>
 </pre>
 </div>
 </div>
@@ -317,8 +317,8 @@ That is, given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">a</span> = <span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">b</span> = <span style="color: #51afef;">fun</span> () -&gt; <span style="color: #da8548; font-weight: bold;">3</span></code>
+<pre class="src src-ocaml"><code>     let a = lazy 3</code>
+<code>     let b = fun () -&gt; 3</code>
 </pre>
 </div>
 
@@ -327,7 +327,7 @@ it&rsquo;s true that
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> () = <span style="color: #51afef;">assert</span> (force a = b ())</code>
+<pre class="src src-ocaml"><code>     let () = assert (force a = b ())</code>
 </pre>
 </div>
 
@@ -338,15 +338,15 @@ thunks in a way that diverges from those that use <code>lazy</code>. E.g.,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     utop # <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">c</span> = <span style="color: #51afef;">lazy</span> (print_endline <span style="color: #98be65;">"Evaluating!"</span>; <span style="color: #da8548; font-weight: bold;">2</span>)<span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">c</span> : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<pre class="src src-ocaml"><code>     utop # let c = lazy (print_endline "Evaluating!"; 2);;</code>
+<code>     val c : int lazy_t = &lt;lazy&gt;</code>
 <code></code>
-<code>     utop # force c<span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #bbc2cf; background-color: #21242b;">Evaluating</span><span style="color: #f0e68c;">!</span></code>
-<code>     - : int = <span style="color: #da8548; font-weight: bold;">2</span></code>
+<code>     utop # force c;;</code>
+<code>     Evaluating!</code>
+<code>     - : int = 2</code>
 <code></code>
-<code>     utop # force c<span style="color: #ff4500;">;;</span></code>
-<code>     - : int = <span style="color: #da8548; font-weight: bold;">2</span></code>
+<code>     utop # force c;;</code>
+<code>     - : int = 2</code>
 </pre>
 </div>
 
@@ -358,48 +358,48 @@ totally different results when dealing with impure programs:
 
 <div class="org-src-container">
 <pre class="src src-ocaml"><code>     utop #</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">lazy_incr</span> :<span style="color: #ECBE7B;"> int </span><span style="color: #c678dd;">ref</span><span style="color: #ECBE7B;"> -&gt; unit </span><span style="color: #ECBE7B;">Lazy.</span><span style="color: #ECBE7B;">t </span>=</code>
-<code>         <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">r</span> -&gt; <span style="color: #51afef;">lazy</span> (incr r)</code>
+<code>     let lazy_incr : int ref -&gt; unit Lazy.t =</code>
+<code>         fun r -&gt; lazy (incr r)</code>
 <code></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">thunk_incr</span> :<span style="color: #ECBE7B;"> int </span><span style="color: #c678dd;">ref</span><span style="color: #ECBE7B;"> -&gt; unit -&gt; unit </span>=</code>
-<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">r</span> -&gt; <span style="color: #51afef;">fun</span> () -&gt; incr r</code>
+<code>     let thunk_incr : int ref -&gt; unit -&gt; unit =</code>
+<code>       fun r -&gt; fun () -&gt; incr r</code>
 <code></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">ref_a</span> = <span style="color: #c678dd;">ref</span> <span style="color: #da8548; font-weight: bold;">1</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">ref_b</span> = <span style="color: #c678dd;">ref</span> <span style="color: #da8548; font-weight: bold;">1</span></code>
+<code>     let ref_a = ref 1</code>
+<code>     let ref_b = ref 1</code>
 <code></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>  = lazy_incr ref_a</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">thunk_incr_ref_b</span> = thunk_incr ref_b</code>
-<code>     <span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">lazy_incr</span> : int <span style="color: #c678dd;">ref</span> -&gt; unit lazy_t = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">thunk_incr</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> -&gt; unit -&gt; unit = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">ref_a</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">ref_b</span> : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">lazy_incr_ref_a</span> : <span style="color: #dcaeea;">unit</span> lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">thunk_incr_ref_b</span> : <span style="color: #dcaeea;">unit</span> -&gt; unit = &lt;<span style="color: #51afef;">fun</span>&gt;</code>
+<code>     let lazy_incr_ref_a  = lazy_incr ref_a</code>
+<code>     let thunk_incr_ref_b = thunk_incr ref_b</code>
+<code>     ;;</code>
+<code>     val lazy_incr : int ref -&gt; unit lazy_t = &lt;fun&gt;</code>
+<code>     val thunk_incr : int ref -&gt; unit -&gt; unit = &lt;fun&gt;</code>
+<code>     val ref_a : int ref = {contents = 1}</code>
+<code>     val ref_b : int ref = {contents = 1}</code>
+<code>     val lazy_incr_ref_a : unit lazy_t = &lt;lazy&gt;</code>
+<code>     val thunk_incr_ref_b : unit -&gt; unit = &lt;fun&gt;</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code>     utop # ref_a;;</code>
+<code>     - : int ref = {contents = 1}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">1</span>}</code>
+<code>     utop # ref_b;;</code>
+<code>     - : int ref = {contents = 1}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code>     utop # force lazy_incr_ref_a; ref_a;;</code>
+<code>     - : int ref = {contents = 2}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thnk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code>     utop # thnk_incr_ref_b (); ref_b;;</code>
+<code>     - : int ref = {contents = 2}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code>     utop # force lazy_incr_ref_a; ref_a;;</code>
+<code>     - : int ref = {contents = 2}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thunk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">3</span>}</code>
+<code>     utop # thunk_incr_ref_b (); ref_b;;</code>
+<code>     - : int ref = {contents = 3}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">force</span> <span style="color: #dcaeea;">lazy_incr_ref_a</span>; <span style="color: #dcaeea;">ref_a</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">2</span>}</code>
+<code>     utop # force lazy_incr_ref_a; ref_a;;</code>
+<code>     - : int ref = {contents = 2}</code>
 <code></code>
-<code>     <span style="color: #dcaeea;">utop</span> # <span style="color: #dcaeea;">thunk_incr_ref_b</span> (); <span style="color: #dcaeea;">ref_b</span><span style="color: #ff4500;">;;</span></code>
-<code>     - : <span style="color: #dcaeea;">int</span> <span style="color: #c678dd;">ref</span> = {<span style="color: #dcaeea;">contents</span> = <span style="color: #da8548; font-weight: bold;">4</span>}</code>
+<code>     utop # thunk_incr_ref_b (); ref_b;;</code>
+<code>     - : int ref = {contents = 4}</code>
 </pre>
 </div>
 
@@ -420,18 +420,18 @@ memoized result on each subsequent call. However, the thunk will increment the
 <h3 id="orgc31c9f0">a deferred value</h3>
 <div class="outline-text-3" id="text-orgc31c9f0">
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     utop # <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">deferred_value</span> = <span style="color: #51afef;">lazy</span> (print_endline <span style="color: #98be65;">"Now evaluating!"</span>; <span style="color: #da8548; font-weight: bold;">3</span>)<span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">deferred_value</span> : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<pre class="src src-ocaml"><code>     utop # let deferred_value = lazy (print_endline "Now evaluating!"; 3);;</code>
+<code>     val deferred_value : int lazy_t = &lt;lazy&gt;</code>
 <code></code>
-<code>     utop # deferred_value<span style="color: #ff4500;">;;</span></code>
-<code>     - : int lazy_t = &lt;<span style="color: #51afef;">lazy</span>&gt;</code>
+<code>     utop # deferred_value;;</code>
+<code>     - : int lazy_t = &lt;lazy&gt;</code>
 <code></code>
-<code>     utop # force deferred_value<span style="color: #ff4500;">;;</span></code>
-<code>     <span style="color: #bbc2cf; background-color: #21242b;">Now</span> evaluating<span style="color: #f0e68c;">!</span></code>
-<code>     - : int = <span style="color: #da8548; font-weight: bold;">3</span></code>
+<code>     utop # force deferred_value;;</code>
+<code>     Now evaluating!</code>
+<code>     - : int = 3</code>
 <code></code>
-<code>     utop # force deferred_value<span style="color: #ff4500;">;;</span></code>
-<code>     - : int = <span style="color: #da8548; font-weight: bold;">3</span> <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">retrieves the memoized result </span><span style="color: #5B6268;">*)</span></code>
+<code>     utop # force deferred_value;;</code>
+<code>     - : int = 3 (* retrieves the memoized result *)</code>
 </pre>
 </div>
 </div>
@@ -441,8 +441,8 @@ memoized result on each subsequent call. However, the thunk will increment the
 <h3 id="orgeb4fd63">a type that includes deferred evaluations</h3>
 <div class="outline-text-3" id="text-orgeb4fd63">
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">'a deferred</span> = <span style="color: #bbc2cf; background-color: #21242b;">T</span> <span style="color: #51afef;">of</span> 'a <span style="color: #ECBE7B;">Lazy.</span>t</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">deffered_value</span> :<span style="color: #ECBE7B;"> int deferred </span>= <span style="color: #bbc2cf; background-color: #21242b;">T</span> (<span style="color: #51afef;">lazy</span> <span style="color: #da8548; font-weight: bold;">3</span>)</code>
+<pre class="src src-ocaml"><code>     type 'a deferred = T of 'a Lazy.t</code>
+<code>     let deffered_value : int deferred = T (lazy 3)</code>
 </pre>
 </div>
 </div>
@@ -452,19 +452,19 @@ memoized result on each subsequent call. However, the thunk will increment the
 <h3 id="orge05f3c4">a lazy list</h3>
 <div class="outline-text-3" id="text-orge05f3c4">
 <div class="org-src-container">
-<pre class="src src-ocaml"><code>     <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">'a stream</span> = <span style="color: #bbc2cf; background-color: #21242b;">Cons</span> <span style="color: #51afef;">of</span> 'a * 'a stream <span style="color: #ECBE7B;">Lazy.</span>t</code>
+<pre class="src src-ocaml"><code>     type 'a stream = Cons of 'a * 'a stream Lazy.t</code>
 <code></code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">cons</span> :<span style="color: #ECBE7B;"> 'a -&gt; 'a stream -&gt; 'a stream </span>=</code>
-<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #dcaeea;">s</span> -&gt; <span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (x, <span style="color: #51afef;">lazy</span> s)</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">head</span> :<span style="color: #ECBE7B;"> 'a stream -&gt; 'a </span>=</code>
-<code>       <span style="color: #51afef;">fun</span> (<span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (<span style="color: #dcaeea;">x</span>, <span style="color: #dcaeea;">_</span>)) -&gt; x</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">tail</span> :<span style="color: #ECBE7B;"> 'a stream -&gt; 'a stream </span>=</code>
-<code>       <span style="color: #51afef;">fun</span> (<span style="color: #bbc2cf; background-color: #21242b;">Cons</span> (<span style="color: #dcaeea;">_</span>, <span style="color: #dcaeea;">s</span>)) -&gt; <span style="color: #ECBE7B;">Lazy.</span>force s</code>
-<code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">rec</span> <span style="color: #dcaeea;">take</span> :<span style="color: #ECBE7B;"> int -&gt; 'a stream -&gt; 'a list </span>=</code>
-<code>       <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">n</span> <span style="color: #dcaeea;">s</span> -&gt;</code>
-<code>         <span style="color: #51afef;">if</span> n &lt; <span style="color: #da8548; font-weight: bold;">1</span></code>
-<code>         <span style="color: #51afef;">then</span> <span style="color: #bbc2cf; background-color: #21242b;">[]</span></code>
-<code>         <span style="color: #51afef;">else</span> head s <span style="color: #bbc2cf; background-color: #21242b;">::</span> take (pred n) (tail s)</code>
+<code>     let cons : 'a -&gt; 'a stream -&gt; 'a stream =</code>
+<code>       fun x s -&gt; Cons (x, lazy s)</code>
+<code>     let head : 'a stream -&gt; 'a =</code>
+<code>       fun (Cons (x, _)) -&gt; x</code>
+<code>     let tail : 'a stream -&gt; 'a stream =</code>
+<code>       fun (Cons (_, s)) -&gt; Lazy.force s</code>
+<code>     let rec take : int -&gt; 'a stream -&gt; 'a list =</code>
+<code>       fun n s -&gt;</code>
+<code>         if n &lt; 1</code>
+<code>         then []</code>
+<code>         else head s :: take (pred n) (tail s)</code>
 </pre>
 </div>
 </div>

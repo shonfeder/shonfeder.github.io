@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-10 Thu 22:38 -->
+<!-- 2019-12-18 Wed 22:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 4: Exhaustion</title>
@@ -321,11 +321,11 @@ in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><code><span style="color: #c678dd;">term</span>:</code>
-<code>  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span></code>
+<pre class="src src-tuareg-menhir"><code>term:</code>
+<code>  /* ... */</code>
 <code>  | m = term; n = term</code>
 <code>    { Term.app m n}</code>
-<code>  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span></code>
+<code>  /* ... */</code>
 </pre>
 </div>
 
@@ -347,12 +347,12 @@ the parser is left-recursive on the first term of the application:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><code><span style="color: #c678dd;">terms</span>:</code>
+<pre class="src src-tuareg-menhir"><code>terms:</code>
 <code>  | m = terms; n = term</code>
 <code>    { Term.app m n }</code>
 <code>  | t = term;</code>
 <code>    { t }</code>
-<code><span style="color: #c678dd;">term</span>: <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">singular terms here </span><span style="color: #5B6268;">*/</span></code>
+<code>term: /* singular terms here */</code>
 </pre>
 </div>
 </div>
@@ -368,9 +368,9 @@ learn Category Theory.</li>
 </div>
 </div>
 
-<div id="outline-container-orgeeb67a2" class="outline-3">
-<h3 id="orgeeb67a2">Writing</h3>
-<div class="outline-text-3" id="text-orgeeb67a2">
+<div id="outline-container-org571f78b" class="outline-3">
+<h3 id="org571f78b">Writing</h3>
+<div class="outline-text-3" id="text-org571f78b">
 <ul class="org-ul">
 <li>Created a <a href="https://joaotavora.github.io/yasnippet/snippet-development.html">yas snippet</a> to generate the template for these logs. Getting savy with
 yas snippets should improve the speed and quality of writing and code in general.</li>
@@ -396,9 +396,9 @@ yas snippets should improve the speed and quality of writing and code in general
 </div>
 </div>
 
-<div id="outline-container-org571f78b" class="outline-3">
-<h3 id="org571f78b">Writing</h3>
-<div class="outline-text-3" id="text-org571f78b">
+<div id="outline-container-org8930a04" class="outline-3">
+<h3 id="org8930a04">Writing</h3>
+<div class="outline-text-3" id="text-org8930a04">
 <ul class="org-ul">
 <li>Write up implementation of stack</li>
 <li>Write up notes on small vs. large types</li>

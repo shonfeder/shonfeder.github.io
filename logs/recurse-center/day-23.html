@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-10-17 Thu 01:06 -->
+<!-- 2019-12-18 Wed 22:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 23: Fuzzy</title>
@@ -275,9 +275,9 @@ Feeling fuzzy today. Posting any how, just to keep up the ritual.
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ca00e1" class="outline-3">
-<h3 id="org3ca00e1">PLT</h3>
-<div class="outline-text-3" id="text-org3ca00e1">
+<div id="outline-container-org9bcdafc" class="outline-3">
+<h3 id="org9bcdafc">PLT</h3>
+<div class="outline-text-3" id="text-org9bcdafc">
 <p>
 More time documenting and testing <code>Alg</code>. It&rsquo;s been a quite involved process. A
 lot of the time has been devoted to developing a nice abstraction for the
@@ -298,24 +298,24 @@ module for <code>Functor</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #83898d;">(** [Law] notes the laws that should be obeyed by any instantiation of</span></code>
-<code><span style="color: #83898d;">    {{!module-type:S} Functor} in the form of predicates that should be true</span></code>
-<code><span style="color: #83898d;">    for any arguments of the appropriate type.</span></code>
+<pre class="src src-ocaml"><code>(** [Law] notes the laws that should be obeyed by any instantiation of</code>
+<code>    {{!module-type:S} Functor} in the form of predicates that should be true</code>
+<code>    for any arguments of the appropriate type.</code>
 <code></code>
-<code><span style="color: #83898d;">    You can use {!module:Alg_qcheck.Functor} to generate property based tests of</span></code>
-<code><span style="color: #83898d;">    these laws for new modules satisfying this interface.</span></code>
+<code>    You can use {!module:Alg_qcheck.Functor} to generate property based tests of</code>
+<code>    these laws for new modules satisfying this interface.</code>
 <code></code>
-<code><span style="color: #83898d;">    @param F An implementation of a {{!module-type: S} Functor} *)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Law</span> <span style="color: #dcaeea;">(F :</span><span style="color: #ECBE7B;"> S</span><span style="color: #dcaeea;">) </span><span style="color: #83898d;">(** *)</span> : <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
+<code>    @param F An implementation of a {{!module-type: S} Functor} *)</code>
+<code>module Law (F : S) (** *) : sig</code>
 <code></code>
-<code>  <span style="color: #83898d;">(** [identity x]: [F.map ~f:Fun.id x = Fun.id x] *)</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">identity</span> : 'a <span style="color: #ECBE7B;">F.</span>t -&gt; bool</code>
+<code>  (** [identity x]: [F.map ~f:Fun.id x = Fun.id x] *)</code>
+<code>  val identity : 'a F.t -&gt; bool</code>
 <code></code>
-<code>  <span style="color: #83898d;">(** [composition f g x]: [F.map ~f:(f % g) x = (F.map ~f % F.map ~f:g) x]</span></code>
+<code>  (** [composition f g x]: [F.map ~f:(f % g) x = (F.map ~f % F.map ~f:g) x]</code>
 <code></code>
-<code><span style="color: #83898d;">      where [%] is composition. *)</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">composition</span> : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c <span style="color: #ECBE7B;">F.</span>t -&gt; bool</code>
-<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+<code>      where [%] is composition. *)</code>
+<code>  val composition : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c F.t -&gt; bool</code>
+<code>end</code>
 </pre>
 </div>
 
@@ -338,26 +338,26 @@ value of that functor):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">functor_laws</span> =</code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">open </span><span style="color: #ECBE7B;">Alg_qcheck.Functor</span> <span style="color: #f5deb3; font-weight: bold;">in</span></code>
+<pre class="src src-ocaml"><code>let functor_laws =</code>
+<code>  let open Alg_qcheck.Functor in</code>
 <code>  [</code>
-<code>    suite <span style="color: #98be65;">"Functor Laws for Option"</span></code>
-<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Option</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = option</code>
-<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code>    suite "Functor Laws for Option"</code>
+<code>      (test (module struct</code>
+<code>         include Alg.Functor.Option</code>
+<code>         let arbitrary = option</code>
+<code>       end));</code>
 <code></code>
-<code>    suite <span style="color: #98be65;">"Functor Laws for List"</span></code>
-<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.List</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = list</code>
-<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code>    suite "Functor Laws for List"</code>
+<code>      (test (module struct</code>
+<code>         include Alg.Functor.List</code>
+<code>         let arbitrary = list</code>
+<code>       end));</code>
 <code></code>
-<code>    suite <span style="color: #98be65;">"Functor Laws for Array"</span></code>
-<code>      (test (<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Array</span></code>
-<code>         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> = array</code>
-<code>       <span style="color: #f5deb3; font-weight: bold;">end</span>));</code>
+<code>    suite "Functor Laws for Array"</code>
+<code>      (test (module struct</code>
+<code>         include Alg.Functor.Array</code>
+<code>         let arbitrary = array</code>
+<code>       end));</code>
 <code>  ]</code>
 </pre>
 </div>
@@ -389,9 +389,9 @@ And the output of the tests:
 <h2 id="org4a8971b">Tomorrow&rsquo;s Program</h2>
 <div class="outline-text-2" id="text-org4a8971b">
 </div>
-<div id="outline-container-org9bcdafc" class="outline-3">
-<h3 id="org9bcdafc">PLT</h3>
-<div class="outline-text-3" id="text-org9bcdafc">
+<div id="outline-container-orgd3c8a49" class="outline-3">
+<h3 id="orgd3c8a49">PLT</h3>
+<div class="outline-text-3" id="text-orgd3c8a49">
 <p>
 Finish up documenting and testing [Alg], hopefully open a PR to publish the
 package in the <code>opam</code> repository.
