@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-18 Wed 23:37 -->
+<!-- 2019-12-18 Wed 23:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml Editor Wish List</title>
@@ -195,9 +195,6 @@
   /*]]>*/-->
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<link rel='stylesheet' href='/static/css/atom-one-dark.css' type='text/css'/>
-<script src='/static/js/highlight.pack.js'></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -273,7 +270,7 @@ Given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>type t = A | B | C of int</code>
+<pre class="src src-tuareg"><code><span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #bbc2cf; background-color: #21242b;">A</span> <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">B</span> <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">C</span> <span style="color: #51afef;">of</span> int</code>
 </pre>
 </div>
 
@@ -282,7 +279,7 @@ We should be able to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>let f : t -&gt; int = function &lt;tab&gt;</code>
+<pre class="src src-tuareg"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">f</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">function</span> <span style="color: #f0e68c;">&lt;</span>tab<span style="color: #f0e68c;">&gt;</span></code>
 </pre>
 </div>
 
@@ -291,10 +288,10 @@ to have generated the snippet template
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>let f : t -&gt; int = function</code>
-<code>  | A   -&gt; __</code>
-<code>  | B   -&gt; __</code>
-<code>  | C x -&gt; __ x</code>
+<pre class="src src-tuareg"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">f</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">function</span></code>
+<code>  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">A</span>   <span style="color: #f0e68c;">-&gt;</span> __</code>
+<code>  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">B</span>   <span style="color: #f0e68c;">-&gt;</span> __</code>
+<code>  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">C</span> x <span style="color: #f0e68c;">-&gt;</span> __ x</code>
 </pre>
 </div>
 
@@ -312,9 +309,9 @@ E.g., given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>if x then</code>
+<pre class="src src-tuareg"><code><span style="color: #51afef;">if</span> x <span style="color: #51afef;">then</span></code>
 <code>  exp1</code>
-<code>else</code>
+<code><span style="color: #51afef;">else</span></code>
 <code>  exp2</code>
 </pre>
 </div>

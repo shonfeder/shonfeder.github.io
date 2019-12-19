@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-18 Wed 23:37 -->
+<!-- 2019-12-18 Wed 23:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></title>
@@ -195,9 +195,6 @@
   /*]]>*/-->
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<link rel='stylesheet' href='/static/css/atom-one-dark.css' type='text/css'/>
-<script src='/static/js/highlight.pack.js'></script>
-<script>hljs.initHighlightingOnLoad();</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -407,21 +404,21 @@ A minimal package configuration for our example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-opam"><code>     opam-version: "2.0"</code>
-<code>     name: "myproject"</code>
-<code>     version: "0.1"</code>
-<code>     synopsis: "Description of my project"</code>
-<code>     maintainer: "Me &lt;my.self@sub.domain&gt;"</code>
-<code>     depends: [</code>
-<code>       "ocaml" { build }</code>
-<code>       "ocamlfind" { build }</code>
-<code>       "dune" { build &amp; &gt;= "1.5.0" }</code>
+<pre class="src src-tuareg-opam"><code>     <span style="color: #51afef;">opam-version</span>: <span style="color: #98be65;">"2.0"</span></code>
+<code>     <span style="color: #51afef;">name</span>: <span style="color: #98be65;">"myproject"</span></code>
+<code>     <span style="color: #51afef;">version</span>: <span style="color: #98be65;">"0.1"</span></code>
+<code>     synopsis: <span style="color: #98be65;">"Description of my project"</span></code>
+<code>     <span style="color: #51afef;">maintainer</span>: <span style="color: #98be65;">"Me <a href="mailto:my.self%40sub.domain">&lt;my.self@sub.domain&gt;</a>"</span></code>
+<code>     <span style="color: #51afef;">depends</span>: [</code>
+<code>       <span style="color: #98be65;">"ocaml"</span> { <span style="color: #a9a1e1;">build</span> }</code>
+<code>       <span style="color: #98be65;">"ocamlfind"</span> { <span style="color: #a9a1e1;">build</span> }</code>
+<code>       <span style="color: #98be65;">"dune"</span> { <span style="color: #a9a1e1;">build</span> &amp; &gt;= <span style="color: #98be65;">"1.5.0"</span> }</code>
 <code></code>
-<code>       "base" { &gt;= "0.12.0" }</code>
-<code>       "alcotest" { with-test }</code>
+<code>       <span style="color: #98be65;">"base"</span> { &gt;= <span style="color: #98be65;">"0.12.0"</span> }</code>
+<code>       <span style="color: #98be65;">"alcotest"</span> { with-<span style="color: #a9a1e1;">test</span> }</code>
 <code>     ]</code>
-<code>     build: [</code>
-<code>       ["dune" "build" "-p" name]</code>
+<code>     <span style="color: #51afef;">build</span>: [</code>
+<code>       [<span style="color: #98be65;">"dune"</span> <span style="color: #98be65;">"build"</span> <span style="color: #98be65;">"-p"</span> <span style="color: #dcaeea;">name</span>]</code>
 <code>     ]</code>
 </pre>
 </div>
@@ -486,7 +483,7 @@ The following setup provides a minimum configuration for failing test:
 
 <div class="org-src-container">
 <pre class="src src-tuareg-jbuild"><code>     (test</code>
-<code>      (name mytest))</code>
+<code>      (<span style="color: #c678dd;">name</span> mytest))</code>
 </pre>
 </div>
 
@@ -495,7 +492,7 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>     let () = assert false</code>
+<pre class="src src-tuareg"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f0e68c;">()</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">assert</span> <span style="color: #a9a1e1;">false</span></code>
 </pre>
 </div>
 
@@ -530,24 +527,24 @@ preferred testing tools.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><code>    version: 2</code>
-<code>    jobs:</code>
-<code>      build:</code>
-<code>        docker:</code>
-<code>          - image: shonfeder/ocaml-ci-docker</code>
+<pre class="src src-yaml"><code>    <span style="color: #dcaeea;">version</span>: 2</code>
+<code>    <span style="color: #dcaeea;">jobs</span>:</code>
+<code>      <span style="color: #dcaeea;">build</span>:</code>
+<code>        <span style="color: #dcaeea;">docker</span>:</code>
+<code>          - <span style="color: #dcaeea;">image</span>: shonfeder/ocaml-ci-docker</code>
 <code></code>
-<code>        steps:</code>
+<code>        <span style="color: #dcaeea;">steps</span>:</code>
 <code>          - checkout</code>
 <code></code>
-<code>          - run:</code>
-<code>              name: Install Package Dependencies</code>
-<code>              command: opam install . --with-test -y</code>
+<code>          - <span style="color: #dcaeea;">run</span>:</code>
+<code>              <span style="color: #dcaeea;">name</span>: Install Package Dependencies</code>
+<code>              <span style="color: #dcaeea;">command</span>: opam install . --with-test -y</code>
 <code></code>
-<code>          - run:</code>
-<code>              name: Run tests</code>
-<code>              command: |</code>
-<code>                eval $(opam env)</code>
-<code>                dune runtest</code>
+<code>          - <span style="color: #dcaeea;">run</span>:</code>
+<code>              <span style="color: #dcaeea;">name</span>: Run tests</code>
+<code>              <span style="color: #dcaeea;">command</span>: |</code>
+<code>                <span style="color: #98be65;">eval $(opam env)</span></code>
+<code><span style="color: #98be65;">                dune runtest</span></code>
 </pre>
 </div>
 </div>
