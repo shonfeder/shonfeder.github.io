@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-19 Thu 00:00 -->
+<!-- 2019-12-21 Sat 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 9: Capturing the Notion of Parametricity</title>
@@ -324,7 +324,7 @@ Consider the identity function on integers:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x</code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x
 </pre>
 </div>
 
@@ -336,7 +336,7 @@ close to valid <a href="file:///home/sf/Dropbox/synechepedia/org/themata/program
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x</code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x
 </pre>
 </div>
 
@@ -348,11 +348,11 @@ as a parameter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int       </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>int <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">str_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">string </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> string </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>string <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span></code>
-<code></code>
-<code><span style="color: #5B6268;">(* </span><span style="color: #5B6268;">The identity function on functions of some parameterized type </span><span style="color: #5B6268;">*)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">fun_id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #a9a1e1;">t</span> <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int       </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>int <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
+<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">str_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">string </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> string </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>string <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
+
+<span style="color: #5B6268;">(* </span><span style="color: #5B6268;">The identity function on functions of some parameterized type </span><span style="color: #5B6268;">*)</span>
+<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">fun_id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #a9a1e1;">t</span> <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
 </pre>
 </div>
 
@@ -422,9 +422,9 @@ expectations around feasible output.
 </p>
 </div>
 
-<div id="outline-container-orge12e454" class="outline-3">
-<h3 id="orge12e454">PLT</h3>
-<div class="outline-text-3" id="text-orge12e454">
+<div id="outline-container-orgef841df" class="outline-3">
+<h3 id="orgef841df">PLT</h3>
+<div class="outline-text-3" id="text-orgef841df">
 </div>
 <div id="outline-container-orgfe5e47b" class="outline-4">
 <h4 id="orgfe5e47b">Themis</h4>
@@ -441,19 +441,19 @@ front-ends for the simply typed lambda calculus and λ2, respectively:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Simply_typed</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_token</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_lexer</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple.Term</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_parser</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span></code>
-<code></code>
-<code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">L2</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_token</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_lexer</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2.Term</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_parser</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Simply_typed</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_token</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_lexer</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple.Term</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_parser</span>
+  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span>
+
+<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">L2</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_token</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_lexer</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2.Term</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_parser</span>
+  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span>
 </pre>
 </div>
 </div>
@@ -473,7 +473,7 @@ for use in an module defining derivation rules with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Derivation.Make </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Term</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Type</span><span style="color: #f0e68c;">)</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Derivation.Make </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Term</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Type</span><span style="color: #f0e68c;">)</span>
 </pre>
 </div>
 
@@ -530,9 +530,9 @@ today. That&rsquo;s great progress :)
 <h2 id="org88bef91">Tomorrow&rsquo;s Program</h2>
 <div class="outline-text-2" id="text-org88bef91">
 </div>
-<div id="outline-container-orgef841df" class="outline-3">
-<h3 id="orgef841df">PLT</h3>
-<div class="outline-text-3" id="text-orgef841df">
+<div id="outline-container-org1ae7da1" class="outline-3">
+<h3 id="org1ae7da1">PLT</h3>
+<div class="outline-text-3" id="text-org1ae7da1">
 <ul class="org-ul">
 <li>Finish implementing λ2</li>
 <li>Read Chapter 4 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a></li>

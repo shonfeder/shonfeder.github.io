@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2019-12-21 Sat 17:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Day 4: Exhaustion</title>
+<title>&lrm;</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,159 +258,45 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Day 4: Exhaustion</h1>
 <blockquote>
 <p>
-Our goal is to show once and for all that, contrary to popular belief (even
-among experts in the field!), the semantics of ML modules is immediately
-accessible to anyone familiar with System Fω, the higher-order polymorphic
-λ-calculus.
+<i>error</i> (n.) also, through 18c., <i>errour</i>; c. 1300, &ldquo;a deviation from truth made
+through ignorance or inadvertence, a mistake,&rdquo; also &ldquo;offense against morality or
+justice; transgression, wrong-doing, sin;&rdquo; from Old French error &ldquo;mistake, flaw,
+defect, heresy,&rdquo; from Latin errorem (nominative error) &ldquo;a wandering, straying, a
+going astray; meandering; doubt, uncertainty;&rdquo; also &ldquo;a figurative going astray,
+mistake,&rdquo; from errare &ldquo;to wander; to err&rdquo; (see err). From early 14c. as &ldquo;state
+of believing or practicing what is false or heretical; false opinion or belief,
+heresy.&rdquo; From late 14c. as &ldquo;deviation from what is normal; abnormality,
+aberration.&rdquo; From 1726 as &ldquo;difference between observed value and true value.&rdquo;
 </p>
 
 <p>
-&#x2026;
+Words for &ldquo;error&rdquo; in most Indo-European languages originally meant &ldquo;wander, go
+astray&rdquo; (for example Greek plane in the New Testament, Old Norse villa,
+Lithuanian klaida, Sanskrit bhrama-), but Irish has dearmad &ldquo;error,&rdquo; from dermat
+&ldquo;a forgetting.&rdquo;
 </p>
 
 <p>
-<i>ML modules are merely a particular mode of use of System Fω.</i>
-(<a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a>)
+(<a href="https://www.etymonline.com/search?q=error">etymonline.com</a>)
 </p>
 </blockquote>
 
-<div id="outline-container-org2c969d3" class="outline-2">
-<h2 id="org2c969d3">Vibe</h2>
-<div class="outline-text-2" id="text-org2c969d3">
-<p>
-Tuckered out and feeling a bit numb. I need to turtle a bit tomorrow and recover
-from all the lovely (but quite intense) social engagement.
-</p>
+<div id="outline-container-org4e7cdd0" class="outline-2">
+<h2 id="org4e7cdd0">Self correcting software</h2>
+<div class="outline-text-2" id="text-org4e7cdd0">
 </div>
-</div>
-
-<div id="outline-container-orgf85f3bf" class="outline-2">
-<h2 id="orgf85f3bf">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgf85f3bf">
-<p>
-Due to over-extending myself over the last three days, I wasn&rsquo;t able to stay on
-task with my planned goals today. I did manage to make some meaningful progress
-however.
-</p>
-
-<p>
-By the third page of <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a> (the epigraph to this entry) is was
-clear that I would need improve my graphs of System Fω in order to work
-effectively on 1Ml. This has motivated me to see through ongoing studies into
-typed lambda calculi, and push forward quickly until I have covered the left
-face of the lambda cube:
-</p>
-
-
-<div class="figure">
-<p><object type="image/svg+xml" data="https://upload.wikimedia.org/wikipedia/commons/c/cd/Lambda_Cube_img.svg" class="org-svg">
-Sorry, your browser does not support SVG.</object>
-</p>
-</div>
-</div>
-
-<div id="outline-container-orge7fd8da" class="outline-3">
-<h3 id="orge7fd8da">PLT: Type Theory</h3>
-<div class="outline-text-3" id="text-orge7fd8da">
-<p>
-I spent some time working on the <a href="http://gallium.inria.fr/~fpottier/menhir/">menhir</a> parser-generator for my WIP experiments
-in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a>. For a long while I&rsquo;ve been stuck on a
-<a href="https://www.gnu.org/software/bison/manual/html_node/Shift_002fReduce.html">shift/reduce ambiguity</a> arising from this grammar rule:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">term</span>:
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
-  | m = term; n = term
-    { Term.app m n}
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
-</pre>
-</div>
-
-<p>
-This rule is meant to say that any two juxtaposed terms are to be parsed as
-function application. However, due to the necessarily recursive definition of
-terms and the lack of an operator to use for indicating precedence of grouping,
-menhir doesn&rsquo;t know if a sequence such as <code>l m n</code> should be parsed into the
-correct left-associative expression <code>Term.app((Term.app l m) n)</code> or the
-incorrect, right associative <code>Term.app(l Term.app(m n))</code>.
-</p>
-
-<p>
-I finally came across <a href="http://www.minjiezha.com/tech/2011/01/18/A-Simple-Lambda-Calculus-Evaluator-II.html">a resource</a> that described a solution to a similar problem
-(also in a lambda calculus interpreter, but with different syntax). What we want
-is a way to clearly instruct the parser generator that term application should
-be left-associative. To achieve this, we restructure the rule to ensure that
-the parser is left-recursive on the first term of the application:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">terms</span>:
-  | m = terms; n = term
-    { Term.app m n }
-  | t = term;
-    { t }
-<span style="color: #c678dd;">term</span>: <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">singular terms here </span><span style="color: #5B6268;">*/</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd3930ac" class="outline-3">
-<h3 id="orgd3930ac">Category theory</h3>
-<div class="outline-text-3" id="text-orgd3930ac">
+<div id="outline-container-orgb82bd6e" class="outline-3">
+<h3 id="orgb82bd6e">Internal errors should trigger patch and update process</h3>
+<div class="outline-text-3" id="text-orgb82bd6e">
 <ul class="org-ul">
-<li>CT reading group: folks presented motivating reasons behind their desires to
-learn Category Theory.</li>
+<li>Can search commit history for same traceback errors, then propose to user updating
+to a version including that commit.</li>
+<li>Internal errors automatically search for and then file issues (an extensible
+API for this, which can be specialized for the service &#x2013; Jira, GitLab,
+GitHub &#x2013; etc.</li>
 </ul>
-</div>
-</div>
-
-<div id="outline-container-orgb4dc70e" class="outline-3">
-<h3 id="orgb4dc70e">Writing</h3>
-<div class="outline-text-3" id="text-orgb4dc70e">
-<ul class="org-ul">
-<li>Created a <a href="https://joaotavora.github.io/yasnippet/snippet-development.html">yas snippet</a> to generate the template for these logs. Getting savy with
-yas snippets should improve the speed and quality of writing and code in general.</li>
-</ul>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org30a7195" class="outline-2">
-<h2 id="org30a7195">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org30a7195">
-</div>
-<div id="outline-container-orgba11b2a" class="outline-3">
-<h3 id="orgba11b2a">PLT: 1ML × Type Theory</h3>
-<div class="outline-text-3" id="text-orgba11b2a">
-<ul class="org-ul">
-<li>Study and take notes on the distinction between small and large types in 1ML</li>
-<li>Continue reading <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a></li>
-<li>Begin working on tuple type-checking error</li>
-<li>Begin trying to fix the biggest type-checking bug I found today</li>
-<li>Finish parser for λ⟶</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgef5d205" class="outline-3">
-<h3 id="orgef5d205">Writing</h3>
-<div class="outline-text-3" id="text-orgef5d205">
-<ul class="org-ul">
-<li>Write up implementation of stack</li>
-<li>Write up notes on small vs. large types</li>
-</ul>
-
-<p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="Rossberg_2010">[Rossberg_2010]</a> <a name="Rossberg_2010"></a>Rossberg, Russo & Dreyer, F-ing modules, <i>Proceedings of the 5th ACM SIGPLAN workshop on Types in
-                  language design and implementation - TLDI ’10</i>,  (2010). <a href="http://dx.doi.org/10.1145/1708016.1708028">link</a>. <a href="http://dx.doi.org/10.1145/1708016.1708028">doi</a>.</li>
-</ul>
-</p>
 </div>
 </div>
 </div>
@@ -417,7 +304,7 @@ yas snippets should improve the speed and quality of writing and code in general
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-27 Fri 08:58. <br>
+Last updated 2019-12-20 Fri 23:21. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>

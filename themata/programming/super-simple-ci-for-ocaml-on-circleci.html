@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-18 Wed 23:59 -->
+<!-- 2019-12-21 Sat 17:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></title>
@@ -359,15 +359,15 @@ Where <code>.</code> is the root directory of your project:
 </p>
 
 <pre class="example">
-<code>   .</code>
-<code>   ├── .circleci</code>
-<code>   │   └── config.yml</code>
-<code>   ├── dune-project</code>
-<code>   ├── myproject.install</code>
-<code>   ├── myproject.opam</code>
-<code>   └── test</code>
-<code>       ├── dune</code>
-<code>       └── mytest.ml</code>
+   .
+   ├── .circleci
+   │   └── config.yml
+   ├── dune-project
+   ├── myproject.install
+   ├── myproject.opam
+   └── test
+       ├── dune
+       └── mytest.ml
 </pre>
 </div>
 
@@ -404,22 +404,22 @@ A minimal package configuration for our example
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-opam"><code>     <span style="color: #51afef;">opam-version</span>: <span style="color: #98be65;">"2.0"</span></code>
-<code>     <span style="color: #51afef;">name</span>: <span style="color: #98be65;">"myproject"</span></code>
-<code>     <span style="color: #51afef;">version</span>: <span style="color: #98be65;">"0.1"</span></code>
-<code>     synopsis: <span style="color: #98be65;">"Description of my project"</span></code>
-<code>     <span style="color: #51afef;">maintainer</span>: <span style="color: #98be65;">"Me <a href="mailto:my.self%40sub.domain">&lt;my.self@sub.domain&gt;</a>"</span></code>
-<code>     <span style="color: #51afef;">depends</span>: [</code>
-<code>       <span style="color: #98be65;">"ocaml"</span> { <span style="color: #a9a1e1;">build</span> }</code>
-<code>       <span style="color: #98be65;">"ocamlfind"</span> { <span style="color: #a9a1e1;">build</span> }</code>
-<code>       <span style="color: #98be65;">"dune"</span> { <span style="color: #a9a1e1;">build</span> &amp; &gt;= <span style="color: #98be65;">"1.5.0"</span> }</code>
-<code></code>
-<code>       <span style="color: #98be65;">"base"</span> { &gt;= <span style="color: #98be65;">"0.12.0"</span> }</code>
-<code>       <span style="color: #98be65;">"alcotest"</span> { with-<span style="color: #a9a1e1;">test</span> }</code>
-<code>     ]</code>
-<code>     <span style="color: #51afef;">build</span>: [</code>
-<code>       [<span style="color: #98be65;">"dune"</span> <span style="color: #98be65;">"build"</span> <span style="color: #98be65;">"-p"</span> <span style="color: #dcaeea;">name</span>]</code>
-<code>     ]</code>
+<pre class="src src-tuareg-opam">     <span style="color: #51afef;">opam-version</span>: <span style="color: #98be65;">"2.0"</span>
+     <span style="color: #51afef;">name</span>: <span style="color: #98be65;">"myproject"</span>
+     <span style="color: #51afef;">version</span>: <span style="color: #98be65;">"0.1"</span>
+     synopsis: <span style="color: #98be65;">"Description of my project"</span>
+     <span style="color: #51afef;">maintainer</span>: <span style="color: #98be65;">"Me <a href="mailto:my.self%40sub.domain">&lt;my.self@sub.domain&gt;</a>"</span>
+     <span style="color: #51afef;">depends</span>: [
+       <span style="color: #98be65;">"ocaml"</span> { <span style="color: #a9a1e1;">build</span> }
+       <span style="color: #98be65;">"ocamlfind"</span> { <span style="color: #a9a1e1;">build</span> }
+       <span style="color: #98be65;">"dune"</span> { <span style="color: #a9a1e1;">build</span> &amp; &gt;= <span style="color: #98be65;">"1.5.0"</span> }
+
+       <span style="color: #98be65;">"base"</span> { &gt;= <span style="color: #98be65;">"0.12.0"</span> }
+       <span style="color: #98be65;">"alcotest"</span> { with-<span style="color: #a9a1e1;">test</span> }
+     ]
+     <span style="color: #51afef;">build</span>: [
+       [<span style="color: #98be65;">"dune"</span> <span style="color: #98be65;">"build"</span> <span style="color: #98be65;">"-p"</span> <span style="color: #dcaeea;">name</span>]
+     ]
 </pre>
 </div>
 
@@ -440,7 +440,7 @@ To validate the syntax and configuration your opam package, run
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>      $ opam lint</code>
+<pre class="src src-sh">      $ opam lint
 </pre>
 </div>
 
@@ -464,7 +464,7 @@ project, run
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh"><code>      $ opam install . --with-test -y</code>
+<pre class="src src-sh">      $ opam install . --with-test -y
 </pre>
 </div>
 </div>
@@ -482,8 +482,8 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-jbuild"><code>     (test</code>
-<code>      (<span style="color: #c678dd;">name</span> mytest))</code>
+<pre class="src src-tuareg-jbuild">     (test
+      (<span style="color: #c678dd;">name</span> mytest))
 </pre>
 </div>
 
@@ -492,7 +492,7 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><code>     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f0e68c;">()</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">assert</span> <span style="color: #a9a1e1;">false</span></code>
+<pre class="src src-tuareg">     <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f0e68c;">()</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">assert</span> <span style="color: #a9a1e1;">false</span>
 </pre>
 </div>
 
@@ -502,10 +502,10 @@ isn&rsquo;t pretty, but it proves the point:
 </p>
 
 <pre class="example">
-<code>    $ dune runtest</code>
-<code>          mytest alias test/runtest (exit 2)</code>
-<code>    (cd _build/default/test &amp;&amp; ./mytest.exe)</code>
-<code>    Fatal error: exception Assert_failure("test/mytest.ml", 1, 9)</code>
+    $ dune runtest
+          mytest alias test/runtest (exit 2)
+    (cd _build/default/test &amp;&amp; ./mytest.exe)
+    Fatal error: exception Assert_failure("test/mytest.ml", 1, 9)
 </pre>
 </div>
 
@@ -527,24 +527,24 @@ preferred testing tools.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><code>    <span style="color: #dcaeea;">version</span>: 2</code>
-<code>    <span style="color: #dcaeea;">jobs</span>:</code>
-<code>      <span style="color: #dcaeea;">build</span>:</code>
-<code>        <span style="color: #dcaeea;">docker</span>:</code>
-<code>          - <span style="color: #dcaeea;">image</span>: shonfeder/ocaml-ci-docker</code>
-<code></code>
-<code>        <span style="color: #dcaeea;">steps</span>:</code>
-<code>          - checkout</code>
-<code></code>
-<code>          - <span style="color: #dcaeea;">run</span>:</code>
-<code>              <span style="color: #dcaeea;">name</span>: Install Package Dependencies</code>
-<code>              <span style="color: #dcaeea;">command</span>: opam install . --with-test -y</code>
-<code></code>
-<code>          - <span style="color: #dcaeea;">run</span>:</code>
-<code>              <span style="color: #dcaeea;">name</span>: Run tests</code>
-<code>              <span style="color: #dcaeea;">command</span>: |</code>
-<code>                <span style="color: #98be65;">eval $(opam env)</span></code>
-<code><span style="color: #98be65;">                dune runtest</span></code>
+<pre class="src src-yaml">    <span style="color: #dcaeea;">version</span>: 2
+    <span style="color: #dcaeea;">jobs</span>:
+      <span style="color: #dcaeea;">build</span>:
+        <span style="color: #dcaeea;">docker</span>:
+          - <span style="color: #dcaeea;">image</span>: shonfeder/ocaml-ci-docker
+
+        <span style="color: #dcaeea;">steps</span>:
+          - checkout
+
+          - <span style="color: #dcaeea;">run</span>:
+              <span style="color: #dcaeea;">name</span>: Install Package Dependencies
+              <span style="color: #dcaeea;">command</span>: opam install . --with-test -y
+
+          - <span style="color: #dcaeea;">run</span>:
+              <span style="color: #dcaeea;">name</span>: Run tests
+              <span style="color: #dcaeea;">command</span>: |
+                <span style="color: #98be65;">eval $(opam env)</span>
+<span style="color: #98be65;">                dune runtest</span>
 </pre>
 </div>
 </div>

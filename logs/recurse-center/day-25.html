@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-19 Thu 00:00 -->
+<!-- 2019-12-21 Sat 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 25: Other Structures In Other Words</title>
@@ -574,11 +574,11 @@ In OCaml, a <code>module</code> is specified by a <code>sig</code> and implement
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Some_module</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
-<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value specifications... </span><span style="color: #5B6268;">*)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">end</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value bindings... </span><span style="color: #5B6268;">*)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Some_module</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span>
+  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value specifications... </span><span style="color: #5B6268;">*)</span>
+<span style="color: #f5deb3; font-weight: bold;">end</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
+  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value bindings... </span><span style="color: #5B6268;">*)</span>
+<span style="color: #f5deb3; font-weight: bold;">end</span>
 </pre>
 </div>
 
@@ -705,20 +705,20 @@ semigroup for <code>Option</code> types:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Option</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">S </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> S</span><span style="color: #f0e68c;">)</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">S</span> <span style="color: #f5deb3; font-weight: bold;">with type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Seed</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
-<code>      <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t</code>
-<code>      <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">op</span><span style="color: #dcaeea;"> a b</span> <span style="color: #f0e68c;">=</span></code>
-<code>        <span style="color: #51afef;">match</span> a  <span style="color: #f0e68c;">,</span> b <span style="color: #51afef;">with</span></code>
-<code>        <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">None</span>   <span style="color: #f0e68c;">,</span> b      <span style="color: #f0e68c;">-&gt;</span> b</code>
-<code>        <span style="color: #f0e68c;">|</span> a      <span style="color: #f0e68c;">,</span> <span style="color: #bbc2cf; background-color: #21242b;">None</span>   <span style="color: #f0e68c;">-&gt;</span> a</code>
-<code>        <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> a <span style="color: #f0e68c;">,</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> b <span style="color: #f0e68c;">-&gt;</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> <span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">S.</span>op a b<span style="color: #f0e68c;">)</span></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">end</span></code>
-<code></code>
-<code>    <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Make </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Seed</span><span style="color: #f0e68c;">)</span></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">end</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">end</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Option</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
+  <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">S </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> S</span><span style="color: #f0e68c;">)</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">S</span> <span style="color: #f5deb3; font-weight: bold;">with type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
+    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Seed</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
+      <span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">S.</span>t <span style="color: #ECBE7B;">Option.</span>t
+      <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">op</span><span style="color: #dcaeea;"> a b</span> <span style="color: #f0e68c;">=</span>
+        <span style="color: #51afef;">match</span> a  <span style="color: #f0e68c;">,</span> b <span style="color: #51afef;">with</span>
+        <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">None</span>   <span style="color: #f0e68c;">,</span> b      <span style="color: #f0e68c;">-&gt;</span> b
+        <span style="color: #f0e68c;">|</span> a      <span style="color: #f0e68c;">,</span> <span style="color: #bbc2cf; background-color: #21242b;">None</span>   <span style="color: #f0e68c;">-&gt;</span> a
+        <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> a <span style="color: #f0e68c;">,</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> b <span style="color: #f0e68c;">-&gt;</span> <span style="color: #bbc2cf; background-color: #21242b;">Some</span> <span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">S.</span>op a b<span style="color: #f0e68c;">)</span>
+    <span style="color: #f5deb3; font-weight: bold;">end</span>
+
+    <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Make </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Seed</span><span style="color: #f0e68c;">)</span>
+  <span style="color: #f5deb3; font-weight: bold;">end</span>
+<span style="color: #f5deb3; font-weight: bold;">end</span>
 </pre>
 </div>
 

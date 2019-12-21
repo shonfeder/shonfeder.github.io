@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2019-12-21 Sat 17:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Day 4: Exhaustion</title>
+<title>Lightweight Webapps in OCaml</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,167 +258,151 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Day 4: Exhaustion</h1>
-<blockquote>
+<h1 class="title">Lightweight Webapps in OCaml</h1>
 <p>
-Our goal is to show once and for all that, contrary to popular belief (even
-among experts in the field!), the semantics of ML modules is immediately
-accessible to anyone familiar with System Fω, the higher-order polymorphic
-λ-calculus.
+This tutorial aims to guide those familiar with OCaml, into one possible
+approach for a lightweight webapp backend. The app is lightweight in that it
+doesn&rsquo;t take much code to define and in that it probably shouldn&rsquo;t be used for
+heavy, industrial applications.
 </p>
 
 <p>
-&#x2026;
+(The OCaml ecosystem also has great support for the frontend, thanks to
+<code>Js_of_ocaml</code> and <code>Bucklescript</code>, but we&rsquo;ll save that for a followup.)
 </p>
+
+<div id="outline-container-org9c6412a" class="outline-2">
+<h2 id="org9c6412a">Dependencies</h2>
+<div class="outline-text-2" id="text-org9c6412a">
+<p>
+We will be using the following OCaml libraries:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://opam.ocaml.org/packages/core/">Core</a>: A standard standard library alternative</li>
+<li><a href="https://opam.ocaml.org/packages/opium/">Opium</a>: A Sinatra-like web toolkit</li>
+<li><a href="https://github.com/paurkedal/ocaml-caqti">Caqti</a>: For interfacing with PostgreSQL</li>
+<li><a href="https://opam.ocaml.org/packages/tyxml/">TyXML</a>: A library for generating correct HTML</li>
+</ul>
 
 <p>
-<i>ML modules are merely a particular mode of use of System Fω.</i>
-(<a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a>)
-</p>
-</blockquote>
-
-<div id="outline-container-org2c969d3" class="outline-2">
-<h2 id="org2c969d3">Vibe</h2>
-<div class="outline-text-2" id="text-org2c969d3">
-<p>
-Tuckered out and feeling a bit numb. I need to turtle a bit tomorrow and recover
-from all the lovely (but quite intense) social engagement.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgf85f3bf" class="outline-2">
-<h2 id="orgf85f3bf">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgf85f3bf">
-<p>
-Due to over-extending myself over the last three days, I wasn&rsquo;t able to stay on
-task with my planned goals today. I did manage to make some meaningful progress
-however.
-</p>
-
-<p>
-By the third page of <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a> (the epigraph to this entry) is was
-clear that I would need improve my graphs of System Fω in order to work
-effectively on 1Ml. This has motivated me to see through ongoing studies into
-typed lambda calculi, and push forward quickly until I have covered the left
-face of the lambda cube:
-</p>
-
-
-<div class="figure">
-<p><object type="image/svg+xml" data="https://upload.wikimedia.org/wikipedia/commons/c/cd/Lambda_Cube_img.svg" class="org-svg">
-Sorry, your browser does not support SVG.</object>
+There are many other excellent and powerful web libraries we won&rsquo;t be using. See
+<a href="https://ocamlverse.github.io/content/web_networking.html">the OCamlverse page on Web and Networking</a> for a catalog.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge7fd8da" class="outline-3">
-<h3 id="orge7fd8da">PLT: Type Theory</h3>
-<div class="outline-text-3" id="text-orge7fd8da">
+<div id="outline-container-org8f30ff3" class="outline-2">
+<h2 id="org8f30ff3">Prerequisites</h2>
+<div class="outline-text-2" id="text-org8f30ff3">
 <p>
-I spent some time working on the <a href="http://gallium.inria.fr/~fpottier/menhir/">menhir</a> parser-generator for my WIP experiments
-in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a>. For a long while I&rsquo;ve been stuck on a
-<a href="https://www.gnu.org/software/bison/manual/html_node/Shift_002fReduce.html">shift/reduce ambiguity</a> arising from this grammar rule:
+This section is for readers who don&rsquo;t currently have a well configured OCaml
+setup in place. Skip to the <a href="#org2f7c8b9">next</a> if you&rsquo;re already setup with the modern suite
+of tools.
+</p>
+</div>
+
+<div id="outline-container-org84b57fd" class="outline-3">
+<h3 id="org84b57fd">1. Install and configure opam (the OCaml package manager)</h3>
+<div class="outline-text-3" id="text-org84b57fd">
+<p>
+To install opam, run
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">term</span>:
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
-  | m = term; n = term
-    { Term.app m n}
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
+<pre class="src src-sh">sh &lt;<span style="color: #51afef;">(</span><span style="color: #ECBE7B;">curl</span> -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.<span style="color: #ffffff; background-color: brightblack;">s</span>h<span style="color: #51afef;">)</span>
 </pre>
 </div>
 
 <p>
-This rule is meant to say that any two juxtaposed terms are to be parsed as
-function application. However, due to the necessarily recursive definition of
-terms and the lack of an operator to use for indicating precedence of grouping,
-menhir doesn&rsquo;t know if a sequence such as <code>l m n</code> should be parsed into the
-correct left-associative expression <code>Term.app((Term.app l m) n)</code> or the
-incorrect, right associative <code>Term.app(l Term.app(m n))</code>.
+or <a href="https://opam.ocaml.org/doc/Install.html">choose another method.</a>
 </p>
 
 <p>
-I finally came across <a href="http://www.minjiezha.com/tech/2011/01/18/A-Simple-Lambda-Calculus-Evaluator-II.html">a resource</a> that described a solution to a similar problem
-(also in a lambda calculus interpreter, but with different syntax). What we want
-is a way to clearly instruct the parser generator that term application should
-be left-associative. To achieve this, we restructure the rule to ensure that
-the parser is left-recursive on the first term of the application:
+Initialize opam and build your main working environment with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">terms</span>:
-  | m = terms; n = term
-    { Term.app m n }
-  | t = term;
-    { t }
-<span style="color: #c678dd;">term</span>: <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">singular terms here </span><span style="color: #5B6268;">*/</span>
+<pre class="src src-sh">opam init
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Install any dependencies called for</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Answer yes to the prompts to configure your shell environment</span>
+
+opam switch 4.08.1
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Sets the system ocaml compiler to use ocaml 4.08.1</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Use a different version at your own discretion</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd3930ac" class="outline-3">
-<h3 id="orgd3930ac">Category theory</h3>
-<div class="outline-text-3" id="text-orgd3930ac">
-<ul class="org-ul">
-<li>CT reading group: folks presented motivating reasons behind their desires to
-learn Category Theory.</li>
-</ul>
+<div id="outline-container-orga4c9e33" class="outline-3">
+<h3 id="orga4c9e33">2. Install editor support and initialize your configurations</h3>
+<div class="outline-text-3" id="text-orga4c9e33">
+<p>
+For the basic tooling, run
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">opam install user-setup merlin ocamlformat ocp-indent
+opam user-setup install
+</pre>
 </div>
 </div>
 
-<div id="outline-container-orgb4dc70e" class="outline-3">
-<h3 id="orgb4dc70e">Writing</h3>
-<div class="outline-text-3" id="text-orgb4dc70e">
-<ul class="org-ul">
-<li>Created a <a href="https://joaotavora.github.io/yasnippet/snippet-development.html">yas snippet</a> to generate the template for these logs. Getting savy with
-yas snippets should improve the speed and quality of writing and code in general.</li>
-</ul>
-</div>
-</div>
-</div>
 
-<div id="outline-container-org30a7195" class="outline-2">
-<h2 id="org30a7195">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org30a7195">
+<div id="outline-container-orgb9d4d4f" class="outline-4">
+<h4 id="orgb9d4d4f">Emacs</h4>
+<div class="outline-text-4" id="text-orgb9d4d4f">
+<div class="org-src-container">
+<pre class="src src-sh">opam install tuareg
+</pre>
 </div>
-<div id="outline-container-orgba11b2a" class="outline-3">
-<h3 id="orgba11b2a">PLT: 1ML × Type Theory</h3>
-<div class="outline-text-3" id="text-orgba11b2a">
-<ul class="org-ul">
-<li>Study and take notes on the distinction between small and large types in 1ML</li>
-<li>Continue reading <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a></li>
-<li>Begin working on tuple type-checking error</li>
-<li>Begin trying to fix the biggest type-checking bug I found today</li>
-<li>Finish parser for λ⟶</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgef5d205" class="outline-3">
-<h3 id="orgef5d205">Writing</h3>
-<div class="outline-text-3" id="text-orgef5d205">
-<ul class="org-ul">
-<li>Write up implementation of stack</li>
-<li>Write up notes on small vs. large types</li>
-</ul>
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="Rossberg_2010">[Rossberg_2010]</a> <a name="Rossberg_2010"></a>Rossberg, Russo & Dreyer, F-ing modules, <i>Proceedings of the 5th ACM SIGPLAN workshop on Types in
-                  language design and implementation - TLDI ’10</i>,  (2010). <a href="http://dx.doi.org/10.1145/1708016.1708028">link</a>. <a href="http://dx.doi.org/10.1145/1708016.1708028">doi</a>.</li>
-</ul>
+If you aren&rsquo;t already an emacs user but want to give it a spin, I highly
+recommend the <a href="https://www.spacemacs.org/">spacemacs</a> distribution for a beginner friendly approach.
+</p>
+
+<p>
+I use doom-emacs, and find the IDE experience phenomenal.
 </p>
 </div>
+</div>
+
+<div id="outline-container-orgdafc0c8" class="outline-4">
+<h4 id="orgdafc0c8">For Vim or VSCode</h4>
+<div class="outline-text-4" id="text-orgdafc0c8">
+<p>
+See <a href="https://ocamlverse.github.io/content/editor_support.html">recommendations on the OCamlveres</a>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2f7c8b9" class="outline-2">
+<h2 id="org2f7c8b9">Setup</h2>
+</div>
+
+<div id="outline-container-orgf2c2bbf" class="outline-2">
+<h2 id="orgf2c2bbf"><span class="todo TODO">TODO</span> Corrections, Suggestions, and Feedback</h2>
+<div class="outline-text-2" id="text-orgf2c2bbf">
+<p>
+If you have any questions or feedback, please feel free to
+</p>
+
+<ul class="org-ul">
+<li>TODO Make a PR to correct or improve something on this page</li>
+<li>TODO Open an issue</li>
+<li>Contact me via <a href="http://shonfeder.net">my homepage</a>.</li>
+</ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-09-27 Fri 08:58. <br>
+Last updated 2019-12-20 Fri 00:44. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>

@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-18 Wed 23:59 -->
+<!-- 2019-12-21 Sat 17:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
@@ -298,9 +298,9 @@ To define a named module, we follow this schema:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>ModuleName (; : MODULE_TYPE ;) = {</code>
-<code> ;; declarations and definitions</code>
-<code>};</code>
+<pre class="src src-1ml">ModuleName (; : MODULE_TYPE ;) = {
+ ;; declarations and definitions
+};
 </pre>
 </div>
 
@@ -320,7 +320,7 @@ thus:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>M = {};</code>
+<pre class="src src-1ml">M = {};
 </pre>
 </div>
 </div>
@@ -339,11 +339,11 @@ Consider module <code>M</code> with one type declaration and two value definitio
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>M = {</code>
-<code>  type t = (int, text);</code>
-<code>  x = 5;</code>
-<code>  y = (x, "five");</code>
-<code>};</code>
+<pre class="src src-1ml">M = {
+  type t = (int, text);
+  x = 5;
+  y = (x, "five");
+};
 </pre>
 </div>
 
@@ -353,11 +353,11 @@ type for the module:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>M : {</code>
-<code>  type t = (int, text);</code>
-<code>  x : int;</code>
-<code>  y : (int, text);</code>
-<code>};</code>
+<pre class="src src-1ml">M : {
+  type t = (int, text);
+  x : int;
+  y : (int, text);
+};
 </pre>
 </div>
 
@@ -373,11 +373,11 @@ modules by specifying module types that omit some of the module&rsquo;s contents
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>M : { type t; y: t; } = {</code>
-<code>  type t = (int, text);</code>
-<code>  x = 5;</code>
-<code>  y = (x, "five");</code>
-<code>};</code>
+<pre class="src src-1ml">M : { type t; y: t; } = {
+  type t = (int, text);
+  x = 5;
+  y = (x, "five");
+};
 </pre>
 </div>
 
@@ -387,10 +387,10 @@ no longer available from outside of the module:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>1ML&gt; result = M.y</code>
-<code>result : (int, text);</code>
-<code>1ML&gt; result = M.x</code>
-<code>stdin:1.10-1.13: field `x' unbound in expression</code>
+<pre class="src src-1ml">1ML&gt; result = M.y
+result : (int, text);
+1ML&gt; result = M.x
+stdin:1.10-1.13: field `x' unbound in expression
 </pre>
 </div>
 
@@ -400,11 +400,11 @@ types, we specify the module signature using <code>:&gt;</code>, thus
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>M :&gt; { type t; y: t; } = {</code>
-<code>  type t = (int, text);</code>
-<code>  x = 5;</code>
-<code>  y = (5, "five");</code>
-<code>};</code>
+<pre class="src src-1ml">M :&gt; { type t; y: t; } = {
+  type t = (int, text);
+  x = 5;
+  y = (5, "five");
+};
 </pre>
 </div>
 
@@ -478,21 +478,21 @@ here expressed in terms of the module type:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>type STACK = {</code>
-<code>  type t a;</code>
-<code>  empty 'a : t a;</code>
-<code>  push 'a : t a -&gt; a -&gt; t a;</code>
-<code></code>
-<code>  ;; Only needed to work around a bug in the type checker that's preventing use</code>
-<code>  ;; of the clearer and more concise type declaration:</code>
-<code>  ;; pop 'a: t a -&gt; opt (t a, a)</code>
-<code>  type pair a = (t a, a);</code>
-<code></code>
-<code>  pop 'a : t a -&gt; opt (pair a);</code>
-<code></code>
-<code>  isEmpty 'a : t a -&gt; bool;</code>
-<code>  size 'a : t a -&gt; int;</code>
-<code>};</code>
+<pre class="src src-1ml">type STACK = {
+  type t a;
+  empty 'a : t a;
+  push 'a : t a -&gt; a -&gt; t a;
+
+  ;; Only needed to work around a bug in the type checker that's preventing use
+  ;; of the clearer and more concise type declaration:
+  ;; pop 'a: t a -&gt; opt (t a, a)
+  type pair a = (t a, a);
+
+  pop 'a : t a -&gt; opt (pair a);
+
+  isEmpty 'a : t a -&gt; bool;
+  size 'a : t a -&gt; int;
+};
 </pre>
 </div>
 
@@ -554,39 +554,39 @@ implementation:
 <h4 id="orgef7a8da">Implementing the ADT</h4>
 <div class="outline-text-4" id="text-orgef7a8da">
 <div class="org-src-container">
-<pre class="src src-1ml"><code>Stack :&gt; STACK = {</code>
-<code>  type t a = {size: int; content: list a};</code>
-<code></code>
-<code>  empty 'a = {size = 0; content = List.nil};</code>
-<code></code>
-<code>  push 'a (s : t a) x =</code>
-<code>    let size' = s.size + 1 in</code>
-<code>    let content' = s.content in</code>
-<code>    {size = size' + 1; content = List.cons x content'};</code>
-<code></code>
-<code>  peek 'a (s : t a) =</code>
-<code>    let content = s.content in</code>
-<code>    List.head content;</code>
-<code></code>
-<code>  type pair a = (t a, a);</code>
-<code></code>
-<code>  pop 'a (s : t a) =</code>
-<code>    let content = s.content in</code>
-<code>    caseopt (List.tail content)</code>
-<code>      (fun () =&gt; Opt.none)</code>
-<code>      (fun content' =&gt; caseopt (List.head content)</code>
-<code>        (fun () =&gt; Opt.none)</code>
-<code>        (fun x =&gt;</code>
-<code>          let size' = s.size - 1 in</code>
-<code>          let s' = {size = size'; content = content'} in</code>
-<code>          Opt.some (s', x)));</code>
-<code></code>
-<code>  isEmpty 'a (s : t a) =</code>
-<code>    let content = s.content in</code>
-<code>    List.isNil content;</code>
-<code></code>
-<code>  size 'a (s : t a) = s.size</code>
-<code>};</code>
+<pre class="src src-1ml">Stack :&gt; STACK = {
+  type t a = {size: int; content: list a};
+
+  empty 'a = {size = 0; content = List.nil};
+
+  push 'a (s : t a) x =
+    let size' = s.size + 1 in
+    let content' = s.content in
+    {size = size' + 1; content = List.cons x content'};
+
+  peek 'a (s : t a) =
+    let content = s.content in
+    List.head content;
+
+  type pair a = (t a, a);
+
+  pop 'a (s : t a) =
+    let content = s.content in
+    caseopt (List.tail content)
+      (fun () =&gt; Opt.none)
+      (fun content' =&gt; caseopt (List.head content)
+        (fun () =&gt; Opt.none)
+        (fun x =&gt;
+          let size' = s.size - 1 in
+          let s' = {size = size'; content = content'} in
+          Opt.some (s', x)));
+
+  isEmpty 'a (s : t a) =
+    let content = s.content in
+    List.isNil content;
+
+  size 'a (s : t a) = s.size
+};
 </pre>
 </div>
 
@@ -605,23 +605,23 @@ following annotated elaboration:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>    ;; equivalent to a case statement in Haskell or OCaml, `caseopt` is a</code>
-<code>    ;; function which performs case analysis of values of type `opt`.</code>
-<code>    caseopt (List.tail content)</code>
-<code></code>
-<code>      ;; Matches the `none` alternative.</code>
-<code>      (fun () =&gt; Opt.none)</code>
-<code></code>
-<code>      ;; Matches the `some x` alternative, binding the value of the</code>
-<code>      ;; `x` to the `content` variable in the head of the lambda.</code>
-<code>      (fun content' =&gt; caseopt (List.head content)</code>
-<code></code>
-<code>        ;; This is just a nested case analysis for the other optional value</code>
-<code>        (fun () =&gt; Opt.none)</code>
-<code>        (fun x =&gt;</code>
-<code>          let size' = s.size - 1 in</code>
-<code>          let s' = {size = size'; content = content'} in</code>
-<code>          Opt.some (s', x)));</code>
+<pre class="src src-1ml">    ;; equivalent to a case statement in Haskell or OCaml, `caseopt` is a
+    ;; function which performs case analysis of values of type `opt`.
+    caseopt (List.tail content)
+
+      ;; Matches the `none` alternative.
+      (fun () =&gt; Opt.none)
+
+      ;; Matches the `some x` alternative, binding the value of the
+      ;; `x` to the `content` variable in the head of the lambda.
+      (fun content' =&gt; caseopt (List.head content)
+
+        ;; This is just a nested case analysis for the other optional value
+        (fun () =&gt; Opt.none)
+        (fun x =&gt;
+          let size' = s.size - 1 in
+          let s' = {size = size'; content = content'} in
+          Opt.some (s', x)));
 </pre>
 </div>
 
@@ -631,12 +631,12 @@ like something like this:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-1ml"><code>  pop 'a (s : t a) =</code>
-<code>    match List.tail s.content with</code>
-<code>    | none         =&gt; none</code>
-<code>    | some content =&gt; match List.head content with</code>
-<code>      | none   =&gt; none</code>
-<code>      | some x =&gt; some ({size = s.size - 1; content}, x)</code>
+<pre class="src src-1ml">  pop 'a (s : t a) =
+    match List.tail s.content with
+    | none         =&gt; none
+    | some content =&gt; match List.head content with
+      | none   =&gt; none
+      | some x =&gt; some ({size = s.size - 1; content}, x)
 </pre>
 </div>
 </div>

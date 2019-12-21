@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-19 Thu 00:00 -->
+<!-- 2019-12-21 Sat 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 8: Unsure</title>
@@ -280,9 +280,9 @@ cultivate theoretical foundations. <i>Counterparts are clearly not contraries.</
 <h2 id="orgdb3cc2b">Today&rsquo;s Progress</h2>
 <div class="outline-text-2" id="text-orgdb3cc2b">
 </div>
-<div id="outline-container-orgbc171d5" class="outline-3">
-<h3 id="orgbc171d5">PLT</h3>
-<div class="outline-text-3" id="text-orgbc171d5">
+<div id="outline-container-orga528aac" class="outline-3">
+<h3 id="orga528aac">PLT</h3>
+<div class="outline-text-3" id="text-orga528aac">
 </div>
 <div id="outline-container-org2927d81" class="outline-4">
 <h4 id="org2927d81">Simplified Themis ABT library</h4>
@@ -324,27 +324,27 @@ themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><code><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Check</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span></code>
-<code>  <span style="color: #83898d;">(** Check and infer various properties *)</span></code>
-<code></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_type</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Term.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Type.</span>t option</code>
-<code>  <span style="color: #83898d;">(** [infer_type ctx term] is [Some type] if [type] can be derived for the</span></code>
-<code><span style="color: #83898d;">      [term] in the given [ctx]. Otherwise, it is [None]. *)</span></code>
-<code></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_term</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Type.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Derivation.</span>judgment option</code>
-<code>  <span style="color: #83898d;">(** [infer_term ctx type] is [Some term] if [term] can be synthesized to</span></code>
-<code><span style="color: #83898d;">      inhabit the [type] in the given [ctx]. Otherwise, it is [None]. *)</span></code>
-<code></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">typing</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.</span>judgment <span style="color: #f0e68c;">-&gt;</span> bool</code>
-<code>  <span style="color: #83898d;">(** [typing j] is [true] if a derivation can be found proving the judgment [j]</span><span style="color: #ffffff; background-color: brightblack;">.</span><span style="color: #83898d;">*)</span></code>
-<code></code>
-<code>  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">well_typed</span> <span style="color: #f0e68c;">:</span> <span style="color: #a9a1e1;">?ctx</span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Term.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Derivation.</span>t option</code>
-<code>  <span style="color: #83898d;">(** [well_typed term] is [Some derivation] if a type can inferred for [term]</span></code>
-<code><span style="color: #83898d;">      and a [derivation] can be built demonstrating that the [term] has that</span></code>
-<code><span style="color: #83898d;">      type in the given [ctx].</span></code>
-<code></code>
-<code><span style="color: #83898d;">      [ctx] defaults to an empty context. *)</span></code>
-<code><span style="color: #f5deb3; font-weight: bold;">end</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span></code>
+<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Check</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span>
+  <span style="color: #83898d;">(** Check and infer various properties *)</span>
+
+  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_type</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Term.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Type.</span>t option
+  <span style="color: #83898d;">(** [infer_type ctx term] is [Some type] if [type] can be derived for the</span>
+<span style="color: #83898d;">      [term] in the given [ctx]. Otherwise, it is [None]. *)</span>
+
+  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">infer_term</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Type.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Derivation.</span>judgment option
+  <span style="color: #83898d;">(** [infer_term ctx type] is [Some term] if [term] can be synthesized to</span>
+<span style="color: #83898d;">      inhabit the [type] in the given [ctx]. Otherwise, it is [None]. *)</span>
+
+  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">typing</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">Derivation.</span>judgment <span style="color: #f0e68c;">-&gt;</span> bool
+  <span style="color: #83898d;">(** [typing j] is [true] if a derivation can be found proving the judgment [j]</span><span style="color: #ffffff; background-color: brightblack;">.</span><span style="color: #83898d;">*)</span>
+
+  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">well_typed</span> <span style="color: #f0e68c;">:</span> <span style="color: #a9a1e1;">?ctx</span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;">Derivation.Ctx.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Term.</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #ECBE7B;">Derivation.</span>t option
+  <span style="color: #83898d;">(** [well_typed term] is [Some derivation] if a type can inferred for [term]</span>
+<span style="color: #83898d;">      and a [derivation] can be built demonstrating that the [term] has that</span>
+<span style="color: #83898d;">      type in the given [ctx].</span>
+
+<span style="color: #83898d;">      [ctx] defaults to an empty context. *)</span>
+<span style="color: #f5deb3; font-weight: bold;">end</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
 </pre>
 </div>
 
@@ -371,9 +371,9 @@ instruction on the implementation of the above. I&rsquo;m getting started with C
 <h2 id="org8a2dc41">Tomorrow&rsquo;s Program</h2>
 <div class="outline-text-2" id="text-org8a2dc41">
 </div>
-<div id="outline-container-orga528aac" class="outline-3">
-<h3 id="orga528aac">PLT</h3>
-<div class="outline-text-3" id="text-orga528aac">
+<div id="outline-container-orgf6fe53a" class="outline-3">
+<h3 id="orgf6fe53a">PLT</h3>
+<div class="outline-text-3" id="text-orgf6fe53a">
 </div>
 <div id="outline-container-org45f6e50" class="outline-4">
 <h4 id="org45f6e50">Begin implementing λ2</h4>
