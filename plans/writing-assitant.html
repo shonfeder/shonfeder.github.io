@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-18 Sat 16:46 -->
+<!-- 2020-01-18 Sat 16:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>A Writing Assistant</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,31 +258,176 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">A Writing Assistant</h1>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+A writing assistant facilitating the modular composition of conceptually
+consistent technical prose.
 </p>
-</blockquote>
-<blockquote id="whitehead93#2">
+
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+Akin to a proof assistant.
 </p>
-</blockquote>
+
+
+<div id="outline-container-orgc564cdd" class="outline-2">
+<h2 id="orgc564cdd">Ethos</h2>
+<div class="outline-text-2" id="text-orgc564cdd">
+<p>
+The aim is not to make technical writing <b>easier</b>, the aim is to make it
+<b>better</b>. This may require placing more demands on the writer, but mostly comes
+through providing tools to support exploration and organization.
+</p>
+
+<p>
+We must avoid tech that encourages monoculture or encourages thoughtlessness at
+all costs, so these are anathema
+</p>
+
+<ul class="org-ul">
+<li>Predictive text</li>
+<li>Content generation</li>
+<li>Most usual applications of machine learning</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org11e63a4" class="outline-2">
+<h2 id="org11e63a4">Features</h2>
+<div class="outline-text-2" id="text-org11e63a4">
+</div>
+<div id="outline-container-org42f8df6" class="outline-3">
+<h3 id="org42f8df6">Relates, coordinates, and organizes concepts</h3>
+<div class="outline-text-3" id="text-org42f8df6">
+<p>
+Consistency is supported via enforced univocal definition of key terms and substitution/lookup
+of those definitions. Completeness is encouraged via mechanisms to automatically
+connect and relate internal and external sources.
+</p>
+</div>
+
+<div id="outline-container-org4103aa1" class="outline-4">
+<h4 id="org4103aa1">Internal to the composition</h4>
+<div class="outline-text-4" id="text-org4103aa1">
+<ul class="org-ul">
+<li>defining terms (and checking for consistent usage)</li>
+<li>specifying equivalences (synonyms)</li>
+<li>systematic disambiguation of homonymous terms</li>
+<li>specifies entailments (inclusion)
+<ul class="org-ul">
+<li>can use wordnet for sub-concept inclusion detections/tests?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9d3d5b9" class="outline-4">
+<h4 id="org9d3d5b9">External</h4>
+<div class="outline-text-4" id="text-org9d3d5b9">
+<p>
+Suggestions for relevant citations and quotations are generated dynamically by
+cross- referencing a corpus of texts with terms and phrases from the sentence
+under edit
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org664d6ca" class="outline-3">
+<h3 id="org664d6ca">Strucures <i>passages</i></h3>
+<div class="outline-text-3" id="text-org664d6ca">
+<p>
+Modularity is achieved by enclosing informal prose fragments with opening topic
+and closing conclusion sentences. These provide formal interfaces to other
+modules parameterized by configuration of key terms.
+</p>
+
+<ul class="org-ul">
+<li>passages are transitions or pathways from one <i>notion</i> to another.</li>
+<li>A <i>notion</i> is a complex of concepts &amp; compounding terms (syncategorematic).</li>
+</ul>
+</div>
+<div id="outline-container-org6513764" class="outline-4">
+<h4 id="org6513764">Some example patterns of passages</h4>
+<div class="outline-text-4" id="text-org6513764">
+<dl class="org-dl">
+<dt>source<sub>1</sub></dt><dd>topic sentence</dd>
+<dt>target<sub>1</sub></dt><dd>conclusion statement</dd>
+<dt>source<sub>2</sub></dt><dd>hypothetical (if x holds, then y follows)</dd>
+<dt>target<sub>2</sub></dt><dd>drawing conclusion</dd>
+<dt>source<sub>3</sub></dt><dd>question</dd>
+<dt>target<sub>3</sub></dt><dd>answer</dd>
+<dt>source<sub>4</sub></dt><dd>question</dd>
+<dt>target<sub>4</sub></dt><dd>expanded question or sub-question</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org3cf8135" class="outline-4">
+<h4 id="org3cf8135">Passages nest and branch</h4>
+<div class="outline-text-4" id="text-org3cf8135">
+<p>
+E.g.,
+</p>
+
+<ul class="org-ul">
+<li>topic
+<ul class="org-ul">
+<li>question &#x2026; answer</li>
+<li>question &#x2026; answer</li>
+</ul></li>
+<li>conclusion</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2aed084" class="outline-3">
+<h3 id="org2aed084">Tests/explorations</h3>
+<div class="outline-text-3" id="text-org2aed084">
+<p>
+Generates variant senses, presented to the author for review, so they can
+anticipate misunderstandings or elaborate along previously unconsidered lines
+of thought.
+</p>
+
+<p>
+With relatively simple transformations, can generate things like
+</p>
+
+<ul class="org-ul">
+<li>valid inferences</li>
+<li>alternate interpretations</li>
+<li><p>
+rephrasing exploration via grammatically correct permutations of sentences under edit
+</p>
+
+<p>
+(Can be considered a form of refactoring)
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org80ab037" class="outline-3">
+<h3 id="org80ab037">Transitions</h3>
+<div class="outline-text-3" id="text-org80ab037">
+<p>
+These link passages. They are special kinds of passages, which are schemas
+for coordinating passages.
+</p>
+<ul class="org-ul">
+<li>should be modular</li>
+<li>they are <i>tropes</i> like analogy, metaphor, synonym expansion, association of
+concepts, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org68840de" class="outline-3">
+<h3 id="org68840de">Connections</h3>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2020-01-18 Sat 16:26. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
