@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-18 Sat 16:11 -->
+<!-- 2020-01-18 Sat 16:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Notes on TLA+</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,31 +258,201 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Notes on TLA+</h1>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+<b>WIP</b>
 </p>
-</blockquote>
-<blockquote id="whitehead93#2">
+
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+Notes compiled while learning the basics of TLA+.
+</p>
+
+<div id="outline-container-org8916820" class="outline-2">
+<h2 id="org8916820">My Initial Point of View</h2>
+<div class="outline-text-2" id="text-org8916820">
+<p>
+Over the last few years, I have spent some time reading about the
+<i>constructivist</i> tradition of formal verification, which is currently
+flourishing in the form of theorem provers/proof assistants and languages with
+increasingly expressive type-theoretic type systems. Prior to that, I had a
+years long infatuation with Prolog. It seems to be me that the approach in
+Prolog (and relational and constraint programming) is similar to the model
+checking approach: the user writes high-level declarations and an underlying
+algorithm explores the problem space to verify whether certain properties hold.
+This is in stark contrast to the constructivist approach, in which verification
+can only be achieved through a construction of the objective.
+</p>
+
+<p>
+The constructivist approach appeals to me because it is both philosophically
+satisfying (<a href="themata/synechism.html">Synechism</a> implies <a href="themata/structure.html">Structuralism</a> which &#x2013; in my (admittedly
+post-structuralist) view &#x2013; implies <a href="https://en.wikipedia.org/wiki/Constructivism_(philosophy_of_mathematics)">Constructivism</a><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>) and
+demonstrably effective in real world applications (see <a href="http://compcert.inria.fr/compcert-C.html">CompCert</a> or the success
+of Rust).
+</p>
+
+<p>
+However, the success and popularity of the model-checking approach should not be
+overlooked, and recent discussions with a prospective employer have given me
+good reason to learn the basics. So I&rsquo;m digging in now, using the noted
+<a href="#org28fdf03">Resources</a> and, and remarking what I learn and figure out along the way here.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd99de0f" class="outline-2">
+<h2 id="orgd99de0f">Installation</h2>
+<div class="outline-text-2" id="text-orgd99de0f">
+<p>
+This is a Linux-centric summary of the key steps mentioned by
+<a href="http://lamport.azurewebsites.net/tla/toolbox.html">http://lamport.azurewebsites.net/tla/toolbox.html</a>.
+</p>
+</div>
+
+<div id="outline-container-org8ff2f6a" class="outline-3">
+<h3 id="org8ff2f6a">Prerequisites</h3>
+<div class="outline-text-3" id="text-org8ff2f6a">
+</div>
+<div id="outline-container-org04b65d0" class="outline-4">
+<h4 id="org04b65d0">A java runtime &gt;= 1.8</h4>
+<div class="outline-text-4" id="text-org04b65d0">
+<p>
+For my system (Arch):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span class="org-type">sudo</span> pacman -Syu jdk-openjdk=13.0.1.u9-1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf43bd84" class="outline-4">
+<h4 id="orgf43bd84">pdflatex</h4>
+<div class="outline-text-4" id="text-orgf43bd84">
+<p>
+See <a href="https://www.tug.org/applications/pdftex/">https://www.tug.org/applications/pdftex/</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6eb4293" class="outline-3">
+<h3 id="org6eb4293">Download the release</h3>
+<div class="outline-text-3" id="text-org6eb4293">
+<p>
+Available from <a href="https://github.com/tlaplus/tlaplus/releases">https://github.com/tlaplus/tlaplus/releases</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6c24689" class="outline-3">
+<h3 id="org6c24689">Unzip to your desired installation directory</h3>
+<div class="outline-text-3" id="text-org6c24689">
+<p>
+E.g.,
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh"><span class="org-type">mkdir</span> /opt/TLAToolbox/
+<span class="org-type">sudo</span> unzip TLAToolbox-1.6.0-linux.gtk.x86_64.zip -d /opt/TLAToolbox/
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec0171e" class="outline-3">
+<h3 id="orgec0171e">Run the executable</h3>
+<div class="outline-text-3" id="text-orgec0171e">
+<div class="org-src-container">
+<pre class="src src-sh">/opt/TLAToolbox/toolbox/toolbox
+</pre>
+</div>
+
+<p>
+The TLA+ Toolbox GUI should launch
+</p>
+</div>
+</div>
+<div id="outline-container-org24f53e0" class="outline-3">
+<h3 id="org24f53e0"><span class="todo TODO">TODO</span> Fixing the color</h3>
+<div class="outline-text-3" id="text-org24f53e0">
+<p>
+The default color schemes on my system are virtually unusable, and no matter how
+many of the color options I&rsquo;ve toggled, nothing seems to be changing&#x2026;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org185bc9f" class="outline-2">
+<h2 id="org185bc9f">Excerpts</h2>
+<div class="outline-text-2" id="text-org185bc9f">
+<blockquote>
+<p>
+In complex systems, simplicity isn&rsquo;t achieved by coding tricks.  It&rsquo;s achieved
+by rigorous thinking above the code level.
+(Lamport, <a href="http://lamport.azurewebsites.net/tla/high-level-view.html#pluscal?unhideBut=hide-pluscal&amp;unhideDiv=pluscal">A High-Level View of TLA+</a>)
 </p>
 </blockquote>
 </div>
+</div>
+
+<div id="outline-container-org3dea462" class="outline-2">
+<h2 id="org3dea462">On Model Checking vs. theorem proving</h2>
+<div class="outline-text-2" id="text-org3dea462">
+<p>
+<a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/W/4315/_media/public:lecture24.pdf">https://wiki.eecs.yorku.ca/course_archive/2016-17/W/4315/_media/public:lecture24.pdf</a>
+</p>
+
+<ul class="org-ul">
+<li>Model checking is easier to write, but what can be verified is more limited,
+and it does less to sharpen an understanding of the domain</li>
+<li>Theorem proving is harder, but what anything expressible can be verified, and
+verification depends on synthesizing a (relatively) complete construction of
+the problem to be solved (only what can be constructed can be proven).</li>
+</ul>
+</div>
+
+<div id="outline-container-org9e9407b" class="outline-3">
+<h3 id="org9e9407b">Questions</h3>
+<div class="outline-text-3" id="text-org9e9407b">
+<ul class="org-ul">
+<li>Do the differences between the model checking and theorem proving approaches
+trace back to a difference betwen the model theoretic vs. proof theoretic
+approaches to logic?</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org28fdf03" class="outline-2">
+<h2 id="org28fdf03">Resources</h2>
+<div class="outline-text-2" id="text-org28fdf03">
+<ul class="org-ul">
+<li><a href="https://learntla.com/introduction/about-this-guide/">Learn TLA+ Website</a></li>
+<li><a href="http://lamport.azurewebsites.net/tla/summary-standalone.pdf">TLA+ Cheatsheet</a></li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+A quick search indicated that this view is likely
+contentious, and I should note here that I do not claim any authority or
+expertise on the philosophy of mathematics.
+</p></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2020-01-06 Mon 16:43. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
