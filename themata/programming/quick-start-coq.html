@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -7,7 +8,7 @@
 <!-- 2020-01-26 Sun 15:34 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quips</title>
+<title>Quick Start Coq: Quick, Start Coq!</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -257,127 +258,67 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Quips</h1>
+<h1 class="title">Quick Start Coq: Quick, Start Coq!</h1>
 <p>
-Things To be sorted, expanded, or deleted&#x2026;
+<b>WIP</b>
 </p>
 
-<div id="outline-container-org048fc91" class="outline-2">
-<h2 id="org048fc91">The formal paradoxes of the early 20th century</h2>
-<div class="outline-text-2" id="text-org048fc91">
-<p>
-I suspect that a common root of these was the use of <i>general logic</i> as an
-<b>organon</b>. In Kant&rsquo;s critical philosophy, he admonishes against this,
-warning that will produce monstrous results.
-</p>
-
-<p>
-To use logic as an organon is to use it to extend our knowledge. That is done
-whenever we try to reason from purely general logical principles to <b>existence</b>
-of any sort. This occurs, for instance, in the axiom of unrestricted
-comprehension.
-</p>
+<div id="outline-container-org8579422" class="outline-2">
+<h2 id="org8579422"><span class="todo TODO">TODO</span> Introduction</h2>
 </div>
-</div>
-<div id="outline-container-orga494853" class="outline-2">
-<h2 id="orga494853">We deserve to live well</h2>
-<div class="outline-text-2" id="text-orga494853">
-<p>
-Humanity as a whole does not seem to believe that it deserves to live well. We
-must become convinced that we deserve to live well so that we become compelled
-to form our communities to serve this end.
-</p>
-</div>
-</div>
-<div id="outline-container-org10ba8fa" class="outline-2">
-<h2 id="org10ba8fa">Masquerading as kindness</h2>
-<div class="outline-text-2" id="text-org10ba8fa">
-<p>
-Some forms of compliance and complicity masquerade as kindness.
-</p>
-</div>
-</div>
-<div id="outline-container-orgbebd936" class="outline-2">
-<h2 id="orgbebd936">Wild guesses</h2>
-<div class="outline-text-2" id="text-orgbebd936">
+<div id="outline-container-orgec00415" class="outline-2">
+<h2 id="orgec00415">Prerequisites</h2>
+<div class="outline-text-2" id="text-orgec00415">
 <ul class="org-ul">
-<li>Girard&rsquo;s <a class='org-ref-reference' href="#girard11">girard11</a> culminates in a formal theory of <i>transcendental
-inter-subjectivity</i>.</li>
+<li><a href="https://opam.ocaml.org/doc/Install.html#Binary-distribution">Opam</a></li>
+<li><a href="http://ergoemacs.org/emacs/which_emacs.html">Emacs</a></li>
+</ul>
+</div>
+<div id="outline-container-org40bc8a3" class="outline-3">
+<h3 id="org40bc8a3">My setup</h3>
+<div class="outline-text-3" id="text-org40bc8a3">
+<ul class="org-ul">
+<li><a href="https://github.com/hlissner/doom-emacs">doom-emacs</a>
+<ul class="org-ul">
+<li>Uncomment <code>;;coq</code> in <a href="file:///home/sf/.doom.d/init.el">file:///home/sf/.doom.d/init.el</a></li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf77c43f" class="outline-2">
-<h2 id="orgf77c43f">Atomic individuality</h2>
-<div class="outline-text-2" id="text-orgf77c43f">
+</div>
+
+<div id="outline-container-org1936024" class="outline-2">
+<h2 id="org1936024">Installation</h2>
+<div class="outline-text-2" id="text-org1936024">
 <p>
-Atomic individuality and absolute independence are illusions born of the
-misapplication of pure reason. An atomic individual with total independence is
-not a possible object of cognition.
+Using <a href="https://opam.ocaml.org/doc/Install.html#Binary-distribution">opam</a>:
 </p>
 
+<blockquote>
 <p>
-This fantasy (really a &ldquo;nightmare of reason&rdquo;) can entertain lifestyle
-anarchists, ancaps, and neoliberals only because they suppress the necessary
-context in which humans must come into being.
+opam update
+opam install coq
 </p>
+</blockquote>
 </div>
 </div>
-<div id="outline-container-org9f1ac83" class="outline-2">
-<h2 id="org9f1ac83">Pattern matching is in tension with representation independence</h2>
-<div class="outline-text-2" id="text-org9f1ac83">
-<p>
-Pattern matching is lovely. I&rsquo;d strongly encourage anyone who hasn&rsquo;t played with
-a language supporting pattern matching to do so ASAP. As a matter of fact, skip
-straight to unification. However, &lt;something about tension with abstraction&gt;.
-</p>
-
-<p>
-The very premise of pattern matching is that the surface representation of a
-structure can be used as an <b>iconic</b> interface to its components. &lt;explain
-iconic&gt;.
-</p>
-
-
-<p>
-Pattern matching lets us access arbitrarily nested components of data by
-matching an instance of the data against a schematic form of it, with free
-variables located at situations where we&rsquo;d will find the components we want to
-extract.
-</p>
-
-<p>
-This places naive pattern matching in direct opposition to <b>representation
-independence</b>.
-</p>
-</div>
-</div>
-<div id="outline-container-orge502de9" class="outline-2">
-<h2 id="orge502de9">Nutshelled</h2>
-<div class="outline-text-2" id="text-orge502de9">
-</div>
-<div id="outline-container-orgf69cb9e" class="outline-3">
-<h3 id="orgf69cb9e">Virtual Machines vs. Containers</h3>
-<div class="outline-text-3" id="text-orgf69cb9e">
-<p>
-VMs use an abstraction of machine hardware to run real OSes on the host machine.
-Containers use an abstractions of an operating systems to run programs in the
-host operating system.
-</p>
-
-
-<p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
+<div id="outline-container-orga1e82e4" class="outline-2">
+<h2 id="orga1e82e4"><span class="todo TODO">TODO</span> Writing and running proofs</h2>
+<div class="outline-text-2" id="text-orga1e82e4">
+<ul class="org-ul">
+<li>Put coq code in files with the <code>.v</code> extension</li>
+<li>Start checking the proof by running <code>C-c C-Return</code>.</li>
 </ul>
-</p>
 </div>
 </div>
+<div id="outline-container-org6eb08c9" class="outline-2">
+<h2 id="org6eb08c9"><span class="todo TODO">TODO</span> Extracting programs</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-01-26 Sun 15:28. <br>
+Last updated 2020-01-26 Sun 15:27. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
