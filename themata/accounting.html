@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -7,7 +8,7 @@
 <!-- 2020-02-06 Thu 11:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Programming</title>
+<title>Accounting</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -241,6 +242,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -257,43 +280,193 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="content">
-<h1 class="title">Programming</h1>
+<h1 class="title">Accounting</h1>
+<p>
+The practical need to earn a living from my profession brought me to the
+topic of accounting. Having arrived at this topic, however, it was immediately
+apprent that the problem and practice of accounting is something of critical
+importance.
+</p>
+
+<div id="outline-container-org8f3f2a0" class="outline-2">
+<h2 id="org8f3f2a0">What is an <b>Account</b></h2>
+<div class="outline-text-2" id="text-org8f3f2a0">
+<p>
+<i>Notes recorded while reading <a href="https://docs.google.com/document/d/100tGcA4blh6KSXPRGCZpUlyxaRUwFHEvnz_k9DyZFn4/edit">Beancount - The Double-Entry Counting Method</a>.</i>
+</p>
+
 <blockquote>
 <p>
-We believe that programming can be, and should be, an intellectually
-rewarding activity; that a good programming language is a powerful
-conceptual tool — a tool for organizing, expressing, experimenting with, and
-even communicating one&rsquo;s thoughts &#x2026; we think that programming can be, and
-should be, part of the problem solving process itself; that thoughts should
-be organized as programs, so that consequences of a complex set of
-assumptions can be investigated by &ldquo;running&rdquo; the assumptions; that a
-conceptual solution to a problem should be developed hand-in-hand with a
-working program that demonstrates it and exposes its different aspects.
+Let’s begin by defining the notion of an <b>account</b>. An account is something that
+can contain things, like a bag. It is used to count things, to accumulate
+things.
 </p>
 
 <p>
-— Sterling &amp; Shapiro, The Art of Prolog
+(<a href="https://docs.google.com/document/d/100tGcA4blh6KSXPRGCZpUlyxaRUwFHEvnz_k9DyZFn4/edit">Beancount - The Double-Entry Counting Method</a>)
 </p>
 </blockquote>
 
-<ul class="org-ul">
-<li><a href="domain-driven-design-or-algebraic-semiotics.html">Domain Driven Design or Algebraic Semiotics</a>?</li>
-<li><a href="lazy-evaluation-in-ocaml-cheat-sheet.html">Lazy Evaluation in Ocaml: A Cheat Sheet</a></li>
-<li><a href="https://shonfeder.gitlab.io/ocaml_webapp/">Lightweight Webapps in Ocaml</a></li>
-<li><a href="notes-on-1ml.html">Notes on 1ML</a></li>
-<li><a href="notes-on-rust.html">Notes on Rust</a></li>
-<li><a href="notes-on-tlaplus.html">Notes on TLA+</a></li>
-<li><a href="ocaml-editor-wish-list.html">OCaml Editor Wish List</a></li>
-<li><a href="programming-paradigms-and-philosophy.html">Programming Paradigms and Philosophy</a></li>
-<li><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></li>
-<li><a href="the-measure-of-a-module.html">The Measure of a Module</a></li>
-<li><a href="errors.html">Errors</a></li>
-</ul>
+<p>
+Under this view, accounting would be a combination of counting and <a href="containment.html">containment</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcf1f93f" class="outline-2">
+<h2 id="orgcf1f93f">Keeping Books</h2>
+<div class="outline-text-2" id="text-orgcf1f93f">
+<blockquote>
+<p>
+When you do bookkeeping for a set of accounts, you are essentially describing
+all the postings that happen on all the accounts over time, subject to the
+constraint of the rule. You are creating a database of those postings in a book.
+You are “keeping the book,” that is, traditionally, the book which contains all
+those transactions. Some people call this “maintaining a journal.”
+</p>
+
+<p>
+(<a href="https://docs.google.com/document/d/100tGcA4blh6KSXPRGCZpUlyxaRUwFHEvnz_k9DyZFn4/edit">Beancount - The Double-Entry Counting Method</a>)
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgad2d06b" class="outline-3">
+<h3 id="orgad2d06b">Doubly Entry in Beancount</h3>
+<div class="outline-text-3" id="text-orgad2d06b">
+</div>
+<div id="outline-container-org859c604" class="outline-4">
+<h4 id="org859c604">Transaction</h4>
+<div class="outline-text-4" id="text-org859c604">
+<p>
+Moves an amount from one (or more) account(s) to another.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org66c6b9e" class="outline-4">
+<h4 id="org66c6b9e">Polarity</h4>
+<div class="outline-text-4" id="text-org66c6b9e">
+<p>
+Accounts have a &ldquo;normal sign&rdquo;. I.e., whether they represent <b>positive</b> or
+<b>negative</b> values by default.
+</p>
+
+<blockquote>
+<p>
+The great majority of accounts in the double-entry system tend to have a balance
+with always a positive sign, or always a negative sign (though as we’ve seen
+previously, it is not impossible that an account’s balance could change signs).
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org8e82502" class="outline-4">
+<h4 id="org8e82502">Modality</h4>
+<div class="outline-text-4" id="text-org8e82502">
+<p>
+Accounts have a &ldquo;modality&rdquo; based on whether their counts are meaningful based on
+every momentary <b>balance</b> or only as a <b>delta</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org280f88f" class="outline-4">
+<h4 id="org280f88f">Types of Accounts</h4>
+<div class="outline-text-4" id="text-org280f88f">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Modality\Plarity</th>
+<th scope="col" class="org-left">Positive (+)</th>
+<th scope="col" class="org-left">Negative (-)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Balance</td>
+<td class="org-left">Assets</td>
+<td class="org-left">Liabilities</td>
+</tr>
+
+<tr>
+<td class="org-left">Delta</td>
+<td class="org-left">Expenses</td>
+<td class="org-left">Income</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgbe8ba32" class="outline-5">
+<h5 id="orgbe8ba32">Balance: &ldquo;Balance Sheet&rdquo;</h5>
+<div class="outline-text-5" id="text-orgbe8ba32">
+<p>
+The total count at a point in time is meaningful in its own right: E.g., your
+savings account.
+</p>
+
+<dl class="org-dl">
+<dt>(+) Assets</dt><dd>Counts something the owner <i>has</i> (rights).</dd>
+<dt>(-) Liabilities</dt><dd>Counts something the owner <i>owes</i> (obligations).</dd>
+<dt>(-) Equity</dt><dd>Counts net income from all past activity. (Counterbalance assets
+and liabilities.)</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orga03866a" class="outline-5">
+<h5 id="orga03866a">Delta: &ldquo;Income Statement&rdquo;</h5>
+<div class="outline-text-5" id="text-orga03866a">
+<p>
+Only the differences are meaningful. E.g., monthly earnings.
+</p>
+
+<dl class="org-dl">
+<dt>(+) Expenses</dt><dd>Counts something the owner <i>received</i>.</dd>
+<dt>(-) Income</dt><dd>Counts something the owner &ldquo;<i>gave away</i> in order to receive
+something else&rdquo;.</dd>
+</dl>
+
+<p>
+The polarity of these account types struck me as counterintuitive at first:
+aren&rsquo;t expenses things that we pay (&ldquo;give away&rdquo;) and &ldquo;income&rdquo; things that we
+&ldquo;receive&rdquo;, isn&rsquo;t that why they are &ldquo;in coming&rdquo;? This results from a mistaken
+perspective: the <i>income</i> accounts are not counting how much we earned, but
+where the earnings are coming from (this is a negative image of the amount
+earned). Similarly, <i>expense</i> accounts are not counting how much we pay out, but
+the receiving destination of what we pay.
+</p>
+
+<p>
+What we think of as our income (what comes into us) and our expenses (what we pay
+out) in the usual way are recorded as the positive (resp. and negative) alterations to
+our account balances.
+</p>
+
+<p>
+The author notes this is an unconventional choice, but the benefit is that we
+only need the addition operator to determine the state of any and all accounts,
+instead of having to calculate debts and credits differently.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-02-06 Thu 11:48. <br>
+Last updated 2020-01-29 Wed 16:26. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>

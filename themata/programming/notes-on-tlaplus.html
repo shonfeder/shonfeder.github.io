@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-23 Thu 23:26 -->
+<!-- 2020-02-06 Thu 11:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on TLA+</title>
@@ -241,6 +241,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -263,7 +285,13 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-Notes compiled while learning the basics of TLA+.
+<b>NOTE:</b> My initial notes here have a polemical tone. Please know that it is part
+of my learning process, and, until this notice is removed, any critical remarks
+here should be read as an exclamatory rather than an assertoric utterance.
+</p>
+
+<p>
+There are notes compiled while learning the basics of TLA+.
 </p>
 
 <div id="outline-container-org8916820" class="outline-2">
@@ -405,6 +433,230 @@ After a <code>sudo chmod +x /usr/bin/tlaplus</code>, I can launch the toolbox by
 </div>
 </div>
 </div>
+<div id="outline-container-org00b743a" class="outline-2">
+<h2 id="org00b743a">First Impressions</h2>
+<div class="outline-text-2" id="text-org00b743a">
+</div>
+<div id="outline-container-org15e1203" class="outline-3">
+<h3 id="org15e1203">Syntax</h3>
+<div class="outline-text-3" id="text-org15e1203">
+<p>
+Compared with the theorem proving languages (Coq, Agda, Lean), logic programming
+languages (Prolog, Datalog), and algebraic specification languages (CafeOBJ and
+Maude) I&rsquo;ve been exposed to, the syntax seems quite clunky and appears to pulled
+out of a grab bag of different symbols sets.
+</p>
+
+<p>
+There are no fewer than 3 different syntaxes at play: TLC, PlusCal P, PlusCal
+C, the latter 2 compiling to the first, and apparently alternative surface
+syntaxes for the same underlying language. The tutorial I&rsquo;m working through uses
+PlusCal P, so I&rsquo;ll only address the syntax of TLC and PlusCal P.
+</p>
+</div>
+
+<div id="outline-container-orgc6bb188" class="outline-4">
+<h4 id="orgc6bb188">TLC</h4>
+<div class="outline-text-4" id="text-orgc6bb188">
+<p>
+Executable code must be enclosed in ASCII boilerplate matching this pattern:
+</p>
+
+<blockquote>
+<p>
+-&#x2014; MODULE &lt;file_name&gt; -&#x2014;
+&lt;program&gt;
+<code>==</code>
+</p>
+</blockquote>
+
+<p>
+There must be at minimum four preceding <code>-</code> and four terminating <code>=</code>. Anything
+outside of this block will be ignored. Why? No explanation is given, so likely
+just an artifact of some arbitrary decision during earlier development.
+</p>
+
+<p>
+TLC uses mix of ASCII symbols (e.g., <code>/\</code> and <code>\/</code> for conjunction and
+disjunction), Latex syntax (e.g., <code>\in</code> for set membership), and KEYWORDS (e.g.,
+<code>SUBSET</code>, <code>IF</code>, <code>LET</code>). Given that users are told they must install the (JVM
+based) TLAToolBox IDE to use the TLA+ system effectively, we might wonder why
+the IDE cannot support unicode, as can, e.g., Coq and Adga (without requiring
+you to install a bespoke JVM IDE).
+</p>
+
+<p>
+Here&rsquo;s an operation from an example spec that ships with the TLAToolbox:
+</p>
+
+<blockquote>
+<p>
+Move(S,b) <code>= /\ Cardinality(S) \in {1,2}
+             /\ LET newThisBank  =</code> who_is_on_bank[b] \ S
+                    newOtherBank == who_is_on_bank[OtherBank(b)] &cup; S
+                IN  /\ IsSafe(newThisBank)
+                    /\ IsSafe(newOtherBank)
+                    /\ bank_of_boat&rsquo; = OtherBank(b)
+                    /\ who_is_on_bank&rsquo; =
+                         [i &isin; {&ldquo;E&rdquo;,&ldquo;W&rdquo;} |-&gt; IF i = b THEN newThisBank
+                                                       ELSE newOtherBank]
+</p>
+</blockquote>
+
+<p>
+Some oddities to note:
+</p>
+
+<ul class="org-ul">
+<li>Where as <code>\foo</code> is a Latex-like identifier (e.g., <code>\in</code> and <code>\cup</code>) the <code>\</code>
+alone means set difference. If we are using <code>\cup</code> for union, why wouldn&rsquo;t we
+use <code>\setminus</code> for difference? Presumably because <code>\</code> is an icon for the
+unicode \[\setminus\]. Using the prefix for a class of identifiers as it&rsquo;s own
+identifier instead of using the appropriate, assigned identifier from within
+that class seems like a very bad idea to me.</li>
+<li>In most languages I&rsquo;ve used, <code>==</code> indicates (some sort of) equality and <code>=</code>
+indicates assignment. That is reversed here.</li>
+<li>The notation <code>[x \in D |-&gt; exp]</code> is an anonymous &ldquo;array/function&rdquo; from
+<code>x</code>, which must be in the domain <code>D</code>, to <code>exp</code>. Note the early appearance of
+stringly typed programming in the specification of the domain. What happens if
+a value is supplied that is not in the domain? In my experiment this produced
+a runtime error with this unhelpful output: <code>No error information</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2d7447d" class="outline-4">
+<h4 id="org2d7447d">PlusCal P</h4>
+<div class="outline-text-4" id="text-org2d7447d">
+</div>
+<div id="outline-container-org067a99f" class="outline-5">
+<h5 id="org067a99f">Why PlusCal?</h5>
+<div class="outline-text-5" id="text-org067a99f">
+<blockquote>
+<p>
+In contrast to TLA+&rsquo;s action-oriented focus on distributed systems, PlusCal most
+resembles an imperative programming language and is better-suited when
+specifying sequential algorithms. &#x2026; PlusCal was designed to replace
+pseudocode, retaining its simplicity while providing a formally-defined and
+verifiable language
+</p>
+
+<p>
+(<a href="https://en.wikipedia.org/wiki/PlusCal">wikipedia</a>)
+</p>
+</blockquote>
+
+<p>
+In other words, TLC seemes to be sufficiently difficult and unintuitive for
+imperative programmers to write that a toy imperative language was developed
+that transpiles to TLC. The idea is that users will implement their algorithms in
+the PlusCal, transpile to TLC to verify them, then reimplement the algorithms in
+the target language.
+</p>
+
+<p>
+Compare this with the functional approach, wherein the actual language is
+designed to replace pseudocode and be formally verifiable itself, and
+verification tools support extraction directly into executable programs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45d6eda" class="outline-5">
+<h5 id="org45d6eda">Comments in your algorithms in your comments</h5>
+<div class="outline-text-5" id="text-org45d6eda">
+<p>
+PlusCal code must be written within a comment with a new kind of adhoc
+delimiter:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-pluscal">(* --algorithm algorithm_name
+\* PlusCal code
+algorithm; *)
+</pre>
+</div>
+
+<p>
+Note that there is a comment syntax, <code>\*</code>, for PlusCal that works inside of the
+comment syntax for TLC, <code>(* ...  *)</code>.
+</p>
+
+<p>
+Apparently the practice is to write your PlusCal code combedded in comments, and
+then execute the IDE function &ldquo;Translate PlusCal Algorithm&rdquo; which will elaborate
+the PlusCal code into generated TLC code <b>in the very same file</b>. This means
+that, for PlusCal, <b>there is no sensible division between compiled build
+artifacts and source code</b>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb8a5545" class="outline-5">
+<h5 id="orgb8a5545">Contex switch, syntax switch</h5>
+<div class="outline-text-5" id="text-orgb8a5545">
+<p>
+In a PlusCal algorithm, variables are defined before the procedure:
+</p>
+<div class="org-src-container">
+<pre class="src src-pluscal">variables x = 1, y \in {3, 4}, z = {3, 4};
+begin
+\* PlusCal code
+end
+</pre>
+</div>
+
+<p>
+Note these arbitrary differences from TLC:
+</p>
+
+<ul class="org-ul">
+<li><code>=</code> now means assignment (but we&rsquo;re still using the latex symbol for set membersip)</li>
+<li>statements are now terminated with a semicolon</li>
+<li>keywords (i.e., <code>variables</code>, <code>begin</code>, <code>end</code>) are now lower case</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd7456c1" class="outline-5">
+<h5 id="orgd7456c1">Manually labeling your lines</h5>
+<div class="outline-text-5" id="text-orgd7456c1">
+<p>
+Do you (or did you) miss the tedium of manually labeling your steps and using
+GOTOs for control flow? PlusCal has you covered.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org01cfe1a" class="outline-3">
+<h3 id="org01cfe1a">IDE</h3>
+<div class="outline-text-3" id="text-org01cfe1a">
+<ul class="org-ul">
+<li>Since it&rsquo;s a JVM app, it didn&rsquo;t initially integrate well with my OS, and I had
+to employ the workaround indicated above.</li>
+<li>Since it&rsquo;s a bespoke IDE environment
+<ul class="org-ul">
+<li>none of my configurations, bindings, or preferences from my usual
+programming setup are available</li>
+<li>the commands, interface, and UI is all idiosyncratic, and unlike anything
+else I&rsquo;ve used</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org430864e" class="outline-4">
+<h4 id="org430864e">Invariants have to be input via the GUI?</h4>
+<div class="outline-text-4" id="text-org430864e">
+<p>
+I hope you like programming with checkboxes and drop down menus! Apparently, in
+order to actually get TLA+ to check invariants, you have to navigate to the
+appropriate form in the &ldquo;model&rdquo; interface, click &ldquo;Add&rdquo;, and then enter your
+expression. Why wouldn&rsquo;t the invariants be part of the source of the code?
+</p>
+</div>
+</div>
+</div>
+</div>
 
 <div id="outline-container-org185bc9f" class="outline-2">
 <h2 id="org185bc9f">Excerpts</h2>
@@ -447,7 +699,6 @@ approaches to logic?</li>
 </div>
 </div>
 
-
 <div id="outline-container-org28fdf03" class="outline-2">
 <h2 id="org28fdf03">Resources</h2>
 <div class="outline-text-2" id="text-org28fdf03">
@@ -473,7 +724,7 @@ expertise on the philosophy of mathematics.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-01-22 Wed 09:32. <br>
+Last updated 2020-01-28 Tue 10:46. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>

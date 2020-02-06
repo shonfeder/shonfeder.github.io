@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-27 Mon 15:02 -->
+<!-- 2020-02-06 Thu 11:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Types</title>
@@ -312,30 +312,104 @@ theories?
 </div>
 
 <div id="outline-container-orgd04c047" class="outline-4">
-<h4 id="orgd04c047"><span class="todo TODO">TODO</span> Genealogy</h4>
+<h4 id="orgd04c047">Genealogy</h4>
 <div class="outline-text-4" id="text-orgd04c047">
 <p>
-Russell&rsquo;s theory of types puts the concept of <i>function</i> <b>under</b> the concept of
-proposition (in the sense of conceptually prior to). Then the meaning of
-quantification is determined via the range of <i>valid</i> values of a function. But
-what determines the <i>validity</i> of this range? He names it &ldquo;logical homogeneity&rdquo;.
+Martin-Löf&rsquo;s, in his &ldquo;An intuitionistic theory of types&rdquo;, explicitly traces his
+concept of type back to Russel:
+</p>
+
+<blockquote>
+<p>
+Every mathematical object is of a certain kind or <i>type</i>. Better, a mathematical
+object is always given together with its type, that is, it is not just an
+object, it is an object of a certain type. This may be regarded as a simpler and
+at the same time more general formulation of Russel&rsquo;s 1903 <i>doctrine of types</i>,
+according to which a type is the range of significance of a propositional
+function, because in the theory that I am about to describe every propositional
+function will indeed have a type as its domain.
 </p>
 
 <p>
-In Russell, &ldquo;a type is defined as the range of significance of a propositional
+(<a class='org-ref-reference' href="#martin1998intuitionistic">martin1998intuitionistic</a>)
+</p>
+</blockquote>
+
+<p>
+Russell&rsquo;s theory of types puts the concept of a propositional <i>function</i> <b>under</b>
+the concept of a general proposition (in the sense of conceptually prior to).
+</p>
+
+<blockquote>
+<p>
+Every proposition containing all asserts that some propositional function is
+always true; and this means that all values of the said function are true
+</p>
+</blockquote>
+
+<p>
+Then the meaning of quantification is subordinate to the range of <i>valid</i> values
+of a function.
+</p>
+
+<blockquote>
+<p>
+Hence we can speak of all of a collection when and only when the collection
+forms part or the whole of the range of significance of some propositional
+function, the range of significance being defined as the collection of those
+arguments for which the function in question is significant, i. e., has a value.
+(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+</p>
+</blockquote>
+
+<p>
+Hence, &ldquo;a type is defined as the range of significance of a propositional
 function, i.e., as the collection of arguments for which the said function has
 values&rdquo; (<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>).
 </p>
 
 <p>
-How is the homogeneity of such collections enforced?
+But what determines the <i>validity</i> of this range? Russell names it &ldquo;logical
+homogeneity&rdquo;:
+</p>
+
+<blockquote>
+<p>
+What is essential, as appears from the above discussion, is not finitude, but
+what may be called logical homogeneity. This property is to belong to any
+collection whose terms are all contained within the range of significance of
+some one function. It would always be obvious at a glanice whether a collection
+possessed this property or not, if it were not for the concealed ambiguity in
+common logical terms such as true and false, which gives an appearance of being
+a single function to what is really a conglomeration of many functions with
+different ranges of significance.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+</p>
+</blockquote>
+
+<p>
+<i>Logical homogeneity</i> is a property of <i>collections of terms</i>. A collection of
+terms has this property when all the terms are &ldquo;contained within the range of
+significance of some one function&rdquo;. A &ldquo;type&rdquo; is then a special case of a
+logically homogenius collection of terms: a logically homogenius collection of
+terms whose characteristic function is <i>propositional</i> is a <i>type</i>.
+</p>
+
+<p>
+Of course, this all leaves undecided the really essential and most interesting
+question: How is the homogeneity of such collections determined and enforced? By
+virtue of what can we say that the terms in such a collection <i>belong</i> together?
+And, once we&rsquo;ve determined that belonging together, how do we enforce this?
 </p>
 </div>
 </div>
 
-<div id="outline-container-org09ebdda" class="outline-4">
-<h4 id="org09ebdda">Types as marks of belonging-together</h4>
-<div class="outline-text-4" id="text-org09ebdda">
+<div id="outline-container-org6e2368c" class="outline-4">
+<h4 id="org6e2368c">Enforcement: types as marks of belonging-together</h4>
+<div class="outline-text-4" id="text-org6e2368c">
 <p>
 The types of the typed λ-calculi are <i>marks</i>, or <i>indexes</i>, used to enforce a
 sense of appropriateness that follows from presumptions of <i>belonging together</i>.
@@ -361,9 +435,9 @@ character; outline, sketch,&rdquo; from root of <i>typtein</i> &ldquo;to strike,
 </div>
 </div>
 
-<div id="outline-container-org45b9443" class="outline-4">
-<h4 id="org45b9443"><span class="todo TODO">TODO</span> The question of justification</h4>
-<div class="outline-text-4" id="text-org45b9443">
+<div id="outline-container-orgcd38e0a" class="outline-4">
+<h4 id="orgcd38e0a"><span class="todo TODO">TODO</span> Justification: &#x2026;</h4>
+<div class="outline-text-4" id="text-orgcd38e0a">
 <p>
 What justifies such enforcement?
 </p>
@@ -550,6 +624,7 @@ formation of (normalizing) typed terms, and as a constraining one, imposing a
 <p>
 <h1 class='org-ref-bib-h1'>Bibliography</h1>
 <ul class='org-ref-bib'><li><a id="Programming91typesas">[Programming91typesas]</a> <a name="Programming91typesas"></a>Joseph Goguen Programming & Joseph Goguen, Types as Theories, 357-390, in in: Topology and Category Theory in Computer Science, edited by (1991)</li>
+<li><a id="martin1998intuitionistic">[martin1998intuitionistic]</a> <a name="martin1998intuitionistic"></a>Martin-L\"of, An intuitionistic theory of types, <i>Twenty-five years of constructive type theory</i>, <b>36</b>, 127-172 (1998).</li>
 <li><a id="10.2307/2369948">[10.2307/2369948]</a> <a name="10.2307/2369948"></a>Bertrand Russell, Mathematical Logic as Based on the Theory of Types, <i>American Journal of Mathematics</i>, <b>30(3)</b>, 222-262 (1908). <a href="http://www.jstor.org/stable/2369948">link</a>.</li>
 <li><a id="m.69_gerhar_gentz_german">[m.69_gerhar_gentz_german]</a> <a name="m.69_gerhar_gentz_german"></a>edited by Szabo, The collected papers of Gerhard Gentzen / (translated from the  German)., North-Holland Publishing (1969).</li>
 <li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
@@ -564,7 +639,7 @@ formation of (normalizing) typed terms, and as a constraining one, imposing a
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-01-27 Mon 15:01. <br>
+Last updated 2020-02-06 Thu 11:47. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
 </div>
 </div>
