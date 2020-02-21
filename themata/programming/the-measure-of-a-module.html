@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:43 -->
+<!-- 2020-02-21 Fri 09:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Measure of a Module</title>
@@ -200,7 +200,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -318,11 +318,11 @@ In OCaml, a <code>module</code> is specified by a <code>sig</code> and implement
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Some_module</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span>
-  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value specifications... </span><span style="color: #5B6268;">*)</span>
-<span style="color: #f5deb3; font-weight: bold;">end</span> <span style="color: #f0e68c;">=</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
-  <span style="color: #5B6268;">(* </span><span style="color: #5B6268;">...type declarations and value bindings... </span><span style="color: #5B6268;">*)</span>
-<span style="color: #f5deb3; font-weight: bold;">end</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Some_module</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-governing">sig</span>
+  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value specifications... </span><span class="org-comment-delimiter">*)</span>
+<span class="org-tuareg-font-lock-governing">end</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value bindings... </span><span class="org-comment-delimiter">*)</span>
+<span class="org-tuareg-font-lock-governing">end</span>
 </pre>
 </div>
 
@@ -576,12 +576,56 @@ How does modularity relate to SOLID?
 </p>
 </div>
 </div>
+<div id="outline-container-orge98424d" class="outline-2">
+<h2 id="orge98424d"><span class="todo TODO">TODO</span> Anti-modular cultural tendencies</h2>
+<div class="outline-text-2" id="text-orge98424d">
+<p>
+Several years back, I spent a chunk of time filing in missing pieces of the
+<a href="http://www.rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a> project. When I was focused on SML implementations, I discovered a
+recurring pattern: in many of the tasks I was working on, extraneous criteria
+had been introduced to the task description, which posed serious challenges to
+properly modular compositions.
+</p>
+
+<p>
+I spent a significant amount of time attempting to discover a technical solution
+to this obstacle. However, I gradually came to realize that this conflation of
+tasks was indicative of a more pervasive problem: it was symptomatic of the
+pervasive bias toward impure and anti-modular design patterns in programming
+culture.
+</p>
+
+<p>
+This bias leads to a deep, culturally-based anti-modularity (and
+non-composability): the tendency to mix in extraneous, side-effectual processes
+with simple, potentially pure algorithms, prohibits the use of interesting and
+useful languages that don&rsquo;t cater to these questionable practices.
+</p>
+
+<p>
+Cultural problems call for cultural solutions, so I proposed correcting this
+defect. I now realize that this kind of conscious alteration and improvement of the
+conditions in which we work are at least as vital for the advancement of modular
+design as are technical solutions. (re: the cultural roots of technical
+practice, see <a href="https://modelviewculture.com/pieces/the-life-cycle-of-programming-languages">The Life Cycle of Programming Languages</a>.)
+</p>
+
+<p>
+Two tiny actions I took to change the culture:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://rosettacode.org/wiki/Talk:Parsing/RPN_to_infix_conversion#Extraneous_Requirements">https://rosettacode.org/wiki/Talk:Parsing/RPN_to_infix_conversion#Extraneous_Requirements</a></li>
+<li><a href="https://rosettacode.org/wiki/Talk:Parsing/RPN_calculator_algorithm#Extraneous_Requirements">https://rosettacode.org/wiki/Talk:Parsing/RPN_calculator_algorithm#Extraneous_Requirements</a></li>
+</ul>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-10-17 Thu 23:28. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Last updated 2020-02-10 Mon 16:08. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
 </body>

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-02-21 Fri 09:41 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logic</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="um" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Logic</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7bace0a"><span class="todo TODO">TODO</span> What</a></li>
+<li><a href="#org808af10"><span class="todo TODO">TODO</span> Why</a>
+<ul>
+<li><a href="#org36e1f20"><span class="todo TODO">TODO</span> Quine</a></li>
+<li><a href="#orgf43bcfb"><span class="todo TODO">TODO</span> Hart</a></li>
+<li><a href="#org9d9d4a6">Jean-Yves Girard</a></li>
+</ul>
+</li>
+<li><a href="#orgf99fbff"><span class="todo TODO">TODO</span> How</a>
+<ul>
+<li><a href="#org038ec54">Recycling</a></li>
+</ul>
+</li>
+<li><a href="#org863f10f">References</a></li>
+</ul>
+</div>
+</div>
+<p>
+<b>WIP</b>
+</p>
+
+<div id="outline-container-org7bace0a" class="outline-2">
+<h2 id="org7bace0a"><span class="todo TODO">TODO</span> What</h2>
+</div>
+<div id="outline-container-org808af10" class="outline-2">
+<h2 id="org808af10"><span class="todo TODO">TODO</span> Why</h2>
+<div class="outline-text-2" id="text-org808af10">
+</div>
+<div id="outline-container-org36e1f20" class="outline-3">
+<h3 id="org36e1f20"><span class="todo TODO">TODO</span> Quine</h3>
+</div>
+<div id="outline-container-orgf43bcfb" class="outline-3">
+<h3 id="orgf43bcfb"><span class="todo TODO">TODO</span> Hart</h3>
+</div>
+<div id="outline-container-org9d9d4a6" class="outline-3">
+<h3 id="org9d9d4a6">Jean-Yves Girard</h3>
+<div class="outline-text-3" id="text-org9d9d4a6">
+<blockquote>
+<p>
+An old activity like logic can find its justification neither in the
+preservation of a rather obsolete tradition, nor in technical developments, no
+matter how heroic and brilliant they might be. Its meaning should be sought in
+questions of a true logical nature, i.e., dealing with the fundamentals of
+reasoning. As a central task, the building of a non-fregean theory of cognition,
+the benchmark for such an endeavor being an updated version of incompleteness:
+to prove, once and for all, that questions are not the same thing as answers,
+i.e., the inexistence of those unlikely <i>X-rays of knowledge</i>.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf99fbff" class="outline-2">
+<h2 id="orgf99fbff"><span class="todo TODO">TODO</span> How</h2>
+<div class="outline-text-2" id="text-orgf99fbff">
+</div>
+<div id="outline-container-org038ec54" class="outline-3">
+<h3 id="org038ec54">Recycling</h3>
+<div class="outline-text-3" id="text-org038ec54">
+<blockquote>
+<p>
+Logic, surely born essentialist, began with manipulating universal rules. Long
+afterwards, at the end of a complex process, we eventually find an underlying
+structure for these rules; and thus, to require that a proof of <code>A ∨ B</code> be [&#x2026;]
+a proof of <code>A</code> or a proof of <code>B</code>. One eventually rediscovers the existence under
+essence. But, while <i>studying</i> this existence, one reinstalls essence.
+</p>
+
+<p>
+We started with the rules of logic; we arrived at the logic of rules and it
+turns out to be the logic we started with.
+&#x2026;
+Circularity is therefore not only a tarskian void, it is also a sign of harmony.
+But one cannot content oneself with that!
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>, 139)
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-org4f81ee7" class="outline-4">
+<h4 id="org4f81ee7"><span class="todo TODO">TODO</span> Structural Proof Theory</h4>
+<div class="outline-text-4" id="text-org4f81ee7">
+<blockquote>
+<p>
+&#x2026; structural systems may be considered as providing a general framework of
+consequence, in terms of which specific logical systems can be defined.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#schroeder2002resolution">schroeder2002resolution</a>, 3)
+</p>
+</blockquote>
+</div>
+
+
+<div id="outline-container-org2945f4a" class="outline-5">
+<h5 id="org2945f4a">A Note on Genealogy</h5>
+<div class="outline-text-5" id="text-org2945f4a">
+<p>
+Paul Hertz is the progenitor of the structural analysis of proofs used by
+Gentzen utilized to found <a href="https://plato.stanford.edu/entries/proof-theory-development/#SeqCalLatDev">structural proof theory</a> (see <a class='org-ref-reference' href="#legris2012paul">legris2012paul</a> and
+<a class='org-ref-reference' href="#schroeder2002resolution">schroeder2002resolution</a>). Hertz published his work, <i>On Axiomatic Systems
+for Arbitrary Systems of Sentences</i>, in 1922. In <a href="https://www.deutsche-biographie.de/gnd11675446X.html#ndbcontent">a short biography</a> by Hilbert&rsquo;s
+collaborator <a href="https://en.wikipedia.org/wiki/Paul_Bernays">Paul Barneys</a>, Barneys described the contribution thus:
+</p>
+
+<blockquote>
+<p>
+Hier führte er viele methodisch wichtige Begriffsbildungen ein und gelangte zu
+mathematisch prägnanten Ergebnissen. Diese Untersuchungen sind Vorläufer
+verschiedener neuerer Forschungen zur mathematischen Logik und Axiomatik,
+insbesondere hat G. Gentzens Sequenzenkalkul von den H.schen Betrachtungen über
+Satzsysteme seinen Ausgang genommen.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+Here he introduced many methodologically important conceptual developments and
+arrived at mathematically incisive results. These investigations were
+forerunners of various new researches into mathematical logic and axiomatics, in
+particular, G. Gentzen&rsquo;s sequent calculus took its starting point from Hertz&rsquo;s
+work on sentence systems.
+</p>
+
+<p>
+[/Please pardon my inexpert translation./]
+</p>
+</blockquote>
+
+<p>
+Gentzen&rsquo;s work was, according to a reductive formulation, the application of
+Hertz&rsquo;s approach and core methodology to <a href="https://plato.stanford.edu/entries/hilbert-program/">Hilbert&rsquo;s Program</a>. The broadly
+conceived field of constructivistic proof theory, meant to encompass efforts in
+constructivistic automated theorem proving, type theory, and programming
+language theory is inconceivable without Gentzen&rsquo;s work (though we can easily
+imagine a more worthy person than the <a href="https://en.wikipedia.org/wiki/Gerhard_Gentzen#Life_and_career">Nazi Gentzen</a> having done that work).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfd97b88" class="outline-5">
+<h5 id="orgfd97b88"><span class="todo TODO">TODO</span> Inference and The &ldquo;Sentence&rdquo; Gadget in Hertz&rsquo;s Essays on Sentence Systems</h5>
+<div class="outline-text-5" id="text-orgfd97b88">
+<p>
+The beginning (and kernel) of Hertz&rsquo;s <i>On Axiomatic Systems&#x2026;</i>:
+</p>
+
+<blockquote>
+<p>
+Whenever a system of sentences is recognized to be valid, it is often not
+necessary to convey each and every sentence to memory; it is sufficient to
+choose some of them from which the rest can follow. Such sentences, as it is
+generally known, are called axioms. The choice of these axioms is to a certain
+degree arbitrary. One can ask, however, if the property of a system of sentences
+to have several axiom systems is interconnected with other remarkable
+properties, and if there are systematic approaches to find, as the case may be,
+that axiomatic system which contains the least possible number of sentences. In
+the following some thoughts shall be communicated, which might be useful as a
+pre-stage for the treatment of these or related problems.
+</p>
+
+<p>
+In fact the actual problem of interest is so entangled, that initially it seems
+appropriate to be content with an immense simplification: We only consider
+sentences of a certain type, sentences that we can write symbolically: <code>(a1 , .
+. . , an ) → b</code> and that can be expressed linguistically by formulations such
+as: If <code>(a1 , . . . , an )</code> altogether holds, so does <code>b</code>. In addition, a second
+simplification will be introduced in the present first part, by only considering
+sentences of type a → b; however, we will liberate ourselves from this
+limitation in a following part. Further we assume rules according to which from
+certain sentences other ones follow: So, e.g., the validity of the sentences <code>a
+→ b</code>, <code>b → c</code> should result in the holding of the sentence <code>a → c</code>.
+</p>
+
+<p>
+However, what is actually meant by such a sentence, what the symbol <code>→</code> means in
+the combination of characters <code>a → b</code> or the word ‘if’ in the corresponding
+linguistic formulation, does not have to be indicated here.
+</p>
+
+<p>
+<a class='org-ref-reference' href="#hertz12_axiom_system_arbit_system_senten">hertz12_axiom_system_arbit_system_senten</a>
+</p>
+</blockquote>
+
+<p>
+<b>Recapitulation</b>: Hertz aimed to analyze systems of sentences determined by a
+transitive &ldquo;follows&rdquo; relationship. As a simplification, he narrowed his focus
+to sentences of the form <code>(a1, ..., an) → b</code>, taken to mean &ldquo;if <code>a1</code> and &#x2026; and
+<code>an</code> is true then b is true&rdquo;. He left the meaning of all these parts
+undetermined, including what the characters referred to (he calls them
+&ldquo;elements&rdquo; throughout the essay), what the <code>→</code> means, and even what the word
+&rsquo;if&rsquo; means.
+</p>
+
+<p>
+However, in a foot note, he  his hand:
+</p>
+
+<blockquote>
+<p>
+It might be added though, that our sentences <code>a → b</code> are nothing other than
+formal “implications” in the sense of Russell [<a class='org-ref-reference' href="#whitehead2005_principia">whitehead2005_principia</a>,
+22], and that the scheme of inference used as a base in the first part is the
+Theorem listed by Russell as No. 10, 3 [*10·3], p. 150, or put differently: Our
+sentences are judgements of subsumptions, our inferences are syllogisms of
+modus Barbara.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#hertz12_axiom_system_arbit_system_senten">hertz12_axiom_system_arbit_system_senten</a>, 12)
+</p>
+</blockquote>
+
+<p>
+Russell and Whitehead&rsquo;s &ldquo;formal implications&rdquo; are the propositions stated by
+universally quantified implications: <code>∀x.Sx → Px</code>. Russell and Whitehead
+explicitly equate these to what Hertz refers to as &ldquo;judgments of subsumption&rdquo;.
+The latter are the best known variety of judgments from classical <a href="https://en.wikipedia.org/wiki/Term_logic">term logic</a>,
+exemplified in the eternal truth &ldquo;All humans are mortal&rdquo; and schematized as &ldquo;All
+S are P&rdquo;. Thus, Hertz is hinting that, we do move to assign meaning to the
+symbols of his formalism, we might read <code>a → b</code> as <code>All a are b</code> or, if we
+prefer modern predicate logic, <code>∀x.a(x) → b(x)</code>.
+</p>
+
+<p>
+Barbara is the classical syllogism
+</p>
+
+<pre class="example">
+  All S are P
+  All P are Q
+∴ All S are Q
+</pre>
+
+<p>
+This is equivalent to the transitivity of the &ldquo;follows&rdquo; relation (which we might
+also restate as <code>(S → P &amp; P → Q) → (S → Q)</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcbe48de" class="outline-5">
+<h5 id="orgcbe48de">What is inference?</h5>
+<div class="outline-text-5" id="text-orgcbe48de">
+<blockquote>
+<p>
+<i>Inference</i>. The process of inference is as follows: a proposition &ldquo;\(p\)&rdquo; is
+asserted, and a proposition &ldquo;\(p\) implies \(q\)&rdquo; is asserted, and then as a sequel,
+the proposition &ldquo;q&rdquo; is asserted. The trust in inference is the belief that if
+the two former assertions are not in error, the final assertion is not in error.
+Accordingly whenever, in symbols, where \(p\) and \(q\) have of course special
+determinations,
+</p>
+
+<p>
+&ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash (p \supset q)\)&rdquo;
+</p>
+
+<p>
+have occurred, then &ldquo;\(\vdash q\)&rdquo; will occur if it is desired to put it on
+record. The process of inference cannot be reduced to symbols. Its sole record
+is the occurrence of &ldquo;\(\vdash q\)&rdquo;. It is of course convenient, even at the
+risk of repetition, to write &ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash(p \supset q)\)&rdquo; in
+close juxtaposition before proceeding to &ldquo;\(\vdash q\)&rdquo; as a result of the
+inference. When this is to be done, for the sake of drawing attention to the
+inference which is being made, we shall write instead
+</p>
+
+<p>
+&ldquo;\(\vdash p \supset \vdash q\),&rdquo;
+</p>
+
+<p>
+which is to be considered as a mere abbreviation of the threefold statement
+</p>
+
+<p>
+&ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash (p \supset q)\)&rdquo; and &ldquo;\(\vdash q\).&rdquo;
+</p>
+
+<p>
+Thus &ldquo;\(\vdash p \supset \vdash q\)&rdquo; may be read &ldquo;\(p\), therefore \(q\),&rdquo; being
+in fact the same abbreviation, essentially, as this is; for &ldquo;\(p\), therefore
+\(q\)&rdquo; does not explicitly state, what is part of its meaning, that \(p\)
+implies \(q\), an <b>inference is the dropping of a true premiss [sicj; it is the
+dissolution of an implication</b> [emphasis mine].
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#whitehead2005_principia">whitehead2005_principia</a>, 9)
+</p>
+</blockquote>
+</div>
+
+<ul class="org-ul">
+<li><a id="orgc824ad7"></a><span class="todo TODO">TODO</span> Note the different meaning of the tunstyle here.<br /></li>
+<li><a id="org3c27894"></a><span class="todo TODO">TODO</span> recapitulate and indicate significance<br /></li>
+</ul>
+</div>
+<div id="outline-container-orgcf499d8" class="outline-5">
+<h5 id="orgcf499d8"><span class="todo TODO">TODO</span> Cut is Barbara (find Hertz example of this)</h5>
+</div>
+<div id="outline-container-orgd3b801a" class="outline-5">
+<h5 id="orgd3b801a"><span class="todo TODO">TODO</span> Structural reasoning is using TFL to formalize MPL</h5>
+<div class="outline-text-5" id="text-orgd3b801a">
+<p>
+Can sequents in general (i.e., with multiple antecedents) still be read as
+judgments of subsumption?
+</p>
+
+<p>
+all [syntax objects] are [syntax objects]
+</p>
+
+<p>
+This is tough (but worth fighting for).
+</p>
+
+<p>
+Easier to see are the formal implications. (where each syntatic object is
+predicated as &ldquo;is true&rdquo;, this is ML&rsquo;s point).
+</p>
+
+<p>
+Need to explain move to multiple antecedents.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4679fc7" class="outline-5">
+<h5 id="org4679fc7"><span class="todo TODO">TODO</span> Do structural rules perhaps fit other syllogistic figures?</h5>
+<div class="outline-text-5" id="text-org4679fc7">
+<p>
+If not, is it possible to derive &ldquo;novel&rdquo; structural rules via encoding other
+figures?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org812cde7" class="outline-4">
+<h4 id="org812cde7"><span class="todo TODO">TODO</span> Exegesis of Gentzen on the Meaning of his Calculi</h4>
+<div class="outline-text-4" id="text-org812cde7">
+</div>
+<div id="outline-container-orgfe497b6" class="outline-5">
+<h5 id="orgfe497b6">An example</h5>
+</div>
+<div id="outline-container-orgad8fb71" class="outline-5">
+<h5 id="orgad8fb71">The Meaning of a Formula</h5>
+</div>
+<div id="outline-container-orga780983" class="outline-5">
+<h5 id="orga780983">The Meaning of a Sequent</h5>
+</div>
+<div id="outline-container-orgfec18d0" class="outline-5">
+<h5 id="orgfec18d0">The Meaning of a Figure</h5>
+<div class="outline-text-5" id="text-orgfec18d0">
+<dl class="org-dl">
+<dt>Trees</dt><dd>DAGs with single parents</dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb579115" class="outline-4">
+<h4 id="orgb579115"><span class="todo TODO">TODO</span> Reiterated by Girard</h4>
+<div class="outline-text-4" id="text-orgb579115">
+<blockquote>
+<p>
+The novelty of Gentzen is the introduction of hypothetical deduction as a
+primitive; besides the implication \(A \Rightarrow B\), there coexists the
+sequent (\(A \vdash B\): &ldquo;\(B\) under the hypothesis \(A\)&rdquo;. One will never
+insist enough, from a brutal standpoint [&#x2026;], this creation makes no sense; it
+is a pure duplicate, since the deduction theorem equates the two notions.
+Sequent calculus makes sense only when one steps beyond mere provability, when
+one works <i>en finesse</i>.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>, 42)
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org3f3f726" class="outline-4">
+<h4 id="org3f3f726"><span class="todo TODO">TODO</span> What is happening here?</h4>
+<div class="outline-text-4" id="text-org3f3f726">
+</div>
+<div id="outline-container-org479e5de" class="outline-5">
+<h5 id="org479e5de"><span class="todo TODO">TODO</span> Analysis by Shütte</h5>
+<div class="outline-text-5" id="text-org479e5de">
+<p>
+<a class='org-ref-reference' href="#schutte77_prooftheory">schutte77_prooftheory</a>, 2-3 Higher order reasoning required
+</p>
+
+<p>
+&ldquo;&#x2026;using induction that goes beyond mathematical induction but with a finite
+character&rdquo;
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org7d780cd"></a><span class="todo TODO">TODO</span> Positive and negative parts, polarity, Sommer&rsquo;s Relational TFL<br /></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc4cba55" class="outline-4">
+<h4 id="orgc4cba55"><span class="todo TODO">TODO</span> Truth and Quotation</h4>
+<div class="outline-text-4" id="text-orgc4cba55">
+</div>
+<div id="outline-container-org370881d" class="outline-5">
+<h5 id="org370881d">Each &ldquo;change&rdquo; in syntax seems to be a &ldquo;semantic asset&rdquo;</h5>
+</div>
+
+<div id="outline-container-org89d3330" class="outline-5">
+<h5 id="org89d3330">Truth and Disquotation</h5>
+<div class="outline-text-5" id="text-org89d3330">
+<blockquote>
+<p>
+This ascent to a linguistic plane of reference is only a momentary retreat from
+the world, for <b>the utility of the truth predicate is precisely the cancellation
+of linguistic reference</b>. The truth predicate is a reminder that, despite a
+technical ascent to talk of sentences, our eye is on the world. This
+cancellatory force of the truth predicate is explicit in Tarski&rsquo;s paradigm:
+</p>
+
+<p>
+&rsquo;Snow is white&rsquo; is true if and only if snow is white.
+</p>
+
+<p>
+Quotation marks make all the difference between talking about words and talking
+about snow. The quotation is a name of a sentence that contains a name, namely
+&rsquo;snow&rsquo;, of snow. By calling the sentence true, we call snow white. <b>The truth
+predicate is a device of disquotation</b> [emphasis mine].
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#quine86_philos">quine86_philos</a>, 12)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org699f59c" class="outline-4">
+<h4 id="org699f59c"><span class="todo TODO">TODO</span> How much of the &ldquo;ad hoc&rdquo; machinery in some formalisms could be dispensed with if we could formalize this process, and make it flexible enough to recycle and spin up into semantic asscent at will?</h4>
+</div>
+<div id="outline-container-org4c3cb27" class="outline-4">
+<h4 id="org4c3cb27"><span class="todo TODO">TODO</span> Related Angles</h4>
+<div class="outline-text-4" id="text-org4c3cb27">
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Deep_inference#cite_ref-1">Deep Inference</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org863f10f" class="outline-2">
+<h2 id="org863f10f">References</h2>
+<div class="outline-text-2" id="text-org863f10f">
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
+<li><a id="schroeder2002resolution">[schroeder2002resolution]</a> <a name="schroeder2002resolution"></a>Schroeder-Heister, Resolution and the origins of structural reasoning: early  proof-theoretic ideas of Hertz and Gentzen, <i>Bulletin of Symbolic Logic</i>, <b>8(2)</b>, 246-265 (2002).</li>
+<li><a id="legris2012paul">[legris2012paul]</a> <a name="legris2012paul"></a>Legris, Paul Hertz and the origins of structural reasoning, <i>J.-Y. B\'eziau, Universal Logic: An Anthology. From Paul
+                  Hertz to Dov Gabbay</i>,  3-10 (2012).</li>
+<li><a id="hertz12_axiom_system_arbit_system_senten">[hertz12_axiom_system_arbit_system_senten]</a> <a name="hertz12_axiom_system_arbit_system_senten"></a>@inbookhertz12_axiom_system_arbit_system_senten,
+  date_added =   Sat Mar 12 21:09:54 2016,
+  author =       Paul Hertz and Javier Legris,
+  booktitle =    Universal Logic: An Anthology,
+  doi =          10.1007/978-3-0346-0145-0_2,
+  pages =        11-29,
+  publisher =    Springer Science + Business Media,
+  series =       Universal Logic: An Anthology,
+  title =        On Axiomatic Systems for Arbitrary Systems of Sentences,
+  url =          http://dx.doi.org/10.1007/978-3-0346-0145-0_2,
+  year =         2012,
+</li>
+<li><a id="whitehead2005_principia">[whitehead2005_principia]</a> <a name="whitehead2005_principia"></a>Whitehead & Russell Bertrand, Principia Mathematica, Ann Arbor, Michigan: University of Michigan Library (2005).</li>
+<li><a id="schutte77_prooftheory">[schutte77_prooftheory]</a> <a name="schutte77_prooftheory"></a>Schutte, Proof Theory , Springer-Verlag (1977).</li>
+<li><a id="quine86_philos">[quine86_philos]</a> <a name="quine86_philos"></a>Quine, Philosophy of logic, Harvard University Press (1986).</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2020-02-21 Fri 09:40. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+</div>
+</div>
+</body>
+</html>
