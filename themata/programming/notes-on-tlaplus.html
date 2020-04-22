@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-06 Thu 11:48 -->
+<!-- 2020-04-21 Tue 21:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on TLA+</title>
@@ -196,50 +196,28 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -285,13 +263,13 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-<b>NOTE:</b> My initial notes here have a polemical tone. Please know that it is part
-of my learning process, and, until this notice is removed, any critical remarks
-here should be read as an exclamatory rather than an assertoric utterance.
+There are notes compiled while learning the basics of TLA+.
 </p>
 
 <p>
-There are notes compiled while learning the basics of TLA+.
+<b>NOTE:</b> My initial notes here have a polemical tone. Please know that it is part
+of my learning process, and, until this notice is removed, any critical remarks
+here should be read as an exclamatory rather than an assertoric utterance.
 </p>
 
 <div id="outline-container-org8916820" class="outline-2">
@@ -443,15 +421,15 @@ After a <code>sudo chmod +x /usr/bin/tlaplus</code>, I can launch the toolbox by
 <p>
 Compared with the theorem proving languages (Coq, Agda, Lean), logic programming
 languages (Prolog, Datalog), and algebraic specification languages (CafeOBJ and
-Maude) I&rsquo;ve been exposed to, the syntax seems quite clunky and appears to pulled
-out of a grab bag of different symbols sets.
+Maude) I&rsquo;ve been exposed to, the syntax seems quite clunky and appears to be
+pulled out of a grab bag of different symbol sets.
 </p>
 
 <p>
-There are no fewer than 3 different syntaxes at play: TLC, PlusCal P, PlusCal
-C, the latter 2 compiling to the first, and apparently alternative surface
-syntaxes for the same underlying language. The tutorial I&rsquo;m working through uses
-PlusCal P, so I&rsquo;ll only address the syntax of TLC and PlusCal P.
+There are no fewer than 3 different syntaxes at play: TLC, PlusCal P, and
+PlusCal C. The latter 2 compile to the first and are apparently alternative
+surface syntaxes for the same underlying language. The tutorial I&rsquo;m working
+through uses PlusCal P, so I&rsquo;ll only address the syntax of TLC and PlusCal P.
 </p>
 </div>
 
@@ -473,11 +451,11 @@ Executable code must be enclosed in ASCII boilerplate matching this pattern:
 <p>
 There must be at minimum four preceding <code>-</code> and four terminating <code>=</code>. Anything
 outside of this block will be ignored. Why? No explanation is given, so likely
-just an artifact of some arbitrary decision during earlier development.
+just an artifact of arbitrary decisions during earlier development.
 </p>
 
 <p>
-TLC uses mix of ASCII symbols (e.g., <code>/\</code> and <code>\/</code> for conjunction and
+TLC uses a mix of ASCII symbols (e.g., <code>/\</code> and <code>\/</code> for conjunction and
 disjunction), Latex syntax (e.g., <code>\in</code> for set membership), and KEYWORDS (e.g.,
 <code>SUBSET</code>, <code>IF</code>, <code>LET</code>). Given that users are told they must install the (JVM
 based) TLAToolBox IDE to use the TLA+ system effectively, we might wonder why
@@ -508,7 +486,7 @@ Some oddities to note:
 </p>
 
 <ul class="org-ul">
-<li>Where as <code>\foo</code> is a Latex-like identifier (e.g., <code>\in</code> and <code>\cup</code>) the <code>\</code>
+<li>Whereas <code>\foo</code> is a LaTeX-like identifier (e.g., <code>\in</code> and <code>\cup</code>) the <code>\</code>
 alone means set difference. If we are using <code>\cup</code> for union, why wouldn&rsquo;t we
 use <code>\setminus</code> for difference? Presumably because <code>\</code> is an icon for the
 unicode \[\setminus\]. Using the prefix for a class of identifiers as it&rsquo;s own
@@ -517,13 +495,15 @@ that class seems like a very bad idea to me.</li>
 <li>In most languages I&rsquo;ve used, <code>==</code> indicates (some sort of) equality and <code>=</code>
 indicates assignment. That is reversed here.</li>
 <li>The notation <code>[x \in D |-&gt; exp]</code> is an anonymous &ldquo;array/function&rdquo; from
-<code>x</code>, which must be in the domain <code>D</code>, to <code>exp</code>. Note the early appearance of
-stringly typed programming in the specification of the domain. What happens if
-a value is supplied that is not in the domain? In my experiment this produced
-a runtime error with this unhelpful output: <code>No error information</code>.</li>
+<code>x</code>, which must be in the domain <code>D</code>, to <code>exp</code>.</li>
+<li>Note the early appearance of stringly typed programming in the specification
+of the domain: <code>{"E", "W"}</code>. What happens if a value is supplied that is not
+in the domain? In my experiment this produced a runtime error with this
+helpful output: <code>No error information</code>.</li>
 </ul>
 </div>
 </div>
+
 <div id="outline-container-org2d7447d" class="outline-4">
 <h4 id="org2d7447d">PlusCal P</h4>
 <div class="outline-text-4" id="text-org2d7447d">
@@ -548,15 +528,16 @@ verifiable language
 <p>
 In other words, TLC seemes to be sufficiently difficult and unintuitive for
 imperative programmers to write that a toy imperative language was developed
-that transpiles to TLC. The idea is that users will implement their algorithms in
-the PlusCal, transpile to TLC to verify them, then reimplement the algorithms in
+that transpiles to TLC. The idea is that users will implement their algorithms
+in PlusCal, transpile to TLC to verify them, then reimplement the algorithms in
 the target language.
 </p>
 
 <p>
-Compare this with the functional approach, wherein the actual language is
-designed to replace pseudocode and be formally verifiable itself, and
-verification tools support extraction directly into executable programs.
+Compare this with the functional approach, wherein the actual implementation
+language is designed to replace pseudocode and be formally verifiable. In this
+context, verification tools generally support extraction directly into
+executable programs.
 </p>
 </div>
 </div>
@@ -651,7 +632,7 @@ else I&rsquo;ve used</li>
 I hope you like programming with checkboxes and drop down menus! Apparently, in
 order to actually get TLA+ to check invariants, you have to navigate to the
 appropriate form in the &ldquo;model&rdquo; interface, click &ldquo;Add&rdquo;, and then enter your
-expression. Why wouldn&rsquo;t the invariants be part of the source of the code?
+expression. Why wouldn&rsquo;t the invariants be part of the source code?
 </p>
 </div>
 </div>
@@ -668,6 +649,12 @@ by rigorous thinking above the code level.
 (Lamport, <a href="http://lamport.azurewebsites.net/tla/high-level-view.html#pluscal?unhideBut=hide-pluscal&amp;unhideDiv=pluscal">A High-Level View of TLA+</a>)
 </p>
 </blockquote>
+
+<p>
+(Note that the entire impetus beyond declarative programming is to make the
+executable code as clear and elegant for expressing and exploring rigorous
+thinking as possible.)
+</p>
 </div>
 </div>
 
@@ -681,9 +668,9 @@ by rigorous thinking above the code level.
 <ul class="org-ul">
 <li>Model checking is easier to write, but what can be verified is more limited,
 and it does less to sharpen an understanding of the domain</li>
-<li>Theorem proving is harder, but what anything expressible can be verified, and
+<li>Theorem proving is harder, but anything expressible can be verified, and
 verification depends on synthesizing a (relatively) complete construction of
-the problem to be solved (only what can be constructed can be proven).</li>
+the problem to be solved (we can only prove what we can construct).</li>
 </ul>
 </div>
 
@@ -692,7 +679,7 @@ the problem to be solved (only what can be constructed can be proven).</li>
 <div class="outline-text-3" id="text-org9e9407b">
 <ul class="org-ul">
 <li>Do the differences between the model checking and theorem proving approaches
-trace back to a difference betwen the model theoretic vs. proof theoretic
+trace back to a difference betwen the model-theoretic vs. proof-theoretic
 approaches to logic?</li>
 </ul>
 </div>
@@ -724,8 +711,8 @@ expertise on the philosophy of mathematics.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-01-28 Tue 10:46. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Last updated 2020-04-21 Tue 21:08. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
 </body>
