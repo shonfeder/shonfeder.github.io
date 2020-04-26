@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-19 Sun 14:32 -->
+<!-- 2020-04-26 Sun 18:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Logic</title>
@@ -262,11 +262,9 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7bace0a"><span class="todo TODO">TODO</span> What</a></li>
-<li><a href="#org808af10"><span class="todo TODO">TODO</span> Why</a>
+<li><a href="#org7bace0a">What</a></li>
+<li><a href="#org808af10">Why</a>
 <ul>
-<li><a href="#org36e1f20"><span class="todo TODO">TODO</span> Quine</a></li>
-<li><a href="#orgf43bcfb"><span class="todo TODO">TODO</span> Hart</a></li>
 <li><a href="#org9d9d4a6">Jean-Yves Girard</a></li>
 </ul>
 </li>
@@ -284,17 +282,23 @@
 </p>
 
 <div id="outline-container-org7bace0a" class="outline-2">
-<h2 id="org7bace0a"><span class="todo TODO">TODO</span> What</h2>
+<h2 id="org7bace0a">What</h2>
+<div class="outline-text-2" id="text-org7bace0a">
+<blockquote>
+<p>
+&#x2026; this is a way the mind <i>moves</i>, from the first two to the third.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#hart10">hart10</a>)
+</p>
+</blockquote>
 </div>
+</div>
+
 <div id="outline-container-org808af10" class="outline-2">
-<h2 id="org808af10"><span class="todo TODO">TODO</span> Why</h2>
+<h2 id="org808af10">Why</h2>
 <div class="outline-text-2" id="text-org808af10">
-</div>
-<div id="outline-container-org36e1f20" class="outline-3">
-<h3 id="org36e1f20"><span class="todo TODO">TODO</span> Quine</h3>
-</div>
-<div id="outline-container-orgf43bcfb" class="outline-3">
-<h3 id="orgf43bcfb"><span class="todo TODO">TODO</span> Hart</h3>
 </div>
 <div id="outline-container-org9d9d4a6" class="outline-3">
 <h3 id="org9d9d4a6">Jean-Yves Girard</h3>
@@ -621,27 +625,209 @@ figures?
 </div>
 
 <div id="outline-container-org812cde7" class="outline-4">
-<h4 id="org812cde7"><span class="todo TODO">TODO</span> Exegesis of Gentzen on the Meaning of his Calculi</h4>
+<h4 id="org812cde7">Exegesis of Gentzen on the Meaning of his Calculi</h4>
 <div class="outline-text-4" id="text-org812cde7">
+<p>
+In NJ, the definition of the logical symbols that combine formula is given by
+the <i>inference figures</i> forthe introduction and elimination of the symbol. In
+LJ, new inferences figures are introduced that do not correspond to logical
+symbols, but instead to &ldquo;structural transformations&rdquo;. What is the meaning of
+these &ldquo;structural inference figures&rdquo;? How do they get introduced?
+</p>
+
+<p>
+Gentzen&rsquo;s driving aim in introducing LJ is to preserve the ability to define the
+logic symbols by their introduction and elimination rules but to make a
+deductive calculus which is &ldquo;logicsitic&rdquo;. Being &ldquo;logistic&rdquo; means each formula
+that occurs should be a logical truth, and not dependent on external
+assumptions.
+</p>
+
+<p>
+Gentzen&rsquo;s derivations are trees of formulae or sequents that reflect the
+&ldquo;following&rdquo; relation between terms. In NJ, assumptions are recorded on the
+leaves of the derivation tree, but they are external to the formula themselves.
+For example, in the proof that \(A \land B \supset B \land A\)
+</p>
+
+<pre class="example">
+A &amp; B [1]      A &amp; B [1]
+--------- &amp;Er  --------- &amp;El
+   B               A
+------------------------ &amp;I
+        B &amp; A
+------------------------ -&gt;E[1]
+     A &amp; B ⊃ B &amp; A
+</pre>
+
+<p>
+The formulae <code>B</code>, <code>A</code>, and <code>B &amp; A</code> are all dependent on assumption <code>[1]</code>. In
+effect, the intermediary formulae in a NJ derivation do not track their own
+justification, so we require contextual knowledge about the whole derivation
+tree to reason about the subproofs that justify their presence.
+</p>
+
+<p>
+So, how do we make NJ &ldquo;logistic&rdquo;?
+</p>
+
+<blockquote>
+<p>
+The most obvious method of converting an NJ-derivation into a logistic one is
+this: We replace a [derivation formula] \(B\), which depends on the assumption
+formula \(A_1, .., A_u\) by the new formula \((A_1 & ... & A_u) \supset B\). This we
+do with all [derivation formulae]
+</p>
+</blockquote>
+
+<p>
+Recapitulating with an example: we can render our proof of \(A \land B \supset B
+\land A\) logistic by noting the assumption formula in antecedents of
+conditionals preceding each of the three dependenc formulae. Since \(B\) depends
+on assumption <code>[1]</code>, we rewrite \(B\) as \(A \land B \supset B\). We do the same
+with the two remaining dependent formula, and, for consistency, add the trivial
+self-implication of the assumption to get:
+</p>
+
+<blockquote>
+<p>
+A &amp; B ⊃ A &amp; B      A &amp; B ⊃ A &amp; B
+--------&#x2013;&#x2014; &amp;Er  --------&#x2013;&#x2014; &amp;El
+  A &amp; B ⊃ B          A &amp; B ⊃ A
+---------------------------&#x2013;&#x2014; &amp;I
+        A &amp; B ⊃ B &amp; A
+---------------------------&#x2013;&#x2014; -&gt;E
+    A &amp; B ⊃ A &amp; B ⊃ B &amp; A
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+We thus obtain formulae which are already true <i>in themselves</i>, i.e., whose
+truth is no longer <i>conditional</i> on the truth of certain assumption formulae.
+This procedure, however, introduces new logical symbols \(\labd\) and \(\supset\),
+necessitating additional inference figures for \(\labd\) and \(\supset\), and thus
+upsets the systematic character of our method of introducing and eliminating
+symbols.
+</p>
+</blockquote>
+
+<p>
+This problematic complication is evident in our attempted rewrite! The principle
+operators in each formula are now \(\supset\), but (excepting the conclusion), the
+elimination and introduction rules are all meant to be working on \(\land\).
+Worse, we&rsquo;d need another set of introduction and elimination rules for the &ldquo;new&rdquo;
+logical symbols, and prevent ourselves mixing them up with the identical &ldquo;old&rdquo;
+ones.
+</p>
+
+<blockquote>
+<p>
+For this reason, we have introduced the concept of a <i>sequent</i>. Instead of a
+formula \((A_1 & ... & A_u) \supset B\) we therefore write the sequent
+</p>
+
+<p>
+\[
+A_1, ..., A_2 \to B.
+\]
+</p>
+
+<p>
+The informal meaning of this sequent is no different from that of the above
+formula; the expressions differe merely in their formal [syntactic] structure.
+</p>
+</blockquote>
+
+<p>
+I.e., Gentzen introduced an alternate surface syntax, to disambiguate the a
+structure in the metalanguage which is (informally) synonymous with implication
+in the object language. But this didn&rsquo;t actually do away with the problem of
+needing new introduction and elimination rules:
+</p>
+
+<blockquote>
+<p>
+Even now new inference figures are required that cannot be integrated into our
+system of introductions and eliminations; but we have the advantage of being
+able to reserve them special places within our system, since they no longer
+refer to logical symbols, but merely to the structure of the sequents. We
+therefore call these &rsquo;structural inference figures&rsquo;, and the others &rsquo;operational
+inference figures&rsquo;.
+</p>
+</blockquote>
+
+<p>
+When Gentzen says &ldquo;they no longer refer to logical symbols&rdquo;, this is true only
+because he excluded these formal implications from the system, lifting them into
+the metalogic, by use of Hertz&rsquo;s notation. Each of the &ldquo;structural inferences
+figures&rdquo; given in 1.21 are valid by virtue of the real logical meaning of the
+sequents, but this meaning gets obscured. As an example, &ldquo;thinning&rdquo;
+</p>
+
+
+<pre class="example">
+   A -&gt; C
+----------
+B, A -&gt; C
+</pre>
+
+<p>
+is valid just because \(A \supset C \supbset (B \land A \supset C)\). The &ldquo;meaning
+explanation&rdquo; for each structural rule is given the same way.
+</p>
 </div>
-<div id="outline-container-orgfe497b6" class="outline-5">
-<h5 id="orgfe497b6">An example</h5>
+<div id="outline-container-org5e2596b" class="outline-5">
+<h5 id="org5e2596b">Digression: Reasons to prefer constructive logic</h5>
+<div class="outline-text-5" id="text-org5e2596b">
+<p>
+Viewed from the perspective of rhetoric, sequent calculus is a formal language
+for reasoning about forms of argument. In the sequent calculus, the only
+difference between intuitionistic logic and classical logic is whether multiple
+terms are allowed in the consequent: in intuitionistic logic, all sequents are
+of the form
+</p>
+
+<p>
+\[
+A_1, ..., A_u \to B
+\]
+</p>
+
+<p>
+with a single term in the consequent. To get classical logic, it suffices to
+allow sequents of the form
+</p>
+
+<p>
+\[
+A_1, ..., A_u \to B_1, ..., B_v
+\]
+</p>
+
+<p>
+i.e., where multiple terms can appear in the consequent. Using the signs of the
+object logic, this means
+</p>
+
+<p>
+\[
+A_1 \land ... \land A_u \supset B_1 \vee ... \vee B_v
+\]
+</p>
+
+<p>
+Arguing in classical logic is therefore arguing in a system in which
+interlocutors are allowed to make claims like: Assuming \(A_1\) through \(A_u\), one
+or more of these following propositions is true: \(B_1, ..., B_2\). It seems
+reasonable to lay down a rule that says: when you make an assertion conditional on
+some assumptions, stick to one conclusion per hypothetical!
+</p>
 </div>
-<div id="outline-container-orgad8fb71" class="outline-5">
-<h5 id="orgad8fb71">The Meaning of a Formula</h5>
-</div>
-<div id="outline-container-orga780983" class="outline-5">
-<h5 id="orga780983">The Meaning of a Sequent</h5>
-</div>
-<div id="outline-container-orgfec18d0" class="outline-5">
-<h5 id="orgfec18d0">The Meaning of a Figure</h5>
-<div class="outline-text-5" id="text-orgfec18d0">
-<dl class="org-dl">
-<dt>Trees</dt><dd>DAGs with single parents</dd>
-</dl>
 </div>
 </div>
-</div>
+
+
 <div id="outline-container-orgb579115" class="outline-4">
 <h4 id="orgb579115"><span class="todo TODO">TODO</span> Reiterated by Girard</h4>
 <div class="outline-text-4" id="text-orgb579115">
@@ -742,7 +928,8 @@ predicate is a device of disquotation</b> [emphasis mine].
 <div class="outline-text-2" id="text-org863f10f">
 <p>
 <h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
+<ul class='org-ref-bib'><li><a id="hart10">[hart10]</a> <a name="hart10"></a>Hart, The evolution of logic, Cambridge University Press (2010).</li>
+<li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
 <li><a id="schroeder2002resolution">[schroeder2002resolution]</a> <a name="schroeder2002resolution"></a>Schroeder-Heister, Resolution and the origins of structural reasoning: early  proof-theoretic ideas of Hertz and Gentzen, <i>Bulletin of Symbolic Logic</i>, <b>8(2)</b>, 246-265 (2002).</li>
 <li><a id="legris2012paul">[legris2012paul]</a> <a name="legris2012paul"></a>Legris, Paul Hertz and the origins of structural reasoning, <i>J.-Y. B\'eziau, Universal Logic: An Anthology. From Paul
                   Hertz to Dov Gabbay</i>,  3-10 (2012).</li>
@@ -779,7 +966,7 @@ Please pardon my inexpert translation.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-04-19 Sun 14:32. <br>
+Last updated 2020-04-26 Sun 18:28. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>

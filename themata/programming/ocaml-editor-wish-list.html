@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:43 -->
+<!-- 2020-04-26 Sun 18:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml Editor Wish List</title>
@@ -196,50 +196,28 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -270,7 +248,7 @@ Given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span style="color: #f5deb3; font-weight: bold;">type</span> <span style="color: #ECBE7B;">t</span> <span style="color: #f0e68c;">=</span> <span style="color: #bbc2cf; background-color: #21242b;">A</span> <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">B</span> <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">C</span> <span style="color: #51afef;">of</span> int
+<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-constructor">A</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">B</span> <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">C</span> <span class="org-keyword">of</span> int
 </pre>
 </div>
 
@@ -279,7 +257,7 @@ We should be able to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">f</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">function</span> <span style="color: #f0e68c;">&lt;</span>tab<span style="color: #f0e68c;">&gt;</span>
+<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">f</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">t </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> int </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">function</span> <span class="org-tuareg-font-lock-operator">&lt;</span>tab<span class="org-tuareg-font-lock-operator">&gt;</span>
 </pre>
 </div>
 
@@ -288,10 +266,10 @@ to have generated the snippet template
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">f</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">function</span>
-  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">A</span>   <span style="color: #f0e68c;">-&gt;</span> __
-  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">B</span>   <span style="color: #f0e68c;">-&gt;</span> __
-  <span style="color: #f0e68c;">|</span> <span style="color: #bbc2cf; background-color: #21242b;">C</span> x <span style="color: #f0e68c;">-&gt;</span> __ x
+<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">f</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">t </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> int </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-keyword">function</span>
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">A</span>   <span class="org-tuareg-font-lock-operator">-&gt;</span> __
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">B</span>   <span class="org-tuareg-font-lock-operator">-&gt;</span> __
+  <span class="org-tuareg-font-lock-operator">|</span> <span class="org-tuareg-font-lock-constructor">C</span> x <span class="org-tuareg-font-lock-operator">-&gt;</span> __ x
 </pre>
 </div>
 
@@ -309,9 +287,9 @@ E.g., given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span style="color: #51afef;">if</span> x <span style="color: #51afef;">then</span>
+<pre class="src src-ocaml"><span class="org-keyword">if</span> x <span class="org-keyword">then</span>
   exp1
-<span style="color: #51afef;">else</span>
+<span class="org-keyword">else</span>
   exp2
 </pre>
 </div>
@@ -322,12 +300,36 @@ negate the conditional.
 </p>
 </div>
 </div>
+<div id="outline-container-orgc33e3de" class="outline-2">
+<h2 id="orgc33e3de">Interactive function composition search</h2>
+<div class="outline-text-2" id="text-orgc33e3de">
+<p>
+Write
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">foo</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-type">t </span><span class="org-tuareg-font-lock-operator">-&gt;</span><span class="org-type"> q </span><span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-operator">...</span>
+</pre>
+</div>
+
+
+<p>
+And get an interactive prompt presenting a navigable tree of function chains
+from <code>t</code> to <code>q</code>.
+</p>
+
+<p>
+I want proof search over defined functions, not over the implementations of the
+functions.
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-04-21 Sun 15:58. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Last updated 2020-04-26 Sun 18:04. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
 </body>
