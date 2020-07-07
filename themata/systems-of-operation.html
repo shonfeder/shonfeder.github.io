@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-23 Sun 18:38 -->
+<!-- 2020-07-06 Mon 17:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Seed of the Shell: From Human Computers to Communal Computing</title>
@@ -196,50 +196,28 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -659,26 +637,30 @@ consisted of
 Operating these bohemoths was intricate, complex, and fraught:
 </p>
 
-<pre class="example">
-    The typical mode of operating was programmer present and at the operating
-    console. When a programmer got ready for a test shot, he or she signed up
-    on a first-in, first-out list, much like the list at a crowded restaurant.
-    The programmer then checked progress frequently to estimate when he would
-    reach the top. When his time got close, he stod by with card deck in hand.
-    When the previous person finished or ran out of alloted time or abruptly
-    crashed, the next programmer rushed in, checked that the proper board was
-    installed in the card reader, checked that the proper board was installed in
-    the printer, checked that the proper board was installed on the punch, hung
-    a magnetic tape ..., punched in on a mechanical time clock, addressed the
-    console, set some switches, loaded his punched card deck in the card reader,
-    prayed the first card would not jam, and pressed the load button to invoke
-    the bootstrap sequence.
+<blockquote>
+<p>
+The typical mode of operating was programmer present and at the operating
+console. When a programmer got ready for a test shot, he or she signed up
+on a first-in, first-out list, much like the list at a crowded restaurant.
+The programmer then checked progress frequently to estimate when he would
+reach the top. When his time got close, he stod by with card deck in hand.
+When the previous person finished or ran out of alloted time or abruptly
+crashed, the next programmer rushed in, checked that the proper board was
+installed in the card reader, checked that the proper board was installed in
+the printer, checked that the proper board was installed on the punch, hung
+a magnetic tape &#x2026;, punched in on a mechanical time clock, addressed the
+console, set some switches, loaded his punched card deck in the card reader,
+prayed the first card would not jam, and pressed the load button to invoke
+the bootstrap sequence.
+</p>
 
-    If all went well, you could load a typical deck of about 300 cards and begin
-    the execution of your first instruction about 5 minutes after entering the
-    machine room. If only one person did all this set up and got going in five
-    minutes, he bustled around the machine room like a whirling dervish.
-</pre>
+<p>
+If all went well, you could load a typical deck of about 300 cards and begin
+the execution of your first instruction about 5 minutes after entering the
+machine room. If only one person did all this set up and got going in five
+minutes, he bustled around the machine room like a whirling dervish.
+</p>
+</blockquote>
 
 <p>
 According to Patrick&rsquo;s account, the preparation and setup rarely went
@@ -768,9 +750,9 @@ shells — such as <i>sh</i>, <i>bash</i>, and <i>zsh</i> —
 <h3 id="orgf590590">The origins of Unix/Linux shells lie in CTSS</h3>
 <div class="outline-text-3" id="text-orgf590590">
 </div>
-<div id="outline-container-org74a8f65" class="outline-4">
-<h4 id="org74a8f65">Denise Richie</h4>
-<div class="outline-text-4" id="text-org74a8f65">
+<div id="outline-container-orga0e2e22" class="outline-4">
+<h4 id="orga0e2e22">Denise Richie</h4>
+<div class="outline-text-4" id="text-orga0e2e22">
 <p>
 The UNIX Time-sharing System A Retrospective*
 </p>
@@ -829,9 +811,9 @@ evening while leaving behind long runcoms executing overnight.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org7876835" class="outline-3">
-<h3 id="org7876835">Commands and Scripts</h3>
-<div class="outline-text-3" id="text-org7876835">
+<div id="outline-container-orgf960d1e" class="outline-3">
+<h3 id="orgf960d1e">Commands and Scripts</h3>
+<div class="outline-text-3" id="text-orgf960d1e">
 <p>
 The shell, at it&rsquo;s root, is an interface for issuing commands and observing
 the effects of their execution.
@@ -850,9 +832,9 @@ scripts.
 </p>
 </div>
 
-<div id="outline-container-orgbfb191d" class="outline-4">
-<h4 id="orgbfb191d">RUNCOM</h4>
-<div class="outline-text-4" id="text-orgbfb191d">
+<div id="outline-container-orgdfbaf15" class="outline-4">
+<h4 id="orgdfbaf15">RUNCOM</h4>
+<div class="outline-text-4" id="text-orgdfbaf15">
 <p>
 :URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
 </p>
@@ -1144,9 +1126,9 @@ the same procedures are still at work).</dd>
 </div>
 </div>
 
-<div id="outline-container-orgf960d1e" class="outline-4">
-<h4 id="orgf960d1e">Commands and Scripts</h4>
-<div class="outline-text-4" id="text-orgf960d1e">
+<div id="outline-container-org77a1ec2" class="outline-4">
+<h4 id="org77a1ec2">Commands and Scripts</h4>
+<div class="outline-text-4" id="text-org77a1ec2">
 <p>
 The shell, at it&rsquo;s root, is an interface for issuing commands and observing the effects of their execution.
 </p>
@@ -1160,9 +1142,9 @@ Segue to <i>composing</i> scripts via the <code>script</code> command that simpl
 </p>
 </div>
 
-<div id="outline-container-orgdfbaf15" class="outline-5">
-<h5 id="orgdfbaf15">RUNCOM</h5>
-<div class="outline-text-5" id="text-orgdfbaf15">
+<div id="outline-container-orga1d413e" class="outline-5">
+<h5 id="orga1d413e">RUNCOM</h5>
+<div class="outline-text-5" id="text-orga1d413e">
 <p>
 :URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
 </p>
@@ -1178,9 +1160,9 @@ Segue to <i>composing</i> scripts via the <code>script</code> command that simpl
 </div>
 </div>
 
-<div id="outline-container-orga0e2e22" class="outline-4">
-<h4 id="orga0e2e22">Denise Richie</h4>
-<div class="outline-text-4" id="text-orga0e2e22">
+<div id="outline-container-orgcf32374" class="outline-4">
+<h4 id="orgcf32374">Denise Richie</h4>
+<div class="outline-text-4" id="text-orgcf32374">
 <p>
 The UNIX Time-sharing System: A Retrospective*
 </p>
@@ -1226,7 +1208,7 @@ use; many are inferior in basic design.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-02-22 Sat 21:49. <br>
+Last updated 2020-07-06 Mon 17:45. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>

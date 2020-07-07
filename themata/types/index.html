@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-07 Tue 17:20 -->
+<!-- 2020-06-19 Fri 21:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Types</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -219,6 +220,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -235,31 +258,155 @@
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Types</h1>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+Notes on types, largely, but not exclusively, from the perspective of
+type theory.
+</p>
+
+<ul class="org-ul">
+<li><a href="./what-are-types.html">What are Types?</a></li>
+<li><a href="./problems-posed-by-types.html">Problems Posed by Types</a></li>
+</ul>
+
+<div id="outline-container-org1f89267" class="outline-2">
+<h2 id="org1f89267"><span class="todo TODO">TODO</span> Notes to process</h2>
+<div class="outline-text-2" id="text-org1f89267">
+</div>
+<div id="outline-container-org9540ea0" class="outline-3">
+<h3 id="org9540ea0">Structuralist view</h3>
+<div class="outline-text-3" id="text-org9540ea0">
+<p>
+Girard advances an existentialist view of logic (and type theory, as a
+sub-discipline):
+</p>
+
+<blockquote>
+<p>
+<b>Existence.</b> One can instead contend that [the existence of] objects are
+ anterior to their type, seen as an essence. This is the viewpoint of
+ <i>subtyping</i>, this is also the viewpoint of ludics: an object may have several
+ types, be representative of several essences. Their <i>locativity</i> becomes
+ essential.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>)
 </p>
 </blockquote>
-<blockquote id="whitehead93#2">
+
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+I suspect that, when cleansed of it&rsquo;s humanist and historicist distortions,
+existentialism resolves into a radical structuralism.
+</p>
+
+<p>
+I further suspect&#x2026;
+</p>
+
+<p>
+A type system is a functor from types to terms. Parametric types give natural
+transformations over functors to simply typed terms. There are also other
+important ways of tracing natural transformations between sets of typeable
+terms. Subtyping lets us establish and specify some of these and, in fact,
+Girard presents polymorphism as a subspecies of subtyping:
+</p>
+
+<blockquote>
+<p>
+Polymorphism is the observation that the same λ-term can admit several types.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>, 135)
 </p>
 </blockquote>
+
+<p>
+The jiggering and exploring of various type systems is all in pursuit of an
+ideal sweet spot that will let us prove everything we think we should be able to
+while eliminating forms of expression that become unwieldy and undermine our
+capacity to reason about the system at all. Type systems also provide an
+important <i>interface</i> abstracting over lambda terms. When we reason about terms
+of type <code>int -&gt; int</code> we can draw inferences about an infinite class of potential
+functions while maintaining a birds eye view.
+</p>
+
+<p>
+Does it make sense to look for types that range over patterns and structures
+that hold between subtypes?
+</p>
+
+<p>
+From the subtyping view, the addition of linear types expanded the class of
+terms our types can provide an interface to, allowing new distinctions (maybe
+also allowing terms untypeable in other systems into the domain?).
+</p>
+
+<p>
+There are types correlating interfaces between systems of types. This is what
+Goguen advocates in <a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb94a2ee" class="outline-3">
+<h3 id="orgb94a2ee">A confusion regarding the Curry-Howard analogy</h3>
+<div class="outline-text-3" id="text-orgb94a2ee">
+<p>
+iiuc, \(x : A \simeq x \in A \simeq x \: is \: an \: A\). This level of typing
+judgment is required for a simply typed λ-calculus. But simply typed λ-calculus
+is only analogous to <i>propsitional logic</i>, so how can we be predicating here?
+This is what leads me to suspect type theory would be more easily understood as
+an extension of <a href="https://en.wikipedia.org/wiki/Term_logic">term logic</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4b4c188" class="outline-3">
+<h3 id="org4b4c188">Type Theory as a Normative Discipline</h3>
+<div class="outline-text-3" id="text-org4b4c188">
+<p>
+This view takes type theory to be merely an extension of the normative theory of
+logic.
+</p>
+
+<p>
+Type Theory is a computational model constrained by a logical syntax.
+</p>
+
+<blockquote>
+<p>
+Logical syntax can thus be seen both as a constructive tool, enabling the
+formation of (normalizing) typed terms, and as a constraining one, imposing a
+<i>custom</i> on pure terms (and their socialization) in order to force termination.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#abrusci14_transc">abrusci14_transc</a>)
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-org594459d" class="outline-4">
+<h4 id="org594459d"><span class="todo TODO">TODO</span> Extract Thread from Twitter</h4>
+<div class="outline-text-4" id="text-org594459d">
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
+<li><a id="Programming91typesas">[Programming91typesas]</a> <a name="Programming91typesas"></a>Joseph Goguen Programming & Joseph Goguen, Types as Theories, 357-390, in in: Topology and Category Theory in Computer Science, edited by (1991)</li>
+<li><a id="abrusci14_transc">[abrusci14_transc]</a> <a name="abrusci14_transc"></a>Abrusci & Pistone, On Transcendental Syntax: A Kantial Program For Logic?, <i>Unpublishd</i>,  (2014).</li>
+</ul>
+</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2020-05-30 Sat 16:32. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>

@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-06-19 Fri 21:46 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What Are Types?</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="um" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">What Are Types?</h1>
+
+
+<div id="outline-container-orgfd66208" class="outline-2">
+<h2 id="orgfd66208">Computational Type Theory</h2>
+<div class="outline-text-2" id="text-orgfd66208">
+<p>
+Robert Constable, in his article &ldquo;Computational Type Theory&rdquo;
+(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>):
+</p>
+
+<blockquote>
+<p>
+Computational type theory [CTT] answers questions such as: What is a type? What is a
+natural number? How do we compute with types? How are types related to sets? How
+are data types for numbers, lists, trees, graphs, etc. related to the
+corresponding notions in mathematics? Do paradoxes arise in formulating a theory
+of types as they do in formulating a theory of sets?
+</p>
+</blockquote>
+
+<p>
+The first question is decisive for CTT&rsquo;s answers to the all the rest, and it is
+the focus of this section. We would like to articulate what a type is from the
+perspective of &ldquo;type theory&rdquo; in general, but we begin by looking at CTT in
+particular.
+</p>
+
+<p>
+In formulating his account of types (for a popular audience), Constable drives
+the question &ldquo;what is a type?&rdquo; back to the question &ldquo;what is a term?&rdquo;:
+</p>
+
+<blockquote>
+<p>
+What is a type? To answer this question, we must first be more precise about
+computation; we will see that the notion of a type is ultimately grounded in
+computation, specifically in concrete linguistic expressions because computation
+in the physical world is ultimately symbolic. We are only interested in
+computation that is physically realizable by explicit, verifiable human actions
+and by machines that humans understand. Thus to explain types, we first need to
+explain terms and how to compute with them.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>)
+</p>
+</blockquote>
+
+<p>
+Let us fix some set of terms (symbols), \(T\), and an <i>operational semantics</i>,
+telling us how to compute certain elements \(t_1, ..., t_n \in T\) from other
+elements \(t'_1, ..., t'_n \in T\), via the relation \(\to\), such that \(t' \to t\)
+reads &ldquo;\(t'\) reduces to \(t\)&rdquo;. We say a term in \(T\) is &ldquo;irreducible&rdquo; if it is only
+reducible to itself: \(t \to t\). Such a term is called &ldquo;canonical&rdquo;. That this
+sets up a (partial) ordering over a set of <i>signs</i>.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</p>
+
+<p>
+We might expect that more complex signs reduce to simpler ones, and this is
+often the case, but we haven&rsquo;t actually placed any constraint that enforces this
+kind converge upon atomic elements. The canonical signs serve as points of rest,
+in our system, but there is no requirement enrcing in the sense that they cannot
+be further reduced to simpler components.
+</p>
+
+<p>
+Having established such a system of signs, we define <i>types</i> over the canonical
+elements by delimiting collections of terms that belong together, and
+stipulating how to determine if any two terms in such a collection are to
+taken as equal:
+</p>
+
+<blockquote>
+<p>
+To define a type we specify a collection of canonical terms which are the
+canonical elements of the type, and we define an equality relation declaring
+when two canonical terms denote the same abstract object. The equality relation
+creates abstract objects out of terms.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>)
+</p>
+</blockquote>
+
+<p>
+Note that these types presuppose the <i>construction of ideal</i> (abstract)
+<i>objects</i>, on the basis of positing <i>equality between concrete objects</i>: &ldquo;<b>The
+equality relation creates abstract objects out of terms.</b>&rdquo;. Existence precedes
+essence, and essence is &ldquo;created&rdquo; through acts of <i>gathering</i> (terms that belong
+together) and <i>equalization</i> (of terms that are taken to be the same).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdf52214" class="outline-2">
+<h2 id="orgdf52214">A Short Genealogy of Types</h2>
+<div class="outline-text-2" id="text-orgdf52214">
+<p>
+The roots of type theories, computational or otherwise, extend back through the
+history of philosophy, at least to Aristotle (<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>).
+</p>
+</div>
+
+<div id="outline-container-org35770ae" class="outline-3">
+<h3 id="org35770ae">Prehistory of the Theories of Types</h3>
+<div class="outline-text-3" id="text-org35770ae">
+<blockquote>
+<p>
+In all subsumptions of an object under a concept the representations of the
+former must be <b>homogeneous</b> [Gleichartig] with the latter, i.e., the concept
+must contain that which is represented in the object that is to be subsumed
+under it, for that is just what is meant by the expression &ldquo;an object is
+contained under a concept&rdquo;.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#kant98_critiq">kant98_critiq</a>, A137/B176)
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org0336982" class="outline-3">
+<h3 id="org0336982">Dawn of the Theories of Types</h3>
+<div class="outline-text-3" id="text-org0336982">
+<p>
+Martin-Löf&rsquo;s, in his &ldquo;An intuitionistic theory of types&rdquo;, explicitly traces his
+concept of type back to Russel:
+</p>
+
+<blockquote>
+<p>
+Every mathematical object is of a certain kind or <i>type</i>. Better, a mathematical
+object is always given together with its type, that is, it is not just an
+object, it is an object of a certain type. This may be regarded as a simpler and
+at the same time more general formulation of Russel&rsquo;s 1903 <i>doctrine of types</i>,
+according to which a type is the range of significance of a propositional
+function, because in the theory that I am about to describe every propositional
+function will indeed have a type as its domain.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#martin1998intuitionistic">martin1998intuitionistic</a>)
+</p>
+</blockquote>
+
+<p>
+Russell&rsquo;s theory of types puts the concept of a propositional <i>function</i> <b>under</b>
+the concept of a general proposition (&ldquo;under&rdquo; here meaning &ldquo;conceptually prior
+to&rdquo;).
+</p>
+
+<blockquote>
+<p>
+Every proposition containing &rsquo;all&rsquo; asserts that some propositional function is
+always true; and this means that all values of the said function are true
+</p>
+</blockquote>
+
+<p>
+Then the meaning of quantification is subordinate to the range of <i>valid</i> values
+of a function.
+</p>
+
+<blockquote>
+<p>
+Hence we can speak of all of a collection when and only when the collection
+forms part or the whole of the range of significance of some propositional
+function, the range of significance being defined as the collection of those
+arguments for which the function in question is significant, i. e., has a value.
+(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+</p>
+</blockquote>
+
+<p>
+Hence, &ldquo;a type is defined as the range of significance of a propositional
+function, i.e., as the collection of arguments for which the said function has
+values&rdquo; (<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>).
+</p>
+
+<p>
+But what determines the <i>validity</i> of this range? Russell names it &ldquo;logical
+homogeneity&rdquo;:
+</p>
+
+<blockquote>
+<p>
+What is essential, as appears from the above discussion, is not finitude, but
+what may be called logical homogeneity. This property is to belong to any
+collection whose terms are all contained within the range of significance of
+some one function. It would always be obvious at a glanice whether a collection
+possessed this property or not, if it were not for the concealed ambiguity in
+common logical terms such as true and false, which gives an appearance of being
+a single function to what is really a conglomeration of many functions with
+different ranges of significance.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+</p>
+</blockquote>
+
+<p>
+<i>Logical homogeneity</i> is a property of <i>collections of terms</i>. A collection of
+terms has this property when all the terms are &ldquo;contained within the range of
+significance of some one function&rdquo;. A &ldquo;type&rdquo; is then a special case of a
+logically homogenius collection of terms: a logically homogenius collection of
+terms whose characteristic function is <i>propositional</i> is a <i>type</i>.
+</p>
+
+<p>
+Of course, this all leaves undecided the really essential and most interesting
+question: How is the homogeneity of such collections determined and enforced? By
+virtue of what can we say that the terms in such a collection <i>belong</i> together?
+And, once we&rsquo;ve determined that belonging together, how do we enforce this?
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b8f04d" class="outline-2">
+<h2 id="org8b8f04d">Metaphysical Foundations of the Computational Theory of Types</h2>
+<div class="outline-text-2" id="text-org8b8f04d">
+</div>
+<div id="outline-container-org0fcb57f" class="outline-3">
+<h3 id="org0fcb57f"><span class="todo TODO">TODO</span> Equality</h3>
+</div>
+<div id="outline-container-org154d8d0" class="outline-3">
+<h3 id="org154d8d0"><span class="todo TODO">TODO</span> Belonging together</h3>
+<div class="outline-text-3" id="text-org154d8d0">
+<p>
+The types of the typed λ-calculi are <i>marks</i>, or <i>indexes</i>, used to enforce a
+sense of appropriateness that follows from presumptions of <i>belonging together</i>.
+</p>
+
+<p>
+This is indeed how types function in the calculi when represented ala Church.
+The types mark the λ-terms themselves, being inscribed into each head. These
+marks serve as a prophylactic protecting against unwanted applications. This
+usage echos the etymon of &rsquo;type&rsquo;:
+</p>
+
+<blockquote>
+<p>
+late 15c., &ldquo;symbol, emblem,&rdquo; from Latin <i>typus</i> &ldquo;figure, image, form, kind,&rdquo;
+from Greek <i>typos</i> &ldquo;a blow, dent, impression, mark, effect of a blow; figure in
+relief, image, statue; anything wrought of metal or stone; general form,
+character; outline, sketch,&rdquo; from root of <i>typtein</i> &ldquo;to strike, beat,&rdquo; from PIE
+<i>*tup-</i>, variant of root <i>*(s)teu-</i> (1) &ldquo;to push, stick, knock, beat&rdquo;
+(<a href="https://www.etymonline.com/search?q=type">etymonline</a>)
+</p>
+</blockquote>
+</div>
+
+<div id="outline-container-orgabf8cdd" class="outline-4">
+<h4 id="orgabf8cdd">Justification:</h4>
+<div class="outline-text-4" id="text-orgabf8cdd">
+<p>
+What justifies such enforcement?
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org32de54d" class="outline-2">
+<h2 id="org32de54d">Types as Theories</h2>
+<div class="outline-text-2" id="text-org32de54d">
+<p>
+In <i>Types as Theories</i>, Goguen denies that &ldquo;type theory&rdquo; advances a general
+theory of types, in arguing instead that it presents a theory based on a
+specific, limited notion of &ldquo;type&rdquo;:
+</p>
+
+<blockquote>
+<p>
+In the &ldquo;types as predicates&rdquo; variant of the &ldquo;types as sets&rdquo; approach, types are
+taken to be predicates, which therefore denote sets (or some variant thereof,
+such as domains). However, many advocates of this view are more proof
+theoretically inclined, and hence might resist such denotations. Perhaps the
+best known work along this line is Martin-Löf&rsquo;s &ldquo;type theory&rdquo;, which also
+provides dependent types, as implemented in Pebble and other languages. (Note
+that &ldquo;type theory&rdquo; is not a general theory of types, but rather a specific
+intuitionistic logic which provides one specific notion of type).
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>)
+</p>
+</blockquote>
+
+<p>
+Goguen counters the &ldquo;types as predicates&rdquo; view with another interpretation,
+which he calls &ldquo;types as theories&rdquo; or &ldquo;types as algebras&rdquo;:
+</p>
+
+<blockquote>
+<p>
+The essential insight of the &ldquo;types as algebras&rdquo; notion is that the <i>operations</i>
+associated with data are at least as important as the values. Thus, the this
+approach generalized from [types as] sets to <i>algebras</i>, which are just sets
+with some given operations.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>)
+</p>
+</blockquote>
+
+<p>
+Let&rsquo;s lean on the proof-theory side of types-as-propositions and recall (what I
+believe to be) a key insight of Gentzen&rsquo;s approach:
+</p>
+
+<blockquote>
+<p>
+To every logical symbol &#x2026; belongs precisely one inference figure which
+&rsquo;introduces&rsquo; the symbol - as the terminal symbol of a formula - and one which
+&rsquo;eliminates&rsquo; it. &#x2026; The introductions represent, as it were, the &rsquo;definitions&rsquo;
+of the symbols concerned, and the eliminations are no more than, in the final
+analysis, than the consequences of these definitions. This fact may be expressed
+as follows: In eliminating a symbol, we may use the formula with whose terminal
+symbol we are dealing only &rsquo;in the sense afforded by the introduction of that
+symbol&rsquo;.
+</p>
+
+<p>
+<a class='org-ref-reference' href="#m.69_gerhar_gentz_german">m.69_gerhar_gentz_german</a>
+</p>
+</blockquote>
+
+<p>
+That is, the meaning of the logical connectives (i.e., the correspondents of the
+principle types in the various type theories) is given by their introduction and
+elimination rules. From the Curry perspective on typing, I think we can say that
+the intro/elim rules are (partial) operations on the sets of derivations in the
+lambda calculus (since a set of derivations is a set of programs, which is a set
+of proofs, which is the meaning of a proposition according to the perspective of
+proof-theoretic semantics). If this is correct, I think we have a perspective
+from which we can say that the meaning of the types in our systems are indeed
+given by the operations belonging to each type (i.e., the particular sets of
+operations which carve out patterns of permitted connections within the sets of
+derivations of the lambda calculus).
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+We sketch out the barest form of a term-rewriting system here,
+to sidestep the complications introduced by the usual pratice of using the
+lambda calculus in particular. There&rsquo;s good reason to favor <a href="https://en.wikipedia.org/wiki/Cartesian_closed_category">typed lambda calculi</a>
+(thanks to <a href="https://boarders.github.io/">Callan McGill</a> for explaining this reason to me, when I asked, very
+naively, &ldquo;Why use lambda calculus instead of some other rewrite system?&rdquo;), but
+they&rsquo;re not important for the quite rudimentary level of understanding I&rsquo;m
+aiming for here.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2020-05-09 Sat 14:51. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+</div>
+</div>
+</body>
+</html>

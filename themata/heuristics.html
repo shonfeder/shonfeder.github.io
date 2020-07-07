@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2020-07-07 Tue 17:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Heuristics</title>
@@ -196,50 +196,28 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.cacheClassElem = elem.className;
+         elem.cacheClassTarget = target.className;
+         target.className = "code-highlighted";
+         elem.className   = "code-highlighted";
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(elem.cacheClassElem)
+         elem.className = elem.cacheClassElem;
+       if(elem.cacheClassTarget)
+         target.className = elem.cacheClassTarget;
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -263,22 +241,66 @@ A list of maxims, tips, and tricks which I hope will help me to live more
 carefully and effectively.
 </p>
 
+<div id="outline-container-org09a3752" class="outline-2">
+<h2 id="org09a3752">General</h2>
+<div class="outline-text-2" id="text-org09a3752">
 <ul class="org-ul">
+<li>Whenever possible, prioritize getting enough sleep and body care.</li>
 <li>Stand up slowly, and get low quickly if you feel dizzy.</li>
-<li>Demand to be let out of the car ASAP if you feel a driver is not being safe.</li>
+<li>Demand to be let out of a car ASAP if you feel a driver is not driving safely.</li>
+<li>Use checklists to ensure safe and complete execution of important tasks.</li>
+<li>Be mindful of how limits and abilities change as a function of
+activity and habituation. One&rsquo;s capacity today is best predicated by what&rsquo;s
+been done regularly in recent days, and only tentatively indicated by what one
+once did months or years before.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcbd0c43" class="outline-2">
+<h2 id="orgcbd0c43">Software development</h2>
+<div class="outline-text-2" id="text-orgcbd0c43">
+<ul class="org-ul">
 <li>Write and run tests before investing in documentation, application, or
 generalization.</li>
-<li>Devote time to document-producing design planning prior to starting work.</li>
-<li>Use checklists to ensure safe and complete execution of important tasks.</li>
+<li>Devote time to document-producing design and planning prior to starting work.</li>
 <li>Implement minimal essential functionality, put it under test to verify
 correctness and guard against regressions, <b>then</b> elaborate.</li>
 </ul>
 </div>
+</div>
+
+<div id="outline-container-org763efdd" class="outline-2">
+<h2 id="org763efdd">Health Scares</h2>
+<div class="outline-text-2" id="text-org763efdd">
+</div>
+<div id="outline-container-org2e0cba6" class="outline-3">
+<h3 id="org2e0cba6">An algorithm for addressing concerns</h3>
+<div class="outline-text-3" id="text-org2e0cba6">
+<div class="org-src-container">
+<pre class="src src-haskell"><span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring emergency attention` <span class="org-haskell-keyword">of</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">TODO</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">No</span>  <span class="org-haskell-operator">-&gt;</span>
+<span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring urgent attention<span class="org-haskell-operator">?</span>` <span class="org-haskell-keyword">of</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Schedule</span> an urgent appointment with provider for <span class="org-haskell-constructor">ASAP</span>`
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">No</span>  <span class="org-haskell-operator">-&gt;</span>
+<span class="org-haskell-keyword">case</span> <span class="org-haskell-constructor">Option</span> <span class="org-haskell-keyword">of</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">A</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Schedule</span> a regular appointment`
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">B</span> <span class="org-haskell-operator">-&gt;</span>
+<span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Wait</span> and watch` <span class="org-haskell-keyword">of</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Gets_worse</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requireing emergency attention`
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Stays_same_gets_batter</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Wait</span> and watch`
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-12-18 Wed 21:32. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Last updated 2020-07-07 Tue 15:21. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
 </body>

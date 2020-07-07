@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-07 Tue 17:20 -->
+<!-- 2020-07-07 Tue 17:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notation</title>
+<title>Problems Posed By Types</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -235,31 +236,138 @@
 </div>
 </div>
 <div id="content">
-<h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<h1 class="title">Problems Posed By Types</h1>
 <p>
-Mathematics, as a science commenced when first someone, probably a Greek,
-proved propositions about <i>any</i> things or about <i>some</i> things, without
-specification of definite particular things.
-&#x2026;
-Perhaps it required the introduction of the arabic numerals, by which the use
-of letters as standing for definite numbers has been completely discarded in
-mathematics, in order to suggest to mathematicians the technical convenience
-of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
+<b>Program : Type :: Solution : Problem</b>
 </p>
-</blockquote>
-<blockquote id="whitehead93#2">
+
+<div class="ABSTRACT">
+
+</div>
+
+<div id="outline-container-org5ab63e1" class="outline-2">
+<h2 id="org5ab63e1">Problematic</h2>
+<div class="outline-text-2" id="text-org5ab63e1">
+</div>
+<div id="outline-container-org3f5eeed" class="outline-3">
+<h3 id="org3f5eeed">What is a problem?</h3>
+<div class="outline-text-3" id="text-org3f5eeed">
+<blockquote>
 <p>
-&#x2026; the enormous importance of good notation. By relieving the brain of
-all unnecessary work, a good notation sets it free to concentrate on more
-advanced problems, and in effect increases the mental power of the race. (39)
+<b>problem (n.)</b>
+</p>
+
+<p>
+late 14c., &ldquo;a difficult question proposed for solution,&rdquo; from Old French
+<i>problème</i> (14c.) and directly from Latin <i>problema</i>, from Greek <i>problema</i> &ldquo;a
+task, that which is proposed, a question;&rdquo; also &ldquo;anything projecting, headland,
+promontory; fence, barrier;&rdquo; also &ldquo;a problem in geometry,&rdquo; literally &ldquo;thing put
+forward,&rdquo; from <i>proballein</i> &ldquo;propose,&rdquo; from <i>pro</i> &ldquo;forward&rdquo; (from PIE root *per-
+(1) &ldquo;forward&rdquo;) + <i>ballein</i> &ldquo;to throw&rdquo; (from PIE root <i>*gwele</i>- &ldquo;to throw,
+reach&rdquo;).
+</p>
+
+<p>
+(<a href="https://www.etymonline.com/word/problem#etymonline_v_2594">etymonline</a>)
 </p>
 </blockquote>
 </div>
+</div>
+
+
+<div id="outline-container-orgc0d972c" class="outline-3">
+<h3 id="orgc0d972c">The prevailing view</h3>
+<div class="outline-text-3" id="text-orgc0d972c">
+<p>
+The prevailing view<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> on the meaning and purpose of types in
+programming can be gleaned from excerpts like the following
+</p>
+
+<blockquote>
+<p>
+The main purpose of a type system is to reduce possibilities for bugs in
+computer programs by defining interfaces between different parts of a computer
+program, and then checking that the parts have been connected in a consistent
+way.
+</p>
+
+<p>
+(<a href="https://en.wikipedia.org/wiki/Type_system">wikipedia article on &ldquo;Type System&rdquo;</a>)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+Types in programming languages are valuable but not essential. Two programming
+languages can be quite similar except for the use of types—for example, C and
+BCPL, or ML and Lisp. Programming languages use type checking to catch errors
+at compile time and to improve run-time efficiency.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#lamport1999should">lamport1999should</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge242547" class="outline-2">
+<h2 id="orge242547">Precedent</h2>
+<div class="outline-text-2" id="text-orge242547">
+<ul class="org-ul">
+<li>Martin Lof&rsquo;s paper</li>
+<li>Types as problems</li>
+<li>Ref CTT and Harper&rsquo;s lectures thereon</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b8b5fb" class="outline-2">
+<h2 id="org9b8b5fb">Implications</h2>
+<div class="outline-text-2" id="text-org9b8b5fb">
+<ul class="org-ul">
+<li>As <b>sharing</b> requirements</li>
+<li><p>
+Think of a mockup as the &ldquo;shell of a type&rdquo;, the type which actually
+articulates the problem to solve should fill the form sketched by the mock up.
+</p>
+
+<p>
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="lamport1999should">[lamport1999should]</a> <a name="lamport1999should"></a>Lamport & Paulson, Should your specification language be typed, <i>ACM Transactions on Programming Languages and Systems
+                  (TOPLAS)</i>, <b>21(3)</b>, 502-526 (1999).</li>
+</ul>
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf288dea" class="outline-2">
+<h2 id="orgf288dea">Example</h2>
+<div class="outline-text-2" id="text-orgf288dea">
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> <span class="org-tuareg-font-lock-operator">:</span> data platform <span class="org-tuareg-font-lock-operator">*</span> repo <span class="org-tuareg-font-lock-operator">-&gt;</span> repo
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">fetch</span> <span class="org-tuareg-font-lock-operator">:</span> data platform <span class="org-tuareg-font-lock-operator">*</span> <span class="org-tuareg-font-lock-operator">(</span>filter <span class="org-tuareg-font-lock-operator">*</span> data platform <span class="org-tuareg-font-lock-operator">-&gt;</span> data<span class="org-tuareg-font-lock-operator">)</span> <span class="org-tuareg-font-lock-operator">-&gt;</span> data disk
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">commit</span> <span class="org-tuareg-font-lock-operator">:</span> repo <span class="org-tuareg-font-lock-operator">*</span> data disk <span class="org-tuareg-font-lock-operator">-&gt;</span> repo
+</pre>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Or, at least, &ldquo;a very prominent view&rdquo;.
+</p></div></div>
+
+
+</div>
+</div></div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2018-04-26 Thu 06:48. <br>
+Last updated 2020-07-06 Mon 17:59. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
