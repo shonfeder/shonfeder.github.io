@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-07 Tue 17:20 -->
+<!-- 2020-07-15 Wed 10:53 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Heuristics</title>
@@ -279,7 +279,7 @@ correctness and guard against regressions, <b>then</b> elaborate.</li>
 <div class="outline-text-3" id="text-org2e0cba6">
 <div class="org-src-container">
 <pre class="src src-haskell"><span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring emergency attention` <span class="org-haskell-keyword">of</span>
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> <span class="org-haskell-constructor">TODO</span>
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Seek</span> the <span class="org-haskell-constructor">TOP</span> <span class="org-haskell-constructor">ER</span> department`
    <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">No</span>  <span class="org-haskell-operator">-&gt;</span>
 <span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring urgent attention<span class="org-haskell-operator">?</span>` <span class="org-haskell-keyword">of</span>
    <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Schedule</span> an urgent appointment with provider for <span class="org-haskell-constructor">ASAP</span>`
@@ -289,7 +289,7 @@ correctness and guard against regressions, <b>then</b> elaborate.</li>
    <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">B</span> <span class="org-haskell-operator">-&gt;</span>
 <span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Wait</span> and watch` <span class="org-haskell-keyword">of</span>
    <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Gets_worse</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requireing emergency attention`
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Stays_same_gets_batter</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Wait</span> and watch`
+   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Stays_same</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Gets_batter</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Wait</span> and watch`
 </pre>
 </div>
 </div>
@@ -299,7 +299,7 @@ correctness and guard against regressions, <b>then</b> elaborate.</li>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-07-07 Tue 15:21. <br>
+Last updated 2020-07-13 Mon 22:57. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
