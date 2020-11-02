@@ -6,7 +6,7 @@
 <!-- 2020-11-02 Mon 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Heuristics</title>
+<title>Learning</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
 <style type="text/css">
@@ -232,78 +232,52 @@
 </div>
 </div>
 <div id="content">
-<h1 class="title">Heuristics</h1>
+<h1 class="title">Learning</h1>
+<blockquote>
 <p>
-A list of maxims, tips, and tricks which I hope will help me to live more
-carefully and effectively.
+tips on how to learn how to learn?
+</p>
+</blockquote>
+
+<p>
+While I think on more useful notes, I can share this Heidegger passage with you, which speaks to my view on learning:
 </p>
 
-<div id="outline-container-org09a3752" class="outline-2">
-<h2 id="org09a3752">General</h2>
-<div class="outline-text-2" id="text-org09a3752">
-<ul class="org-ul">
-<li>Whenever possible, prioritize getting enough sleep and body care.</li>
-<li>Stand up slowly, and get low quickly if you feel dizzy.</li>
-<li>Demand to be let out of a car ASAP if you feel a driver is not driving safely.</li>
-<li>Use checklists to ensure safe and complete execution of important tasks.</li>
-<li>Be mindful of how limits and abilities change as a function of
-activity and habituation. One&rsquo;s capacity today is best predicated by what&rsquo;s
-been done regularly in recent days, and only tentatively indicated by what one
-once did months or years before.</li>
-<li>Moods aren&rsquo;t ineluctable: attention to appropriate objects intended with some
-deliberation can help transform them &#x2013; anxiety can be inverted into
-anticipation, worry can bend into compassion, anger can smooth into
-determination. Each thing in the world is a portal to alternative
-configurations of being.</li>
-<li>An expedient hack can help, but don&rsquo;t lay hack upon hack (unless you&rsquo;re trying
-to break the system.)</li>
-</ul>
-</div>
-</div>
+<blockquote>
+<p>
+What is learning? One learns when they dispose everything they do so that it
+answers to whatever essentials are addressed to him at any given moment.
+</p>
+</blockquote>
 
-<div id="outline-container-orgcbd0c43" class="outline-2">
-<h2 id="orgcbd0c43">Software development</h2>
-<div class="outline-text-2" id="text-orgcbd0c43">
-<ul class="org-ul">
-<li>Write and run tests before investing in documentation, application, or
-generalization.</li>
-<li>Devote time to document-producing design and planning prior to starting work.</li>
-<li>Implement minimal essential functionality, put it under test to verify
-correctness and guard against regressions, <b>then</b> elaborate.</li>
-</ul>
-</div>
-</div>
+<p>
+So, take programming, what is essential in programming?
+in my view, the essence of programming is writing: more specifically, writing, reading, and rewriting.
+(See <a href="https://www.etymonline.com/search?q=program">https://www.etymonline.com/search?q=program</a> and Turings seminal paper <a href="https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf">https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf</a>. in the final sentence of the first paragraph of the latter, Turning write:
+</p>
 
-<div id="outline-container-org763efdd" class="outline-2">
-<h2 id="org763efdd">Health Scares</h2>
-<div class="outline-text-2" id="text-org763efdd">
-</div>
-<div id="outline-container-org2e0cba6" class="outline-3">
-<h3 id="org2e0cba6">An algorithm for addressing concerns</h3>
-<div class="outline-text-3" id="text-org2e0cba6">
-<div class="org-src-container">
-<pre class="src src-haskell"><span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring emergency attention` <span class="org-haskell-keyword">of</span>
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Seek</span> the <span class="org-haskell-constructor">TOP</span> <span class="org-haskell-constructor">ER</span> department`
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">No</span>  <span class="org-haskell-operator">-&gt;</span>
-<span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requiring urgent attention<span class="org-haskell-operator">?</span>` <span class="org-haskell-keyword">of</span>
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Yes</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Schedule</span> an urgent appointment with provider for <span class="org-haskell-constructor">ASAP</span>`
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">No</span>  <span class="org-haskell-operator">-&gt;</span>
-<span class="org-haskell-keyword">case</span> <span class="org-haskell-constructor">Option</span> <span class="org-haskell-keyword">of</span>
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">A</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Schedule</span> a regular appointment`
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">B</span> <span class="org-haskell-operator">-&gt;</span>
-<span class="org-haskell-keyword">case</span> `<span class="org-haskell-constructor">Wait</span> and watch` <span class="org-haskell-keyword">of</span>
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Gets_worse</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Is</span> it exhibiting signs requireing emergency attention`
-   <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Stays_same</span> <span class="org-haskell-operator">|</span> <span class="org-haskell-constructor">Gets_batter</span> <span class="org-haskell-operator">-&gt;</span> `<span class="org-haskell-constructor">Wait</span> and watch`
-</pre>
-</div>
-</div>
-</div>
-</div>
+<p>
+According to  my  definition,  a  number  is  computable if its  decimal  can
+be written  down  by  a machine
+</p>
+
+<p>
+To be computable is to be writeable. To compute, we program the machine to read our program, and then rewrite, repeatedly, forever or until a desired state is reached.
+So to learn programming, according to Heidegger&rsquo;s dictum on learning, we &ldquo;dispose everything we do so that it answers to whatever essentials are addressed to us at any given moment&rdquo;. At this moment, programming is addresses itself to us.
+Society, the economy, the people we know, the entire state of the human world is such that programming addresses us in an urgent way.
+So, we grant that programming is addressed to us, and suppose we grant that what is essential to programming is the writing out (of what is to be done) and the reading of this writing so that what is written can be executed.
+How do we &ldquo;dispose everything we do so that it ansewrs&rdquo; to this essential aspect?
+Perhaps this means we consider everything we do and think in connection with the practice of programming, of writing what can be read to be executed.
+We see how recipes are programms, and when we cook we consider what it means to execute such a program.
+We see how instructions written to each other are programs.
+We think about how our parents and society have programmed us, by dictating so many rules and policies that &ldquo;must&rdquo; be executed and obeyed.
+etc. etc. In this way we explore and find connections between everything (almost) and so each things teaches us about this essential aspect in a different way, and reveals something more about what is taught by another thing.
+</p>
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-09-18 Fri 10:16. <br>
+Last updated 2020-08-25 Tue 21:11. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>

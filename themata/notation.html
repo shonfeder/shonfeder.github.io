@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-24 Mon 09:37 -->
+<!-- 2020-11-02 Mon 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notation</title>
@@ -40,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -195,25 +195,23 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>*///-->
 // @license-end
@@ -235,7 +233,7 @@
 </div>
 <div id="content">
 <h1 class="title">Notation</h1>
-<blockquote id="whitehead93#1">
+<blockquote id="org237088e">
 <p>
 Mathematics, as a science commenced when first someone, probably a Greek,
 proved propositions about <i>any</i> things or about <i>some</i> things, without
@@ -247,7 +245,7 @@ mathematics, in order to suggest to mathematicians the technical convenience
 of the use of letters for the ideas of <i>any</i> number and <i>some</i> number.
 </p>
 </blockquote>
-<blockquote id="whitehead93#2">
+<blockquote id="org3ce1e50">
 <p>
 &#x2026; the enormous importance of good notation. By relieving the brain of
 all unnecessary work, a good notation sets it free to concentrate on more

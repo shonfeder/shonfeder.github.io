@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-07 Tue 17:19 -->
+<!-- 2020-11-02 Mon 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A Synechepedia</title>
@@ -41,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -196,25 +195,23 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>*///-->
 // @license-end
@@ -259,6 +256,7 @@ Curious about the name? See <a href="#org1cb1927">below</a>.
 <li><a href="./themata/anxiety.html">Anxiety</a></li>
 <li><a href="themata/axiomatics.html">Axiomatics</a></li>
 <li><a href="themata/containment.html">Containment</a></li>
+<li><a href="themata/distributed-systems.html">Distributed Systems</a></li>
 <li><a href="themata/elements.html">Elements</a></li>
 <li><a href="themata/encyclopedia.html">Encyclopedia</a></li>
 <li><a href="themata/finishing-the-incomplete.html">Finishing Work on the Incomplete</a></li>
@@ -266,6 +264,7 @@ Curious about the name? See <a href="#org1cb1927">below</a>.
 <li><a href="themata/heuristics.html">Heuristics</a></li>
 <li><a href="themata/kantian-roots-of-modern-mathematics.html">Kantian roots of modern mathematics</a></li>
 <li><a href="themata/logic.html">Logic</a></li>
+<li><a href="themata/man-state-machine.html">Man/State/Machine</a></li>
 <li><a href="themata/mortality.html">Mortality</a></li>
 <li><a href="themata/multiplicative-operations.html">Multiplicative Operations</a></li>
 <li><a href="themata/notation.html">Notation</a></li>
@@ -391,8 +390,8 @@ Baz]\]</code> and a page topped with <code>#+TITLE: Foo Bar Baz</code>.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-07-07 Tue 16:51. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Last updated 2020-10-21 Wed 15:34. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.4).
 </div>
 </div>
 </body>
