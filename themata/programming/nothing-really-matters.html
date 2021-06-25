@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-06-25 Fri 12:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nothing /Really/ Matters</title>
+<meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Nothing <i>Really</i> Matters
+<br />
+<span class="subtitle">The option type as an icon of absence</span>
+</h1>
+
+<div id="outline-container-org352eb72" class="outline-2">
+<h2 id="org352eb72">A joke about nothing</h2>
+<div class="outline-text-2" id="text-org352eb72">
+<p>
+There is an old philosophy joke, which I learned in this form:
+</p>
+
+<blockquote>
+<p>
+Sartre is at a cafe. The server comes up to take his order. Sartre orders a
+coffee without cream.
+</p>
+
+<p>
+The server goes to fetch the coffee, but quickly returns.
+</p>
+
+<p>
+&ldquo;I&rsquo;m sorry mister Sartre. We are all out of cream. Would you like coffee without
+milk instead?&rdquo;
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-orgf6a9b25" class="outline-2">
+<h2 id="orgf6a9b25">Explaining the joke</h2>
+<div class="outline-text-2" id="text-orgf6a9b25">
+<p>
+The punchline&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> rests on the idea that non-presence is determined by
+that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: milk is distinct from cream, so having no milk
+is distinct from having no cream, and therefore having coffee with no milk is
+distinct from having coffee with no cream.
+</p>
+
+<p>
+I think part of the humor here draws from the sense that this is a &ldquo;<a href="https://en.wikipedia.org/wiki/Distinction_without_a_difference">distinction
+without a difference</a>&rdquo;. The same cup of black coffee is simultaneously a coffee
+with no milk and a coffee with no cream, and if you want a black coffee, it
+makes no difference which dairy product I omit. But not all distinctions in
+non-presense are equally indistinguishable. The frivolousness of <i>this</i> omission
+relates to the dairy&rsquo;s similarity.
+</p>
+
+<p>
+Consider the same cup of coffee offered without cream versus offered without
+bleach. The difference in intention is disturbing. I&rsquo;d refuse the latter: the
+implied possibility of the presence of the bleach promised to be absent is
+unwelcome and the declaration of its non-presence lands like a threat. This
+shows that non-presence is determined by that which is not present even when
+what <i>is</i> present is left unchanged by the absence. Tho this determination only
+makes a difference in terms of sense and intension, a difference <i>is</i> made.
+</p>
+
+<p>
+Often, non-presence entails a real and objective difference in what remains
+present. The distinction between having no sight and having no hearing marks a
+meaningful difference. From our lived experience, we know (or will come to) the
+deadly serious difference made by the distinct kinds of nothingness met in the
+absence of each missing loved one.
+</p>
+
+<p>
+What is not present determines differences in non-presence in at least two ways:
+the potential presence of what is non-present marks differences in <a href="https://en.wikipedia.org/wiki/Intension">intention</a>;
+what remains present can be distinctly different due to the absence of what is
+missing. As a result, everything absent is non-present in its own way.  And yet
+we know there is also a shared structure common to all the different forms of
+absence, which is why it makes sense to consider the general concept of
+non-presence, as we&rsquo;ve been doing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org59ff0ca" class="outline-2">
+<h2 id="org59ff0ca">The option type as an icon of absence</h2>
+<div class="outline-text-2" id="text-org59ff0ca">
+<p>
+We can interpret <a href="https://en.wikipedia.org/wiki/Option_type">the <code>option</code> type</a> as an <a href="https://en.wikipedia.org/wiki/Iconicity">icon</a> of the phenomena of absence. To
+aid in the exposition of this interpretation, we&rsquo;ll build up a small domain of
+discourse.
+</p>
+
+<p>
+We assume we have in our domain of discourse the type <code>int</code> of integers, and add
+the following types of liquid
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milk</span> = [ <span class="org-tuareg-font-lock-constructor">`Milk</span> ]
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">cream</span> = [ <span class="org-tuareg-font-lock-constructor">`Cream</span> ]
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">coffee</span> = [ <span class="org-tuareg-font-lock-constructor">`Coffee</span> ]
+</pre>
+</div>
+
+<p>
+Let&rsquo;s specify a way of describing substances. A substance will have some form,
+which we consider to express the type of the substance, and some way of deriving
+material constitutive of that substance.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml" id="orgcc46767"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+  <span class="org-doc">(** The form of the substance is it's principle type. Depending on your</span>
+<span class="org-doc">      ontology, you might say that the form is given by the substance's</span>
+<span class="org-doc">      chemical composition, its platonic idea, or whatever. *)</span>
+
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : t
+  <span class="org-doc">(** A way to get a material instance of the substance, e.g., by mixing the</span>
+<span class="org-doc">      proper chemical  compounds or uttering the divine word of creation. *)</span>
+<span class="org-tuareg-font-lock-governing">end</span>
+</pre>
+</div>
+
+<p>
+The <a href="#orgcc46767">1</a> let&rsquo;s us distinguish between kinds of things and
+instances of that kind..
+</p>
+
+<pre class="example">
+* *       *   module type Substance = sig type t val v : t end
+</pre>
+
+
+<p>
+and then
+let&rsquo;s define way of constructing measures of different kinds of liquid:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Liquid</span> <span class="org-variable-name">(S : </span><span class="org-type">Substance</span><span class="org-variable-name">) </span>: <span class="org-tuareg-font-lock-governing">sig</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milliliters</span>
+  <span class="org-doc">(** The units by which all our liquids are measured *)</span>
+
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
+  <span class="org-doc">(** The type of an amount of liquid *)</span>
+
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : int -&gt; t
+  <span class="org-doc">(** [v ml] is [ml] milliliters of liquid *)</span>
+
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">amount</span> : t -&gt; milliliters
+  <span class="org-doc">(** [amount l] is the amount of milliliters of the liquid [l] *)</span>
+<span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milliliters</span> = int
+
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-module">S.</span>t * milliliters
+
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">v</span> <span class="org-variable-name">ml</span> = (<span class="org-tuareg-font-lock-module">S.</span>v, ml)
+
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">amount</span> (<span class="org-variable-name">_</span>, <span class="org-variable-name">ml</span>) = ml
+<span class="org-tuareg-font-lock-governing">end</span>
+</pre>
+</div>
+
+<p>
+Let there be some liquids:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Coffee</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Coffee</span>
+
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Coffee</span>
+<span class="org-tuareg-font-lock-governing">end</span>)
+
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Milk</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Milk</span>
+
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Milk</span>
+<span class="org-tuareg-font-lock-governing">end</span>)
+
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Cream</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Cream</span>
+
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Cream</span>
+<span class="org-tuareg-font-lock-governing">end</span>)
+</pre>
+</div>
+
+<p>
+Now we need a way representing
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml" id="orgbc1e2ca"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a t</span> =
+    | <span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-keyword">of</span> 'a
+    | <span class="org-tuareg-font-lock-constructor">None</span>
+<span class="org-tuareg-font-lock-governing">end</span>
+</pre>
+</div>
+
+<pre class="example">
+type 'a option = Some of 'a | None
+</pre>
+
+
+<p>
+Read the above <a href="#orgbc1e2ca">1</a> as follows:
+</p>
+
+<ul class="org-ul">
+<li>We declare a type constructor <code>option</code> which polymorphic over a type <code>'a</code>.
+E.g.,
+<dl class="org-dl">
+<dt><code>int option</code></dt><dd>the type of optional integers</dd>
+<dt><code>milk option</code></dt><dd>the type of optional milk</dd>
+<dt><code>cream option</code></dt><dd>the type of optional cream</dd>
+</dl></li>
+<li>For any optional type we construct, we provide two value constructors to
+derive values of this type:
+<dl class="org-dl">
+<dt><code>Some of 'a</code></dt><dd><p>
+representing the presence a value of type <code>'a</code>. E.g.
+</p>
+<dl class="org-dl">
+<dt><code>Some 1</code></dt><dd>a value of type <code>int option</code></dd>
+<dt><code>Some Milk</code></dt><dd>a value of type <code>milk option</code></dd>
+</dl>
+
+<p>
+= is a value of type <code>int option</code> and =Some &ldquo;&rdquo;
+</p></dd>
+<dt><code>None</code></dt><dd>representing the absence of a value any value of type <code>'a</code></dd>
+</dl></li>
+</ul>
+</div>
+
+<div id="outline-container-org8b65364" class="outline-3">
+<h3 id="org8b65364"><span class="todo TODO">TODO</span> Absence of an additive</h3>
+<div class="outline-text-3" id="text-org8b65364">
+<p>
+Coffee without milk is the same as coffee without cream.
+</p>
+</div>
+</div>
+<div id="outline-container-org2c6efed" class="outline-3">
+<h3 id="org2c6efed"><span class="todo TODO">TODO</span> Absence of a component</h3>
+<div class="outline-text-3" id="text-org2c6efed">
+<p>
+I would be different without my arms than I would be without my legs.
+</p>
+</div>
+</div>
+<div id="outline-container-org6362ef9" class="outline-3">
+<h3 id="org6362ef9"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
+<div class="outline-text-3" id="text-org6362ef9">
+<p>
+You can pick the pepperonis off a pizza, but cannot take the cream out of
+coffee.
+</p>
+</div>
+
+<div id="outline-container-org26cbee7" class="outline-4">
+<h4 id="org26cbee7">Conjunction vs. mixture</h4>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+See TODO for a more detail on the philosophical underpinnings of the
+joke.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2021-04-17 Sat 13:54. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
+</div>
+</div>
+</body>
+</html>

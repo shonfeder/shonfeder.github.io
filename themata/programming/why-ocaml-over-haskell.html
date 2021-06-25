@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:43 -->
+<!-- 2021-06-25 Fri 12:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Why I Primarily Write OCaml Instead of Haskell</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -41,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -53,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -196,50 +195,26 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
 </script>
 </head>
 <body>
@@ -265,23 +240,14 @@ for the JavaScript code in this tag.
 <p>
 I&rsquo;m primarily an OCaml user. I&rsquo;ve thought a bit about why I (currently) prefer
 OCaml, despite Haskell having lots of great properties and some clear advantages
-(e.g., larger community and ecosystem, more powerful core language type system).
-Here are some differences I think are worth noting:
+(e.g., larger community and ecosystem, more powerful type system).  Here are
+some differences I think are worth noting:
 </p>
 
 <p>
 Note, this is not an argument for why OCaml is superior, it&rsquo;s more along the
 lines of a confession seeking reasons to account for why I prefer to work with
-OCaml.
-</p>
-
-<p>
-I&rsquo;ve been meaning to reflect on and write up what&rsquo;s made me opt for OCaml as my
-primary medium of expressio nfor some time.
-</p>
-
-<p>
-Was also motivated by the desire to respond to
+OCaml. At one point, this was also motivated by the desire to respond to
 <a href="https://markkarpov.com/post/haskell-vs-ocaml.html">https://markkarpov.com/post/haskell-vs-ocaml.html</a>
 </p>
 
@@ -298,8 +264,8 @@ hard to overestimate the importance of the developments which have emerged from
 research on Haskell. There are powerful abstractions to learn&#x2026; etc. but
 Haskellers are notorious for flaunting the obscure math (but often only &ldquo;mathy&rdquo;)
 jargon associated with the important developments that Haskell has pioneered.
-I&rsquo;ve even seen quite empathic and self aware Haskeller&rsquo;s seem to revel in the
-discomfort induced in others by the unfamiliarty of the words.
+I&rsquo;ve even seen quite empathic and self aware Haskeller&rsquo;s revel in the discomfort
+induced in others by the unfamiliarity of the jargon.
 </p>
 </div>
 </div>
@@ -330,8 +296,8 @@ The difference
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2019-12-09 Mon 22:41. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Last updated 2021-03-22 Mon 14:41. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
 </div>
 </div>
 </body>
