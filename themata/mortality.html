@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-08-08 Sat 17:23 -->
+<!-- 2021-07-04 Sun 13:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mortality</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -41,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -53,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -196,25 +195,23 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>*///-->
 // @license-end
@@ -236,14 +233,19 @@
 </div>
 <div id="content">
 <h1 class="title">Mortality</h1>
-
-<div id="outline-container-orge2bb0b0" class="outline-2">
-<h2 id="orge2bb0b0"><span class="todo TODO">TODO</span> Notes to process</h2>
-<div class="outline-text-2" id="text-orge2bb0b0">
 <p>
 Non-existence as annihilation is neither the negation nor the dual of
-our singular, subjective existence. The dual of being singular is being in
-common: being in community.
+our singular, subjective existence.
+</p>
+
+<p>
+The dual of being singular is being in common: being in community.
+</p>
+
+<p>
+The negation of our singular being is the collective being, which subordinates
+our inherently incomplete singularity to the totalitarian monomania of an
+absolute subject.
 </p>
 
 <p>
@@ -259,11 +261,25 @@ to the dead, for the living, their former presence is transmuted into a <i>sui
 generis</i> absence.
 </p>
 
+<blockquote>
 <p>
-Nietzsche&rsquo;s eternal return thought experiment can be read as an analysis of
-Spinoza&rsquo;s <a href="https://en.wikipedia.org/wiki/Sub_specie_aeternitatis">sub specie aeternitatis</a>. It uses subjective imagination to bootstrap
-our myopic self-concern and infantile repetition compulsion into a glimpse of
-the eternality of existence qua structure.
+Instead of fulfilling itself in a work of death and in the immanence of a
+subject, community communicates itself through the repetition of the contagion
+of births: each birth exposes another singularity, a supplementary limit, and
+therefore another communication. This is not the opposite of death, for the
+death of this singular being who has just been born is also inscribed and
+communicated by its limit. It is already exposed to its death, and it exposes us
+to it as well. Which means, essentially, that this death as well as this birth
+are removed from us, are neither our work nor the work of the collectivity.
+(<a class='org-ref-reference' href="#peter01">peter01</a>, 60)
+</p>
+</blockquote>
+
+<p>
+Nietzsche&rsquo;s experiment of thought dubbed &ldquo;eternal return&rdquo; can be read as an
+analysis of Spinoza&rsquo;s <a href="https://en.wikipedia.org/wiki/Sub_specie_aeternitatis">sub specie aeternitatis</a>. It uses subjective imagination to
+bootstrap our myopic self-concern and infantile repetition compulsion into a
+glimpse of the eternality of existence qua structure.
 </p>
 
 <p>
@@ -272,13 +288,11 @@ that express the absolute infinitude of substance. In this system, the being of
 a singular subject must also find expression in infinite other modes.
 </p>
 </div>
-</div>
-</div>
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-08-08 Sat 17:23. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Last updated 2021-07-04 Sun 12:08. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
 </div>
 </div>
 </body>
