@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-04-26 Sun 18:36 -->
+<!-- 2021-07-15 Thu 08:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Synechism</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -41,7 +40,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -53,7 +52,7 @@
     padding: 3px;
     border: 1px solid black;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
@@ -196,25 +195,23 @@
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
 <script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>*///-->
 // @license-end
@@ -260,15 +257,20 @@
 <h1 class="title">Synechism</h1>
 <p>
 <a href="https://en.wikipedia.org/wiki/Synechism">Synechism</a> is &ldquo;the tendency to regard everything as continuous&rdquo;. The synechist
-expects to find some continuum coursing between any elements: <a href="elements.html">the elemental</a> is a
-relational property, and the we can limn the contours of any relation.
+expects to find some continuum coursing between any elements.
+</p>
+
+<p>
+The synechist recognizes <a href="elements.html">the elemental</a> as a relational property: elements
+are not absolute <a href="https://www.merriam-webster.com/dictionary/individuum">individua</a>; they are marks of the moment analysis takes leave.
+An element is a promise to unfurl further continua when the analysis resumes.
 </p>
 
 <p>
 The different can always be connected. For any opposing ideas, conflicting
-interests, distinct disciplines, dissimilar forms, or unrelated maters, we
-canfind a path of continuous transformations by which we can move from the pole
-to the other.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+interests, distinct disciplines, dissimilar forms, or unrelated maters, we can
+find a path of continuous transformations by which we can move from one pole to
+the other.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
 </p>
 
 <p>
@@ -512,8 +514,8 @@ Under this banner, consider
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-04-26 Sun 18:32. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Last updated 2021-07-15 Thu 08:29. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
 </div>
 </div>
 </body>
