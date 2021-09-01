@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-09-01 Wed 12:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work Anxiety and Egotism</title>
+<meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Work Anxiety and Egotism</h1>
+<p>
+A vain anxiety has hobbled my efficacy in times past. Recently, reflection
+precipitated by career changes and insights from my S.O. have helped to clarify
+the dynamics at play.
+</p>
+
+<p>
+Recording theses notes has helped me overcome the dynamics described to a
+significant extent. Though the confessions here are trite and more than a little
+embarrassing, I feel that publishing them will help me further exorcise the
+unhealthy patterns. More importantly, it is possible that they might be of value
+to others who face similar difficulties.
+</p>
+
+<p>
+Ruminations set to
+</p>
+
+<iframe width="60%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/537519798&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+
+<div id="outline-container-orgd42e730" class="outline-2">
+<h2 id="orgd42e730">Anxiety as a Mood</h2>
+<div class="outline-text-2" id="text-orgd42e730">
+</div>
+<div id="outline-container-org5827e47" class="outline-3">
+<h3 id="org5827e47">Objects of my Anxiety</h3>
+<div class="outline-text-3" id="text-org5827e47">
+<p>
+I often feel <i>very</i> anxious. The objects of my anxiety tend to fall under one
+of these categories:
+</p>
+
+<ul class="org-ul">
+<li>work performance</li>
+<li>social interaction</li>
+<li>death or injury (of self or loved ones)</li>
+<li>squandering my time (and thus my life)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcf50e74" class="outline-3">
+<h3 id="orgcf50e74">Moodiness</h3>
+<div class="outline-text-3" id="text-orgcf50e74">
+<p>
+The <i>grounds</i> for such anxious moods are not the object on which the anxiety
+focuses. Rather, some concern, a pervasive care, first enables a mood to
+arise and bend our intention. As Heidegger notes in <i>Being and Time</i>
+(<a class='org-ref-reference' href="#heidegger1967being">heidegger1967being</a>), a frightening object can only appear as
+frightening because one is experiencing in the mood of fear:
+</p>
+
+<blockquote>
+<p>
+&#x2026;to be affected by the unserviceable, resistant, or threatening character
+of that which is ready-to-hand, becomes ontologically possible only in so far
+as Being-in as such has been determined existentially beforehand in such a
+manner that what it encounters within-the-world can &ldquo;<i>matter</i>&rdquo; <i>to</i> it in
+this way. The fact that this sort of thing can &ldquo;matter&rdquo; to it is grounded in
+one&rsquo;s state-of-mind; and as a state-of-mind it has already disclosed the
+world—as something by which it can be threatened, for instance. Only
+something which is in the state-of-mind of fearing (or fearlessness) can
+discover that what is environmentally ready-to-hand is threatnening. Dasein&rsquo;s
+openness to the world is constituted existentially by the attunement of a
+state-of-mind.
+</p>
+</blockquote>
+
+<p>
+Thus, my anxious obsession over details from my work presuppose some basic
+concern which makes the bouts of anxiety possible.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+
+<p>
+There may be any number of factors contributing to the advent of an anxious
+state of mind:
+</p>
+
+<ul class="org-ul">
+<li>caffeine</li>
+<li>lack of sleep</li>
+<li>bad news</li>
+<li>our horrendous political circumstance</li>
+<li>etc.</li>
+</ul>
+
+<p>
+But these factors can only catalyze anxiety because there is a structure of care
+that&rsquo;s makes the anxiousness a possible disposition. Otherwise, why wouldn&rsquo;t
+they lead to sadness, cynicism, despair, anger, etc.?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org84398bf" class="outline-3">
+<h3 id="org84398bf">Characterization of my Mood of Anxiety</h3>
+<div class="outline-text-3" id="text-org84398bf">
+<p>
+I find adequate characterization of my mood in the etyma of anxiety offered
+by <a href="https://www.etymonline.com/word/anxious#etymonline_v_15437">etymonline.com</a>:
+</p>
+
+<blockquote>
+<p>
+anxious (adj.)
+</p>
+
+<p>
+1620s, &ldquo;greatly troubled by uncertainties,&rdquo; from Latin anxius &ldquo;solicitous,
+uneasy, troubled in mind&rdquo; (also &ldquo;causing anxiety, troublesome&rdquo;), from angere,
+anguere &ldquo;to choke, squeeze,&rdquo; figuratively &ldquo;to torment, cause distress&rdquo; (from
+PIE root *angh- &ldquo;tight, painfully constricted, painful&rdquo;). The same image is
+in Serbo-Croatian tjeskoba &ldquo;anxiety,&rdquo; literally &ldquo;tightness, narrowness.&rdquo;
+Meaning &ldquo;earnestly desirous&rdquo; (as in anxious to please) is from 1742. Related:
+Anxiously; anxiousness.
+</p>
+</blockquote>
+
+<p>
+The speculated PIE root <i>*angh-</i> brings it to a point:
+</p>
+
+<blockquote>
+<p>
+&#x2026; the hypothetical source of/evidence for its existence is provided by:
+Sanskrit amhu- &ldquo;narrow,&rdquo; amhah &ldquo;anguish;&rdquo; Armenian anjuk &ldquo;narrow;&rdquo; Lithuanian
+ankštas &ldquo;narrow;&rdquo; Greek ankhein &ldquo;to squeeze,&rdquo; ankhone &ldquo;a strangling;&rdquo; Latin
+angere &ldquo;to throttle, torment;&rdquo; Old Irish cum-ang &ldquo;straitness, want;&rdquo; Old
+English enge &ldquo;narrow, painful,&rdquo; Old Norse angra &ldquo;to grieve, vex, distress,&rdquo;
+Gothic aggwus &ldquo;narrow.&rdquo;
+</p>
+</blockquote>
+
+<p>
+I feel my anxiety to have a dyadic quality. It is marked by fixation on a
+specious dilemma. E.g.,
+</p>
+
+<ul class="org-ul">
+<li>Will I be praised, or will I be blamed?</li>
+<li>Am I incompetent or is my assignment impossible?</li>
+<li>Am I unbearable or are these people bigots?</li>
+<li>Will I transform the entire company with the success of this project, or
+will it&rsquo;s inevitable failure lead to my termination?</li>
+<li><p>
+Am I an insignificant and impotent victim of an ineluctable reality, or am
+I an extraordinary hero who can help set the world right?
+</p>
+
+<p>
+My thoughts flit back and forth between the alternatives and the (felt)
+enormity of each amplifies my worry or longing for the other. This dynamic
+produces a pathological loop of positive feedback. In constraining my sense
+of possibility and narrowing my focus, the process hyper-inflates my ego.
+Simultaneously and reciprocally, it shrinks the significance of the world in
+which my self <i>should</i> be seeking a modest place.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org05184e5" class="outline-2">
+<h2 id="org05184e5">Forgetting the Objective of the Work</h2>
+<div class="outline-text-2" id="text-org05184e5">
+<p>
+The mindset that drives me to anxiety at work feeds on praise and is terrified
+of being shamed, blamed, or otherwise denigrated. This work anxiety invariably
+stems from fear of blame and/or a ravenous hunger for praise.<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+Note that &ldquo;praise&rdquo; and &ldquo;blame&rdquo; here should be understood in the widest sense.
+It includes:
+</p>
+
+<ul class="org-ul">
+<li>encouraging nods</li>
+<li>expression of thanks</li>
+<li>promotions, raises</li>
+<li>accumulating &ldquo;metrics&rdquo; of productivity</li>
+<li><p>
+etc.
+</p>
+
+<p>
+This form of feedback has many obvious problems. E.g.,
+</p>
+
+<ul class="org-ul">
+<li>Is the source of that feedback a valid/adequate judge?
+<ul class="org-ul">
+<li>What if one is praised by incompetent people for trivial deeds?</li>
+<li>What if one is praised by evil people for evil deeds?</li>
+<li>Even if one is praised by a worthy expert, what if they are mistaken in
+this case, and the product of the work ends up being a net detriment?</li>
+<li>What if the metrics are miscalibrated or incorrectly focused?</li>
+</ul></li>
+<li>What if the recipient doesn&rsquo;t really deserve to bear blame or receive
+praise?
+<ul class="org-ul">
+<li>What if they didn&rsquo;t do the work in question?</li>
+<li>Or perhaps they only contributed a final touch, and the bulk should go
+elsewhere?</li>
+</ul></li>
+<li>What is the point of the work?
+<ul class="org-ul">
+<li>Is it to receive praise and aggrandize oneself?
+<ul class="org-ul">
+<li>If so, gross and too bad :( Better find something better to do.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org34c8a3e" class="outline-2">
+<h2 id="org34c8a3e">The objective of the work</h2>
+<div class="outline-text-2" id="text-org34c8a3e">
+<p>
+Work worth doing should manifest a worthwhile change, whether that be an
+improved process, product, or circumstance. We should seek to work for the
+sake of good works and meaningful improvement. Ideally, then, we would not be
+driven by pride at all, and the pursuit of praise would be cut off in
+principle. But if we are going to succumb to an egotistic motive, let us at
+least take pride in the product and result of the work itself.
+</p>
+
+<p>
+This focus should help us avoid mere <i>task fulfillment</i> and focus instead on
+<i>systems thinking</i>, since evaluation requires considering the objective
+reality that will be altered by our efforts and the context within with the
+work takes place. Whereas task fulfillment can easily leave one doing
+meaningless or regressive things to meet ungrounded and specious goals,
+system thinking helps ensure the work is effective and meaningful for our
+organizations as a whole.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc35b705" class="outline-2">
+<h2 id="orgc35b705">Honoring the Intersubjective Condition of Possibility for Meaningful Work</h2>
+<div class="outline-text-2" id="text-orgc35b705">
+<p>
+Every mood actualizes both revelations and velations: in the way things
+manifest under the guise of any mood, some aspects are hidden and others
+shown.
+</p>
+
+<p>
+Among the things revealed by the tension between my hunger for praise
+and my fear of blame is the vital significance of intersubjectivity. For
+seeking praise and avoiding blame are degenerate and measly ways of relating
+to the being of others. So even if the praise/blame dynamic is unhealthy and
+pathetic, it is nonetheless a pattern of relation rooted in concern with
+others.
+</p>
+
+<blockquote>
+<p>
+There&rsquo;s nothing more advanced than relating with others. There&rsquo;s nothing more
+advanced than communication — compassionate communication.
+(<a class='org-ref-reference' href="#chödrön2005things">chödrön2005things</a>)
+</p>
+</blockquote>
+
+<p>
+In my estimation, there can be no meaning or value to our work outside of our
+connections with our fellows (with this fellowship <a href="exceprts/distention-of-the-heart.html">extended as widely as we
+can possible conceive</a>). The urgency I feel in my inappropriate concern with
+blame and praise is connected to this real basis for significance. But the
+praise/blame dynamic is marred by the vice of concern <i>with</i> others <i>for the
+sake of</i> oneself. As a result, the communication driven by this dynamic is
+consumptive rather than compassionate.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8ca13fa" class="outline-2">
+<h2 id="org8ca13fa">Provisional Conclusion</h2>
+<div class="outline-text-2" id="text-org8ca13fa">
+<p>
+The dynamics of the feedback manifest in the praise/blame dichotomy are
+pathological in nature. While the concern that underwrites that dynamic
+intimates something near to the core of any tenable table of values (ime), its
+specific structure short circuits proper evaluation and degrades decision
+making.
+</p>
+
+<p>
+In letting my work and estimation of self be subordinated to the merely dyadic
+relation between another&rsquo;s expressions and my own activity, I become
+vulnerable to an ungrounded positive feedback loop. Proper estimation should
+mediate any evaluation of a work&rsquo;s worth through the objective conditions in
+which it takes place and be concerned first and foremost with the real impact
+it will have in transforming those conditions.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Since I have invoked Heidegger explicitly, and made some (shallow) use of
+his existential analysis, I should clarify: the kind of anxiety I mean here is
+the utterly mundane, &ldquo;ontical&rdquo; kind. I am here concerned with being more
+effective by being less paralyzed by stupid worries at work (and in the world),
+not with disclosing the fundamental structures of being and existence.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+The dynamic of this particular fear/aversion is not <b>the</b> root of my work
+anxiety, but it is a powerful force discernible under the surface of every
+anxious episode. The question of the <b>ultimate</b> enabling condition for this
+disposition must remain open for the moment, as perhaps is should for all
+time. The attempt to deduce a <i>single</i> motive for a mood is probably a
+category mistake, and a misapplication of foundationalism.
+</p>
+
+<p class="footpara">
+<h1 class='org-ref-bib-h1'>Bibliography</h1>
+<ul class='org-ref-bib'><li><a id="heidegger1967being">[heidegger1967being]</a> <a name="heidegger1967being"></a>Heidegger, Being and Time, Blackwell (1967).</li>
+<li><a id="chödrön2005things">[chödrön2005things]</a> <a name="chödrön2005things"></a>Ch\"odr\"on, When Things Fall Apart: Heart Advice for Difficult Times, Shambhala Publications, Incorporated (2005).</li>
+</ul>
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2019 Shon Feder.<br>
+Last updated 2019-06-13 Thu 12:57. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
+</div>
+</div>
+</body>
+</html>

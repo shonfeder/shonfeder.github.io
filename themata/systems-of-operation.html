@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-06 Mon 17:48 -->
+<!-- 2021-09-01 Wed 12:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Seed of the Shell: From Human Computers to Communal Computing</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -192,33 +192,8 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -234,8 +209,18 @@
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">The Seed of the Shell: From Human Computers to Communal Computing</h1>
+<p>
+This started out as one thing, and become something very different, but has not
+yet had any finish working or organization to reconcile its ultimate form with
+it&rsquo;s origins.
+</p>
+
+<p>
+It began as notes on an inquiry into &ldquo;the shell&rdquo;, and become a mediation on the
+history and destiny of shared computation.
+</p>
 
 <div id="outline-container-org0be72c2" class="outline-2">
 <h2 id="org0be72c2">Outline</h2>
@@ -337,7 +322,6 @@ was sufficiently precise and detailed, that it could be translated into an
 </div>
 </div>
 
-
 <div id="outline-container-org09178bb" class="outline-3">
 <h3 id="org09178bb">Computers as Humans: The ENEAC</h3>
 </div>
@@ -389,10 +373,27 @@ accelerated, automated, and internalized.
 </div>
 </div>
 
-<div id="outline-container-org75bebc0" class="outline-3">
-<h3 id="org75bebc0">The Mechanical Turk:</h3>
+<div id="outline-container-org1031191" class="outline-3">
+<h3 id="org1031191">The <a href="https://en.wikipedia.org/wiki/Mechanical_Turk">Mechanical Turk</a></h3>
+<div class="outline-text-3" id="text-org1031191">
+<p>
+Our automated systems of operation begin as humans working to mimic the machine.
+(See Turing&rsquo;s making this explicit &#x2013; and thereby giving the general form of the
+mechanization of human activity &#x2013; and see the development of the operating system
+described bellow).
+</p>
+
+<p>
+Thus, the enduring force of the allegory of the mechanical turk.
+</p>
 </div>
 </div>
+
+<div id="outline-container-orga41e701" class="outline-3">
+<h3 id="orga41e701">The evolution and transformation of human being</h3>
+</div>
+</div>
+
 <div id="outline-container-org5899b85" class="outline-2">
 <h2 id="org5899b85">Questions</h2>
 <div class="outline-text-2" id="text-org5899b85">
@@ -401,12 +402,12 @@ accelerated, automated, and internalized.
 <h3 id="orgd859828">What is a shell?</h3>
 <div class="outline-text-3" id="text-orgd859828">
 <p>
-If your familiar with the computery sense of <i>shell</i>, there&rsquo;s a good chance
+If you are familiar with the computery sense of <i>shell</i>, there&rsquo;s a good chance
 you think a shell is something particular to a command-line terminal
 environment. In that case, you can join me and others I&rsquo;ve talked to in being
 delightfully surprised to learn that shell, even in the narrow computery
 sense, is a much more general thing: &ldquo;a user interface for access to an
-operating system&rsquo;s services&rdquo;<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>.
+operating system&rsquo;s services&rdquo;<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>.
 </p>
 
 <p>
@@ -523,7 +524,7 @@ grow from their <i>embryo</i>, the <i>germ</i>. A seed&rsquo;s destiny is to tra
 preserve its germ until it can find fertile ground. Having found a place
 where it can settle, the seed nourishes the germ. As the germ develops into a
 seedling, the latter should break free of the shell. Thence, the germ quickly
-outgrows and consumes its kernel. If all goes will, the newly sprouted
+outgrows and consumes its kernel. If all goes well, the newly sprouted
 seedling will realize a self-sufficient form of growth, and begin feeding on
 intake from the world at large.
 </p>
@@ -594,7 +595,7 @@ it was like to work with those beasts.
 <h4 id="orgab59079">A system for efficiently operating a computing machine that fills a room</h4>
 <div class="outline-text-4" id="text-orgab59079">
 
-<div class="figure">
+<div id="org18b883c" class="figure">
 <p><img src="../static/img/IBM701_in_a_machine_room.jpg" alt="IBM701_in_a_machine_room.jpg" />
 </p>
 </div>
@@ -605,9 +606,13 @@ it was like to work with those beasts.
 
 <p>
 In the 1950s, computing machines where gigantic, expensive, and rare. Robert
-L. Patrick worked on developing some of the earliest operating systems and
+</p>
+<ol class="org-ol">
+<li>Patrick worked on developing some of the earliest operating systems and</li>
+</ol>
+<p>
 the operational practices that preceded systematic automation. In 1987,
-Patrick was asked by ??? to prepare a paper<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> reflecting on his work
+Patrick was asked to prepare a paper<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup> reflecting on his work
 developing systems for operating these kinds of devices.
 </p>
 
@@ -681,17 +686,16 @@ to improve the reliability and efficiency of operation: e.g., organizing
 programmer-operators to work in teams so there was always an assistant or
 standardizing plug boards to reduce the need for switching. Some important
 technical improvements also contributed. Most worthy of note, perhaps, was
-the advent of &ldquo;interpretive programming packages&rdquo;, such as
-[Speedcoding](<a href="https://en.wikipedia.org/wiki/Speedcoding">https://en.wikipedia.org/wiki/Speedcoding</a>). These &ldquo;high-level&rdquo;
-languages abstracted away from hardware instructions, providing a
-human-readable language for specifying machines programs.
+the advent of &ldquo;interpretive programming packages&rdquo;, such as <a href="https://en.wikipedia.org/wiki/Speedcoding">Speedcoding</a>.
+These &ldquo;high-level&rdquo; languages abstracted away from hardware instructions,
+providing a human-readable language for specifying a machine&rsquo;s programs.
 </p>
 
 <p>
 The specification of an operating system was for the IBM 704, developed as a
 collaborative effort between GM and North Western ?? and the SHARE group
-???. I will provide the highlights from Patrick&rsquo;s highlights, to give a
-sense for what exactly an operating system consisted in:
+???. I recommend skimming Patrick&rsquo;s highlights, to get a sense for what
+exactly an operating system consisted in.
 </p>
 </div>
 
@@ -750,9 +754,9 @@ shells — such as <i>sh</i>, <i>bash</i>, and <i>zsh</i> —
 <h3 id="orgf590590">The origins of Unix/Linux shells lie in CTSS</h3>
 <div class="outline-text-3" id="text-orgf590590">
 </div>
-<div id="outline-container-orga0e2e22" class="outline-4">
-<h4 id="orga0e2e22">Denise Richie</h4>
-<div class="outline-text-4" id="text-orga0e2e22">
+<div id="outline-container-orgcf32374" class="outline-4">
+<h4 id="orgcf32374">Denise Richie</h4>
+<div class="outline-text-4" id="text-orgcf32374">
 <p>
 The UNIX Time-sharing System A Retrospective*
 </p>
@@ -811,9 +815,9 @@ evening while leaving behind long runcoms executing overnight.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgf960d1e" class="outline-3">
-<h3 id="orgf960d1e">Commands and Scripts</h3>
-<div class="outline-text-3" id="text-orgf960d1e">
+<div id="outline-container-org77a1ec2" class="outline-3">
+<h3 id="org77a1ec2">Commands and Scripts</h3>
+<div class="outline-text-3" id="text-org77a1ec2">
 <p>
 The shell, at it&rsquo;s root, is an interface for issuing commands and observing
 the effects of their execution.
@@ -832,9 +836,9 @@ scripts.
 </p>
 </div>
 
-<div id="outline-container-orgdfbaf15" class="outline-4">
-<h4 id="orgdfbaf15">RUNCOM</h4>
-<div class="outline-text-4" id="text-orgdfbaf15">
+<div id="outline-container-orga1d413e" class="outline-4">
+<h4 id="orga1d413e">RUNCOM</h4>
+<div class="outline-text-4" id="text-orga1d413e">
 <p>
 :URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
 </p>
@@ -1101,7 +1105,7 @@ the same procedures are still at work).</dd>
 <h2 id="org06b3267">Illustrations</h2>
 <div class="outline-text-2" id="text-org06b3267">
 
-<div class="figure">
+<div id="org58d5ffd" class="figure">
 <p><img src="shell-studies-setup.png" alt="shell-studies-setup.png" />
 </p>
 </div>
@@ -1126,9 +1130,9 @@ the same procedures are still at work).</dd>
 </div>
 </div>
 
-<div id="outline-container-org77a1ec2" class="outline-4">
-<h4 id="org77a1ec2">Commands and Scripts</h4>
-<div class="outline-text-4" id="text-org77a1ec2">
+<div id="outline-container-org1939c47" class="outline-4">
+<h4 id="org1939c47">Commands and Scripts</h4>
+<div class="outline-text-4" id="text-org1939c47">
 <p>
 The shell, at it&rsquo;s root, is an interface for issuing commands and observing the effects of their execution.
 </p>
@@ -1142,9 +1146,9 @@ Segue to <i>composing</i> scripts via the <code>script</code> command that simpl
 </p>
 </div>
 
-<div id="outline-container-orga1d413e" class="outline-5">
-<h5 id="orga1d413e">RUNCOM</h5>
-<div class="outline-text-5" id="text-orga1d413e">
+<div id="outline-container-org8496a9c" class="outline-5">
+<h5 id="org8496a9c">RUNCOM</h5>
+<div class="outline-text-5" id="text-org8496a9c">
 <p>
 :URL: <a href="https://en.m.wikipedia.org/wiki/Run_commands">https://en.m.wikipedia.org/wiki/Run_commands</a>
 </p>
@@ -1160,9 +1164,9 @@ Segue to <i>composing</i> scripts via the <code>script</code> command that simpl
 </div>
 </div>
 
-<div id="outline-container-orgcf32374" class="outline-4">
-<h4 id="orgcf32374">Denise Richie</h4>
-<div class="outline-text-4" id="text-orgcf32374">
+<div id="outline-container-orgf5ccdb9" class="outline-4">
+<h4 id="orgf5ccdb9">Denise Richie</h4>
+<div class="outline-text-4" id="text-orgf5ccdb9">
 <p>
 The UNIX Time-sharing System: A Retrospective*
 </p>
@@ -1187,7 +1191,7 @@ use; many are inferior in basic design.
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 <a href="https://en.wikipedia.org/wiki/Shell_(computing)">https://en.wikipedia.org/wiki/Shell_(computing)</a>
 </p>
 
@@ -1198,7 +1202,7 @@ use; many are inferior in basic design.
 </ul>
 </p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 <a href="http://www.rand.org/content/dam/rand/pubs/papers/2008/P7316.pdf">http://www.rand.org/content/dam/rand/pubs/papers/2008/P7316.pdf</a>
 </p></div></div>
 
@@ -1208,8 +1212,8 @@ use; many are inferior in basic design.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2020-07-06 Mon 17:45. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Last updated 2021-08-05 Thu 13:56. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
 </div>
 </div>
 </body>

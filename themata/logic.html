@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-15 Thu 08:38 -->
+<!-- 2021-09-01 Wed 12:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Logic</title>
 <meta name="author" content="um" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,21 +42,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,31 +192,8 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -236,8 +214,7 @@
              }
 });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -253,11 +230,11 @@
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Logic</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org7bace0a">What</a></li>
 <li><a href="#org808af10">Why</a>
@@ -268,6 +245,7 @@
 <li><a href="#orgf99fbff"><span class="todo TODO">TODO</span> How</a>
 <ul>
 <li><a href="#org038ec54">Recycling</a></li>
+<li><a href="#org9538357"><span class="todo TODO">TODO</span> Modality</a></li>
 </ul>
 </li>
 <li><a href="#org6ece240"><span class="todo TODO">TODO</span> Whither?</a></li>
@@ -304,7 +282,7 @@ system has ever successfully captured a real natural language, but it is natural
 to generalize his slogan to formalizations of any complex natural sign system.
 There are always &ldquo;loose ends&rdquo; &#x2026; Thus we cannot expect our semiotic models to
 be perfect. However, a precise description that is somewhat wrong is better than
-a description so vague that no one can tell if it&rsquo;s wrong. We not seek to
+a description so vague that no one can tell if it&rsquo;s wrong. We do not seek to
 formalize actual living meanings, but rather to express our partial
 understandings more exactly. Precision is also needed to build computer
 programs that use the theory. I do not believe that meaning in the human sense
@@ -439,7 +417,7 @@ Here he introduced many methodologically important conceptual developments and
 arrived at mathematically incisive results. These investigations were
 forerunners of various new researches into mathematical logic and axiomatics, in
 particular, G. Gentzen&rsquo;s sequent calculus took its starting point from Hertz&rsquo;s
-work on sentence systems.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+work on sentence systems.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
 </p>
 </blockquote>
 
@@ -997,7 +975,247 @@ predicate is a device of disquotation</b> [emphasis mine].
 </div>
 </div>
 </div>
+<div id="outline-container-org9538357" class="outline-3">
+<h3 id="org9538357"><span class="todo TODO">TODO</span> Modality</h3>
+<div class="outline-text-3" id="text-org9538357">
+<p>
+Roughing in my current thoughts on modality (excerpted from a conversation with
+<a href="https://boarders.github.io/">Callan McGill</a>):
+</p>
+
+<blockquote>
+<p>
+I think I have a clearer understanding of my worry, which I think also helps
+clarify the stakes for me, and gives some somewhat clearer criteria by which I
+can end up convincing myself whether or not I should embrace modalities.  I
+think my hypothesis is that phenomena like time are possibility ideally do not
+need to be imported as conceptual primitives into our logics.  Particularly
+because the way we encode these phenomena reifies and reinforces post-hoc
+conceptual framings.  E.g., in the case of temporal logic, the idea of time
+being adequately encoded as a space-like dimension
+</p>
+
+<p>
+Looking at how intuitionistic and linear logic works in contrast to modal logic
+I think is instructive in this regard.  If you&rsquo;ll allow me the gross
+simplification: Brouwer wanted to be sure we accounted for the phenomena of
+things which may not be true one way or the other.  Which may neither be
+provable nor disprovable (let&rsquo;s say, because they are simply inconceivable, and
+we can&rsquo;t construct a fact of the mater).  But he didn&rsquo;t bolt on an axiom system
+or a propositional modality that allows us to state: &ldquo;this proposition may not
+be provable&rdquo;.  Rather, the phenomena of unprovability is made immanent in the
+logic itself.  By moving to a &ldquo;weaker logic&rdquo; that lets us attend to this
+difference.  (I hope this isn&rsquo;t an entirely BS account.)
+</p>
+
+<p>
+My understanding is the same re:The way to accommodate the phenomena of
+resources is not to add a &ldquo;resource theory&rdquo; into the logic.  It&rsquo;s to learn how
+to move back to a subtler, &ldquo;weaker&rdquo; logic that lets us recognize the way in
+which the phenomena of resource limitation is already at play. Girard and linear
+logic vis-a-vis &ldquo;resources&rdquo;.
+</p>
+
+<p>
+So, given this refined understanding, I think I can prove to myself that
+modalities are needed, if it turns out that time is not, cannot be, something
+which is &ldquo;essentially logical&rdquo;.  That is, that the phenomenon of time is not an
+inherent and immanent part of what it is to &ldquo;do logic&rdquo;.
+</p>
+</blockquote>
+
+<p>
+This seems exceedingly unlikely to me, but we&rsquo;ll see!
+</p>
+
+<p>
+Callan connected this POV with the problems arising from internalizing judgments
+in type theory:
+</p>
+
+<blockquote>
+<p>
+Me:
+</p>
+
+<p>
+iiuc, the relation is somewhat like this?  The identity judgment is a
+fundamental constitutive component of our logic in this case. But if we
+internalize that judgment, make it an object inside of the logic, then we
+undermine the structural integrity of the system?
+</p>
+
+<p>
+Callan:
+</p>
+
+<p>
+Yes, there are two things: the equality judgment - the part that is determined
+by just unrolling definitions and there is the equality type of the theory which
+is subtle and the basis of almost all the mathematical aspects of the theory.
+Internalizing the equality judgment undermines the other equality type to the
+point the nature is completely changed so somehow the logic becomes ruined
+</p>
+
+<p>
+Me:
+</p>
+
+<p>
+And so a similar framing in this case would be to say, perhaps if the phenomena
+time is &ldquo;really&rdquo; part of the constitutive structure of a logic, then we
+undermine the cohesiveness (or the &ldquo;structural adequacy&rdquo;, something to unpack
+later) of logic by putting that phenomena in the logic as object to manipulate.
+</p>
+
+<p>
+Callan:
+</p>
+
+<p>
+Yes.  and it made me think that internalizing external judgments of the theory
+(e.g. that not ever statement can be decided) ruins the logic This
+internalization seems to be a case of what Wittgenstein warned of.  When we&rsquo;ve
+let the unutterable, but essentially constitutive, take shape as questions, they
+turn up as monstrous puzzles which don&rsquo;t actually have a solution.
+</p>
+</blockquote>
+
+<p>
+The above is a simplistic view on the relation between modality and linear
+logic.  Girard notes that the exponential are &ldquo;something like&rdquo; the modal
+operators from S4 (he characterizes linear logic as &ldquo;S4 + structural rules&rdquo;)  in
+<a href="http://girard.perso.math.cnrs.fr/truth.pdf">Truth, modality and intersubjectivity</a>.
+</p>
+
+<p>
+Interesting to note that it is precisely these modal operators where linear
+logic loses the security of its footing:
+</p>
+
+<pre class="example">
+The exponentials $!$ and $?$ in linear logic are less carved in the marble than
+the other connectives. Indeed, if one uses traditional sequent calculus
+presentations, the exponentials are not “canonical”: if you introduce another
+copy of exponentials, say $!′$ and $?′$, with the same rules as the original
+ones, there is no way to prove that $!$ is equivalent to $!′$, and $?$ to $?′$,
+while for the other connectives this is easily established.
+
+In this respect, the $!$ and $?$ resemble the box and diamond connectives found
+in modal logic, and it is then possible and interesting to study variations for
+the logical rules of these connectives. For example, elementary linear logic
+(ELL) is obtained by replacing the $!$ and $?$ introduction by a single rule
+introducing $!$ and $?$ at the same time. As a consequence, ELL can encode all
+and only the functions over integers that normalize in time bounded by an
+elementary function.
+</pre>
+
+<p>
+<a href="https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod">https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod</a>
+</p>
+
+<p>
+Following Girard, we can attribute the unsteady nature of the exponential&rsquo;s to
+the fact they mark the interjection of the subjective into the logic!
+</p>
+
+<blockquote>
+<p>
+This means that !A is subjective, since depending on a viewpoint
+\(P\).
+</p>
+
+<p>
+We eventually discover that the <a id="orgcd81c20"></a> \(!A\) is exactly an affirmation:
+\(!A\) means that \(A\) is true w.r.t. a certain viewpoint \(P\) ; it should therefore be
+noted \(!_PA\).
+</p>
+</blockquote>
+<p>
+(Girard, &ldquo;Truth, modality and intersubjectivity&rdquo;)
+</p>
+
+<p>
+In <a class='org-ref-reference' href="#Baelde_2012">Baelde_2012</a>, they replace the modal operators with least and greatest
+fixed points, to provide induction and coinduction on terms, as an alternative
+means of enabling reasoning about &ldquo;unbounded (infinite) behavior&rdquo;
+</p>
+
+<blockquote>
+<p>
+The first-order theory of MALL (multiplicative, additive linear logic) over only
+equalities is an interesting but weak logic since it cannot capture unbounded
+(infinite) behavior. Instead of accounting for unbounded behavior via the
+addition of the exponentials (\(!\) and \(?\)), we add least and greatest fixed
+point operators. The resulting logic, which we call \({\mu}MALL^=\), satisfies two
+fundamental proof theoretic properties. In particular \({\mu}MALL^=\), satisfies
+cut-elimination, which implies consistency, and has a complete focused proof
+system. The second result about focused proofs provides a strong normal form for
+cut-free proof structures that can be used, for example, to help proof search.
+</p>
+</blockquote>
+
+<p>
+Time consciousness (phenomenologically speaking) has at least the following two
+aspects:
+</p>
+
+<dl class="org-dl">
+<dt>directed</dt><dd><blockquote>
+<p>
+One of the most marked features about the law of the mind is that it makes
+time to have a definite direction of flow from past to future. The relation of
+past to future is, in reference to the law of mind, different from the
+relation of future to past. This makes one of the great contrasts between the
+law of mind and the law of physical force, where there is no more distinction
+between the two oposite direction in time than between moving northward and
+moving southward.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#peirce92_peirc">peirce92_peirc</a>)
+</p>
+</blockquote></dd>
+
+<dt>recurrent</dt><dd><blockquote>
+<p>
+If life is not always poetical, it is at least metrical.  Periodicity rules over the mental experience of man, according to the path of the orbit of his thoughts.  Distances are not gauged, ellipses not measured, velocities not ascertained, times not known.  Nevertheless, the recurrence is sure.  What the mind suffered last week, or last year, it does not suffer now; but it will suffer again next week or next year.  Happiness is not a matter of events; it depends upon the tides of the mind.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#meynell1896rhythm">meynell1896rhythm</a>)
+</p>
+</blockquote></dd>
+</dl>
+
+<p>
+Girard has indicated that he connects the directedness with non-commutative
+operations:
+</p>
+
+<blockquote>
+<p>
+Time occurs when we cannot permute two rules, since one must be performed before
+the other, for fear of a procedural catastrophe. This is therefore the
+alternation positive/negative, answer/question, explicit/implicit.
+</p>
+
+<p>
+(<a class='org-ref-reference' href="#girard11">girard11</a>)
+</p>
+</blockquote>
+
+<p>
+It is sensible to me that the right place to find the recurrence (and, thereby
+the metricality) might be in fixedpoints, that allow structural induction,
+rather than the admission of operators that let us posit permanence and
+inexhaustability by fiat.
+</p>
 </div>
+</div>
+</div>
+
+
 <div id="outline-container-org6ece240" class="outline-2">
 <h2 id="org6ece240"><span class="todo TODO">TODO</span> Whither?</h2>
 <div class="outline-text-2" id="text-org6ece240">
@@ -1071,6 +1289,9 @@ Cf. the theory of <a href="https://en.wikipedia.org/wiki/Institution_(computer_s
 <li><a id="whitehead2005_principia">[whitehead2005_principia]</a> <a name="whitehead2005_principia"></a>Whitehead & Russell Bertrand, Principia Mathematica, Ann Arbor, Michigan: University of Michigan Library (2005).</li>
 <li><a id="schutte77_prooftheory">[schutte77_prooftheory]</a> <a name="schutte77_prooftheory"></a>Schutte, Proof Theory , Springer-Verlag (1977).</li>
 <li><a id="quine86_philos">[quine86_philos]</a> <a name="quine86_philos"></a>Quine, Philosophy of logic, Harvard University Press (1986).</li>
+<li><a id="Baelde_2012">[Baelde_2012]</a> <a name="Baelde_2012"></a>Baelde, Least and Greatest Fixed Points in Linear Logic, <i>ACM Transactions on Computational Logic</i>, <b>13(1)</b>, 1–44 (2012). <a href="http://dx.doi.org/10.1145/2071368.2071370">link</a>. <a href="http://dx.doi.org/10.1145/2071368.2071370">doi</a>.</li>
+<li><a id="peirce92_peirc">[peirce92_peirc]</a> <a name="peirce92_peirc"></a>Peirce, The essential Peirce : selected philosophical writings, Indiana University Press (1992).</li>
+<li><a id="meynell1896rhythm">[meynell1896rhythm]</a> <a name="meynell1896rhythm"></a>Meynell, The Rhythm of Life and Other Essays, (1896).</li>
 </ul>
 </p>
 </div>
@@ -1079,7 +1300,7 @@ Cf. the theory of <a href="https://en.wikipedia.org/wiki/Institution_(computer_s
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 Please pardon my inexpert translation.
 </p></div></div>
 
@@ -1089,7 +1310,7 @@ Please pardon my inexpert translation.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2021-07-11 Sun 15:55. <br>
+Last updated 2021-09-01 Wed 11:13. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
 </div>
 </div>
