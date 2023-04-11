@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:42 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notes on Valiant&rsquo;s <i>A Theory of the Learnable</i></title>
-<meta name="generator" content="Org mode" />
+<title>Notes on Valiant's /A Theory of the Learnable/</title>
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,78 +191,41 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -278,15 +241,15 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Notes on Valiant&rsquo;s <i>A Theory of the Learnable</i></h1>
 <p>
 Valiant, L. G., A theory of the learnable, Communications of the ACM, 27(11), 1134–1142 (1984).  <a href="http://dx.doi.org/10.1145/1968.1972">http://dx.doi.org/10.1145/1968.1972</a>
 </p>
 
-<div id="outline-container-orgb20a0bc" class="outline-2">
-<h2 id="orgb20a0bc">tl;dr</h2>
-<div class="outline-text-2" id="text-orgb20a0bc">
+<div id="outline-container-org223c17a" class="outline-2">
+<h2 id="org223c17a">tl;dr</h2>
+<div class="outline-text-2" id="text-org223c17a">
 <p>
 &ldquo;this paper attempts to explore the limits of what is learnable as allowed by
 algorithmic complexity (1138)&rdquo;
@@ -304,9 +267,9 @@ granularity of the single concepts that can be acquired without programming.
 (1136)&rdquo;
 </p>
 </div>
-<div id="outline-container-org9d35397" class="outline-3">
-<h3 id="org9d35397">Results:</h3>
-<div class="outline-text-3" id="text-org9d35397">
+<div id="outline-container-org5713933" class="outline-3">
+<h3 id="org5713933">Results:</h3>
+<div class="outline-text-3" id="text-org5713933">
 <dl class="org-dl">
 <dt>Negative</dt><dd>The class of learnable &ldquo;concepts&rdquo; is severely circumscribed.</dd>
 <dt>Positive</dt><dd>Demonstrates some classes of &ldquo;concepts&rdquo; learnable in polynomial
@@ -316,28 +279,28 @@ time.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgc0cf8b1" class="outline-2">
-<h2 id="orgc0cf8b1">Historical Relevance</h2>
-<div class="outline-text-2" id="text-orgc0cf8b1">
+<div id="outline-container-org484098f" class="outline-2">
+<h2 id="org484098f">Historical Relevance</h2>
+<div class="outline-text-2" id="text-org484098f">
 </div>
-<div id="outline-container-orgd98660c" class="outline-3">
-<h3 id="orgd98660c">Theoretical relevance</h3>
-<div class="outline-text-3" id="text-orgd98660c">
+<div id="outline-container-orgd0a6885" class="outline-3">
+<h3 id="orgd0a6885">Theoretical relevance</h3>
+<div class="outline-text-3" id="text-orgd0a6885">
 </div>
-<div id="outline-container-orgc4e495c" class="outline-4">
-<h4 id="orgc4e495c">Generally helped initiate &ldquo;Computational Learning Theory&rdquo;</h4>
-<div class="outline-text-4" id="text-orgc4e495c">
+<div id="outline-container-org664a34a" class="outline-4">
+<h4 id="org664a34a">Generally helped initiate &ldquo;Computational Learning Theory&rdquo;</h4>
+<div class="outline-text-4" id="text-org664a34a">
 <p>
 Generally, it has been credited with inaugurating the field of <i>computational
-learning theory</i> (<a class='org-ref-reference' href="#wigderson09_leslie_valian">wigderson09_leslie_valian</a>). Computational learning
+learning theory</i> (<a href="wigderson09_leslie_valian">wigderson09_leslie_valian</a>). Computational learning
 theory studies the &ldquo;design and analysis of machine learning algorithms&rdquo;.
 Philosophically, it also seems to be a computational theory of <i>learning</i>.
 </p>
 </div>
 
-<div id="outline-container-orgd149911" class="outline-5">
-<h5 id="orgd149911">Compared with &ldquo;statistical learning theory&rdquo;</h5>
-<div class="outline-text-5" id="text-orgd149911">
+<div id="outline-container-orga62ffa3" class="outline-5">
+<h5 id="orga62ffa3">Compared with &ldquo;statistical learning theory&rdquo;</h5>
+<div class="outline-text-5" id="text-orga62ffa3">
 <p>
 This appears to be one of the two main theoretical frameworks used to inform
 practical developments in machine learning. The other is <i>statistical
@@ -365,9 +328,9 @@ warranties do I have on its performance. (<a href="https://stats.stackexchange.c
 </div>
 </div>
 
-<div id="outline-container-org30d8b36" class="outline-4">
-<h4 id="org30d8b36">In particular, it introduced PAC</h4>
-<div class="outline-text-4" id="text-org30d8b36">
+<div id="outline-container-org76ec3b4" class="outline-4">
+<h4 id="org76ec3b4">In particular, it introduced PAC</h4>
+<div class="outline-text-4" id="text-org76ec3b4">
 <p>
 This paper introduced &ldquo;Probably Approximately Correct learning&rdquo; (PAC
 learning). PAC is one of the principle approaches to computational learning
@@ -392,9 +355,9 @@ complexity into machine learning, with its focus on learners finding
 </p>
 </div>
 
-<div id="outline-container-org3bd82e0" class="outline-5">
-<h5 id="org3bd82e0">Other approaches to computational learning theory</h5>
-<div class="outline-text-5" id="text-org3bd82e0">
+<div id="outline-container-org1a9ab4c" class="outline-5">
+<h5 id="org1a9ab4c">Other approaches to computational learning theory</h5>
+<div class="outline-text-5" id="text-org1a9ab4c">
 <blockquote>
 <ul class="org-ul">
 <li><b>Exact learning</b>, proposed by Dana Angluin;</li>
@@ -412,18 +375,18 @@ complexity into machine learning, with its focus on learners finding
 </div>
 </div>
 
-<div id="outline-container-org9c6c792" class="outline-3">
-<h3 id="org9c6c792">Practical relevance</h3>
-<div class="outline-text-3" id="text-org9c6c792">
+<div id="outline-container-orgf04c512" class="outline-3">
+<h3 id="orgf04c512">Practical relevance</h3>
+<div class="outline-text-3" id="text-orgf04c512">
 <p>
 Foundations of <a href="https://en.wikipedia.org/wiki/Boosting_(machine_learning)">boosting</a> which is &ldquo;a general method for improving the accuracy
 of any given learning  algorithm&rdquo; (<a href="https://link.springer.com/chapter/10.1007%252F978-0-387-21579-2_9">Schapire</a>).
 </p>
 </div>
 </div>
-<div id="outline-container-org8a34a67" class="outline-3">
-<h3 id="org8a34a67">Summary</h3>
-<div class="outline-text-3" id="text-org8a34a67">
+<div id="outline-container-orgd28e45e" class="outline-3">
+<h3 id="orgd28e45e">Summary</h3>
+<div class="outline-text-3" id="text-orgd28e45e">
 <p>
 So we are looking at (one pillar of) <i>the theoretical foundations</i> of machine
 learning, which has also had some important practical import.
@@ -432,9 +395,9 @@ learning, which has also had some important practical import.
 </div>
 </div>
 
-<div id="outline-container-org0bea11f" class="outline-2">
-<h2 id="org0bea11f">structure</h2>
-<div class="outline-text-2" id="text-org0bea11f">
+<div id="outline-container-org34157e0" class="outline-2">
+<h2 id="org34157e0">structure</h2>
+<div class="outline-text-2" id="text-org34157e0">
 <ol class="org-ol">
 <li>Defines learning as &ldquo;the process of deducing a [reasonably efficient]
 program for performing a task from information that does not provide an
@@ -468,13 +431,13 @@ boolean variables as inputs.
 </div>
 </div>
 
-<div id="outline-container-org0447097" class="outline-2">
-<h2 id="org0447097">Tips</h2>
-<div class="outline-text-2" id="text-org0447097">
+<div id="outline-container-org8328b06" class="outline-2">
+<h2 id="org8328b06">Tips</h2>
+<div class="outline-text-2" id="text-org8328b06">
 </div>
-<div id="outline-container-org4b6f9e5" class="outline-3">
-<h3 id="org4b6f9e5">Normal forms</h3>
-<div class="outline-text-3" id="text-org4b6f9e5">
+<div id="outline-container-orgaf32ff0" class="outline-3">
+<h3 id="orgaf32ff0">Normal forms</h3>
+<div class="outline-text-3" id="text-orgaf32ff0">
 <p>
 (See Wikipedia on <a href="https://en.wikipedia.org/wiki/Conjunctive_normal_form">CNV</a> and <a href="https://en.wikipedia.org/wiki/Disjunctive_normal_form">DNV</a>)
 </p>
@@ -484,9 +447,9 @@ Used in automated theorem proving.
 </p>
 </div>
 
-<div id="outline-container-orgb89d130" class="outline-4">
-<h4 id="orgb89d130">CNF (Conjunctive Normal Form)</h4>
-<div class="outline-text-4" id="text-orgb89d130">
+<div id="outline-container-org2a33819" class="outline-4">
+<h4 id="org2a33819">CNF (Conjunctive Normal Form)</h4>
+<div class="outline-text-4" id="text-org2a33819">
 <p>
 &ldquo;an <b>AND</b> of <b>ORs</b>&rdquo;
 </p>
@@ -497,9 +460,9 @@ E.g., \[ (A\lor \neg B\lor \neg C)\land (\neg D\lor E\lor F) \]
 </div>
 </div>
 
-<div id="outline-container-orgc683b83" class="outline-4">
-<h4 id="orgc683b83">DNF (Disjunctive Normal Form)</h4>
-<div class="outline-text-4" id="text-orgc683b83">
+<div id="outline-container-orge31d583" class="outline-4">
+<h4 id="orge31d583">DNF (Disjunctive Normal Form)</h4>
+<div class="outline-text-4" id="text-orge31d583">
 <p>
 &ldquo;an <b>OR</b> of <b>ANDs</b>&rdquo;
 </p>
@@ -515,9 +478,9 @@ its variables appears exactly once in every conjunction&rdquo;
 </div>
 </div>
 </div>
-<div id="outline-container-org6381909" class="outline-3">
-<h3 id="org6381909">Bernoulli trial</h3>
-<div class="outline-text-3" id="text-org6381909">
+<div id="outline-container-orgceb8845" class="outline-3">
+<h3 id="orgceb8845">Bernoulli trial</h3>
+<div class="outline-text-3" id="text-orgceb8845">
 <blockquote>
 <p>
 Bernoulli trial (or binomial trial) is a random experiment with exactly two
@@ -528,10 +491,7 @@ success is the same every time the experiment is conducted (<a href="https://en.
 
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="wigderson09_leslie_valian">[wigderson09_leslie_valian]</a> <a name="wigderson09_leslie_valian"></a>Avi Wigderson, The work of Leslie Valiant, nil, in in: Proceedings of the 41st annual ACM symposium on Symposium on
-                  theory of computing - STOC '09, edited by (2009)</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -541,7 +501,7 @@ success is the same every time the experiment is conducted (<a href="https://en.
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2018-04-22 Sun 23:24. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

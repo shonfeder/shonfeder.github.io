@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 4: Exhaustion</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 4: Exhaustion</h1>
 <blockquote>
 <p>
@@ -272,13 +225,13 @@ accessible to anyone familiar with System Fω, the higher-order polymorphic
 
 <p>
 <i>ML modules are merely a particular mode of use of System Fω.</i>
-(<a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a>)
+(<a href="Rossberg_2010">Rossberg_2010</a>)
 </p>
 </blockquote>
 
-<div id="outline-container-org2c969d3" class="outline-2">
-<h2 id="org2c969d3">Vibe</h2>
-<div class="outline-text-2" id="text-org2c969d3">
+<div id="outline-container-org2268aba" class="outline-2">
+<h2 id="org2268aba">Vibe</h2>
+<div class="outline-text-2" id="text-org2268aba">
 <p>
 Tuckered out and feeling a bit numb. I need to turtle a bit tomorrow and recover
 from all the lovely (but quite intense) social engagement.
@@ -286,9 +239,9 @@ from all the lovely (but quite intense) social engagement.
 </div>
 </div>
 
-<div id="outline-container-orgf85f3bf" class="outline-2">
-<h2 id="orgf85f3bf">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgf85f3bf">
+<div id="outline-container-org6d09bf6" class="outline-2">
+<h2 id="org6d09bf6">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org6d09bf6">
 <p>
 Due to over-extending myself over the last three days, I wasn&rsquo;t able to stay on
 task with my planned goals today. I did manage to make some meaningful progress
@@ -296,7 +249,7 @@ however.
 </p>
 
 <p>
-By the third page of <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a> (the epigraph to this entry) is was
+By the third page of <a href="Rossberg_2010">Rossberg_2010</a> (the epigraph to this entry) is was
 clear that I would need improve my graphs of System Fω in order to work
 effectively on 1Ml. This has motivated me to see through ongoing studies into
 typed lambda calculi, and push forward quickly until I have covered the left
@@ -304,16 +257,15 @@ face of the lambda cube:
 </p>
 
 
-<div class="figure">
-<p><object type="image/svg+xml" data="https://upload.wikimedia.org/wikipedia/commons/c/cd/Lambda_Cube_img.svg" class="org-svg">
-Sorry, your browser does not support SVG.</object>
+<div id="org1dd0534" class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Lambda_Cube_img.svg" alt="Lambda_Cube_img.svg" class="org-svg" />
 </p>
 </div>
 </div>
 
-<div id="outline-container-orge7fd8da" class="outline-3">
-<h3 id="orge7fd8da">PLT: Type Theory</h3>
-<div class="outline-text-3" id="text-orge7fd8da">
+<div id="outline-container-org9c439c8" class="outline-3">
+<h3 id="org9c439c8">PLT: Type Theory</h3>
+<div class="outline-text-3" id="text-org9c439c8">
 <p>
 I spent some time working on the <a href="http://gallium.inria.fr/~fpottier/menhir/">menhir</a> parser-generator for my WIP experiments
 in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a>. For a long while I&rsquo;ve been stuck on a
@@ -321,11 +273,11 @@ in typed lambda calculi, <a href="https://gitlab.com/shonfeder/themis">themis</a
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">term</span>:
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
+<pre class="src src-tuareg-menhir"><span class="org-function-name">term</span>:
+  <span class="org-comment-delimiter">/* </span><span class="org-comment">... */</span>
   | m = term; n = term
     { Term.app m n}
-  <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">... </span><span style="color: #5B6268;">*/</span>
+  <span class="org-comment-delimiter">/* </span><span class="org-comment">... */</span>
 </pre>
 </div>
 
@@ -347,20 +299,20 @@ the parser is left-recursive on the first term of the application:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg-menhir"><span style="color: #c678dd;">terms</span>:
+<pre class="src src-tuareg-menhir"><span class="org-function-name">terms</span>:
   | m = terms; n = term
     { Term.app m n }
   | t = term;
     { t }
-<span style="color: #c678dd;">term</span>: <span style="color: #5B6268;">/* </span><span style="color: #5B6268;">singular terms here </span><span style="color: #5B6268;">*/</span>
+<span class="org-function-name">term</span>: <span class="org-comment-delimiter">/* </span><span class="org-comment">singular terms here */</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd3930ac" class="outline-3">
-<h3 id="orgd3930ac">Category theory</h3>
-<div class="outline-text-3" id="text-orgd3930ac">
+<div id="outline-container-org9775447" class="outline-3">
+<h3 id="org9775447">Category theory</h3>
+<div class="outline-text-3" id="text-org9775447">
 <ul class="org-ul">
 <li>CT reading group: folks presented motivating reasons behind their desires to
 learn Category Theory.</li>
@@ -368,9 +320,9 @@ learn Category Theory.</li>
 </div>
 </div>
 
-<div id="outline-container-orgb4dc70e" class="outline-3">
-<h3 id="orgb4dc70e">Writing</h3>
-<div class="outline-text-3" id="text-orgb4dc70e">
+<div id="outline-container-org88fb623" class="outline-3">
+<h3 id="org88fb623">Writing</h3>
+<div class="outline-text-3" id="text-org88fb623">
 <ul class="org-ul">
 <li>Created a <a href="https://joaotavora.github.io/yasnippet/snippet-development.html">yas snippet</a> to generate the template for these logs. Getting savy with
 yas snippets should improve the speed and quality of writing and code in general.</li>
@@ -379,16 +331,16 @@ yas snippets should improve the speed and quality of writing and code in general
 </div>
 </div>
 
-<div id="outline-container-org30a7195" class="outline-2">
-<h2 id="org30a7195">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org30a7195">
+<div id="outline-container-org9b3659d" class="outline-2">
+<h2 id="org9b3659d">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org9b3659d">
 </div>
-<div id="outline-container-orgba11b2a" class="outline-3">
-<h3 id="orgba11b2a">PLT: 1ML × Type Theory</h3>
-<div class="outline-text-3" id="text-orgba11b2a">
+<div id="outline-container-orgedbd254" class="outline-3">
+<h3 id="orgedbd254">PLT: 1ML × Type Theory</h3>
+<div class="outline-text-3" id="text-orgedbd254">
 <ul class="org-ul">
 <li>Study and take notes on the distinction between small and large types in 1ML</li>
-<li>Continue reading <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a></li>
+<li>Continue reading <a href="Rossberg_2010">Rossberg_2010</a></li>
 <li>Begin working on tuple type-checking error</li>
 <li>Begin trying to fix the biggest type-checking bug I found today</li>
 <li>Finish parser for λ⟶</li>
@@ -396,19 +348,16 @@ yas snippets should improve the speed and quality of writing and code in general
 </div>
 </div>
 
-<div id="outline-container-orgef5d205" class="outline-3">
-<h3 id="orgef5d205">Writing</h3>
-<div class="outline-text-3" id="text-orgef5d205">
+<div id="outline-container-org4cb07b5" class="outline-3">
+<h3 id="org4cb07b5">Writing</h3>
+<div class="outline-text-3" id="text-org4cb07b5">
 <ul class="org-ul">
 <li>Write up implementation of stack</li>
 <li>Write up notes on small vs. large types</li>
 </ul>
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="Rossberg_2010">[Rossberg_2010]</a> <a name="Rossberg_2010"></a>Rossberg, Russo & Dreyer, F-ing modules, <i>Proceedings of the 5th ACM SIGPLAN workshop on Types in
-                  language design and implementation - TLDI ’10</i>,  (2010). <a href="http://dx.doi.org/10.1145/1708016.1708028">link</a>. <a href="http://dx.doi.org/10.1145/1708016.1708028">doi</a>.</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -418,7 +367,7 @@ yas snippets should improve the speed and quality of writing and code in general
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-09-27 Fri 08:58. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-06-25 Fri 12:35 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nothing /Really/ Matters</title>
 <meta name="author" content="um" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,21 +42,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,32 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -231,15 +209,15 @@
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Nothing <i>Really</i> Matters
 <br />
 <span class="subtitle">The option type as an icon of absence</span>
 </h1>
 
-<div id="outline-container-org352eb72" class="outline-2">
-<h2 id="org352eb72">A joke about nothing</h2>
-<div class="outline-text-2" id="text-org352eb72">
+<div id="outline-container-org7f2d31a" class="outline-2">
+<h2 id="org7f2d31a">A joke about nothing</h2>
+<div class="outline-text-2" id="text-org7f2d31a">
 <p>
 There is an old philosophy joke, which I learned in this form:
 </p>
@@ -262,12 +240,12 @@ milk instead?&rdquo;
 </div>
 </div>
 
-<div id="outline-container-orgf6a9b25" class="outline-2">
-<h2 id="orgf6a9b25">Explaining the joke</h2>
-<div class="outline-text-2" id="text-orgf6a9b25">
+<div id="outline-container-orgc413319" class="outline-2">
+<h2 id="orgc413319">Explaining the joke</h2>
+<div class="outline-text-2" id="text-orgc413319">
 <p>
 The punchline&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> rests on the idea that non-presence is determined by
-that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: milk is distinct from cream, so having no milk
+that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>: milk is distinct from cream, so having no milk
 is distinct from having no cream, and therefore having coffee with no milk is
 distinct from having coffee with no cream.
 </p>
@@ -277,7 +255,7 @@ I think part of the humor here draws from the sense that this is a &ldquo;<a hre
 without a difference</a>&rdquo;. The same cup of black coffee is simultaneously a coffee
 with no milk and a coffee with no cream, and if you want a black coffee, it
 makes no difference which dairy product I omit. But not all distinctions in
-non-presense are equally indistinguishable. The frivolousness of <i>this</i> omission
+non-presence are equally indistinguishable. The frivolousness of <i>this</i> omission
 relates to the dairy&rsquo;s similarity.
 </p>
 
@@ -288,15 +266,15 @@ implied possibility of the presence of the bleach promised to be absent is
 unwelcome and the declaration of its non-presence lands like a threat. This
 shows that non-presence is determined by that which is not present even when
 what <i>is</i> present is left unchanged by the absence. Tho this determination only
-makes a difference in terms of sense and intension, a difference <i>is</i> made.
+makes a difference in terms of sense and intention, a difference <i>is</i> made.
 </p>
 
 <p>
 Often, non-presence entails a real and objective difference in what remains
 present. The distinction between having no sight and having no hearing marks a
-meaningful difference. From our lived experience, we know (or will come to) the
-deadly serious difference made by the distinct kinds of nothingness met in the
-absence of each missing loved one.
+meaningful difference. From our lived experience, we know (or will come to know)
+the deadly serious difference made by the distinct kinds of nothingness met in
+the absence of each missing loved one.
 </p>
 
 <p>
@@ -311,9 +289,9 @@ non-presence, as we&rsquo;ve been doing.
 </div>
 </div>
 
-<div id="outline-container-org59ff0ca" class="outline-2">
-<h2 id="org59ff0ca">The option type as an icon of absence</h2>
-<div class="outline-text-2" id="text-org59ff0ca">
+<div id="outline-container-org18f7f1e" class="outline-2">
+<h2 id="org18f7f1e">The option type as an icon of absence</h2>
+<div class="outline-text-2" id="text-org18f7f1e">
 <p>
 We can interpret <a href="https://en.wikipedia.org/wiki/Option_type">the <code>option</code> type</a> as an <a href="https://en.wikipedia.org/wiki/Iconicity">icon</a> of the phenomena of absence. To
 aid in the exposition of this interpretation, we&rsquo;ll build up a small domain of
@@ -341,7 +319,7 @@ material constitutive of that substance.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="orgcc46767"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
+<pre class="src src-ocaml" id="org9fc152e"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
   <span class="org-doc">(** The form of the substance is it's principle type. Depending on your</span>
 <span class="org-doc">      ontology, you might say that the form is given by the substance's</span>
@@ -355,7 +333,7 @@ material constitutive of that substance.
 </div>
 
 <p>
-The <a href="#orgcc46767">1</a> let&rsquo;s us distinguish between kinds of things and
+The <a href="#org9fc152e">1</a> let&rsquo;s us distinguish between kinds of things and
 instances of that kind..
 </p>
 
@@ -378,10 +356,10 @@ let&rsquo;s define way of constructing measures of different kinds of liquid:
   <span class="org-doc">(** The type of an amount of liquid *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : int -&gt; t
-  <span class="org-doc">(** [v ml] is [ml] milliliters of liquid *)</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>v ml<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span>ml<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> milliliters of liquid *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">amount</span> : t -&gt; milliliters
-  <span class="org-doc">(** [amount l] is the amount of milliliters of the liquid [l] *)</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>amount l<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is the amount of milliliters of the liquid </span><span class="org-tuareg-font-lock-doc-markup">[</span>l<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> *)</span>
 <span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milliliters</span> = int
 
@@ -424,7 +402,7 @@ Now we need a way representing
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="orgbc1e2ca"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
+<pre class="src src-ocaml" id="orgd969f29"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a t</span> =
     | <span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-keyword">of</span> 'a
     | <span class="org-tuareg-font-lock-constructor">None</span>
@@ -438,7 +416,7 @@ type 'a option = Some of 'a | None
 
 
 <p>
-Read the above <a href="#orgbc1e2ca">1</a> as follows:
+Read the above <a href="#orgd969f29">1</a> as follows:
 </p>
 
 <ul class="org-ul">
@@ -468,33 +446,33 @@ representing the presence a value of type <code>'a</code>. E.g.
 </ul>
 </div>
 
-<div id="outline-container-org8b65364" class="outline-3">
-<h3 id="org8b65364"><span class="todo TODO">TODO</span> Absence of an additive</h3>
-<div class="outline-text-3" id="text-org8b65364">
+<div id="outline-container-org5512664" class="outline-3">
+<h3 id="org5512664"><span class="todo TODO">TODO</span> Absence of an additive</h3>
+<div class="outline-text-3" id="text-org5512664">
 <p>
 Coffee without milk is the same as coffee without cream.
 </p>
 </div>
 </div>
-<div id="outline-container-org2c6efed" class="outline-3">
-<h3 id="org2c6efed"><span class="todo TODO">TODO</span> Absence of a component</h3>
-<div class="outline-text-3" id="text-org2c6efed">
+<div id="outline-container-org5d60a61" class="outline-3">
+<h3 id="org5d60a61"><span class="todo TODO">TODO</span> Absence of a component</h3>
+<div class="outline-text-3" id="text-org5d60a61">
 <p>
 I would be different without my arms than I would be without my legs.
 </p>
 </div>
 </div>
-<div id="outline-container-org6362ef9" class="outline-3">
-<h3 id="org6362ef9"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
-<div class="outline-text-3" id="text-org6362ef9">
+<div id="outline-container-org8221763" class="outline-3">
+<h3 id="org8221763"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
+<div class="outline-text-3" id="text-org8221763">
 <p>
 You can pick the pepperonis off a pizza, but cannot take the cream out of
 coffee.
 </p>
 </div>
 
-<div id="outline-container-org26cbee7" class="outline-4">
-<h4 id="org26cbee7">Conjunction vs. mixture</h4>
+<div id="outline-container-org5c721bd" class="outline-4">
+<h4 id="org5c721bd">Conjunction vs. mixture</h4>
 </div>
 </div>
 </div>
@@ -502,7 +480,7 @@ coffee.
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 See TODO for a more detail on the philosophical underpinnings of the
 joke.
 </p></div></div>
@@ -513,8 +491,8 @@ joke.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
-Last updated 2021-04-17 Sat 13:54. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.2 (<a href="https://orgmode.org">Org</a> mode 9.5).
+Last updated 2022-02-19 Sat 17:48. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

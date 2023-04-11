@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 23: Fuzzy</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,28 +209,28 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 23: Fuzzy</h1>
 <p>
 Feeling fuzzy today. Posting any how, just to keep up the ritual.
 </p>
 
-<div id="outline-container-org2ef82de" class="outline-2">
-<h2 id="org2ef82de">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org2ef82de">
+<div id="outline-container-orgfe01cb5" class="outline-2">
+<h2 id="orgfe01cb5">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgfe01cb5">
 </div>
-<div id="outline-container-org6a6e68d" class="outline-3">
-<h3 id="org6a6e68d">Community</h3>
-<div class="outline-text-3" id="text-org6a6e68d">
+<div id="outline-container-orgc23ae6c" class="outline-3">
+<h3 id="orgc23ae6c">Community</h3>
+<div class="outline-text-3" id="text-orgc23ae6c">
 <ul class="org-ul">
 <li>Nice coffee chat, discussed community and music making.</li>
 <li>Delightful and thought provoking non-technical talks.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org91c7ee1" class="outline-3">
-<h3 id="org91c7ee1">PLT</h3>
-<div class="outline-text-3" id="text-org91c7ee1">
+<div id="outline-container-org13c2198" class="outline-3">
+<h3 id="org13c2198">PLT</h3>
+<div class="outline-text-3" id="text-org13c2198">
 <p>
 More time documenting and testing <code>Alg</code>. It&rsquo;s been a quite involved process. A
 lot of the time has been devoted to developing a nice abstraction for the
@@ -298,24 +251,24 @@ module for <code>Functor</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #83898d;">(** [Law] notes the laws that should be obeyed by any instantiation of</span>
-<span style="color: #83898d;">    {{!module-type:S} Functor} in the form of predicates that should be true</span>
-<span style="color: #83898d;">    for any arguments of the appropriate type.</span>
+<pre class="src src-ocaml"><span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Law</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> notes the laws that should be obeyed by any instantiation of</span>
+<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type:S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> in the form of predicates that should be true</span>
+<span class="org-doc">    for any arguments of the appropriate type.</span>
 
-<span style="color: #83898d;">    You can use {!module:Alg_qcheck.Functor} to generate property based tests of</span>
-<span style="color: #83898d;">    these laws for new modules satisfying this interface.</span>
+<span class="org-doc">    You can use </span><span class="org-tuareg-font-lock-doc-markup">{!module:</span><span class="org-tuareg-font-lock-module">Alg_qcheck.</span><span class="org-tuareg-font-lock-constructor">Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> to generate property based tests of</span>
+<span class="org-doc">    these laws for new modules satisfying this interface.</span>
 
-<span style="color: #83898d;">    @param F An implementation of a {{!module-type: S} Functor} *)</span>
-<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Law</span> <span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">F </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> S</span><span style="color: #f0e68c;">)</span><span style="color: #dcaeea;"> </span><span style="color: #83898d;">(** *)</span> <span style="color: #f0e68c;">:</span> <span style="color: #f5deb3; font-weight: bold;">sig</span>
+<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">@param</span><span class="org-doc"> </span><span class="org-tuareg-font-lock-constructor">F</span><span class="org-doc"> An implementation of a </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type: S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> *)</span>
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Law</span> <span class="org-variable-name">(F : </span><span class="org-type">S</span><span class="org-variable-name">) </span><span class="org-doc">(** *)</span> : <span class="org-tuareg-font-lock-governing">sig</span>
 
-  <span style="color: #83898d;">(** [identity x]: [F.map ~f:Fun.id x = Fun.id x] *)</span>
-  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">identity</span> <span style="color: #f0e68c;">:</span> 'a <span style="color: #ECBE7B;">F.</span>t <span style="color: #f0e68c;">-&gt;</span> bool
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>identity x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:<span class="org-tuareg-font-lock-module">Fun.</span>id x = <span class="org-tuareg-font-lock-module">Fun.</span>id x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">identity</span> : 'a <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
 
-  <span style="color: #83898d;">(** [composition f g x]: [F.map ~f:(f % g) x = (F.map ~f % F.map ~f:g) x]</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>composition f g x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:(f <span class="org-tuareg-font-lock-operator">%</span> g) x = (<span class="org-tuareg-font-lock-module">F.</span>map ~f <span class="org-tuareg-font-lock-operator">%</span> <span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:g) x<span class="org-tuareg-font-lock-doc-markup">]</span>
 
-<span style="color: #83898d;">      where [%] is composition. *)</span>
-  <span style="color: #f5deb3; font-weight: bold;">val</span> <span style="color: #c678dd;">composition</span> <span style="color: #f0e68c;">:</span> <span style="color: #f0e68c;">(</span>'a <span style="color: #f0e68c;">-&gt;</span> 'b<span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">-&gt;</span> <span style="color: #f0e68c;">(</span>'c <span style="color: #f0e68c;">-&gt;</span> 'a<span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">-&gt;</span> 'c <span style="color: #ECBE7B;">F.</span>t <span style="color: #f0e68c;">-&gt;</span> bool
-<span style="color: #f5deb3; font-weight: bold;">end</span>
+<span class="org-doc">      where </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-operator">%</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is composition. *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">composition</span> : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
+<span class="org-tuareg-font-lock-governing">end</span>
 </pre>
 </div>
 
@@ -338,27 +291,27 @@ value of that functor):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">functor_laws</span> <span style="color: #f0e68c;">=</span>
-  <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #f5deb3; font-weight: bold;">open </span><span style="color: #ECBE7B;">Alg_qcheck.Functor</span> <span style="color: #f5deb3; font-weight: bold;">in</span>
-  <span style="color: #f0e68c;">[</span>
-    suite <span style="color: #98be65;">"Functor Laws for Option"</span>
-      <span style="color: #f0e68c;">(</span>test <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
-         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Option</span>
-         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> <span style="color: #f0e68c;">=</span> option
-       <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">));</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">functor_laws</span> =
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Alg_qcheck.Functor</span> <span class="org-tuareg-font-lock-governing">in</span>
+  [
+    suite <span class="org-string">"Functor Laws for Option"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.Option</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = option
+       <span class="org-tuareg-font-lock-governing">end</span>));
 
-    suite <span style="color: #98be65;">"Functor Laws for List"</span>
-      <span style="color: #f0e68c;">(</span>test <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
-         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.List</span>
-         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> <span style="color: #f0e68c;">=</span> list
-       <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">));</span>
+    suite <span class="org-string">"Functor Laws for List"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.List</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = list
+       <span class="org-tuareg-font-lock-governing">end</span>));
 
-    suite <span style="color: #98be65;">"Functor Laws for Array"</span>
-      <span style="color: #f0e68c;">(</span>test <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #f5deb3; font-weight: bold;">struct</span>
-         <span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Alg.Functor.Array</span>
-         <span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">arbitrary</span> <span style="color: #f0e68c;">=</span> array
-       <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">));</span>
-  <span style="color: #f0e68c;">]</span>
+    suite <span class="org-string">"Functor Laws for Array"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.Array</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = array
+       <span class="org-tuareg-font-lock-governing">end</span>));
+  ]
 </pre>
 </div>
 
@@ -385,13 +338,13 @@ And the output of the tests:
 </div>
 </div>
 
-<div id="outline-container-org4a8971b" class="outline-2">
-<h2 id="org4a8971b">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org4a8971b">
+<div id="outline-container-orga142d6b" class="outline-2">
+<h2 id="orga142d6b">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orga142d6b">
 </div>
-<div id="outline-container-orgea0b6a2" class="outline-3">
-<h3 id="orgea0b6a2">PLT</h3>
-<div class="outline-text-3" id="text-orgea0b6a2">
+<div id="outline-container-orga0cdba6" class="outline-3">
+<h3 id="orga0cdba6">PLT</h3>
+<div class="outline-text-3" id="text-orga0cdba6">
 <p>
 Finish up documenting and testing [Alg], hopefully open a PR to publish the
 package in the <code>opam</code> repository.
@@ -404,7 +357,7 @@ package in the <code>opam</code> repository.
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-17 Thu 01:06. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

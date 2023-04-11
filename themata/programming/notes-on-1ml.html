@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:43 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Notes on 1ML</h1>
 <p>
 <a href="https://people.mpi-sws.org/~rossberg/1ml/">1ML</a> is an experimental dialect of <a href="https://en.wikipedia.org/wiki/ML_(programming_language)">ML</a>. It&rsquo;s aim and principle distinguishing
@@ -270,9 +223,9 @@ which I have learned and discovered while studying the theory and implementation
 of the language.
 </p>
 
-<div id="outline-container-org2375460" class="outline-2">
-<h2 id="org2375460">Comments</h2>
-<div class="outline-text-2" id="text-org2375460">
+<div id="outline-container-org247e10e" class="outline-2">
+<h2 id="org247e10e">Comments</h2>
+<div class="outline-text-2" id="text-org247e10e">
 <ul class="org-ul">
 <li><code>(; ... ;)</code> designate wrapped (possibly inline) comments</li>
 <li><code>;;</code> designates the start of a comment that extends to the end of a line</li>
@@ -280,9 +233,9 @@ of the language.
 </div>
 </div>
 
-<div id="outline-container-org9f842cc" class="outline-2">
-<h2 id="org9f842cc">Modules</h2>
-<div class="outline-text-2" id="text-org9f842cc">
+<div id="outline-container-org6816a1a" class="outline-2">
+<h2 id="org6816a1a">Modules</h2>
+<div class="outline-text-2" id="text-org6816a1a">
 <p>
 According to one perspective, in 1ML &ldquo;everything is just (&lsquo;a mode of use of&rsquo;)
 modules&rdquo; (<a href="https://people.mpi-sws.org/~rossberg/1ml/">Rossberg</a>). Therefore, in thinking through the nature of 1ML it is
@@ -290,9 +243,9 @@ reasonable that we begin with its modules.
 </p>
 </div>
 
-<div id="outline-container-org47cb9c5" class="outline-3">
-<h3 id="org47cb9c5">Module definition syntax</h3>
-<div class="outline-text-3" id="text-org47cb9c5">
+<div id="outline-container-org1647345" class="outline-3">
+<h3 id="org1647345">Module definition syntax</h3>
+<div class="outline-text-3" id="text-org1647345">
 <p>
 To define a named module, we follow this schema:
 </p>
@@ -311,9 +264,9 @@ indicate that they are optional.
 </div>
 </div>
 
-<div id="outline-container-org27a4d89" class="outline-3">
-<h3 id="org27a4d89">The empty module</h3>
-<div class="outline-text-3" id="text-org27a4d89">
+<div id="outline-container-orge502332" class="outline-3">
+<h3 id="orge502332">The empty module</h3>
+<div class="outline-text-3" id="text-orge502332">
 <p>
 The minimal module is the empty module. We can assign <code>M</code> to be the empty module
 thus:
@@ -326,9 +279,9 @@ thus:
 </div>
 </div>
 
-<div id="outline-container-org57d724a" class="outline-3">
-<h3 id="org57d724a">Module types</h3>
-<div class="outline-text-3" id="text-org57d724a">
+<div id="outline-container-orgca81c59" class="outline-3">
+<h3 id="orgca81c59">Module types</h3>
+<div class="outline-text-3" id="text-orgca81c59">
 <p>
 In dialects of ML, every value has a type. Modules are values in 1ML, so they
 too have a type.
@@ -425,9 +378,9 @@ The key points to take away form this brief discussion of 1ML modules:
 </div>
 </div>
 
-<div id="outline-container-org41a7b3e" class="outline-3">
-<h3 id="org41a7b3e">A concrete example: implementing a stack</h3>
-<div class="outline-text-3" id="text-org41a7b3e">
+<div id="outline-container-orgd8c7f94" class="outline-3">
+<h3 id="orgd8c7f94">A concrete example: implementing a stack</h3>
+<div class="outline-text-3" id="text-orgd8c7f94">
 <p>
 Fair warning: the following code is a working implemention that can be run in
 Rossberg&rsquo;s <a href="https://github.com/rossberg/1ml">prototype interpreter</a>. As Rossberg notes in the README for the
@@ -455,9 +408,9 @@ otherwise could be (and eventually will be!) in a more robust implementation.
 </p>
 </div>
 
-<div id="outline-container-orgec19645" class="outline-4">
-<h4 id="orgec19645">Specifying the ADT</h4>
-<div class="outline-text-4" id="text-orgec19645">
+<div id="outline-container-orge186c23" class="outline-4">
+<h4 id="orge186c23">Specifying the ADT</h4>
+<div class="outline-text-4" id="text-orge186c23">
 <blockquote>
 <p>
 One of the most importnat features of modern programming is abstract data types
@@ -466,7 +419,7 @@ to it only through operations that are associated with the module.
 </p>
 
 <p>
-<a class='org-ref-reference' href="#goguen1999tossing">goguen1999tossing</a>
+<a href="goguen1999tossing">goguen1999tossing</a>
 </p>
 </blockquote>
 
@@ -550,9 +503,9 @@ implementation:
 </div>
 </div>
 
-<div id="outline-container-orgef7a8da" class="outline-4">
-<h4 id="orgef7a8da">Implementing the ADT</h4>
-<div class="outline-text-4" id="text-orgef7a8da">
+<div id="outline-container-org6146be5" class="outline-4">
+<h4 id="org6146be5">Implementing the ADT</h4>
+<div class="outline-text-4" id="text-org6146be5">
 <div class="org-src-container">
 <pre class="src src-1ml">Stack :&gt; STACK = {
   type t a = {size: int; content: list a};
@@ -642,21 +595,21 @@ like something like this:
 </div>
 </div>
 
-<div id="outline-container-org44fb98e" class="outline-4">
-<h4 id="org44fb98e"><span class="todo TODO">TODO</span> On abstract types, sealing, and security</h4>
+<div id="outline-container-org5e9888d" class="outline-4">
+<h4 id="org5e9888d"><span class="todo TODO">TODO</span> On abstract types, sealing, and security</h4>
 </div>
-<div id="outline-container-org3087f26" class="outline-4">
-<h4 id="org3087f26"><span class="todo TODO">TODO</span> Wait, why do the modules look just like the records?</h4>
+<div id="outline-container-org2627e06" class="outline-4">
+<h4 id="org2627e06"><span class="todo TODO">TODO</span> Wait, why do the modules look just like the records?</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd99d1a" class="outline-2">
-<h2 id="orgfd99d1a">Types</h2>
-<div class="outline-text-2" id="text-orgfd99d1a">
+<div id="outline-container-org33d5a52" class="outline-2">
+<h2 id="org33d5a52">Types</h2>
+<div class="outline-text-2" id="text-org33d5a52">
 </div>
-<div id="outline-container-org8e4efa1" class="outline-3">
-<h3 id="org8e4efa1"><span class="todo TODO">TODO</span> The size of a types</h3>
-<div class="outline-text-3" id="text-org8e4efa1">
+<div id="outline-container-org79f600e" class="outline-3">
+<h3 id="org79f600e"><span class="todo TODO">TODO</span> The size of a types</h3>
+<div class="outline-text-3" id="text-org79f600e">
 <p>
 1ML&rsquo;s novelty is in unifying the core and module languages from traditional MLs
 into a single language. The gimmick used to achieve this is a clever elaboration
@@ -673,7 +626,7 @@ famous, constrained version of System F known as the <a href="https://en.wikiped
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-09-29 Sun 17:02. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

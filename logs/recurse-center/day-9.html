@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 9: Capturing the Notion of Parametricity</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 9: Capturing the Notion of Parametricity</h1>
 <p>
 Today was spent implementing <i>System F</i>, also known as the <i>polymorphic lambda
@@ -271,9 +224,9 @@ eventually end up reworking and incorporating them into my WIP <a href="file:///
 modularity</a>).
 </p>
 
-<div id="outline-container-org853a306" class="outline-2">
-<h2 id="org853a306">A few notes on the history of System F</h2>
-<div class="outline-text-2" id="text-org853a306">
+<div id="outline-container-org2a2015c" class="outline-2">
+<h2 id="org2a2015c">A few notes on the history of System F</h2>
+<div class="outline-text-2" id="text-org2a2015c">
 <p>
 Jean-Yves Girard first defined System F in his PhD thesis in 1972. Writting
 about that work around 2010, Girard characterized the calculus thus:
@@ -287,14 +240,14 @@ Curry-Howard, as the isomorphic image of intuitionistic second-order
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#girard11">girard11</a>)
+(<a href="girard11">girard11</a>)
 </p>
 </blockquote>
 
 <p>
 Two years later, Reynolds would introduce the same formalism with slightly
 different aspect and the explicitly computational aim of developing a theory of
-the &ldquo;type structure of programming languages&rdquo;<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. According to Nederpelt and
+the &ldquo;type structure of programming languages&rdquo;<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>. According to Nederpelt and
 Geuvers,
 </p>
 
@@ -306,7 +259,7 @@ order to capture the notion of <i>parametricity</i>.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#rob2014type">rob2014type</a>)
+(<a href="rob2014type">rob2014type</a>)
 </p>
 </blockquote>
 
@@ -324,7 +277,7 @@ Consider the identity function on integers:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int </span><span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">int_id</span> :<span class="org-type"> int -&gt; int </span>= <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> -&gt; x
 </pre>
 </div>
 
@@ -336,7 +289,7 @@ close to valid <a href="file:///home/sf/Dropbox/synechepedia/org/themata/program
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span> <span style="color: #f0e68c;">=</span> <span style="color: #51afef;">fun</span> <span style="color: #dcaeea;">x</span> <span style="color: #f0e68c;">-&gt;</span> x
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">id</span> (<span class="org-variable-name">t</span> :<span class="org-type"> type</span>) :<span class="org-type"> t -&gt; t </span>= <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> -&gt; x
 </pre>
 </div>
 
@@ -348,17 +301,17 @@ as a parameter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">int_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">int </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> int       </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>int <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #dcaeea;">str_id</span> <span style="color: #f0e68c;">:</span> <span style="color: #ECBE7B;">string </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> string </span><span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>string <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">int_id</span> :<span class="org-type"> int -&gt; int       </span>= id (int : <span class="org-keyword">type</span>)
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">str_id</span> :<span class="org-type"> string -&gt; string </span>= id (string : <span class="org-keyword">type</span>)
 
-<span style="color: #5B6268;">(* </span><span style="color: #5B6268;">The identity function on functions of some parameterized type </span><span style="color: #5B6268;">*)</span>
-<span style="color: #f5deb3; font-weight: bold;">let</span> <span style="color: #c678dd;">fun_id</span><span style="color: #dcaeea;"> </span><span style="color: #f0e68c;">(</span><span style="color: #dcaeea;">t </span><span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">:</span> <span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">t </span><span style="color: #f0e68c;">-&gt;</span><span style="color: #ECBE7B;"> t</span><span style="color: #f0e68c;">)</span> <span style="color: #f0e68c;">=</span> id <span style="color: #f0e68c;">(</span>t <span style="color: #f0e68c;">-&gt;</span> <span style="color: #a9a1e1;">t</span> <span style="color: #f0e68c;">:</span><span style="color: #ECBE7B;"> </span><span style="color: #51afef;">type</span><span style="color: #f0e68c;">)</span>
+<span class="org-comment-delimiter">(* </span><span class="org-comment">The identity function on functions of some parameterized type</span><span class="org-comment-delimiter"> *)</span>
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">fun_id</span> (<span class="org-variable-name">t</span> :<span class="org-type"> type</span>) :<span class="org-type"> (t -&gt; t) -&gt; (t -&gt; t) </span>= id (t -&gt; <span class="org-tuareg-font-lock-label">t</span> : <span class="org-keyword">type</span>)
 </pre>
 </div>
 
 <p>
 Reynolds introduced λ2 in the 1974 paper &ldquo;Towards a theory of type structure&rdquo;
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>). The innovation of polymorphic functions just explained
+(<a href="reynolds74_towar">reynolds74_towar</a>). The innovation of polymorphic functions just explained
 is described therein as a solution to &ldquo;the old but neglected problem of
 polymorphic functions&rdquo;, but this problem is only given secondary importance. The
 principle aim of the work is to formalize a theory of representation
@@ -386,7 +339,7 @@ type and redfining its primitive operations in a consistent manner.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+(<a href="reynolds74_towar">reynolds74_towar</a>)
 </p>
 </blockquote>
 
@@ -410,9 +363,9 @@ More on this in the future&#x2026;
 </div>
 </div>
 
-<div id="outline-container-org6971d94" class="outline-2">
-<h2 id="org6971d94">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org6971d94">
+<div id="outline-container-orga145381" class="outline-2">
+<h2 id="orga145381">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orga145381">
 <p>
 Overall, I&rsquo;m pleased with my progress today. I completed my program for today,
 as laid out in <a href="day-8.html">Day 8</a>. This is encouraging because it means I set realistic goals
@@ -422,17 +375,17 @@ expectations around feasible output.
 </p>
 </div>
 
-<div id="outline-container-orgef841df" class="outline-3">
-<h3 id="orgef841df">PLT</h3>
-<div class="outline-text-3" id="text-orgef841df">
+<div id="outline-container-org63a12f4" class="outline-3">
+<h3 id="org63a12f4">PLT</h3>
+<div class="outline-text-3" id="text-org63a12f4">
 </div>
-<div id="outline-container-orgfe5e47b" class="outline-4">
-<h4 id="orgfe5e47b">Themis</h4>
-<div class="outline-text-4" id="text-orgfe5e47b">
+<div id="outline-container-org897b5af" class="outline-4">
+<h4 id="org897b5af">Themis</h4>
+<div class="outline-text-4" id="text-org897b5af">
 </div>
 <ul class="org-ul">
-<li><a id="org2e64439"></a>Parsing<br />
-<div class="outline-text-5" id="text-org2e64439">
+<li><a id="org848782b"></a>Parsing<br />
+<div class="outline-text-5" id="text-org848782b">
 <p>
 I generalized the parser utility functions I was using for the simply typed
 lambda calculus so that a new parser can be produced by providing all the
@@ -441,30 +394,30 @@ front-ends for the simply typed lambda calculus and λ2, respectively:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Simply_typed</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_token</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_lexer</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple.Term</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Simple_parser</span>
-  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Simply_typed</span> = <span class="org-tuareg-font-lock-module">Make</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Tokens</span> = <span class="org-tuareg-font-lock-module">Simple_token</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Lexer</span> = <span class="org-tuareg-font-lock-module">Simple_lexer</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Ast</span> = <span class="org-tuareg-font-lock-module">Simple.Term</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Parser</span> = <span class="org-tuareg-font-lock-module">Simple_parser</span>
+  <span class="org-tuareg-font-lock-governing">end</span>)
 
-<span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">L2</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">Make</span> <span style="color: #f0e68c;">(</span><span style="color: #f5deb3; font-weight: bold;">struct</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Tokens</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_token</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Lexer</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_lexer</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Ast</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2.Term</span>
-    <span style="color: #f5deb3; font-weight: bold;">module</span> <span style="color: #ECBE7B;">Parser</span> <span style="color: #f0e68c;">=</span> <span style="color: #ECBE7B;">L2_parser</span>
-  <span style="color: #f5deb3; font-weight: bold;">end</span><span style="color: #f0e68c;">)</span>
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">L2</span> = <span class="org-tuareg-font-lock-module">Make</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Tokens</span> = <span class="org-tuareg-font-lock-module">L2_token</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Lexer</span> = <span class="org-tuareg-font-lock-module">L2_lexer</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Ast</span> = <span class="org-tuareg-font-lock-module">L2.Term</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Parser</span> = <span class="org-tuareg-font-lock-module">L2_parser</span>
+  <span class="org-tuareg-font-lock-governing">end</span>)
 </pre>
 </div>
 </div>
 </li>
 
-<li><a id="org1763d32"></a>Deriving<br />
-<div class="outline-text-5" id="text-org1763d32">
+<li><a id="org8b0a590"></a>Deriving<br />
+<div class="outline-text-5" id="text-org8b0a590">
 <p>
 I refactored out and functorized the definition of a derivation, including
 concepts like <i>statement</i>, <i>declaration</i>, <i>context</i>, and <i>judgment</i>, as defined
-in <a class='org-ref-reference' href="#rob2014type">rob2014type</a>.
+in <a href="rob2014type">rob2014type</a>.
 </p>
 
 <p>
@@ -473,7 +426,7 @@ for use in an module defining derivation rules with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span style="color: #f5deb3; font-weight: bold;">include</span> <span style="color: #ECBE7B;">Derivation.Make </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Term</span><span style="color: #f0e68c;">)</span><span style="color: #ECBE7B;"> </span><span style="color: #f0e68c;">(</span><span style="color: #ECBE7B;">Type</span><span style="color: #f0e68c;">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Derivation.Make (Term) (Type)</span>
 </pre>
 </div>
 
@@ -486,23 +439,23 @@ calculus.
 </ul>
 </div>
 
-<div id="outline-container-org1909010" class="outline-4">
-<h4 id="org1909010">λ2 / System F</h4>
-<div class="outline-text-4" id="text-org1909010">
+<div id="outline-container-orgc437461" class="outline-4">
+<h4 id="orgc437461">λ2 / System F</h4>
+<div class="outline-text-4" id="text-orgc437461">
 <ul class="org-ul">
 <li>Defined a parser using ocamllex and menhir</li>
 <li>Wrote unit tests for the parser</li>
 <li>Started writing the type checker</li>
-<li>Finished reading Chapter 3 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a>, which presents λ2</li>
+<li>Finished reading Chapter 3 of <a href="rob2014type">rob2014type</a>, which presents λ2</li>
 <li>Spent some time reading Girard and Reynolds, both very fun :)</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1b82e14" class="outline-3">
-<h3 id="org1b82e14">Tooling</h3>
-<div class="outline-text-3" id="text-org1b82e14">
+<div id="outline-container-org48ddf0d" class="outline-3">
+<h3 id="org48ddf0d">Tooling</h3>
+<div class="outline-text-3" id="text-org48ddf0d">
 <p>
 I wrote some OCaml yas snippets, and am planning to expand this into a library
 of usable snippets to expedite OCaml code construction. Today I added
@@ -515,9 +468,9 @@ of usable snippets to expedite OCaml code construction. Today I added
 </div>
 </div>
 
-<div id="outline-container-org553eb12" class="outline-3">
-<h3 id="org553eb12">Category Theory</h3>
-<div class="outline-text-3" id="text-org553eb12">
+<div id="outline-container-orge0737f6" class="outline-3">
+<h3 id="orge0737f6">Category Theory</h3>
+<div class="outline-text-3" id="text-orge0737f6">
 <p>
 The category theory reading group met to agree on a schedule, a text, and a pace
 today. That&rsquo;s great progress :)
@@ -526,30 +479,30 @@ today. That&rsquo;s great progress :)
 </div>
 </div>
 
-<div id="outline-container-org88bef91" class="outline-2">
-<h2 id="org88bef91">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org88bef91">
+<div id="outline-container-org5effa51" class="outline-2">
+<h2 id="org5effa51">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org5effa51">
 </div>
-<div id="outline-container-org1ae7da1" class="outline-3">
-<h3 id="org1ae7da1">PLT</h3>
-<div class="outline-text-3" id="text-org1ae7da1">
+<div id="outline-container-org5fb5507" class="outline-3">
+<h3 id="org5fb5507">PLT</h3>
+<div class="outline-text-3" id="text-org5fb5507">
 <ul class="org-ul">
 <li>Finish implementing λ2</li>
-<li>Read Chapter 4 of <a class='org-ref-reference' href="#rob2014type">rob2014type</a></li>
+<li>Read Chapter 4 of <a href="rob2014type">rob2014type</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0547821" class="outline-3">
-<h3 id="org0547821">Community</h3>
-<div class="outline-text-3" id="text-org0547821">
+<div id="outline-container-orgf024f03" class="outline-3">
+<h3 id="orgf024f03">Community</h3>
+<div class="outline-text-3" id="text-orgf024f03">
 <ul class="org-ul">
 <li>I have some pairing and coffee chats scheduled</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3026558" class="outline-3">
-<h3 id="org3026558">Writing</h3>
-<div class="outline-text-3" id="text-org3026558">
+<div id="outline-container-org1df70e9" class="outline-3">
+<h3 id="org1df70e9">Writing</h3>
+<div class="outline-text-3" id="text-org1df70e9">
 <ul class="org-ul">
 <li>The remarks on System F and its history in Reynolds work in this post has been
 helpful in maturing my own burgeoning understanding, and it helped me catch
@@ -563,30 +516,15 @@ back to its origin in Reynold&rsquo;s work.</li>
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-For reasons explained in <a href="day-6.html#orgc2ef15b">Day 6</a>, and because my studies
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+For reasons explained in <a href="day-6.html#org1b66621">Day 6</a>, and because my studies
 here at the Recurse Center need to be skewed towards the practical, my current
 reading around the topic is orbitting around Reynold&rsquo;s work rather than
 Girard&rsquo;s.
 </p>
 
 <p class="footpara">
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
-<li><a id="rob2014type">[rob2014type]</a> <a name="rob2014type"></a>Rob Nederpelt & Geuvers, Type Theory and Formal Proof: An Introduction, Cambridge University Press (2014).</li>
-<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
-  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
-  author =       John C. Reynolds,
-  booktitle =    Lecture Notes in Computer Science,
-  doi =          10.1007/3-540-06859-7_148,
-  pages =        408-425,
-  publisher =    Springer Berlin Heidelberg,
-  series =       Lecture Notes in Computer Science,
-  title =        Towards a theory of type structure,
-  url =          https://doi.org/10.1007/3-540-06859-7_148,
-  year =         1974,
-</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p></div></div>
 
 
@@ -596,7 +534,7 @@ Girard&rsquo;s.
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-01 Tue 23:38. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

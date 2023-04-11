@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 15: Procedural Generation of Nested Places</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 15: Procedural Generation of Nested Places</h1>
 <blockquote>
 <p>
@@ -270,17 +223,17 @@ adequate account of place, then, requires a rethinking of space also.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#malpas07_place">malpas07_place</a>)
+(<a href="malpas07_place">malpas07_place</a>)
 </p>
 </blockquote>
 
-<div id="outline-container-org7a9714e" class="outline-2">
-<h2 id="org7a9714e">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org7a9714e">
+<div id="outline-container-org756a527" class="outline-2">
+<h2 id="org756a527">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org756a527">
 </div>
-<div id="outline-container-org1441e80" class="outline-3">
-<h3 id="org1441e80">Community</h3>
-<div class="outline-text-3" id="text-org1441e80">
+<div id="outline-container-org638a441" class="outline-3">
+<h3 id="org638a441">Community</h3>
+<div class="outline-text-3" id="text-org638a441">
 <p>
 I was lucky enough to enjoy <b>2</b> wonderful pairing sessions today.
 </p>
@@ -296,23 +249,23 @@ working on this as a fun and instructive side project.</li>
 </div>
 </div>
 
-<div id="outline-container-org310c7da" class="outline-3">
-<h3 id="org310c7da">PLT: 1ML</h3>
-<div class="outline-text-3" id="text-org310c7da">
+<div id="outline-container-orga323a67" class="outline-3">
+<h3 id="orga323a67">PLT: 1ML</h3>
+<div class="outline-text-3" id="text-orga323a67">
 <ul class="org-ul">
 <li>Got the remote repo up to date with changes I&rsquo;ve been making on my fork</li>
 <li>Moved my project planing notes into the fork. You can see them <a href="https://github.com/shonfeder/1ml/blob/interlude/PROJECT.org">here</a>.</li>
 <li>I made some actual progress on the 1ML type checking bug that&rsquo;s currently in
 my cross hairs. I&rsquo;ve been <a href="https://github.com/shonfeder/1ml/blob/interlude/PROJECT.org#next-type-checking-error-reads-access-of-module-values-as-if-it-were-the-module-itself-being-supplied-as-a-value">documenting the bug hunt</a> pretty carefully, so I&rsquo;ll
 be able to reuse the debugging techniques I&rsquo;m discovering along the way later
-with ease. <b>Documentation is Automation!</b><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></li>
+with ease. <b>Documentation is Automation!</b><sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2612df5" class="outline-3">
-<h3 id="org2612df5">Writing</h3>
-<div class="outline-text-3" id="text-org2612df5">
+<div id="outline-container-org8fc483b" class="outline-3">
+<h3 id="org8fc483b">Writing</h3>
+<div class="outline-text-3" id="text-org8fc483b">
 <p>
 I received some very encouraging feedback on this log.
 </p>
@@ -335,7 +288,7 @@ This rambling mess of a log a manifestation of my own attempts to develop a
 writing practice, and to overcome the stifling forces of unrealistic expectation
 and scope creep. So far so good, in that writing is happening. However, I&rsquo;m
 still very far from feeling confident in my abilities to write λ <i>needs</i> .[what
-<i>needs</i> to be written to communicate what <i>needs</i> to be communicated]<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>.
+<i>needs</i> to be written to communicate what <i>needs</i> to be communicated]<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>.
 Perhaps once I feel more confident in my ability to write coherently towards a
 particular purpose, I&rsquo;ll try to summarize how well this method of bootstrapping
 such a habit has worked for me (or hasn&rsquo;t).
@@ -350,13 +303,13 @@ general, offered feedback, or invited the opportunity to give feedback.
 </div>
 </div>
 
-<div id="outline-container-org95ad393" class="outline-2">
-<h2 id="org95ad393">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org95ad393">
+<div id="outline-container-org776da5e" class="outline-2">
+<h2 id="org776da5e">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org776da5e">
 </div>
-<div id="outline-container-orgc30c2dc" class="outline-3">
-<h3 id="orgc30c2dc">PLT</h3>
-<div class="outline-text-3" id="text-orgc30c2dc">
+<div id="outline-container-org418a8d9" class="outline-3">
+<h3 id="org418a8d9">PLT</h3>
+<div class="outline-text-3" id="text-org418a8d9">
 <ul class="org-ul">
 <li>Focused work on the 1ML type checking bug</li>
 <li>Discussing CT prior to Wednesday&rsquo;s meeting</li>
@@ -364,9 +317,9 @@ general, offered feedback, or invited the opportunity to give feedback.
 </div>
 </div>
 
-<div id="outline-container-org1fe75c0" class="outline-3">
-<h3 id="org1fe75c0">Community</h3>
-<div class="outline-text-3" id="text-org1fe75c0">
+<div id="outline-container-org2c08dc3" class="outline-3">
+<h3 id="org2c08dc3">Community</h3>
+<div class="outline-text-3" id="text-org2c08dc3">
 <ul class="org-ul">
 <li>Signed up to give a non-technical talk on critical theory. I&rsquo;ll need to prep for
 this!</li>
@@ -378,11 +331,11 @@ this!</li>
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 <a href="https://cacm.acm.org/magazines/2018/6/228040-documentation-is-automation/abstract">https://cacm.acm.org/magazines/2018/6/228040-documentation-is-automation/abstract</a>
 </p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 A jokey experiment in parameterizing the value of a word without the
 usual boilerplate phrase: &ldquo;for some value of <i>x</i>&rdquo;. Probably a failed experiment.
 </p></div></div>
@@ -394,7 +347,7 @@ usual boilerplate phrase: &ldquo;for some value of <i>x</i>&rdquo;. Probably a f
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-07 Mon 23:24. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

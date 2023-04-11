@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-21 Fri 09:41 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Measure of a Module</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2020 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">The Measure of a Module</h1>
 <p>
 <b>WIP</b>
@@ -297,31 +250,31 @@ A property is a parameter, or a notatoinal device for exhibiting a parameter.
 </blockquote>
 
 
-<div id="outline-container-org9dc3194" class="outline-2">
-<h2 id="org9dc3194"><span class="todo TODO">TODO</span> What is a module?</h2>
-<div class="outline-text-2" id="text-org9dc3194">
+<div id="outline-container-org41b1eab" class="outline-2">
+<h2 id="org41b1eab"><span class="todo TODO">TODO</span> What is a module?</h2>
+<div class="outline-text-2" id="text-org41b1eab">
 </div>
-<div id="outline-container-org45c9e45" class="outline-3">
-<h3 id="org45c9e45"><span class="todo TODO">TODO</span> read</h3>
-<div class="outline-text-3" id="text-org45c9e45">
+<div id="outline-container-org778f40c" class="outline-3">
+<h3 id="org778f40c"><span class="todo TODO">TODO</span> read</h3>
+<div class="outline-text-3" id="text-org778f40c">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> <a href="http://lambda-the-ultimate.org/node/5121#comment-84486">http://lambda-the-ultimate.org/node/5121#comment-84486</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org303a74b" class="outline-3">
-<h3 id="org303a74b">Notes</h3>
-<div class="outline-text-3" id="text-org303a74b">
+<div id="outline-container-org3fbc014" class="outline-3">
+<h3 id="org3fbc014">Notes</h3>
+<div class="outline-text-3" id="text-org3fbc014">
 <p>
 In OCaml, a <code>module</code> is specified by a <code>sig</code> and implemented as a <code>struct</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Some_module</span> <span class="org-tuareg-font-lock-operator">:</span> <span class="org-tuareg-font-lock-governing">sig</span>
-  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value specifications... </span><span class="org-comment-delimiter">*)</span>
-<span class="org-tuareg-font-lock-governing">end</span> <span class="org-tuareg-font-lock-operator">=</span> <span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value bindings... </span><span class="org-comment-delimiter">*)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Some_module</span> : <span class="org-tuareg-font-lock-governing">sig</span>
+  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value specifications...</span><span class="org-comment-delimiter"> *)</span>
+<span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
+  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value bindings...</span><span class="org-comment-delimiter"> *)</span>
 <span class="org-tuareg-font-lock-governing">end</span>
 </pre>
 </div>
@@ -348,7 +301,7 @@ by the Clear specification language of Burstall and Goguen [BUR77].
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a>)
+(<a href="macqueen84_modul_ml">macqueen84_modul_ml</a>)
 </p>
 </blockquote>
 
@@ -364,7 +317,7 @@ descriptions of theories.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>)
+(<a href="Burstall:1977:PTT:1622943.1623045">Burstall:1977:PTT:1622943.1623045</a>)
 </p>
 </blockquote>
 
@@ -378,7 +331,7 @@ The notion of theory is a loose intuitive one in mathematics. There should be
 axioms, rules of inference and theorems, but the language in which they are
 expressed is open to choice. &#x2026; We have chosen an algebraic notion of theory,
 due to Lawvere (1963) [references his 1963 thesis <i>Functorial Semantics Of Algebraic
-Theories</i> (<a class='org-ref-reference' href="#lawvere63_funct_seman_algeb_theor">lawvere63_funct_seman_algeb_theor</a>)] &#x2026;
+Theories</i> (<a href="lawvere63_funct_seman_algeb_theor">lawvere63_funct_seman_algeb_theor</a>)] &#x2026;
 </p>
 
 <p>
@@ -448,12 +401,12 @@ ML modules are composable, nestable, inheritable, and parametric environments.
 </div>
 </div>
 
-<div id="outline-container-org6a3f71d" class="outline-2">
-<h2 id="org6a3f71d"><span class="todo TODO">TODO</span> Modularity and parametricity</h2>
-<div class="outline-text-2" id="text-org6a3f71d">
+<div id="outline-container-orgaf6a105" class="outline-2">
+<h2 id="orgaf6a105"><span class="todo TODO">TODO</span> Modularity and parametricity</h2>
+<div class="outline-text-2" id="text-orgaf6a105">
 <p>
 Reynolds introduced λ2 in the 1974 paper &ldquo;Towards a theory of type structure&rdquo;
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>). In that paper, the innovation explained in the
+(<a href="reynolds74_towar">reynolds74_towar</a>). In that paper, the innovation explained in the
 preceding is described as a solution to &ldquo;the old but neglected problem of
 polymorphic functions&rdquo;, but this problem is only given secondary importance. The
 principle aim of the work is to formalize a theory of representation
@@ -481,7 +434,7 @@ type and redfining its primitive operations in a consistent manner.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+(<a href="reynolds74_towar">reynolds74_towar</a>)
 </p>
 </blockquote>
 
@@ -508,15 +461,15 @@ This representation can be specified by the expression
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#reynolds74_towar">reynolds74_towar</a>)
+(<a href="reynolds74_towar">reynolds74_towar</a>)
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org1e9f8ee" class="outline-2">
-<h2 id="org1e9f8ee"><span class="todo TODO">TODO</span> Relation to Objects</h2>
-<div class="outline-text-2" id="text-org1e9f8ee">
+<div id="outline-container-org0266203" class="outline-2">
+<h2 id="org0266203"><span class="todo TODO">TODO</span> Relation to Objects</h2>
+<div class="outline-text-2" id="text-org0266203">
 <p>
 The notion of a module as a theory (a set or collection of sets with operators
 over them) stands in defiance of joe Armstrong&rsquo;s differentiation
@@ -530,12 +483,12 @@ are reminiscent of OOP. E.G.:
 </p>
 </div>
 
-<div id="outline-container-orgacc6b20" class="outline-3">
-<h3 id="orgacc6b20"><span class="todo TODO">TODO</span> Example</h3>
+<div id="outline-container-orgf2c878f" class="outline-3">
+<h3 id="orgf2c878f"><span class="todo TODO">TODO</span> Example</h3>
 </div>
-<div id="outline-container-org8d5dbaa" class="outline-3">
-<h3 id="org8d5dbaa"><span class="todo TODO">TODO</span> Clarify theory vs. model.</h3>
-<div class="outline-text-3" id="text-org8d5dbaa">
+<div id="outline-container-org7e527c7" class="outline-3">
+<h3 id="org7e527c7"><span class="todo TODO">TODO</span> Clarify theory vs. model.</h3>
+<div class="outline-text-3" id="text-org7e527c7">
 <p>
 However, there is at least one critical formal difference &#x2013; unbounded recursion
 &#x2013; and one critical theoretical difference &#x2013; paramtetric modules let us
@@ -550,35 +503,17 @@ How does modularity relate to SOLID?
 </div>
 </div>
 
-<div id="outline-container-orgaea1e40" class="outline-2">
-<h2 id="orgaea1e40"><span class="todo TODO">TODO</span> Explain modules as an existential type quantification</h2>
-<div class="outline-text-2" id="text-orgaea1e40">
+<div id="outline-container-orgfccdcb0" class="outline-2">
+<h2 id="orgfccdcb0"><span class="todo TODO">TODO</span> Explain modules as an existential type quantification</h2>
+<div class="outline-text-2" id="text-orgfccdcb0">
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="macqueen84_modul_ml">[macqueen84_modul_ml]</a> <a name="macqueen84_modul_ml"></a>David MacQueen, Modules for standard ML, nil, in in: Proceedings of the 1984 ACM Symposium on LISP and functional
-                  programming - LFP '84, edited by (1984)</li>
-<li><a id="Burstall:1977:PTT:1622943.1623045">[Burstall:1977:PTT:1622943.1623045]</a> <a name="Burstall:1977:PTT:1622943.1623045"></a>Burstall & Goguen, Putting Theories Together to Make Specifications, 1045-1058, in in: Proceedings of the 5th International Joint Conference on
-                  Artificial Intelligence - Volume 2, edited by Morgan Kaufmann Publishers Inc. (1977)</li>
-<li><a id="lawvere63_funct_seman_algeb_theor">[lawvere63_funct_seman_algeb_theor]</a> <a name="lawvere63_funct_seman_algeb_theor"></a>Lawvere, Functorial Semantics of Algebraic Theories, <i>Proceedings of the National Academy of Sciences</i>, <b>50(5)</b>, 869-872 (1963). <a href="https://doi.org/10.1073/pnas.50.5.869">link</a>. <a href="http://dx.doi.org/10.1073/pnas.50.5.869">doi</a>.</li>
-<li><a id="reynolds74_towar">[reynolds74_towar]</a> <a name="reynolds74_towar"></a>@inbookreynolds74_towar,
-  DATE_ADDED =   Sat Sep 28 20:57:41 2019,
-  author =       John C. Reynolds,
-  booktitle =    Lecture Notes in Computer Science,
-  doi =          10.1007/3-540-06859-7_148,
-  pages =        408-425,
-  publisher =    Springer Berlin Heidelberg,
-  series =       Lecture Notes in Computer Science,
-  title =        Towards a theory of type structure,
-  url =          https://doi.org/10.1007/3-540-06859-7_148,
-  year =         1974,
-</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orge98424d" class="outline-2">
-<h2 id="orge98424d"><span class="todo TODO">TODO</span> Anti-modular cultural tendencies</h2>
-<div class="outline-text-2" id="text-orge98424d">
+<div id="outline-container-orgc8437ff" class="outline-2">
+<h2 id="orgc8437ff"><span class="todo TODO">TODO</span> Anti-modular cultural tendencies</h2>
+<div class="outline-text-2" id="text-orgc8437ff">
 <p>
 Several years back, I spent a chunk of time filing in missing pieces of the
 <a href="http://www.rosettacode.org/wiki/Rosetta_Code">Rosetta Code</a> project. When I was focused on SML implementations, I discovered a
@@ -625,7 +560,7 @@ Two tiny actions I took to change the culture:
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2020-02-10 Mon 16:08. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

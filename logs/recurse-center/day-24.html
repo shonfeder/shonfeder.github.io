@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 24</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,16 +209,16 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 24</h1>
 
-<div id="outline-container-org7a38aa8" class="outline-2">
-<h2 id="org7a38aa8">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org7a38aa8">
+<div id="outline-container-org2ca8ad4" class="outline-2">
+<h2 id="org2ca8ad4">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org2ca8ad4">
 </div>
-<div id="outline-container-org8b5d1ed" class="outline-3">
-<h3 id="org8b5d1ed">Community</h3>
-<div class="outline-text-3" id="text-org8b5d1ed">
+<div id="outline-container-org678cee6" class="outline-3">
+<h3 id="org678cee6">Community</h3>
+<div class="outline-text-3" id="text-org678cee6">
 <ul class="org-ul">
 <li>I was fortunate enough to be in several excellent chats, ranging over
 philosophy and tech and industry and logic and community. I&rsquo;m feeling very
@@ -278,9 +231,9 @@ libraries? The problem itself? I&rsquo;m not sure yet&#x2026;</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2a6e12d" class="outline-3">
-<h3 id="org2a6e12d">PLT</h3>
-<div class="outline-text-3" id="text-org2a6e12d">
+<div id="outline-container-orgb70bf41" class="outline-3">
+<h3 id="orgb70bf41">PLT</h3>
+<div class="outline-text-3" id="text-orgb70bf41">
 <ul class="org-ul">
 <li>I made good headway on <code>Alg</code>, tho I didn&rsquo;t meet my goal of publishing by
 today. As I noted <a href="day-23.html">yesterday</a>, I have been implementing a quite rigorous,
@@ -290,45 +243,45 @@ take to get the documentation in good shape.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org643bdfd" class="outline-3">
-<h3 id="org643bdfd">Category theory</h3>
-<div class="outline-text-3" id="text-org643bdfd">
+<div id="outline-container-org303bd43" class="outline-3">
+<h3 id="org303bd43">Category theory</h3>
+<div class="outline-text-3" id="text-org303bd43">
 <ul class="org-ul">
 <li>Met with the CT study group today, as noted above. I found the meeting really
 illuminating. Both presenters did a great job.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc5a678f" class="outline-3">
-<h3 id="orgc5a678f">Writing</h3>
+<div id="outline-container-orgdc93996" class="outline-3">
+<h3 id="orgdc93996">Writing</h3>
 </div>
 </div>
 
-<div id="outline-container-org821b558" class="outline-2">
-<h2 id="org821b558">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org821b558">
+<div id="outline-container-org9cc7939" class="outline-2">
+<h2 id="org9cc7939">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org9cc7939">
 </div>
-<div id="outline-container-orge8c12e1" class="outline-3">
-<h3 id="orge8c12e1">PLT</h3>
-<div class="outline-text-3" id="text-orge8c12e1">
+<div id="outline-container-org25d3eb0" class="outline-3">
+<h3 id="org25d3eb0">PLT</h3>
+<div class="outline-text-3" id="text-org25d3eb0">
 <ul class="org-ul">
 <li>Do a big push to complete testing and documentation of <code>Alg</code>.</li>
 <li>As a stretch goal, see if I can open the PR to publish on Opam by EOD.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org89952f1" class="outline-3">
-<h3 id="org89952f1">Community</h3>
-<div class="outline-text-3" id="text-org89952f1">
+<div id="outline-container-orgd1e6c66" class="outline-3">
+<h3 id="orgd1e6c66">Community</h3>
+<div class="outline-text-3" id="text-orgd1e6c66">
 <ul class="org-ul">
 <li>Feelings check-in</li>
 <li>Presentations</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org2ccb8ea" class="outline-3">
-<h3 id="org2ccb8ea">Career</h3>
-<div class="outline-text-3" id="text-org2ccb8ea">
+<div id="outline-container-orged03cf0" class="outline-3">
+<h3 id="orged03cf0">Career</h3>
+<div class="outline-text-3" id="text-orged03cf0">
 <ul class="org-ul">
 <li>Meeting with RC faculty to discuss jobs.</li>
 </ul>
@@ -340,7 +293,7 @@ illuminating. Both presenters did a great job.</li>
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-17 Thu 01:05. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

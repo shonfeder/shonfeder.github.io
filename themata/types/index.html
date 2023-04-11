@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-06-19 Fri 21:46 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Types</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -33,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -42,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -192,56 +191,41 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -257,7 +241,7 @@
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Types</h1>
 <p>
 Notes on types, largely, but not exclusively, from the perspective of
@@ -269,13 +253,13 @@ type theory.
 <li><a href="./problems-posed-by-types.html">Problems Posed by Types</a></li>
 </ul>
 
-<div id="outline-container-org1f89267" class="outline-2">
-<h2 id="org1f89267"><span class="todo TODO">TODO</span> Notes to process</h2>
-<div class="outline-text-2" id="text-org1f89267">
+<div id="outline-container-org903530e" class="outline-2">
+<h2 id="org903530e"><span class="todo TODO">TODO</span> Notes to process</h2>
+<div class="outline-text-2" id="text-org903530e">
 </div>
-<div id="outline-container-org9540ea0" class="outline-3">
-<h3 id="org9540ea0">Structuralist view</h3>
-<div class="outline-text-3" id="text-org9540ea0">
+<div id="outline-container-org9f74cd6" class="outline-3">
+<h3 id="org9f74cd6">Structuralist view</h3>
+<div class="outline-text-3" id="text-org9f74cd6">
 <p>
 Girard advances an existentialist view of logic (and type theory, as a
 sub-discipline):
@@ -291,7 +275,7 @@ sub-discipline):
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#girard11">girard11</a>)
+(<a href="girard11">girard11</a>)
 </p>
 </blockquote>
 
@@ -318,7 +302,7 @@ Polymorphism is the observation that the same λ-term can admit several types.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#girard11">girard11</a>, 135)
+(<a href="girard11">girard11</a>, 135)
 </p>
 </blockquote>
 
@@ -345,14 +329,14 @@ also allowing terms untypeable in other systems into the domain?).
 
 <p>
 There are types correlating interfaces between systems of types. This is what
-Goguen advocates in <a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>.
+Goguen advocates in <a href="Programming91typesas">Programming91typesas</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgb94a2ee" class="outline-3">
-<h3 id="orgb94a2ee">A confusion regarding the Curry-Howard analogy</h3>
-<div class="outline-text-3" id="text-orgb94a2ee">
+<div id="outline-container-orge83cbef" class="outline-3">
+<h3 id="orge83cbef">A confusion regarding the Curry-Howard analogy</h3>
+<div class="outline-text-3" id="text-orge83cbef">
 <p>
 iiuc, \(x : A \simeq x \in A \simeq x \: is \: an \: A\). This level of typing
 judgment is required for a simply typed λ-calculus. But simply typed λ-calculus
@@ -363,9 +347,9 @@ an extension of <a href="https://en.wikipedia.org/wiki/Term_logic">term logic</a
 </div>
 </div>
 
-<div id="outline-container-org4b4c188" class="outline-3">
-<h3 id="org4b4c188">Type Theory as a Normative Discipline</h3>
-<div class="outline-text-3" id="text-org4b4c188">
+<div id="outline-container-orgfd878f6" class="outline-3">
+<h3 id="orgfd878f6">Type Theory as a Normative Discipline</h3>
+<div class="outline-text-3" id="text-orgfd878f6">
 <p>
 This view takes type theory to be merely an extension of the normative theory of
 logic.
@@ -383,20 +367,16 @@ formation of (normalizing) typed terms, and as a constraining one, imposing a
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#abrusci14_transc">abrusci14_transc</a>)
+(<a href="abrusci14_transc">abrusci14_transc</a>)
 </p>
 </blockquote>
 </div>
 
-<div id="outline-container-org594459d" class="outline-4">
-<h4 id="org594459d"><span class="todo TODO">TODO</span> Extract Thread from Twitter</h4>
-<div class="outline-text-4" id="text-org594459d">
+<div id="outline-container-org6eb75e6" class="outline-4">
+<h4 id="org6eb75e6"><span class="todo TODO">TODO</span> Extract Thread from Twitter</h4>
+<div class="outline-text-4" id="text-org6eb75e6">
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="girard11">[girard11]</a> <a name="girard11"></a>Jean-Yves Girard, The blind spot : lectures on logic, European Mathematical Society (2011).</li>
-<li><a id="Programming91typesas">[Programming91typesas]</a> <a name="Programming91typesas"></a>Joseph Goguen Programming & Joseph Goguen, Types as Theories, 357-390, in in: Topology and Category Theory in Computer Science, edited by (1991)</li>
-<li><a id="abrusci14_transc">[abrusci14_transc]</a> <a name="abrusci14_transc"></a>Abrusci & Pistone, On Transcendental Syntax: A Kantial Program For Logic?, <i>Unpublishd</i>,  (2014).</li>
-</ul>
+<a href="../../../../bibliography/references.bib">../../../../bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -407,7 +387,7 @@ formation of (normalizing) typed terms, and as a constraining one, imposing a
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2020-05-30 Sat 16:32. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 10: Checking</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,7 +209,7 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 10: Checking</h1>
 <blockquote>
 <p>
@@ -264,41 +217,41 @@ Type structure is a syntactic discipline for enforcing levels of abstraction.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#ma92_types">ma92_types</a>)
+(<a href="ma92_types">ma92_types</a>)
 </p>
 </blockquote>
 
-<div id="outline-container-orgcdd670f" class="outline-2">
-<h2 id="orgcdd670f">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgcdd670f">
+<div id="outline-container-orgc7d421c" class="outline-2">
+<h2 id="orgc7d421c">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgc7d421c">
 </div>
-<div id="outline-container-org0463f0e" class="outline-3">
-<h3 id="org0463f0e">Community</h3>
-<div class="outline-text-3" id="text-org0463f0e">
+<div id="outline-container-orge559031" class="outline-3">
+<h3 id="orge559031">Community</h3>
+<div class="outline-text-3" id="text-orge559031">
 <ul class="org-ul">
 <li>Two nice chats with recursers. I was inspired to revisit systems thinking and
 language oriented design.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd1e24ec" class="outline-3">
-<h3 id="orgd1e24ec">PLT</h3>
-<div class="outline-text-3" id="text-orgd1e24ec">
+<div id="outline-container-orgb41ab15" class="outline-3">
+<h3 id="orgb41ab15">PLT</h3>
+<div class="outline-text-3" id="text-orgb41ab15">
 <ul class="org-ul">
 <li>Implemented the type-checker for themis&rsquo; λ2. This took most of the day. During
 the process I also realized an essential shortcoming in the checker for the
 simply typed lambda-calculus, so I&rsquo;m reaping the benefits of iteration.</li>
 <li>Added (not very) pretty printing for the derivations constructed during type
 checking.</li>
-<li>Read about half of Chapter 4 in <a class='org-ref-reference' href="#rob2014type">rob2014type</a>. I will finish tomorrow, and
+<li>Read about half of Chapter 4 in <a href="rob2014type">rob2014type</a>. I will finish tomorrow, and
 have all the theoretical underpinnings needed to start tackling 1ML in earnest
 by Thursday.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4d117f2" class="outline-3">
-<h3 id="org4d117f2">Tooling</h3>
-<div class="outline-text-3" id="text-org4d117f2">
+<div id="outline-container-org7b5f052" class="outline-3">
+<h3 id="org7b5f052">Tooling</h3>
+<div class="outline-text-3" id="text-org7b5f052">
 <ul class="org-ul">
 <li>Added more snippets for tuareg-mode, and began poking into the tuareg-mode and
 merlin code. This will be essential from some of the tooling projects I have
@@ -308,13 +261,13 @@ planned.</li>
 </div>
 </div>
 
-<div id="outline-container-orgd31eb6e" class="outline-2">
-<h2 id="orgd31eb6e">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-orgd31eb6e">
+<div id="outline-container-orgbd35d2f" class="outline-2">
+<h2 id="orgbd35d2f">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgbd35d2f">
 </div>
-<div id="outline-container-orgc8d35ee" class="outline-3">
-<h3 id="orgc8d35ee">PLT</h3>
-<div class="outline-text-3" id="text-orgc8d35ee">
+<div id="outline-container-org7da6001" class="outline-3">
+<h3 id="org7da6001">PLT</h3>
+<div class="outline-text-3" id="text-org7da6001">
 <ul class="org-ul">
 <li>Final touches on λ2</li>
 <li>Dig into 1ML in earnest (I&rsquo;ll be skipping implementation of System Fω, I get
@@ -322,18 +275,18 @@ the point now, and I can exercise my understanding while hacking on 1ML).</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0b5350b" class="outline-3">
-<h3 id="org0b5350b">Community</h3>
-<div class="outline-text-3" id="text-org0b5350b">
+<div id="outline-container-org4060fe7" class="outline-3">
+<h3 id="org4060fe7">Community</h3>
+<div class="outline-text-3" id="text-org4060fe7">
 <ul class="org-ul">
 <li>I have a coffee-chat and a pairing scheduled</li>
 <li>I&rsquo;ll be joining the feelings check-in and attending the presentations</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd6f2021" class="outline-3">
-<h3 id="orgd6f2021">Writing</h3>
-<div class="outline-text-3" id="text-orgd6f2021">
+<div id="outline-container-orga9ad5ac" class="outline-3">
+<h3 id="orga9ad5ac">Writing</h3>
+<div class="outline-text-3" id="text-orga9ad5ac">
 <ul class="org-ul">
 <li>I&rsquo;d like to contribute some clarifying additions to the <a href="https://en.wikipedia.org/wiki/Lambda_cube">wikipedia page on the
 lambda cube</a>. There are requests for clarification on the talk that still
@@ -342,21 +295,7 @@ internalize the lessons.</li>
 </ul>
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="ma92_types">[ma92_types]</a> <a name="ma92_types"></a>@inbookma92_types,
-  DATE_ADDED =   Wed Oct 2 23:12:12 2019,
-  author =       QingMing Ma and John C. Reynolds,
-  booktitle =    Lecture Notes in Computer Science,
-  doi =          10.1007/3-540-55511-0_1,
-  pages =        1-40,
-  publisher =    Springer Berlin Heidelberg,
-  series =       Lecture Notes in Computer Science,
-  title =        Types, abstraction, and parametric polymorphism, part 2,
-  url =          https://doi.org/10.1007/3-540-55511-0_1,
-  year =         1992,
-</li>
-<li><a id="rob2014type">[rob2014type]</a> <a name="rob2014type"></a>Rob Nederpelt & Geuvers, Type Theory and Formal Proof: An Introduction, Cambridge University Press (2014).</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -366,7 +305,7 @@ internalize the lessons.</li>
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-02 Wed 23:28. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

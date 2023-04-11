@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-15 Wed 10:53 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What Are Types?</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,41 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
-     }
-    /*]]>*///-->
-// @license-end
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,36 +241,36 @@
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">What Are Types?</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd66208">Computational Type Theory</a></li>
-<li><a href="#orgdf52214">A Short Genealogy of Types</a>
+<li><a href="#org3983522">Computational Type Theory</a></li>
+<li><a href="#orgc4eb023">A Short Genealogy of Types</a>
 <ul>
-<li><a href="#org35770ae">Prehistory of the Theories of Types</a></li>
-<li><a href="#org0336982">Dawn of the Theories of Types</a></li>
+<li><a href="#orga181bed">Prehistory of the Theories of Types</a></li>
+<li><a href="#orge3f8d3d">Dawn of the Theories of Types</a></li>
 </ul>
 </li>
-<li><a href="#org8b8f04d">Metaphysical Foundations of the Computational Theory of Types</a>
+<li><a href="#org75890f2">Metaphysical Foundations of the Computational Theory of Types</a>
 <ul>
-<li><a href="#org0fcb57f"><span class="todo TODO">TODO</span> Equality</a></li>
-<li><a href="#org154d8d0"><span class="todo TODO">TODO</span> Belonging together</a></li>
+<li><a href="#org9a81fe0"><span class="todo TODO">TODO</span> Equality</a></li>
+<li><a href="#org969652a"><span class="todo TODO">TODO</span> Belonging together</a></li>
 </ul>
 </li>
-<li><a href="#org32de54d">Types as Theories</a></li>
+<li><a href="#org2a6e1d6">Types as Theories</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfd66208" class="outline-2">
-<h2 id="orgfd66208">Computational Type Theory</h2>
-<div class="outline-text-2" id="text-orgfd66208">
+<div id="outline-container-org3983522" class="outline-2">
+<h2 id="org3983522">Computational Type Theory</h2>
+<div class="outline-text-2" id="text-org3983522">
 <p>
 Robert Constable, in his article &ldquo;Computational Type Theory&rdquo;
-(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>):
+(<a href="constable09_comput_type_theor">constable09_comput_type_theor</a>):
 </p>
 
 <blockquote>
@@ -322,7 +307,7 @@ explain terms and how to compute with them.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>)
+(<a href="constable09_comput_type_theor">constable09_comput_type_theor</a>)
 </p>
 </blockquote>
 
@@ -332,7 +317,7 @@ telling us how to compute certain elements \(t_1, ..., t_n \in T\) from other
 elements \(t'_1, ..., t'_n \in T\), via the relation \(\to\), such that \(t' \to t\)
 reads &ldquo;\(t'\) reduces to \(t\)&rdquo;. We say a term in \(T\) is &ldquo;irreducible&rdquo; if it is only
 reducible to itself: \(t \to t\). Such a term is called &ldquo;canonical&rdquo;. That this
-sets up a (partial) ordering over a set of <i>signs</i>.<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+sets up a (partial) ordering over a set of <i>signs</i>.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
 </p>
 
 <p>
@@ -359,7 +344,7 @@ creates abstract objects out of terms.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>)
+(<a href="constable09_comput_type_theor">constable09_comput_type_theor</a>)
 </p>
 </blockquote>
 
@@ -373,18 +358,18 @@ together) and <i>equalization</i> (of terms that are taken to be the same).
 </div>
 </div>
 
-<div id="outline-container-orgdf52214" class="outline-2">
-<h2 id="orgdf52214">A Short Genealogy of Types</h2>
-<div class="outline-text-2" id="text-orgdf52214">
+<div id="outline-container-orgc4eb023" class="outline-2">
+<h2 id="orgc4eb023">A Short Genealogy of Types</h2>
+<div class="outline-text-2" id="text-orgc4eb023">
 <p>
 The roots of type theories, computational or otherwise, extend back through the
-history of philosophy, at least to Aristotle (<a class='org-ref-reference' href="#constable09_comput_type_theor">constable09_comput_type_theor</a>).
+history of philosophy, at least to Aristotle (<a href="constable09_comput_type_theor">constable09_comput_type_theor</a>).
 </p>
 </div>
 
-<div id="outline-container-org35770ae" class="outline-3">
-<h3 id="org35770ae">Prehistory of the Theories of Types</h3>
-<div class="outline-text-3" id="text-org35770ae">
+<div id="outline-container-orga181bed" class="outline-3">
+<h3 id="orga181bed">Prehistory of the Theories of Types</h3>
+<div class="outline-text-3" id="text-orga181bed">
 <blockquote>
 <p>
 In all subsumptions of an object under a concept the representations of the
@@ -395,15 +380,15 @@ contained under a concept&rdquo;.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#kant98_critiq">kant98_critiq</a>, A137/B176)
+(<a href="kant98_critiq">kant98_critiq</a>, A137/B176)
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org0336982" class="outline-3">
-<h3 id="org0336982">Dawn of the Theories of Types</h3>
-<div class="outline-text-3" id="text-org0336982">
+<div id="outline-container-orge3f8d3d" class="outline-3">
+<h3 id="orge3f8d3d">Dawn of the Theories of Types</h3>
+<div class="outline-text-3" id="text-orge3f8d3d">
 <p>
 Martin-Löf&rsquo;s, in his &ldquo;An intuitionistic theory of types&rdquo;, explicitly traces his
 concept of type back to Russel:
@@ -421,7 +406,7 @@ function will indeed have a type as its domain.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#martin1998intuitionistic">martin1998intuitionistic</a>)
+(<a href="martin1998intuitionistic">martin1998intuitionistic</a>)
 </p>
 </blockquote>
 
@@ -449,14 +434,14 @@ Hence we can speak of all of a collection when and only when the collection
 forms part or the whole of the range of significance of some propositional
 function, the range of significance being defined as the collection of those
 arguments for which the function in question is significant, i. e., has a value.
-(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+(<a href="10.2307/2369948">10.2307/2369948</a>)
 </p>
 </blockquote>
 
 <p>
 Hence, &ldquo;a type is defined as the range of significance of a propositional
 function, i.e., as the collection of arguments for which the said function has
-values&rdquo; (<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>).
+values&rdquo; (<a href="10.2307/2369948">10.2307/2369948</a>).
 </p>
 
 <p>
@@ -477,7 +462,7 @@ different ranges of significance.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#10.2307/2369948">10.2307/2369948</a>)
+(<a href="10.2307/2369948">10.2307/2369948</a>)
 </p>
 </blockquote>
 
@@ -499,16 +484,16 @@ And, once we&rsquo;ve determined that belonging together, how do we enforce this
 </div>
 </div>
 
-<div id="outline-container-org8b8f04d" class="outline-2">
-<h2 id="org8b8f04d">Metaphysical Foundations of the Computational Theory of Types</h2>
-<div class="outline-text-2" id="text-org8b8f04d">
+<div id="outline-container-org75890f2" class="outline-2">
+<h2 id="org75890f2">Metaphysical Foundations of the Computational Theory of Types</h2>
+<div class="outline-text-2" id="text-org75890f2">
 </div>
-<div id="outline-container-org0fcb57f" class="outline-3">
-<h3 id="org0fcb57f"><span class="todo TODO">TODO</span> Equality</h3>
+<div id="outline-container-org9a81fe0" class="outline-3">
+<h3 id="org9a81fe0"><span class="todo TODO">TODO</span> Equality</h3>
 </div>
-<div id="outline-container-org154d8d0" class="outline-3">
-<h3 id="org154d8d0"><span class="todo TODO">TODO</span> Belonging together</h3>
-<div class="outline-text-3" id="text-org154d8d0">
+<div id="outline-container-org969652a" class="outline-3">
+<h3 id="org969652a"><span class="todo TODO">TODO</span> Belonging together</h3>
+<div class="outline-text-3" id="text-org969652a">
 <p>
 The types of the typed λ-calculi are <i>marks</i>, or <i>indexes</i>, used to enforce a
 sense of appropriateness that follows from presumptions of <i>belonging together</i>.
@@ -533,9 +518,9 @@ character; outline, sketch,&rdquo; from root of <i>typtein</i> &ldquo;to strike,
 </blockquote>
 </div>
 
-<div id="outline-container-orgabf8cdd" class="outline-4">
-<h4 id="orgabf8cdd">Justification:</h4>
-<div class="outline-text-4" id="text-orgabf8cdd">
+<div id="outline-container-orgb8e379b" class="outline-4">
+<h4 id="orgb8e379b">Justification:</h4>
+<div class="outline-text-4" id="text-orgb8e379b">
 <p>
 What justifies such enforcement?
 </p>
@@ -543,9 +528,9 @@ What justifies such enforcement?
 </div>
 </div>
 </div>
-<div id="outline-container-org32de54d" class="outline-2">
-<h2 id="org32de54d">Types as Theories</h2>
-<div class="outline-text-2" id="text-org32de54d">
+<div id="outline-container-org2a6e1d6" class="outline-2">
+<h2 id="org2a6e1d6">Types as Theories</h2>
+<div class="outline-text-2" id="text-org2a6e1d6">
 <p>
 In <i>Types as Theories</i>, Goguen denies that &ldquo;type theory&rdquo; advances a general
 theory of types, in arguing instead that it presents a theory based on a
@@ -565,7 +550,7 @@ intuitionistic logic which provides one specific notion of type).
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>)
+(<a href="Programming91typesas">Programming91typesas</a>)
 </p>
 </blockquote>
 
@@ -583,7 +568,7 @@ with some given operations.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#Programming91typesas">Programming91typesas</a>)
+(<a href="Programming91typesas">Programming91typesas</a>)
 </p>
 </blockquote>
 
@@ -605,7 +590,7 @@ symbol&rsquo;.
 </p>
 
 <p>
-<a class='org-ref-reference' href="#m.69_gerhar_gentz_german">m.69_gerhar_gentz_german</a>
+<a href="m.69_gerhar_gentz_german">m.69_gerhar_gentz_german</a>
 </p>
 </blockquote>
 
@@ -628,7 +613,7 @@ derivations of the lambda calculus).
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 We sketch out the barest form of a term-rewriting system here,
 to sidestep the complications introduced by the usual pratice of using the
 lambda calculus in particular. There&rsquo;s good reason to favor <a href="https://en.wikipedia.org/wiki/Cartesian_closed_category">typed lambda calculi</a>
@@ -645,7 +630,7 @@ aiming for here.
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2020-07-15 Wed 10:52. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.4).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

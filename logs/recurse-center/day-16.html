@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 16: The Command to Control Praxis</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,13 +209,13 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 16: The Command to Control Praxis</h1>
 <blockquote>
 <p>
 &ldquo;&#x2026; In Galileo&rsquo;s mathematization of nature, <i>nature itself</i> is idealized on the
 model of the new mathematics. In modern terms, it becomes a mathematical
-manifold&rdquo; [Horkheimer and Adorno are here quoting from <a class='org-ref-reference' href="#husserl70_europ">husserl70_europ</a>].
+manifold&rdquo; [Horkheimer and Adorno are here quoting from <a href="husserl70_europ">husserl70_europ</a>].
 Thought is reified as an autonomous, automatic process, aping the machine it has
 itself produced, so that it can finally be replaced by the machine.
 Enlightenment pushed aside the classical demand to &ldquo;think thinking&rdquo; &#x2026; because
@@ -273,7 +226,7 @@ made thought into a thing &#x2013; a tool, to use its own term.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, 19)
+(<a href="horkheimer02_dialec">horkheimer02_dialec</a>, 19)
 </p>
 </blockquote>
 
@@ -307,13 +260,13 @@ writing. Perhaps I&rsquo;ll have an idea of how to improve or adjust this tomorr
 Here are notes I collected in preparation for the aborted presentation:
 </p>
 
-<div id="outline-container-org57968d4" class="outline-2">
-<h2 id="org57968d4">Notes around critical theory</h2>
-<div class="outline-text-2" id="text-org57968d4">
+<div id="outline-container-org2885f47" class="outline-2">
+<h2 id="org2885f47">Notes around critical theory</h2>
+<div class="outline-text-2" id="text-org2885f47">
 </div>
-<div id="outline-container-org583b1b5" class="outline-3">
-<h3 id="org583b1b5">Motive</h3>
-<div class="outline-text-3" id="text-org583b1b5">
+<div id="outline-container-orgbe0caf0" class="outline-3">
+<h3 id="orgbe0caf0">Motive</h3>
+<div class="outline-text-3" id="text-orgbe0caf0">
 <p>
 We are contributing to a massive, incredibly complex machine. We have virtually
 no idea of how our contributions will be used or what they will lead to. This is
@@ -322,13 +275,13 @@ dangerous. Probably more dangerous than we can comprehend.
 </div>
 </div>
 
-<div id="outline-container-org6c542cc" class="outline-3">
-<h3 id="org6c542cc">Early modern figures important for the foundations of critical theory</h3>
-<div class="outline-text-3" id="text-org6c542cc">
+<div id="outline-container-org38da4e9" class="outline-3">
+<h3 id="org38da4e9">Early modern figures important for the foundations of critical theory</h3>
+<div class="outline-text-3" id="text-org38da4e9">
 </div>
-<div id="outline-container-org236b25f" class="outline-4">
-<h4 id="org236b25f">Spinoza</h4>
-<div class="outline-text-4" id="text-org236b25f">
+<div id="outline-container-orga45b56c" class="outline-4">
+<h4 id="orga45b56c">Spinoza</h4>
+<div class="outline-text-4" id="text-orga45b56c">
 <ul class="org-ul">
 <li>Committed to egalitarian and emancipatory politics.</li>
 <li>Advanced an outlook that unified theory and praxis.</li>
@@ -395,9 +348,9 @@ avenue for deducing reason from causation is all a bit troubling.
 </p>
 </div>
 </div>
-<div id="outline-container-org99a318c" class="outline-4">
-<h4 id="org99a318c">Kant</h4>
-<div class="outline-text-4" id="text-org99a318c">
+<div id="outline-container-org2fa6218" class="outline-4">
+<h4 id="org2fa6218">Kant</h4>
+<div class="outline-text-4" id="text-org2fa6218">
 <ul class="org-ul">
 <li>Articulated the key methodological notions of <b>critical philosophy</b>.</li>
 <li>Innovated dialectical critique as a way of diagnosing untenable ideas.</li>
@@ -405,9 +358,9 @@ avenue for deducing reason from causation is all a bit troubling.
 </ul>
 </div>
 </div>
-<div id="outline-container-orge6f19f3" class="outline-4">
-<h4 id="orge6f19f3">Hegel</h4>
-<div class="outline-text-4" id="text-orge6f19f3">
+<div id="outline-container-orgaa6df3a" class="outline-4">
+<h4 id="orgaa6df3a">Hegel</h4>
+<div class="outline-text-4" id="text-orgaa6df3a">
 <ul class="org-ul">
 <li>Radicalized critical philosophy by emphasizing the genetic and historical aspects of reason.</li>
 <li>Advanced dialectic reason as a way of generating new ideas</li>
@@ -418,33 +371,33 @@ avenue for deducing reason from causation is all a bit troubling.
 </div>
 
 
-<div id="outline-container-orga038345" class="outline-3">
-<h3 id="orga038345">Modern Figures</h3>
-<div class="outline-text-3" id="text-orga038345">
+<div id="outline-container-orga3e5f03" class="outline-3">
+<h3 id="orga3e5f03">Modern Figures</h3>
+<div class="outline-text-3" id="text-orga3e5f03">
 </div>
-<div id="outline-container-org17c48cb" class="outline-4">
-<h4 id="org17c48cb">Weber</h4>
+<div id="outline-container-org46e2653" class="outline-4">
+<h4 id="org46e2653">Weber</h4>
 </div>
-<div id="outline-container-org4d50eab" class="outline-4">
-<h4 id="org4d50eab">Marx</h4>
+<div id="outline-container-org3715a72" class="outline-4">
+<h4 id="org3715a72">Marx</h4>
 </div>
-<div id="outline-container-orgf748a22" class="outline-4">
-<h4 id="orgf748a22">Nietzsche</h4>
+<div id="outline-container-org13e2fc8" class="outline-4">
+<h4 id="org13e2fc8">Nietzsche</h4>
 </div>
-<div id="outline-container-org3fd6a95" class="outline-4">
-<h4 id="org3fd6a95">Freud</h4>
+<div id="outline-container-orgefb13aa" class="outline-4">
+<h4 id="orgefb13aa">Freud</h4>
 </div>
-<div id="outline-container-org3e97ab7" class="outline-4">
-<h4 id="org3e97ab7">Lukacs</h4>
+<div id="outline-container-org262295e" class="outline-4">
+<h4 id="org262295e">Lukacs</h4>
 </div>
-<div id="outline-container-orgd085397" class="outline-4">
-<h4 id="orgd085397">Frankfurt School</h4>
+<div id="outline-container-org97e3306" class="outline-4">
+<h4 id="org97e3306">Frankfurt School</h4>
 </div>
 </div>
 
-<div id="outline-container-org0490f56" class="outline-3">
-<h3 id="org0490f56">Contemporary figures and traditions</h3>
-<div class="outline-text-3" id="text-org0490f56">
+<div id="outline-container-orgf66045b" class="outline-3">
+<h3 id="orgf66045b">Contemporary figures and traditions</h3>
+<div class="outline-text-3" id="text-orgf66045b">
 <p>
 The Frankfurt School championed the term &ldquo;Critical Theory&rdquo;, but what they
 practiced and refined and reworked is only the legacy of a critical, reflective
@@ -455,18 +408,18 @@ that are practicing critical theory. Some examples:
 </p>
 </div>
 
-<div id="outline-container-org51c83ad" class="outline-4">
-<h4 id="org51c83ad"><a href="https://www.google.com/search?client=firefox-b-1-d&amp;q=angela+davis">Angela Davis</a></h4>
-<div class="outline-text-4" id="text-org51c83ad">
+<div id="outline-container-orgfd3afb0" class="outline-4">
+<h4 id="orgfd3afb0"><a href="https://www.google.com/search?client=firefox-b-1-d&amp;q=angela+davis">Angela Davis</a></h4>
+<div class="outline-text-4" id="text-orgfd3afb0">
 <p>
 Student of Marcuse in the US and studied with Adorno in Germany.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org889f869" class="outline-4">
-<h4 id="org889f869">Critical Pedagogy</h4>
-<div class="outline-text-4" id="text-org889f869">
+<div id="outline-container-orgc55dde8" class="outline-4">
+<h4 id="orgc55dde8">Critical Pedagogy</h4>
+<div class="outline-text-4" id="text-orgc55dde8">
 <blockquote>
 <p>
 Critical pedagogy is a philosophy of education and social movement that has
@@ -480,22 +433,23 @@ the field of education and the study of culture.
 </div>
 </div>
 
-<div id="outline-container-org88f1251" class="outline-4">
-<h4 id="org88f1251">Critical race theory</h4>
-<div class="outline-text-4" id="text-org88f1251">
-<pre class="example">
-uses critical theory to examine society and culture as they relate to
+<div id="outline-container-org394f5b3" class="outline-4">
+<h4 id="org394f5b3">Critical race theory</h4>
+<div class="outline-text-4" id="text-org394f5b3">
+<div class="org-src-container">
+<pre class="src src-nil">uses critical theory to examine society and culture as they relate to
 categorizations of race, law, and power
 </pre>
+</div>
 <p>
 <a href="https://en.wikipedia.org/wiki/Critical_race_theory">Wikipedia</a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd0bf69a" class="outline-4">
-<h4 id="orgd0bf69a"><a href="https://www.plutobooks.com/blog/social-reproduction-theory-ferguson/">Social Reproduction Theory</a></h4>
-<div class="outline-text-4" id="text-orgd0bf69a">
+<div id="outline-container-org8f97469" class="outline-4">
+<h4 id="org8f97469"><a href="https://www.plutobooks.com/blog/social-reproduction-theory-ferguson/">Social Reproduction Theory</a></h4>
+<div class="outline-text-4" id="text-org8f97469">
 <blockquote>
 <p>
 Key to social reproduction theory (SRT) is an understanding of the ‘production
@@ -507,9 +461,9 @@ capitalistically.
 </div>
 </div>
 
-<div id="outline-container-orgf6a0422" class="outline-4">
-<h4 id="orgf6a0422"><a href="https://en.wikipedia.org/wiki/Queer_theory">Queer Theory</a></h4>
-<div class="outline-text-4" id="text-orgf6a0422">
+<div id="outline-container-org81f8716" class="outline-4">
+<h4 id="org81f8716"><a href="https://en.wikipedia.org/wiki/Queer_theory">Queer Theory</a></h4>
+<div class="outline-text-4" id="text-org81f8716">
 <blockquote>
 <p>
 a field of critical theory that emerged in the early 1990s out of the fields of
@@ -524,16 +478,16 @@ nature of sexual acts and identities.
 </div>
 </div>
 
-<div id="outline-container-orge9263f8" class="outline-3">
-<h3 id="orge9263f8">Notes from <i>The Dialectic of Enlightenment</i></h3>
-<div class="outline-text-3" id="text-orge9263f8">
+<div id="outline-container-orga23958c" class="outline-3">
+<h3 id="orga23958c">Notes from <i>The Dialectic of Enlightenment</i></h3>
+<div class="outline-text-3" id="text-orga23958c">
 <blockquote>
 <p>
 The dialectic of enlightenment is culminating in objective madness.
 </p>
 
 <p>
-<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>
+<a href="horkheimer02_dialec">horkheimer02_dialec</a>
 </p>
 </blockquote>
 
@@ -554,7 +508,7 @@ at once.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
+(<a href="horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
 </p>
 </blockquote>
 
@@ -567,24 +521,24 @@ hopes.
 </p>
 
 <p>
-(<a class='org-ref-reference' href="#horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
+(<a href="horkheimer02_dialec">horkheimer02_dialec</a>, xvii)
 </p>
 </blockquote>
 </div>
 </div>
 
-<div id="outline-container-org6f18c59" class="outline-3">
-<h3 id="org6f18c59">Traditional and Critical Theory</h3>
-<div class="outline-text-3" id="text-org6f18c59">
+<div id="outline-container-org54a2ba0" class="outline-3">
+<h3 id="org54a2ba0">Traditional and Critical Theory</h3>
+<div class="outline-text-3" id="text-org54a2ba0">
 <p>
 My aim was to elucidate this point, but I didn&rsquo;t make it&#x2026;.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcc14292" class="outline-3">
-<h3 id="orgcc14292">Children are the most oppressed humans</h3>
-<div class="outline-text-3" id="text-orgcc14292">
+<div id="outline-container-orgef22ad1" class="outline-3">
+<h3 id="orgef22ad1">Children are the most oppressed humans</h3>
+<div class="outline-text-3" id="text-orgef22ad1">
 <p>
 In general, there is no accepted or reliable technique for parenting which does
 not make recourse to oppressive and authoritarian measures. We cannot help
@@ -615,9 +569,9 @@ of children is dismissed and disregarded.
 </div>
 </div>
 
-<div id="outline-container-org46d115a" class="outline-3">
-<h3 id="org46d115a">Exhaustion</h3>
-<div class="outline-text-3" id="text-org46d115a">
+<div id="outline-container-org3f8ff14" class="outline-3">
+<h3 id="org3f8ff14">Exhaustion</h3>
+<div class="outline-text-3" id="text-org3f8ff14">
 <blockquote>
 <p>
 I imagine that I am nostalgic today because so few people seem to believe that
@@ -630,10 +584,7 @@ anybody has any revolutionary potential left.
 </blockquote>
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="husserl70_europ">[husserl70_europ]</a> <a name="husserl70_europ"></a>Husserl, The crisis of European sciences and transcendental  phenomenology : an introduction to phenomenological  philosophy, Northwestern University Press (1970).</li>
-<li><a id="horkheimer02_dialec">[horkheimer02_dialec]</a> <a name="horkheimer02_dialec"></a>Horkheimer, Dialectic of enlightenment : philosophical fragments, Stanford University Press (2002).</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -643,7 +594,7 @@ anybody has any revolutionary potential left.
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-10-08 Tue 20:18. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>

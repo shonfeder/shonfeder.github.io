@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-12-21 Sat 17:44 -->
+<!-- 2023-04-11 Tue 06:10 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 2: Disorientation</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="um" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -32,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,56 +191,9 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
 <link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -256,12 +209,12 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Day 2: Disorientation</h1>
 
-<div id="outline-container-orga8beb45" class="outline-2">
-<h2 id="orga8beb45">Vibe</h2>
-<div class="outline-text-2" id="text-orga8beb45">
+<div id="outline-container-org5b5d2cd" class="outline-2">
+<h2 id="org5b5d2cd">Vibe</h2>
+<div class="outline-text-2" id="text-org5b5d2cd">
 <p>
 Low and fragile feeling, but people were kind and engaging, learning happend and
 work got done.
@@ -269,13 +222,13 @@ work got done.
 </div>
 </div>
 
-<div id="outline-container-org9e65756" class="outline-2">
-<h2 id="org9e65756">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org9e65756">
+<div id="outline-container-orgcaacd69" class="outline-2">
+<h2 id="orgcaacd69">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgcaacd69">
 </div>
-<div id="outline-container-orga1e1176" class="outline-3">
-<h3 id="orga1e1176">Community</h3>
-<div class="outline-text-3" id="text-orga1e1176">
+<div id="outline-container-orgb80d249" class="outline-3">
+<h3 id="orgb80d249">Community</h3>
+<div class="outline-text-3" id="text-orgb80d249">
 <ul class="org-ul">
 <li>Had a lovely walk and chat facilitated by the chat-bot.</li>
 <li>Pairing workshop: I learned the value of frequent alternation between roles
@@ -289,18 +242,18 @@ some OCaml pairing tomorrow.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9bedd06" class="outline-3">
-<h3 id="org9bedd06">Tooling : Emacs × org-mode × blog</h3>
-<div class="outline-text-3" id="text-org9bedd06">
+<div id="outline-container-orgf87607f" class="outline-3">
+<h3 id="orgf87607f">Tooling : Emacs × org-mode × blog</h3>
+<div class="outline-text-3" id="text-orgf87607f">
 <ul class="org-ul">
 <li>Fixed a bug in the org-publish configuration preventing posts from being
 indexed properly.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org57ebecd" class="outline-3">
-<h3 id="org57ebecd">PLT: 1ML × Type Theory</h3>
-<div class="outline-text-3" id="text-org57ebecd">
+<div id="outline-container-orgdbf7c6c" class="outline-3">
+<h3 id="orgdbf7c6c">PLT: 1ML × Type Theory</h3>
+<div class="outline-text-3" id="text-orgdbf7c6c">
 <p>
 Less progress here than hoped. Between my exhaustion and social engagements, I
 didn&rsquo;t have a heap of energy or time, but I still managed to move things
@@ -320,16 +273,16 @@ I still have a lot to sort out.
 </div>
 </div>
 
-<div id="outline-container-org3bb24a9" class="outline-2">
-<h2 id="org3bb24a9">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org3bb24a9">
+<div id="outline-container-orgfc1c522" class="outline-2">
+<h2 id="orgfc1c522">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgfc1c522">
 </div>
-<div id="outline-container-org90791eb" class="outline-3">
-<h3 id="org90791eb">PLT</h3>
-<div class="outline-text-3" id="text-org90791eb">
+<div id="outline-container-orgb4a594d" class="outline-3">
+<h3 id="orgb4a594d">PLT</h3>
+<div class="outline-text-3" id="text-orgb4a594d">
 <ul class="org-ul">
-<li>Finish reading <a class='org-ref-reference' href="#macqueen84_modul_ml">macqueen84_modul_ml</a></li>
-<li>Begin reading <a class='org-ref-reference' href="#Rossberg_2010">Rossberg_2010</a></li>
+<li>Finish reading <a href="macqueen84_modul_ml">macqueen84_modul_ml</a></li>
+<li>Begin reading <a href="Rossberg_2010">Rossberg_2010</a></li>
 <li>Solidify understanding of distinction between small and large types in 1ML,
 and how to use <code>wrap</code> and <code>unwrap</code> appropriately.</li>
 <li>Code up some basic data structures, starting with a stack.</li>
@@ -338,9 +291,9 @@ OCaml</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8652f5d" class="outline-3">
-<h3 id="org8652f5d">Community</h3>
-<div class="outline-text-3" id="text-org8652f5d">
+<div id="outline-container-orgc0ae9d1" class="outline-3">
+<h3 id="orgc0ae9d1">Community</h3>
+<div class="outline-text-3" id="text-orgc0ae9d1">
 <ul class="org-ul">
 <li>OCaml pairing</li>
 <li>OCaml chatting</li>
@@ -348,20 +301,15 @@ OCaml</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org75396ff" class="outline-3">
-<h3 id="org75396ff">Writing</h3>
-<div class="outline-text-3" id="text-org75396ff">
+<div id="outline-container-org1343eac" class="outline-3">
+<h3 id="org1343eac">Writing</h3>
+<div class="outline-text-3" id="text-org1343eac">
 <ul class="org-ul">
 <li>Short write up on the basics of defining 1ML modules.</li>
 </ul>
 
 <p>
-<h1 class='org-ref-bib-h1'>Bibliography</h1>
-<ul class='org-ref-bib'><li><a id="macqueen84_modul_ml">[macqueen84_modul_ml]</a> <a name="macqueen84_modul_ml"></a>David MacQueen, Modules for standard ML, nil, in in: Proceedings of the 1984 ACM Symposium on LISP and functional
-                  programming - LFP '84, edited by (1984)</li>
-<li><a id="Rossberg_2010">[Rossberg_2010]</a> <a name="Rossberg_2010"></a>Rossberg, Russo & Dreyer, F-ing modules, <i>Proceedings of the 5th ACM SIGPLAN workshop on Types in
-                  language design and implementation - TLDI ’10</i>,  (2010). <a href="http://dx.doi.org/10.1145/1708016.1708028">link</a>. <a href="http://dx.doi.org/10.1145/1708016.1708028">doi</a>.</li>
-</ul>
+<a href="~/Dropbox/bibliography/references.bib">~/Dropbox/bibliography/references.bib</a>
 </p>
 </div>
 </div>
@@ -371,7 +319,7 @@ OCaml</li>
 <div class='footer'>
 Copyright 2019 Shon Feder.<br>
 Last updated 2019-09-24 Tue 21:11. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.3 (<a href="https://orgmode.org">Org</a> mode 9.3).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
 </div>
 </div>
 </body>
