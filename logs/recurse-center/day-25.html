@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-11 Tue 06:10 -->
+<!-- 2023-10-17 Tue 20:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 25: Other Structures In Other Words</title>
@@ -244,10 +244,9 @@ spaces and transformations within thought.
 (<a href="picado2007interview">picado2007interview</a>)
 </p>
 </blockquote>
-
-<div id="outline-container-orgeda0d8f" class="outline-2">
-<h2 id="orgeda0d8f">Naming Problems</h2>
-<div class="outline-text-2" id="text-orgeda0d8f">
+<div id="outline-container-org7a953a7" class="outline-2">
+<h2 id="org7a953a7">Naming Problems</h2>
+<div class="outline-text-2" id="text-org7a953a7">
 <p>
 I have been working on an OCaml library for representing computationally useful
 <a href="https://en.wikipedia.org/wiki/Algebraic_structure">algebraic structures</a> as composable modules.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> The library
@@ -279,10 +278,9 @@ such a precious plot of signs. So I&rsquo;ve been hunting for a more suitable na
 </p>
 </div>
 </div>
-
-<div id="outline-container-org5ec765b" class="outline-2">
-<h2 id="org5ec765b">&ldquo;What&rsquo;s in a name?&rdquo;</h2>
-<div class="outline-text-2" id="text-org5ec765b">
+<div id="outline-container-org1516194" class="outline-2">
+<h2 id="org1516194">&ldquo;What&rsquo;s in a name?&rdquo;</h2>
+<div class="outline-text-2" id="text-org1516194">
 <p>
 Why does the name matter? Why not just pick some clunky, explicit phrase like
 <code>experimental_algebraic_structures</code>, or a cute, vaguely meaningful portmanteau
@@ -395,10 +393,9 @@ intersubjective, and purely subjective structures of possibility.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2401f07" class="outline-2">
-<h2 id="org2401f07">Giving Names is Making Metaphor</h2>
-<div class="outline-text-2" id="text-org2401f07">
+<div id="outline-container-orgfcd70d3" class="outline-2">
+<h2 id="orgfcd70d3">Giving Names is Making Metaphor</h2>
+<div class="outline-text-2" id="text-orgfcd70d3">
 <p>
 To name a newborn (person, thing, or thought) is almost always to give it the
 name of something else. Initially, no thing or person can name itself. As a
@@ -452,10 +449,9 @@ at least presents one account of why naming <i>well</i> is hard and why it matte
 </p>
 </div>
 </div>
-
-<div id="outline-container-org72c4a42" class="outline-2">
-<h2 id="org72c4a42">Making the Name from the Connections</h2>
-<div class="outline-text-2" id="text-org72c4a42">
+<div id="outline-container-org89c2490" class="outline-2">
+<h2 id="org89c2490">Making the Name from the Connections</h2>
+<div class="outline-text-2" id="text-org89c2490">
 <p>
 This ramble records traces of the many sources I&rsquo;ve dipped into as I&rsquo;ve worked
 to discover a suitable name for the nascent library. My reading took me through
@@ -518,20 +514,19 @@ However, you may not have noticed that it is also a <i>pun</i>! :P
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgd60ad91" class="outline-2">
-<h2 id="orgd60ad91">Modules, Signs, and Structs, and Algebraic Theories</h2>
-<div class="outline-text-2" id="text-orgd60ad91">
+<div id="outline-container-org3a82b86" class="outline-2">
+<h2 id="org3a82b86">Modules, Signs, and Structs, and Algebraic Theories</h2>
+<div class="outline-text-2" id="text-org3a82b86">
 <p>
 In OCaml, a <code>module</code> is specified by a <code>sig</code> and implemented as a <code>struct</code>:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Some_module</span> : <span class="org-tuareg-font-lock-governing">sig</span>
-  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value specifications...</span><span class="org-comment-delimiter"> *)</span>
-<span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-comment-delimiter">(* </span><span class="org-comment">...type declarations and value bindings...</span><span class="org-comment-delimiter"> *)</span>
-<span class="org-tuareg-font-lock-governing">end</span>
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Some_module</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXkeyword">sig</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(* ...type declarations and value specifications... *)</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(* ...type declarations and value bindings... *)</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span>
 </pre>
 </div>
 
@@ -658,20 +653,20 @@ semigroup for <code>Option</code> types:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Make</span> <span class="org-variable-name">(S : </span><span class="org-type">S</span><span class="org-variable-name">) </span>: <span class="org-tuareg-font-lock-module">S</span> <span class="org-tuareg-font-lock-governing">with type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-module">S.</span>t <span class="org-tuareg-font-lock-module">Option.</span>t = <span class="org-tuareg-font-lock-governing">struct</span>
-    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Seed</span> = <span class="org-tuareg-font-lock-governing">struct</span>
-      <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-module">S.</span>t <span class="org-tuareg-font-lock-module">Option.</span>t
-      <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">op</span> <span class="org-variable-name">a</span> <span class="org-variable-name">b</span> =
-        <span class="org-keyword">match</span> a  , b <span class="org-keyword">with</span>
-        | <span class="org-tuareg-font-lock-constructor">None</span>   , b      -&gt; b
-        | a      , <span class="org-tuareg-font-lock-constructor">None</span>   -&gt; a
-        | <span class="org-tuareg-font-lock-constructor">Some</span> a , <span class="org-tuareg-font-lock-constructor">Some</span> b -&gt; <span class="org-tuareg-font-lock-constructor">Some</span> (<span class="org-tuareg-font-lock-module">S.</span>op a b)
-    <span class="org-tuareg-font-lock-governing">end</span>
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Option</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Make</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">S</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span> <span class="org-tree-sitter-hl-faceXkeyword">with</span> <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXconstructor">Option</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Seed</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+      <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXconstructor">Option</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span>
+      <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">op</span></span> <span class="org-tree-sitter-hl-faceXvariableXparameter">a</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
+        <span class="org-tree-sitter-hl-faceXkeyword">match</span> <span class="org-tree-sitter-hl-faceXvariable">a</span>  <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariable">b</span> <span class="org-tree-sitter-hl-faceXkeyword">with</span>
+        <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">None</span>   <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">b</span>      <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">b</span>
+        <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">a</span>      <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXtag">None</span>   <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">a</span>
+        <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">Some</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXtag">Some</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtag">Some</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">op</span></span> <span class="org-tree-sitter-hl-faceXvariable">a</span> <span class="org-tree-sitter-hl-faceXvariable">b</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+    <span class="org-tree-sitter-hl-faceXkeyword">end</span>
 
-    <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Make (Seed)</span>
-  <span class="org-tuareg-font-lock-governing">end</span>
-<span class="org-tuareg-font-lock-governing">end</span>
+    <span class="org-tree-sitter-hl-faceXkeyword">include</span> <span class="org-tree-sitter-hl-faceXconstructor">Make</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">Seed</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">end</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span>
 </pre>
 </div>
 
@@ -726,9 +721,9 @@ qualitative atomism on my part.
 </div></div>
 <div id="postamble" class="status">
 <div class='footer'>
-Copyright 2019 Shon Feder.<br>
+Copyright 2023 Shon Feder.<br>
 Last updated 2019-12-21 Sat 18:41. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
 </div>
 </div>
 </body>

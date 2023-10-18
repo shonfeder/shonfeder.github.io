@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-11 Tue 06:10 -->
+<!-- 2023-10-17 Tue 20:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ocaml Editor Wish List</title>
@@ -211,9 +211,9 @@
 </div>
 <div id="content" class="content">
 <h1 class="title">Ocaml Editor Wish List</h1>
-<div id="outline-container-org328b672" class="outline-2">
-<h2 id="org328b672">Type-driven Case Generation</h2>
-<div class="outline-text-2" id="text-org328b672">
+<div id="outline-container-orgc3a5e70" class="outline-2">
+<h2 id="orgc3a5e70">Type-driven Case Generation</h2>
+<div class="outline-text-2" id="text-orgc3a5e70">
 <p>
 Ala Agda.
 </p>
@@ -223,7 +223,7 @@ Given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">A</span> | <span class="org-tuareg-font-lock-constructor">B</span> | <span class="org-tuareg-font-lock-constructor">C</span> <span class="org-keyword">of</span> int
+<pre class="src src-tuareg"><span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">A</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">B</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">C</span> <span class="org-tree-sitter-hl-faceXkeyword">of</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span>
 </pre>
 </div>
 
@@ -232,7 +232,7 @@ We should be able to
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">f</span> :<span class="org-type"> t -&gt; int </span>= <span class="org-keyword">function</span> &lt;tab&gt;
+<pre class="src src-tuareg"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">f</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">function</span> &lt;tab<span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
 </pre>
 </div>
 
@@ -241,10 +241,10 @@ to have generated the snippet template
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">f</span> :<span class="org-type"> t -&gt; int </span>= <span class="org-keyword">function</span>
-  | <span class="org-tuareg-font-lock-constructor">A</span>   -&gt; __
-  | <span class="org-tuareg-font-lock-constructor">B</span>   -&gt; __
-  | <span class="org-tuareg-font-lock-constructor">C</span> x -&gt; __ x
+<pre class="src src-tuareg"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">f</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">function</span>
+  <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">A</span>   <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">__</span>
+  <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">B</span>   <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">__</span>
+  <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">C</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">x</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">__</span></span> <span class="org-tree-sitter-hl-faceXvariable">x</span>
 </pre>
 </div>
 
@@ -254,18 +254,18 @@ by the user.
 </p>
 </div>
 </div>
-<div id="outline-container-org4c4f8c6" class="outline-2">
-<h2 id="org4c4f8c6">Structural transformation</h2>
-<div class="outline-text-2" id="text-org4c4f8c6">
+<div id="outline-container-org85d4cdf" class="outline-2">
+<h2 id="org85d4cdf">Structural transformation</h2>
+<div class="outline-text-2" id="text-org85d4cdf">
 <p>
 E.g., given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-keyword">if</span> x <span class="org-keyword">then</span>
-  exp1
-<span class="org-keyword">else</span>
-  exp2
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">if</span> <span class="org-tree-sitter-hl-faceXvariable">x</span> <span class="org-tree-sitter-hl-faceXkeyword">then</span>
+  <span class="org-tree-sitter-hl-faceXvariable">exp1</span>
+<span class="org-tree-sitter-hl-faceXkeyword">else</span>
+  <span class="org-tree-sitter-hl-faceXvariable">exp2</span>
 </pre>
 </div>
 
@@ -275,15 +275,15 @@ negate the conditional.
 </p>
 </div>
 </div>
-<div id="outline-container-org1c4b24a" class="outline-2">
-<h2 id="org1c4b24a">Interactive function composition search</h2>
-<div class="outline-text-2" id="text-org1c4b24a">
+<div id="outline-container-orgbba3842" class="outline-2">
+<h2 id="orgbba3842">Interactive function composition search</h2>
+<div class="outline-text-2" id="text-orgbba3842">
 <p>
 Write
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">foo</span> :<span class="org-type"> t -&gt; q </span>= ...
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">foo</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">q</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">...</span>
 </pre>
 </div>
 
@@ -302,9 +302,9 @@ functions.
 </div>
 <div id="postamble" class="status">
 <div class='footer'>
-Copyright 2019 Shon Feder.<br>
+Copyright 2023 Shon Feder.<br>
 Last updated 2020-04-26 Sun 18:04. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
 </div>
 </div>
 </body>

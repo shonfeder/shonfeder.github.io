@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-11 Tue 06:10 -->
+<!-- 2023-10-17 Tue 20:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Nothing /Really/ Matters</title>
@@ -214,10 +214,9 @@
 <br />
 <span class="subtitle">The option type as an icon of absence</span>
 </h1>
-
-<div id="outline-container-org7f2d31a" class="outline-2">
-<h2 id="org7f2d31a">A joke about nothing</h2>
-<div class="outline-text-2" id="text-org7f2d31a">
+<div id="outline-container-org32f21db" class="outline-2">
+<h2 id="org32f21db">A joke about nothing</h2>
+<div class="outline-text-2" id="text-org32f21db">
 <p>
 There is an old philosophy joke, which I learned in this form:
 </p>
@@ -239,10 +238,9 @@ milk instead?&rdquo;
 </blockquote>
 </div>
 </div>
-
-<div id="outline-container-orgc413319" class="outline-2">
-<h2 id="orgc413319">Explaining the joke</h2>
-<div class="outline-text-2" id="text-orgc413319">
+<div id="outline-container-orgbdfff3b" class="outline-2">
+<h2 id="orgbdfff3b">Explaining the joke</h2>
+<div class="outline-text-2" id="text-orgbdfff3b">
 <p>
 The punchline&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> rests on the idea that non-presence is determined by
 that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>: milk is distinct from cream, so having no milk
@@ -288,10 +286,9 @@ non-presence, as we&rsquo;ve been doing.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org18f7f1e" class="outline-2">
-<h2 id="org18f7f1e">The option type as an icon of absence</h2>
-<div class="outline-text-2" id="text-org18f7f1e">
+<div id="outline-container-org1350290" class="outline-2">
+<h2 id="org1350290">The option type as an icon of absence</h2>
+<div class="outline-text-2" id="text-org1350290">
 <p>
 We can interpret <a href="https://en.wikipedia.org/wiki/Option_type">the <code>option</code> type</a> as an <a href="https://en.wikipedia.org/wiki/Iconicity">icon</a> of the phenomena of absence. To
 aid in the exposition of this interpretation, we&rsquo;ll build up a small domain of
@@ -304,11 +301,11 @@ the following types of liquid
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milk</span> = [ <span class="org-tuareg-font-lock-constructor">`Milk</span> ]
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">milk</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">[</span> <span class="org-tree-sitter-hl-faceXtag">`Milk</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">]</span>
 
-<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">cream</span> = [ <span class="org-tuareg-font-lock-constructor">`Cream</span> ]
+<span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">cream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">[</span> <span class="org-tree-sitter-hl-faceXtag">`Cream</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">]</span>
 
-<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">coffee</span> = [ <span class="org-tuareg-font-lock-constructor">`Coffee</span> ]
+<span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">coffee</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">[</span> <span class="org-tree-sitter-hl-faceXtag">`Coffee</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">]</span>
 </pre>
 </div>
 
@@ -319,21 +316,21 @@ material constitutive of that substance.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="org9fc152e"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
-  <span class="org-doc">(** The form of the substance is it's principle type. Depending on your</span>
-<span class="org-doc">      ontology, you might say that the form is given by the substance's</span>
-<span class="org-doc">      chemical composition, its platonic idea, or whatever. *)</span>
+<pre class="src src-ocaml" id="org1000814"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXconstructor">Substance</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">sig</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** The form of the substance is it's principle type. Depending on your</span>
+<span class="org-tree-sitter-hl-faceXcomment">      ontology, you might say that the form is given by the substance's</span>
+<span class="org-tree-sitter-hl-faceXcomment">      chemical composition, its platonic idea, or whatever. *)</span>
 
-  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : t
-  <span class="org-doc">(** A way to get a material instance of the substance, e.g., by mixing the</span>
-<span class="org-doc">      proper chemical  compounds or uttering the divine word of creation. *)</span>
-<span class="org-tuareg-font-lock-governing">end</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">v</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** A way to get a material instance of the substance, e.g., by mixing the</span>
+<span class="org-tree-sitter-hl-faceXcomment">      proper chemical  compounds or uttering the divine word of creation. *)</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span>
 </pre>
 </div>
 
 <p>
-The <a href="#org9fc152e">1</a> let&rsquo;s us distinguish between kinds of things and
+The <a href="#org1000814">1</a> let&rsquo;s us distinguish between kinds of things and
 instances of that kind..
 </p>
 
@@ -348,27 +345,27 @@ let&rsquo;s define way of constructing measures of different kinds of liquid:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Liquid</span> <span class="org-variable-name">(S : </span><span class="org-type">Substance</span><span class="org-variable-name">) </span>: <span class="org-tuareg-font-lock-governing">sig</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milliliters</span>
-  <span class="org-doc">(** The units by which all our liquids are measured *)</span>
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Liquid</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">S</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">Substance</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXkeyword">sig</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">milliliters</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** The units by which all our liquids are measured *)</span>
 
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
-  <span class="org-doc">(** The type of an amount of liquid *)</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** The type of an amount of liquid *)</span>
 
-  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : int -&gt; t
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>v ml<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span>ml<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> milliliters of liquid *)</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">v</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">t</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** [v ml] is [ml] milliliters of liquid *)</span>
 
-  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">amount</span> : t -&gt; milliliters
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>amount l<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is the amount of milliliters of the liquid </span><span class="org-tuareg-font-lock-doc-markup">[</span>l<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> *)</span>
-<span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milliliters</span> = int
+  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">amount</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">milliliters</span>
+  <span class="org-tree-sitter-hl-faceXcomment">(** [amount l] is the amount of milliliters of the liquid [l] *)</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">milliliters</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span>
 
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-module">S.</span>t * milliliters
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXoperator">*</span> <span class="org-tree-sitter-hl-faceXtype">milliliters</span>
 
-  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">v</span> <span class="org-variable-name">ml</span> = (<span class="org-tuareg-font-lock-module">S.</span>v, ml)
+  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">v</span></span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ml</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXvariable">v</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariable">ml</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
 
-  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">amount</span> (<span class="org-variable-name">_</span>, <span class="org-variable-name">ml</span>) = ml
-<span class="org-tuareg-font-lock-governing">end</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">amount</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariableXparameter">_</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ml</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable">ml</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span>
 </pre>
 </div>
 
@@ -377,23 +374,23 @@ Let there be some liquids:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Coffee</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Coffee</span>
+<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Coffee</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Liquid</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Coffee</span>
 
-  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Coffee</span>
-<span class="org-tuareg-font-lock-governing">end</span>)
+  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">v</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Coffee</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
 
-<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Milk</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Milk</span>
+<span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Milk</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Liquid</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Milk</span>
 
-  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Milk</span>
-<span class="org-tuareg-font-lock-governing">end</span>)
+  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">v</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Milk</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
 
-<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Cream</span> = <span class="org-tuareg-font-lock-module">Liquid</span> (<span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">Cream</span>
+<span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Cream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Liquid</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Cream</span>
 
-  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">v</span> = <span class="org-tuareg-font-lock-constructor">Cream</span>
-<span class="org-tuareg-font-lock-governing">end</span>)
+  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">v</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Cream</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
 </pre>
 </div>
 
@@ -402,11 +399,11 @@ Now we need a way representing
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="orgd969f29"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
-  <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a t</span> =
-    | <span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-keyword">of</span> 'a
-    | <span class="org-tuareg-font-lock-constructor">None</span>
-<span class="org-tuareg-font-lock-governing">end</span>
+<pre class="src src-ocaml" id="org8ec68b3"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Option</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+  <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
+    <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">Some</span> <span class="org-tree-sitter-hl-faceXkeyword">of</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span>
+    <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">|</span> <span class="org-tree-sitter-hl-faceXtag">None</span>
+<span class="org-tree-sitter-hl-faceXkeyword">end</span>
 </pre>
 </div>
 
@@ -416,7 +413,7 @@ type 'a option = Some of 'a | None
 
 
 <p>
-Read the above <a href="#orgd969f29">1</a> as follows:
+Read the above <a href="#org8ec68b3">1</a> as follows:
 </p>
 
 <ul class="org-ul">
@@ -445,34 +442,32 @@ representing the presence a value of type <code>'a</code>. E.g.
 </dl></li>
 </ul>
 </div>
-
-<div id="outline-container-org5512664" class="outline-3">
-<h3 id="org5512664"><span class="todo TODO">TODO</span> Absence of an additive</h3>
-<div class="outline-text-3" id="text-org5512664">
+<div id="outline-container-orgcc4acad" class="outline-3">
+<h3 id="orgcc4acad"><span class="todo TODO">TODO</span> Absence of an additive</h3>
+<div class="outline-text-3" id="text-orgcc4acad">
 <p>
 Coffee without milk is the same as coffee without cream.
 </p>
 </div>
 </div>
-<div id="outline-container-org5d60a61" class="outline-3">
-<h3 id="org5d60a61"><span class="todo TODO">TODO</span> Absence of a component</h3>
-<div class="outline-text-3" id="text-org5d60a61">
+<div id="outline-container-orgd291b68" class="outline-3">
+<h3 id="orgd291b68"><span class="todo TODO">TODO</span> Absence of a component</h3>
+<div class="outline-text-3" id="text-orgd291b68">
 <p>
 I would be different without my arms than I would be without my legs.
 </p>
 </div>
 </div>
-<div id="outline-container-org8221763" class="outline-3">
-<h3 id="org8221763"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
-<div class="outline-text-3" id="text-org8221763">
+<div id="outline-container-org45e6941" class="outline-3">
+<h3 id="org45e6941"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
+<div class="outline-text-3" id="text-org45e6941">
 <p>
 You can pick the pepperonis off a pizza, but cannot take the cream out of
 coffee.
 </p>
 </div>
-
-<div id="outline-container-org5c721bd" class="outline-4">
-<h4 id="org5c721bd">Conjunction vs. mixture</h4>
+<div id="outline-container-org3997532" class="outline-4">
+<h4 id="org3997532">Conjunction vs. mixture</h4>
 </div>
 </div>
 </div>
@@ -490,9 +485,9 @@ joke.
 </div></div>
 <div id="postamble" class="status">
 <div class='footer'>
-Copyright 2019 Shon Feder.<br>
+Copyright 2023 Shon Feder.<br>
 Last updated 2022-02-19 Sat 17:48. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 28.2 (<a href="https://orgmode.org">Org</a> mode 9.6.1).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
 </div>
 </div>
 </body>
