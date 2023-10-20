@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-10-20 Fri 10:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logic</title>
+<meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">Logic</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org9438d33">What</a></li>
+<li><a href="#org5bab2bf">Why</a>
+<ul>
+<li><a href="#org8790e00">Jean-Yves Girard</a></li>
+</ul>
+</li>
+<li><a href="#org09c60f2"><span class="todo TODO">TODO</span> How</a>
+<ul>
+<li><a href="#org5906c72">Recycling</a></li>
+<li><a href="#org4de14c5"><span class="todo TODO">TODO</span> Modality</a></li>
+</ul>
+</li>
+<li><a href="#org2c58603"><span class="todo TODO">TODO</span> Whither?</a></li>
+<li><a href="#orgb3109b8">Links</a></li>
+<li><a href="#org75563ac">References</a></li>
+</ul>
+</div>
+</div>
+<p>
+<b>WIP</b>
+</p>
+<div id="outline-container-org9438d33" class="outline-2">
+<h2 id="org9438d33">What</h2>
+<div class="outline-text-2" id="text-org9438d33">
+<blockquote>
+<p>
+&#x2026; this is a way the mind <i>moves</i>, from the first two to the third.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_4">Hart 2010</a>)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+<b>On Formalization</b>
+</p>
+
+<p>
+Sapir said <i>all systems leak</i>; he was referring to the fact that no grammatical
+system has ever successfully captured a real natural language, but it is natural
+to generalize his slogan to formalizations of any complex natural sign system.
+There are always &ldquo;loose ends&rdquo; &#x2026; Thus we cannot expect our semiotic models to
+be perfect. However, a precise description that is somewhat wrong is better than
+a description so vague that no one can tell if it&rsquo;s wrong. We do not seek to
+formalize actual living meanings, but rather to express our partial
+understandings more exactly. Precision is also needed to build computer
+programs that use the theory. I do not believe that meaning in the human sense
+can be captured by formal sign systems; however, human analysts can note the
+extent to which the meanings that they see in some sign system are preserved by
+different representations. Thus we seek to formalize particular understandings
+of analysts, without claiming that such understandings are necessarily correct,
+or have some kind of ideal Platonic existence.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_3">Goguen 1998</a>)
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org5bab2bf" class="outline-2">
+<h2 id="org5bab2bf">Why</h2>
+<div class="outline-text-2" id="text-org5bab2bf">
+</div>
+<div id="outline-container-org8790e00" class="outline-3">
+<h3 id="org8790e00">Jean-Yves Girard</h3>
+<div class="outline-text-3" id="text-org8790e00">
+<blockquote>
+<p>
+An old activity like logic can find its justification neither in the
+preservation of a rather obsolete tradition, nor in technical developments, no
+matter how heroic and brilliant they might be. Its meaning should be sought in
+questions of a true logical nature, i.e., dealing with the fundamentals of
+reasoning. As a central task, the building of a non-fregean theory of cognition,
+the benchmark for such an endeavor being an updated version of incompleteness:
+to prove, once and for all, that questions are not the same thing as answers,
+i.e., the inexistence of those unlikely <i>X-rays of knowledge</i>.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_2">Girard 2011</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-org09c60f2" class="outline-2">
+<h2 id="org09c60f2"><span class="todo TODO">TODO</span> How</h2>
+<div class="outline-text-2" id="text-org09c60f2">
+</div>
+<div id="outline-container-org5906c72" class="outline-3">
+<h3 id="org5906c72">Recycling</h3>
+<div class="outline-text-3" id="text-org5906c72">
+<blockquote>
+<p>
+Logic, surely born essentialist, began with manipulating universal rules. Long
+afterwards, at the end of a complex process, we eventually find an underlying
+structure for these rules; and thus, to require that a proof of <code>A ∨ B</code> be [&#x2026;]
+a proof of <code>A</code> or a proof of <code>B</code>. One eventually rediscovers the existence under
+essence. But, while <i>studying</i> this existence, one reinstalls essence.
+</p>
+
+<p>
+We started with the rules of logic; we arrived at the logic of rules and it
+turns out to be the logic we started with.
+&#x2026;
+Circularity is therefore not only a tarskian void, it is also a sign of harmony.
+But one cannot content oneself with that!
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_2">Girard 2011, 139</a>)
+</p>
+</blockquote>
+
+<p>
+Some patterns seem to cycle &#x2013; spiraling &#x2013; through the thoughts and techniques
+discernable in the roots and margins of modern logic. These notes record a
+winding thread I&rsquo;ve been picking at. The thread runs from syllogistic logic,
+through 20th century proof theory, and continues to coil through the
+proof-theoretic formal systems that have been transforming computer science.
+</p>
+</div>
+<div id="outline-container-org790083b" class="outline-4">
+<h4 id="org790083b"><span class="todo TODO">TODO</span> Structural Proof Theory</h4>
+<div class="outline-text-4" id="text-org790083b">
+<blockquote>
+<p>
+&#x2026; structural systems may be considered as providing a general framework of
+consequence, in terms of which specific logical systems can be defined.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_10">Schroeder-Heister 2002, 3</a>)
+</p>
+</blockquote>
+</div>
+<div id="outline-container-orgec3d7eb" class="outline-5">
+<h5 id="orgec3d7eb">A Note on Genealogy</h5>
+<div class="outline-text-5" id="text-orgec3d7eb">
+<p>
+Paul Hertz is the progenitor of the structural analysis of proofs. Gentzen
+utilized this approach to found <a href="https://plato.stanford.edu/entries/proof-theory-development/#SeqCalLatDev">structural proof theory</a> (see (<a href="#citeproc_bib_item_6">Legris 2012</a>)
+and (<a href="#citeproc_bib_item_10">Schroeder-Heister 2002</a>)). Hertz published his work, <i>On Axiomatic
+Systems for Arbitrary Systems of Sentences</i>, in 1922. In <a href="https://www.deutsche-biographie.de/gnd11675446X.html#ndbcontent">a short biography</a> by
+Hilbert&rsquo;s collaborator <a href="https://en.wikipedia.org/wiki/Paul_Bernays">Paul Barneys</a>, Barneys described the contribution thus:
+</p>
+
+<blockquote>
+<p>
+Hier führte er viele methodisch wichtige Begriffsbildungen ein und gelangte zu
+mathematisch prägnanten Ergebnissen. Diese Untersuchungen sind Vorläufer
+verschiedener neuerer Forschungen zur mathematischen Logik und Axiomatik,
+insbesondere hat G. Gentzens Sequenzenkalkul von den H.schen Betrachtungen über
+Satzsysteme seinen Ausgang genommen.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+Here he introduced many methodologically important conceptual developments and
+arrived at mathematically incisive results. These investigations were
+forerunners of various new researches into mathematical logic and axiomatics, in
+particular, G. Gentzen&rsquo;s sequent calculus took its starting point from Hertz&rsquo;s
+work on sentence systems.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+</blockquote>
+
+<p>
+Gentzen&rsquo;s work was, according to a reductive formulation, the application of
+Hertz&rsquo;s approach and core methodology to <a href="https://plato.stanford.edu/entries/hilbert-program/">Hilbert&rsquo;s Program</a>. The broadly
+conceived field of constructivistic proof theory, meant to encompass efforts in
+constructivistic automated theorem proving, type theory, and programming
+language theory is inconceivable without Gentzen&rsquo;s work (though we can easily
+imagine a more worthy person than the <a href="https://en.wikipedia.org/wiki/Gerhard_Gentzen#Life_and_career">Nazi Gentzen</a> having done that work).
+</p>
+</div>
+</div>
+<div id="outline-container-org4453235" class="outline-5">
+<h5 id="org4453235"><span class="todo TODO">TODO</span> Inference and The &ldquo;Sentence&rdquo; Gadget in Hertz&rsquo;s Essays on Sentence Systems</h5>
+<div class="outline-text-5" id="text-org4453235">
+<p>
+The beginning (and kernel) of Hertz&rsquo;s <i>On Axiomatic Systems&#x2026;</i>:
+</p>
+
+<blockquote>
+<p>
+Whenever a system of sentences is recognized to be valid, it is often not
+necessary to convey each and every sentence to memory; it is sufficient to
+choose some of them from which the rest can follow. Such sentences, as it is
+generally known, are called axioms. The choice of these axioms is to a certain
+degree arbitrary. One can ask, however, if the property of a system of sentences
+to have several axiom systems is interconnected with other remarkable
+properties, and if there are systematic approaches to find, as the case may be,
+that axiomatic system which contains the least possible number of sentences. In
+the following some thoughts shall be communicated, which might be useful as a
+pre-stage for the treatment of these or related problems.
+</p>
+
+<p>
+In fact the actual problem of interest is so entangled, that initially it seems
+appropriate to be content with an immense simplification: We only consider
+sentences of a certain type, sentences that we can write symbolically: <code>(a1 , .
+. . , an ) → b</code> and that can be expressed linguistically by formulations such
+as: If <code>(a1 , . . . , an )</code> altogether holds, so does <code>b</code>. In addition, a second
+simplification will be introduced in the present first part, by only considering
+sentences of type a → b; however, we will liberate ourselves from this
+limitation in a following part. Further we assume rules according to which from
+certain sentences other ones follow: So, e.g., the validity of the sentences <code>a
+→ b</code>, <code>b → c</code> should result in the holding of the sentence <code>a → c</code>.
+</p>
+
+<p>
+However, what is actually meant by such a sentence, what the symbol <code>→</code> means in
+the combination of characters <code>a → b</code> or the word ‘if’ in the corresponding
+linguistic formulation, does not have to be indicated here.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_5">Hertz and Legris 2012</a>)
+</p>
+</blockquote>
+
+<p>
+<b>Recapitulation</b>: Hertz aimed to analyze systems of sentences determined by a
+transitive &ldquo;follows&rdquo; relationship. As a simplification, he narrowed his focus
+to sentences of the form <code>(a1, ..., an) → b</code>, taken to mean &ldquo;if <code>a1</code> and &#x2026; and
+<code>an</code> is true then b is true&rdquo;. He left the meaning of all these parts
+undetermined, including what the characters referred to (he calls them
+&ldquo;elements&rdquo; throughout the essay), what the <code>→</code> means, and even what the word
+&rsquo;if&rsquo; means.
+</p>
+
+<p>
+However, in a footnote, he reveals a critically important interpretation:
+</p>
+
+<blockquote>
+<p>
+It might be added though, that our sentences <code>a → b</code> are nothing other than
+formal “implications” in the sense of Russell (<a href="#citeproc_bib_item_12">Whitehead and Bertrand 2005, 22</a>), and that the scheme of inference used as a base in the first part is the
+Theorem listed by Russell as No. 10, 3 [*10·3], p. 150, or put differently: Our
+sentences are judgements of subsumptions, our inferences are syllogisms of modus
+Barbara.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_5">Hertz and Legris 2012, 12</a>)
+</p>
+</blockquote>
+
+<p>
+Russell and Whitehead&rsquo;s &ldquo;formal implications&rdquo; are the propositions stated by
+universally quantified implications: <code>∀x.Sx → Px</code>. Russell and Whitehead
+explicitly equate these with the constructs that Hertz refers to as &ldquo;judgments
+of subsumption&rdquo;. The latter are the best known variety of judgments from
+classical <a href="https://en.wikipedia.org/wiki/Term_logic">term logic</a>, exemplified in the immemorial truth &ldquo;All humans are
+mortal&rdquo; and schematized as &ldquo;All S are P&rdquo;. Hertz is hinting at the fact that,
+when we do move to assign meaning to the symbols of his formalism, we might read
+<code>a → b</code> as <code>All a are b</code> or, if we prefer modern predicate logic, <code>∀x.a(x) →
+b(x)</code>.
+</p>
+
+<p>
+Barbara is the classical syllogism
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">  All S are P
+  All P are Q
+∴ All S are Q
+</pre>
+</div>
+
+<p>
+This is equivalent to the transitivity of the &ldquo;follows&rdquo; relation (which we might
+also restate as <code>(S → P &amp; P → Q) → (S → Q)</code>), where each sentence of the form <code>A
+→ B</code> is a &ldquo;formal implication&rdquo;.
+</p>
+</div>
+</div>
+<div id="outline-container-org057d81a" class="outline-5">
+<h5 id="org057d81a">What is inference?</h5>
+<div class="outline-text-5" id="text-org057d81a">
+<blockquote>
+<p>
+<i>Inference</i>. The process of inference is as follows: a proposition &ldquo;\(p\)&rdquo; is
+asserted, and a proposition &ldquo;\(p\) implies \(q\)&rdquo; is asserted, and then as a sequel,
+the proposition &ldquo;q&rdquo; is asserted. The trust in inference is the belief that if
+the two former assertions are not in error, the final assertion is not in error.
+Accordingly whenever, in symbols, where \(p\) and \(q\) have of course special
+determinations,
+</p>
+
+<p>
+&ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash (p \supset q)\)&rdquo;
+</p>
+
+<p>
+have occurred, then &ldquo;\(\vdash q\)&rdquo; will occur if it is desired to put it on
+record. The process of inference cannot be reduced to symbols. Its sole record
+is the occurrence of &ldquo;\(\vdash q\)&rdquo;. It is of course convenient, even at the
+risk of repetition, to write &ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash(p \supset q)\)&rdquo; in
+close juxtaposition before proceeding to &ldquo;\(\vdash q\)&rdquo; as a result of the
+inference. When this is to be done, for the sake of drawing attention to the
+inference which is being made, we shall write instead
+</p>
+
+<p>
+&ldquo;\(\vdash p \supset \vdash q\),&rdquo;
+</p>
+
+<p>
+which is to be considered as a mere abbreviation of the threefold statement
+</p>
+
+<p>
+&ldquo;\(\vdash p\)&rdquo; and &ldquo;\(\vdash (p \supset q)\)&rdquo; and &ldquo;\(\vdash q\).&rdquo;
+</p>
+
+<p>
+Thus &ldquo;\(\vdash p \supset \vdash q\)&rdquo; may be read &ldquo;\(p\), therefore \(q\),&rdquo; being
+in fact the same abbreviation, essentially, as this is; for &ldquo;\(p\), therefore
+\(q\)&rdquo; does not explicitly state, what is part of its meaning, that \(p\)
+implies \(q\), an <b>inference is the dropping of a true premiss; it is the
+dissolution of an implication</b> [emphasis mine].
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_12">Whitehead and Bertrand 2005, 9</a>)
+</p>
+</blockquote>
+</div>
+<ul class="org-ul">
+<li><a id="org9847fb7"></a><span class="todo TODO">TODO</span> Note the different meaning of the tunstyle here.<br /></li>
+<li><a id="orga17ecb3"></a><span class="todo TODO">TODO</span> recapitulate and indicate significance<br /></li>
+</ul>
+</div>
+<div id="outline-container-org2632780" class="outline-5">
+<h5 id="org2632780"><span class="todo TODO">TODO</span> Girard&rsquo;s Problematization of the ditinction between \(\vdash\) and \(\supset\)</h5>
+<div class="outline-text-5" id="text-org2632780">
+<p>
+<a href="https://philosophy.stackexchange.com/questions/41143/what-is-behind-girards-idea-of-distinguishing-implication-%E2%87%92-and-entailment">https://philosophy.stackexchange.com/questions/41143/what-is-behind-girards-idea-of-distinguishing-implication-%E2%87%92-and-entailment</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3eb63e" class="outline-5">
+<h5 id="orgb3eb63e"><span class="todo TODO">TODO</span> Cut is Barbara (find Hertz example of this)</h5>
+</div>
+<div id="outline-container-org21a3598" class="outline-5">
+<h5 id="org21a3598"><span class="todo TODO">TODO</span> Structural reasoning is using TFL to formalize MPL</h5>
+<div class="outline-text-5" id="text-org21a3598">
+<p>
+Can sequents in general (i.e., with multiple antecedents) still be read as
+judgments of subsumption?
+</p>
+
+<p>
+all [syntax objects] are [syntax objects]
+</p>
+
+<p>
+This is tough (but worth fighting for).
+</p>
+
+<p>
+Easier to see are the formal implications. (where each syntatic object is
+predicated as &ldquo;is true&rdquo;, this is ML&rsquo;s point).
+</p>
+
+<p>
+Need to explain the move to multiple antecedents.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf94d6fb" class="outline-5">
+<h5 id="orgf94d6fb"><span class="todo TODO">TODO</span> Do structural rules perhaps fit other syllogistic figures?</h5>
+<div class="outline-text-5" id="text-orgf94d6fb">
+<p>
+If not, is it possible to derive &ldquo;novel&rdquo; structural rules via encoding other
+figures?
+</p>
+</div>
+</div>
+<div id="outline-container-orge9fb108" class="outline-5">
+<h5 id="orge9fb108"><span class="todo TODO">TODO</span> Gathering together</h5>
+<div class="outline-text-5" id="text-orge9fb108">
+<p>
+Russel and Whitehead on the juxtaposition of signs effecting a juxtaposition of
+thoughts.
+</p>
+
+<p>
+Structurally, logical operators are a way of linking, drawing together, their
+operands. \(A \land B\), \(A \lor B \), and \(A \supset B\) each express a way
+of considering \(A\) and \(B\) gathered together, but in different ways and
+under different conditions.
+</p>
+
+<p>
+What about the gathering of \(A\) and \(\land\)? What conditions this gathering
+together? As per Martin-Löf, this is the implicit judgment that \(A \: prop\).
+We seem to need a way of indicating when new space needs to be opened up between
+juxtaposed terms, to make room for more subtle thoughts. Yet we also need to be
+able to fold up this complexity to reduce the noise when we&rsquo;re thinking at a
+higher level of abstraction, or already understand these binding conditions to
+be in effect.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ea5c8d" class="outline-4">
+<h4 id="org1ea5c8d">Exegesis of Gentzen on the Meaning of his Calculi</h4>
+<div class="outline-text-4" id="text-org1ea5c8d">
+<p>
+In NJ, the definition of the logical symbols that combine formula is given by
+the <i>inference figures</i> forthe introduction and elimination of the symbol. In
+LJ, new inferences figures are introduced that do not correspond to logical
+symbols, but instead to &ldquo;structural transformations&rdquo;. What is the meaning of
+these &ldquo;structural inference figures&rdquo;? How do they get introduced?
+</p>
+
+<p>
+Gentzen&rsquo;s driving aim in introducing LJ is to preserve the ability to define the
+logic symbols by their introduction and elimination rules but to make a
+deductive calculus which is &ldquo;logicsitic&rdquo;. Being &ldquo;logistic&rdquo; means each formula
+that occurs should be a logical truth, and not dependent on external
+assumptions.
+</p>
+
+<p>
+Gentzen&rsquo;s derivations are trees of formulae or sequents that reflect the
+&ldquo;following&rdquo; relation between terms. In NJ, assumptions are recorded on the
+leaves of the derivation tree, but they are external to the formula themselves.
+For example, in the proof that \(A \land B \supset B \land A\)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">A &amp; B [1]      A &amp; B [1]
+--------- &amp;Er  --------- &amp;El
+   B               A
+------------------------ &amp;I
+        B &amp; A
+------------------------ -&gt;E[1]
+     A &amp; B ⊃ B &amp; A
+</pre>
+</div>
+
+<p>
+The formulae <code>B</code>, <code>A</code>, and <code>B &amp; A</code> are all dependent on assumption <code>[1]</code>. In
+effect, the intermediary formulae in a NJ derivation do not track their own
+justification, so we require contextual knowledge about the whole derivation
+tree to reason about the subproofs that justify their presence.
+</p>
+
+<p>
+So, how do we make NJ &ldquo;logistic&rdquo;?
+</p>
+
+<blockquote>
+<p>
+The most obvious method of converting an NJ-derivation into a logistic one is
+this: We replace a [derivation formula] \(B\), which depends on the assumption
+formula \(A_1, .., A_u\) by the new formula \((A_1 & ... & A_u) \supset B\). This we
+do with all [derivation formulae]
+</p>
+</blockquote>
+
+<p>
+Recapitulating with an example: we can render our proof of \(A \land B \supset B
+\land A\) logistic by noting the assumption formula in antecedents of
+conditionals preceding each of the three dependenc formulae. Since \(B\) depends
+on assumption <code>[1]</code>, we rewrite \(B\) as \(A \land B \supset B\). We do the same
+with the two remaining dependent formula, and, for consistency, add the trivial
+self-implication of the assumption to get:
+</p>
+
+<blockquote>
+<p>
+A &amp; B ⊃ A &amp; B      A &amp; B ⊃ A &amp; B
+--------&#x2013;&#x2014; &amp;Er  --------&#x2013;&#x2014; &amp;El
+  A &amp; B ⊃ B          A &amp; B ⊃ A
+---------------------------&#x2013;&#x2014; &amp;I
+        A &amp; B ⊃ B &amp; A
+---------------------------&#x2013;&#x2014; -&gt;E
+    A &amp; B ⊃ A &amp; B ⊃ B &amp; A
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+We thus obtain formulae which are already true <i>in themselves</i>, i.e., whose
+truth is no longer <i>conditional</i> on the truth of certain assumption formulae.
+This procedure, however, introduces new logical symbols \(\labd\) and \(\supset\),
+necessitating additional inference figures for \(\labd\) and \(\supset\), and thus
+upsets the systematic character of our method of introducing and eliminating
+symbols.
+</p>
+</blockquote>
+
+<p>
+This problematic complication is evident in our attempted rewrite! The principle
+operators in each formula are now \(\supset\), but (excepting the conclusion), the
+elimination and introduction rules are all meant to be working on \(\land\).
+Worse, we&rsquo;d need another set of introduction and elimination rules for the &ldquo;new&rdquo;
+logical symbols, and prevent ourselves mixing them up with the identical &ldquo;old&rdquo;
+ones.
+</p>
+
+<blockquote>
+<p>
+For this reason, we have introduced the concept of a <i>sequent</i>. Instead of a
+formula \((A_1 & ... & A_u) \supset B\) we therefore write the sequent
+</p>
+
+<p>
+\[
+A_1, ..., A_2 \to B.
+\]
+</p>
+
+<p>
+The informal meaning of this sequent is no different from that of the above
+formula; the expressions differe merely in their formal [syntactic] structure.
+</p>
+</blockquote>
+
+<p>
+I.e., Gentzen introduced an alternate surface syntax, to disambiguate the a
+structure in the metalanguage which is (informally) synonymous with implication
+in the object language. But this didn&rsquo;t actually do away with the problem of
+needing new introduction and elimination rules:
+</p>
+
+<blockquote>
+<p>
+Even now new inference figures are required that cannot be integrated into our
+system of introductions and eliminations; but we have the advantage of being
+able to reserve them special places within our system, since they no longer
+refer to logical symbols, but merely to the structure of the sequents. We
+therefore call these &rsquo;structural inference figures&rsquo;, and the others &rsquo;operational
+inference figures&rsquo;.
+</p>
+</blockquote>
+
+<p>
+When Gentzen says &ldquo;they no longer refer to logical symbols&rdquo;, this is true only
+because he excluded these formal implications from the system, lifting them into
+the metalogic, by use of Hertz&rsquo;s notation. Each of the &ldquo;structural inferences
+figures&rdquo; given in 1.21 are valid by virtue of the real logical meaning of the
+sequents, but this meaning gets obscured. As an example, &ldquo;thinning&rdquo;
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-nil">   A -&gt; C
+----------
+B, A -&gt; C
+</pre>
+</div>
+
+<p>
+is valid just because \(A \supset C \subset (B \land A \supset C)\). The &ldquo;meaning
+explanation&rdquo; for each structural rule is given the same way.
+</p>
+</div>
+<div id="outline-container-org5c04cdf" class="outline-5">
+<h5 id="org5c04cdf">Digression: Reasons to prefer constructive logic</h5>
+<div class="outline-text-5" id="text-org5c04cdf">
+</div>
+<ul class="org-ul">
+<li><a id="org78adadc"></a>Classical logic encourages weak arguments<br />
+<div class="outline-text-6" id="text-org78adadc">
+<blockquote>
+<p>
+If you grant my premises, then one or more of the following conclusions must
+follow, but I can&rsquo;t tell you which one.
+</p>
+</blockquote>
+
+
+<p>
+Viewed from a rhetorical perspective, sequent calculus is a formal language for
+reasoning about forms of argument. In the sequent calculus, the only difference
+between intuitionistic logic and classical logic is whether multiple terms are
+allowed in the consequent: in intuitionistic logic, all sequents are of the form
+</p>
+
+<p>
+\[
+A_1, ..., A_u \to B
+\]
+</p>
+
+<p>
+I.e., intuitionistic sequents only allow a single term in the consequent. To get
+classical logic, it suffices to allow sequents of the form
+</p>
+
+<p>
+\[
+A_1, ..., A_u \to B_1, ..., B_v
+\]
+</p>
+
+<p>
+i.e., where multiple terms can appear in the consequent. Using the signs of the
+object logic, this means
+</p>
+
+<p>
+\[
+A_1 \land ... \land A_u \supset B_1 \vee ... \vee B_v
+\]
+</p>
+
+<p>
+Arguing in classical logic is therefore arguing in a system in which
+interlocutors are allowed to make claims like: Assuming \(A_1\) through \(A_u\), one
+or more of these following propositions is true: \(B_1, ..., B_2\). It seems
+reasonable to lay down a rule that says: when you make an assertion conditional on
+some assumptions, stick to one conclusion per hypothetical!
+</p>
+</div>
+</li>
+<li><a id="org6765481"></a>Classically, not A &ldquo;implies&rdquo; A<br />
+<div class="outline-text-6" id="text-org6765481">
+<p>
+\[
+\neg A \supset A
+\]
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org592ab40" class="outline-4">
+<h4 id="org592ab40"><span class="todo TODO">TODO</span> Reiterated by Girard</h4>
+<div class="outline-text-4" id="text-org592ab40">
+<blockquote>
+<p>
+The novelty of Gentzen is the introduction of hypothetical deduction as a
+primitive; besides the implication \(A \Rightarrow B\), there coexists the
+sequent (\(A \vdash B\): &ldquo;\(B\) under the hypothesis \(A\)&rdquo;. One will never
+insist enough, from a brutal standpoint [&#x2026;], this creation makes no sense; it
+is a pure duplicate, since the deduction theorem equates the two notions.
+Sequent calculus makes sense only when one steps beyond mere provability, when
+one works <i>en finesse</i>.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_2">Girard 2011, 42</a>)
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org824e7b4" class="outline-4">
+<h4 id="org824e7b4"><span class="todo TODO">TODO</span> What is happening here?</h4>
+<div class="outline-text-4" id="text-org824e7b4">
+</div>
+<div id="outline-container-org30ecf07" class="outline-5">
+<h5 id="org30ecf07"><span class="todo TODO">TODO</span> Analysis by Shütte (<a href="#citeproc_bib_item_11">Schutte 1977</a>), 2-3 Higher order reasoning required</h5>
+<div class="outline-text-5" id="text-org30ecf07">
+<p>
+&ldquo;&#x2026;using induction that goes beyond mathematical induction but with a finite
+character&rdquo;
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="orgc06941a"></a><span class="todo TODO">TODO</span> Positive and negative parts, polarity, Sommer&rsquo;s Relational TFL<br /></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdbd326b" class="outline-4">
+<h4 id="orgdbd326b"><span class="todo TODO">TODO</span> Truth and Quotation</h4>
+<div class="outline-text-4" id="text-orgdbd326b">
+</div>
+<div id="outline-container-orgf5d1512" class="outline-5">
+<h5 id="orgf5d1512"><span class="todo TODO">TODO</span> Dana Scott on semantic assent and encoding implication into the object lanugage</h5>
+<div class="outline-text-5" id="text-orgf5d1512">
+<p>
+See <a href="https://www.pdcnet.org/jphil/content/jphil_1971_0068_0021_0787_0807">https://www.pdcnet.org/jphil/content/jphil_1971_0068_0021_0787_0807</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org624cee3" class="outline-5">
+<h5 id="org624cee3">Each &ldquo;change&rdquo; in syntax seems to be a &ldquo;semantic asset&rdquo;</h5>
+</div>
+
+<div id="outline-container-orgc86ea43" class="outline-5">
+<h5 id="orgc86ea43">Truth and Disquotation</h5>
+<div class="outline-text-5" id="text-orgc86ea43">
+<blockquote>
+<p>
+This ascent to a linguistic plane of reference is only a momentary retreat from
+the world, for <b>the utility of the truth predicate is precisely the cancellation
+of linguistic reference</b>. The truth predicate is a reminder that, despite a
+technical ascent to talk of sentences, our eye is on the world. This
+cancellatory force of the truth predicate is explicit in Tarski&rsquo;s paradigm:
+</p>
+
+<p>
+&rsquo;Snow is white&rsquo; is true if and only if snow is white.
+</p>
+
+<p>
+Quotation marks make all the difference between talking about words and talking
+about snow. The quotation is a name of a sentence that contains a name, namely
+&rsquo;snow&rsquo;, of snow. By calling the sentence true, we call snow white. <b>The truth
+predicate is a device of disquotation</b> [emphasis mine].
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_9">Quine 1986, 12</a>)
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-org47a6abf" class="outline-4">
+<h4 id="org47a6abf"><span class="todo TODO">TODO</span> How much of the &ldquo;ad hoc&rdquo; machinery in some formalisms could be dispensed with if we could formalize this process, and make it flexible enough to recycle and spin up into semantic asscent at will?</h4>
+</div>
+<div id="outline-container-orgf50053b" class="outline-4">
+<h4 id="orgf50053b"><span class="todo TODO">TODO</span> Related Angles</h4>
+<div class="outline-text-4" id="text-orgf50053b">
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Deep_inference#cite_ref-1">Deep Inference</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4de14c5" class="outline-3">
+<h3 id="org4de14c5"><span class="todo TODO">TODO</span> Modality</h3>
+<div class="outline-text-3" id="text-org4de14c5">
+<p>
+Roughing in my current thoughts on modality (excerpted from a conversation with
+<a href="https://boarders.github.io/">Callan McGill</a>):
+</p>
+
+<blockquote>
+<p>
+I think I have a clearer understanding of my worry, which I think also helps
+clarify the stakes for me, and gives some somewhat clearer criteria by which I
+can end up convincing myself whether or not I should embrace modalities.  I
+think my hypothesis is that phenomena like time are possibility ideally do not
+need to be imported as conceptual primitives into our logics.  Particularly
+because the way we encode these phenomena reifies and reinforces post-hoc
+conceptual framings.  E.g., in the case of temporal logic, the idea of time
+being adequately encoded as a space-like dimension
+</p>
+
+<p>
+Looking at how intuitionistic and linear logic works in contrast to modal logic
+I think is instructive in this regard.  If you&rsquo;ll allow me the gross
+simplification: Brouwer wanted to be sure we accounted for the phenomena of
+things which may not be true one way or the other.  Which may neither be
+provable nor disprovable (let&rsquo;s say, because they are simply inconceivable, and
+we can&rsquo;t construct a fact of the mater).  But he didn&rsquo;t bolt on an axiom system
+or a propositional modality that allows us to state: &ldquo;this proposition may not
+be provable&rdquo;.  Rather, the phenomena of unprovability is made immanent in the
+logic itself.  By moving to a &ldquo;weaker logic&rdquo; that lets us attend to this
+difference.  (I hope this isn&rsquo;t an entirely BS account.)
+</p>
+
+<p>
+My understanding is the same re:The way to accommodate the phenomena of
+resources is not to add a &ldquo;resource theory&rdquo; into the logic.  It&rsquo;s to learn how
+to move back to a subtler, &ldquo;weaker&rdquo; logic that lets us recognize the way in
+which the phenomena of resource limitation is already at play. Girard and linear
+logic vis-a-vis &ldquo;resources&rdquo;.
+</p>
+
+<p>
+So, given this refined understanding, I think I can prove to myself that
+modalities are needed, if it turns out that time is not, cannot be, something
+which is &ldquo;essentially logical&rdquo;.  That is, that the phenomenon of time is not an
+inherent and immanent part of what it is to &ldquo;do logic&rdquo;.
+</p>
+</blockquote>
+
+<p>
+This seems exceedingly unlikely to me, but we&rsquo;ll see!
+</p>
+
+<p>
+Callan connected this POV with the problems arising from internalizing judgments
+in type theory:
+</p>
+
+<blockquote>
+<p>
+Me:
+</p>
+
+<p>
+iiuc, the relation is somewhat like this?  The identity judgment is a
+fundamental constitutive component of our logic in this case. But if we
+internalize that judgment, make it an object inside of the logic, then we
+undermine the structural integrity of the system?
+</p>
+
+<p>
+Callan:
+</p>
+
+<p>
+Yes, there are two things: the equality judgment - the part that is determined
+by just unrolling definitions and there is the equality type of the theory which
+is subtle and the basis of almost all the mathematical aspects of the theory.
+Internalizing the equality judgment undermines the other equality type to the
+point the nature is completely changed so somehow the logic becomes ruined
+</p>
+
+<p>
+Me:
+</p>
+
+<p>
+And so a similar framing in this case would be to say, perhaps if the phenomena
+time is &ldquo;really&rdquo; part of the constitutive structure of a logic, then we
+undermine the cohesiveness (or the &ldquo;structural adequacy&rdquo;, something to unpack
+later) of logic by putting that phenomena in the logic as object to manipulate.
+</p>
+
+<p>
+Callan:
+</p>
+
+<p>
+Yes.  and it made me think that internalizing external judgments of the theory
+(e.g. that not ever statement can be decided) ruins the logic This
+internalization seems to be a case of what Wittgenstein warned of.  When we&rsquo;ve
+let the unutterable, but essentially constitutive, take shape as questions, they
+turn up as monstrous puzzles which don&rsquo;t actually have a solution.
+</p>
+</blockquote>
+
+<p>
+The above is a simplistic view on the relation between modality and linear
+logic.  Girard notes that the exponential are &ldquo;something like&rdquo; the modal
+operators from S4 (he characterizes linear logic as &ldquo;S4 + structural rules&rdquo;)  in
+<a href="http://girard.perso.math.cnrs.fr/truth.pdf">Truth, modality and intersubjectivity</a>.
+</p>
+
+<p>
+Interesting to note that it is precisely these modal operators where linear
+logic loses the security of its footing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">The exponentials $!$ and $?$ in linear logic are less carved in the marble than
+the other connectives. Indeed, if one uses traditional sequent calculus
+presentations, the exponentials are not “canonical”: if you introduce another
+copy of exponentials, say $!′$ and $?′$, with the same rules as the original
+ones, there is no way to prove that $!$ is equivalent to $!′$, and $?$ to $?′$,
+while for the other connectives this is easily established.
+
+In this respect, the $!$ and $?$ resemble the box and diamond connectives found
+in modal logic, and it is then possible and interesting to study variations for
+the logical rules of these connectives. For example, elementary linear logic
+(ELL) is obtained by replacing the $!$ and $?$ introduction by a single rule
+introducing $!$ and $?$ at the same time. As a consequence, ELL can encode all
+and only the functions over integers that normalize in time bounded by an
+elementary function.
+</pre>
+</div>
+
+<p>
+<a href="https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod">https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod</a>
+</p>
+
+<p>
+Following Girard, we can attribute the unsteady nature of the exponential&rsquo;s to
+the fact they mark the interjection of the subjective into the logic!
+</p>
+
+<blockquote>
+<p>
+This means that !A is subjective, since depending on a viewpoint
+\(P\).
+</p>
+
+<p>
+We eventually discover that the <a id="org4eb0d0c"></a> \(!A\) is exactly an affirmation:
+\(!A\) means that \(A\) is true w.r.t. a certain viewpoint \(P\) ; it should therefore be
+noted \(!_PA\).
+</p>
+</blockquote>
+<p>
+(Girard, &ldquo;Truth, modality and intersubjectivity&rdquo;)
+</p>
+
+<p>
+In (<a href="#citeproc_bib_item_1">Baelde 2012</a>), they replace the modal operators with least and greatest
+fixed points, to provide induction and coinduction on terms, as an alternative
+means of enabling reasoning about &ldquo;unbounded (infinite) behavior&rdquo;
+</p>
+
+<blockquote>
+<p>
+The first-order theory of MALL (multiplicative, additive linear logic) over only
+equalities is an interesting but weak logic since it cannot capture unbounded
+(infinite) behavior. Instead of accounting for unbounded behavior via the
+addition of the exponentials (\(!\) and \(?\)), we add least and greatest fixed
+point operators. The resulting logic, which we call \({\mu}MALL^=\), satisfies two
+fundamental proof theoretic properties. In particular \({\mu}MALL^=\), satisfies
+cut-elimination, which implies consistency, and has a complete focused proof
+system. The second result about focused proofs provides a strong normal form for
+cut-free proof structures that can be used, for example, to help proof search.
+</p>
+</blockquote>
+
+<p>
+Time consciousness (phenomenologically speaking) has at least the following two
+aspects:
+</p>
+
+<dl class="org-dl">
+<dt>directed</dt><dd><blockquote>
+<p>
+One of the most marked features about the law of the mind is that it makes
+time to have a definite direction of flow from past to future. The relation of
+past to future is, in reference to the law of mind, different from the
+relation of future to past. This makes one of the great contrasts between the
+law of mind and the law of physical force, where there is no more distinction
+between the two oposite direction in time than between moving northward and
+moving southward.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_8">Peirce 1992</a>)
+</p>
+</blockquote></dd>
+
+<dt>recurrent</dt><dd><blockquote>
+<p>
+If life is not always poetical, it is at least metrical.  Periodicity rules over the mental experience of man, according to the path of the orbit of his thoughts.  Distances are not gauged, ellipses not measured, velocities not ascertained, times not known.  Nevertheless, the recurrence is sure.  What the mind suffered last week, or last year, it does not suffer now; but it will suffer again next week or next year.  Happiness is not a matter of events; it depends upon the tides of the mind.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_7">Meynell 1896</a>)
+</p>
+</blockquote></dd>
+</dl>
+
+<p>
+Girard has indicated that he connects the directedness with non-commutative
+operations:
+</p>
+
+<blockquote>
+<p>
+Time occurs when we cannot permute two rules, since one must be performed before
+the other, for fear of a procedural catastrophe. This is therefore the
+alternation positive/negative, answer/question, explicit/implicit.
+</p>
+
+<p>
+(<a href="#citeproc_bib_item_2">Girard 2011</a>)
+</p>
+</blockquote>
+
+<p>
+It is sensible to me that the right place to find the recurrence (and, thereby
+the metricality) might be in fixedpoints, that allow structural induction,
+rather than the admission of operators that let us posit permanence and
+inexhaustability by fiat.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2c58603" class="outline-2">
+<h2 id="org2c58603"><span class="todo TODO">TODO</span> Whither?</h2>
+<div class="outline-text-2" id="text-org2c58603">
+<blockquote>
+<p>
+Linear logic is a refinement of classical logic and intuitionistic logic.
+Instead of emphasizing <i>truth</i>, as in classical logic, or <i>proof</i>, as in
+intuitionistic logic, linear logic emphasizes the role of formulas as
+<i>resources</i>.
+</p>
+
+<p>
+(<a href="https://plato.stanford.edu/entries/logic-linear/">SEP</a>)
+</p>
+</blockquote>
+
+<p>
+This suggests that we may discover and evolve as many logics as there are
+structural aspects of the relation between being and thought that can bear
+emphasizing and are <b>essentially</b> susceptible to formal articulation (this last
+criterion is essential, and should guard against <a href="https://girard.perso.math.cnrs.fr/mustard/page1.html">&ldquo;mustard watches&rdquo;</a>).
+</p>
+
+<p>
+One horizon for exploration, then, is the discovery and articulation of
+additional aspects. Another &#x2013; at a higher dimension &#x2013; is the exploration of
+what makes possible such &ldquo;aspects&rdquo;, what make emphasizing them possible and
+interesting. When is an aspect adequate to reveal an interesting logic, and how
+can we determine if it is susceptible to formal articulation?
+</p>
+
+<p>
+Cf. the theory of <a href="https://en.wikipedia.org/wiki/Institution_(computer_science)">institutions</a> and the project of <a href="https://en.wikipedia.org/wiki/Universal_logic">universal logic</a>, and the
+project of <a href="transcendental-techniques.html">transcendental techniques</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3109b8" class="outline-2">
+<h2 id="orgb3109b8">Links</h2>
+<div class="outline-text-2" id="text-orgb3109b8">
+<ul class="org-ul">
+<li><a href="http://boole.stanford.edu/~dominic/proofs-without-syntax/">Proofs Without Syntax Group</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org75563ac" class="outline-2">
+<h2 id="org75563ac">References</h2>
+<div class="outline-text-2" id="text-org75563ac">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Baelde, David. 2012. “Least and Greatest Fixed Points in Linear Logic.” <i>Acm Transactions on Computational Logic</i> 13 (1): 1–44. <a href="https://doi.org/10.1145/2071368.2071370">https://doi.org/10.1145/2071368.2071370</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Girard, Jean-Yves. 2011. <i>The Blind Spot : Lectures on Logic</i>. European Mathematical Society. <a href="http://www.worldcat.org/oclc/757486610?referer=xid">http://www.worldcat.org/oclc/757486610?referer=xid</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Goguen, Joseph. 1998. “An Introduction to Algebraic Semiotics, with Application to User Interface Design.” In <i>International Workshop on Computation for Metaphors, Analogy, and Agents</i>, 242–91. Springer.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Hart, W. D. 2010. <i>The Evolution of Logic</i>. Cambridge New York: Cambridge University Press.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Hertz, Paul, and Javier Legris. 2012. “On Axiomatic Systems for Arbitrary Systems of Sentences.” In <i>Universal Logic: An Anthology</i>, 11–29. Universal Logic: An Anthology. Springer Science + Business Media. <a href="https://doi.org/10.1007/978-3-0346-0145-0_2">https://doi.org/10.1007/978-3-0346-0145-0_2</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_6"></a>Legris, Javier. 2012. “Paul Hertz and the Origins of Structural Reasoning.” <i>J.-Y. Béziau, Universal Logic: An Anthology. From Paul Hertz to Dov Gabbay</i>, 3–10.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_7"></a>Meynell, A. 1896. <i>The Rhythm of Life and Other Essays</i>. <a href="https://books.google.ca/books?id=xKbugkcaLosC">https://books.google.ca/books?id=xKbugkcaLosC</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_8"></a>Peirce, Charles. 1992. <i>The Essential Peirce : Selected Philosophical Writings</i>. Bloomington: Indiana University Press.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_9"></a>Quine, W. V. 1986. <i>Philosophy of Logic</i>. Cambridge, Mass: Harvard University Press.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_10"></a>Schroeder-Heister, Peter. 2002. “Resolution and the Origins of Structural Reasoning: Early Proof-Theoretic Ideas of Hertz and Gentzen.” <i>Bulletin of Symbolic Logic</i> 8 (2): 246–65.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_11"></a>Schutte, K. 1977. <i>Proof Theory</i>. Grundlehren Der Mathematischen Wissenschaften, 225 : a Series of Comprehensive Studies in Mathematics. Springer-Verlag. <a href="http://gen.lib.rus.ec/book/index.php?md5=a337a65ca01284a93ab578f28d8d7bec">http://gen.lib.rus.ec/book/index.php?md5=a337a65ca01284a93ab578f28d8d7bec</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_12"></a>Whitehead, Alfred North, and Russell Bertrand. 2005. <i>Principia Mathematica</i>. Ann Arbor, Michigan: University of Michigan Library. <a href="http://name.umdl.umich.edu/AAT3201.0001.001">http://name.umdl.umich.edu/AAT3201.0001.001</a>.</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Please pardon my inexpert translation.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2023 Shon Feder.<br>
+Last updated 2023-10-18 Wed 09:35. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+</div>
+</div>
+</body>
+</html>
