@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-29 Sun 20:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Man/State/Machine</title>
+<meta name="author" content="um" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel='stylesheet' href='/static/css/style.css' type='text/css'/>
+</head>
+<body>
+<div id="preamble" class="status">
+<h1 class='title'>
+    <a href='/index.html'>
+      <img id='banner' src='/static/img/logo.svg'
+           alt='Synechist-trichotomic logo. Designed by Shon Feder'/>
+      <span class='title-text'>Synechepedia</span>
+    </a>
+   </h1>
+<div class='nav'>
+<ul>
+</ul>
+</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">The Man/State/Machine</h1>
+<p>
+<b>WIP</b>
+</p>
+
+<p>
+gist: I suspect that the determination of human being terms of <i>man</i>, of
+ontology in terms of <i>machine</i>, and of community in terms of <i>state</i> are
+inextricably intertwined. Particular forms such the state-machine, man-machine,
+and the state as machine, are iterations of this mutual determination. The
+internal logic of these determinations is that of command/control,
+impulse/reaction, and of the discrete and orderable sequenced according to manly
+dictates. It runs through all of modernity (even tho not all enlightenment
+thinking is thoroughly subordinated to this framing), and it is driving us into
+madness, xenocide, mono-mania, and other bad stuff.
+</p>
+
+<hr />
+
+<p>
+Who will thrive and predominate in a world thoroughly dominated by the
+ideology of the man/state/machine? Whoever is most able to embody the qualities
+of man that enable calculating the state and driving the machine: i.e.,
+fortunate, masculine, technocrats, who can internalize the combinatory problems
+relevant to tracking the state transitions, who can work the levers effectively,
+or find clever and self serving ways to drive wrenches through the machine.
+</p>
+
+<p>
+The opening passage from Hobbes&rsquo; <b>Leviathan</b>:
+</p>
+
+<blockquote>
+<p>
+Nature (the Art whereby God hath made and governes the World) is by the <b>Art</b> of
+man, as in many other things, so in this also imitated, that it can make an
+Artificial Animal. For seeing life is but a motion of Limbs, the beginning
+whereof is in some principall part within; why may we not say, that all
+<i>Automata</i> (Engines that move themselves by springs and wheeles as doth a watch)
+have an artificiall life? For what is the <i>Heart</i>, but a <i>Spring</i>; and the
+<i>Nerves</i>, but so many <i>Strings</i>; and the <i>Joynts</i>, but so many <i>Wheels</i>, giving
+motion to the whole Body, such as was intended by the Artificer? <i>Art</i> goes yet
+further, imitating that Rationall and most excellent worke of Nature, <i>Man</i>. For
+by Art is created that great Leviathan called a Common-Wealth, or <b><b>State</b></b>, (in
+latine Civitas) which is but <b>an Artificiall Man</b>
+</p>
+</blockquote>
+
+
+<p>
+I think the essay would  make the case that the origin, essential logic, and
+ultimate destiny of the state-machine concept is the subordination of the human
+being to the man/state/machine.
+</p>
+
+<p>
+Turing, in the &ldquo;Computable Numbers&rdquo; paper begins his description of the
+&ldquo;Computing machines&rdquo; thus:
+</p>
+
+<blockquote>
+<p>
+We may compare a man in the process of computing a real number to a machine
+which is only capable of a finite number of conditions <i>q1, q2, &#x2026;, qR</i> which
+will e called &ldquo;<i>m</i>-configurations&rdquo;.
+</p>
+</blockquote>
+
+
+<p>
+And immediately preceding, he notes the justification for this comparison:
+</p>
+
+<blockquote>
+<p>
+the justification lies in the fact that the human memory is necessarily
+limited.
+</p>
+</blockquote>
+
+
+<p>
+What makes a man/machine fully determinable (fully controlled?)?
+</p>
+
+<blockquote>
+<p>
+If at each stage the motion of a machine is <i>completely</i> determined by the
+configuration, we shall call the machine an &ldquo;automatic machine&rdquo;.
+</p>
+</blockquote>
+
+
+<p>
+Turing also names another kind of machine, the &ldquo;choice machine&rdquo;:
+</p>
+
+<blockquote>
+<p>
+For some purposes we might use machines (choice machines or <b>c</b>-machines) whose
+motion is only partially determined by the configuration &#x2026; When such a machine
+reaches one of these ambiguous configurations, it cannot go on until some
+arbitrary choice has been made by an external operator. (72)
+</p>
+</blockquote>
+
+<p>
+Hobbes (for whom &ldquo;<b>Imagination</b> and <b>Memory</b> are but one thing&rdquo; (89), also
+maintained the finitude of memory:
+</p>
+
+<blockquote>
+<p>
+Whatsoever we imagine, is <b>Finite</b>. Therefore there is no Idea, or conception
+of anything we call <b>Infinite</b>.
+</p>
+</blockquote>
+
+<p>
+And rendered Imagination as motion from mechanical impact of bodies on sense
+organs. Reason is the orderly and deterministic sequencing of such impressions
+in a train, after the impressions have been encoded into words:
+</p>
+
+<blockquote>
+<p>
+When a man <b>Reasoneth</b>, hee does nothing else but conceive a summe totall, from
+<b>Addition</b> of parcels; or conceive a Remainder, from <b>Subtraction</b> of one summe
+from another: which (if it be done by Words,) is conceiving of the consequences
+of the names of all the parts, to the name of the whole; or from the names of
+the whole and on epart, to the name of the other part. (110)
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+For Reason, in this sense, is nothing but <b>Reckoning</b> (that is, Adding and
+Subtracting) of the Consequences of generall names agreed upon, for the
+<b>marking</b> and <b>signifying</b> of our thoughts.
+</p>
+</blockquote>
+
+<p>
+He casts Science as the knowledge of consequence revealed by this right
+ordering. (See p. 115) Essential to scientific reasoning is the elimination of
+ambiguity:
+</p>
+
+<blockquote>
+<p>
+The Light of humane minds is Perspicuous Words, but by exact definitions first
+snuffed, and purged from ambiguity; <b>Reason</b> is the <b>pace</b>; Encrease of
+<b>Science</b>, the <b>way</b>; and the Benefit of man-kind, the <b>end</b>.
+</p>
+</blockquote>
+
+<p>
+The destiny of a redemable human being, in Hobbe&rsquo;s view, is only via the
+subordination of everything, both human and nature, to the man/state/machine,
+via linguistic programming (or, as he calls it, &ldquo;Science&rdquo;):
+</p>
+
+<blockquote>
+<p>
+The only way to erect such a Common Power, as may be able to defend them from
+the invasion of Forraigners, and the injuries of one another &#x2026; is, to conferre
+all their power and strength upon one Man, or upon one Assembly of men, that may
+reduce all their Wills, by plurality of voices, unto one Will
+</p>
+</blockquote>
+<div id="outline-container-orgcc56aa2" class="outline-2">
+<h2 id="orgcc56aa2"><span class="todo TODO">TODO</span> re: Lacan</h2>
+<div class="outline-text-2" id="text-orgcc56aa2">
+<blockquote>
+<p>
+There is nothing here, however, that contradicts the vast dialectic that makes
+us serfs of history by superimposing its waves on the brewing of our grand
+migrations, in what attaches each of us to a scrap of discourse that is more
+alive than his very life, if it is true that, as Goethe said, when &ldquo;that which
+is without life is alive, it can also produce life&rdquo;.
+</p>
+
+<p>
+For it is also true that, having been unable to proffer this scrap of discourse
+from our throats, each of us is condemned to make himself into its living
+alphabet to trace out its fatal line.
+</p>
+
+<p>
+(Lacan, &ldquo;Psychoanalysis and Its Teaching&rdquo;)
+</p>
+</blockquote>
+
+
+<p>
+&#x2014;
+</p>
+</div>
+</div>
+<div id="outline-container-orgb6ce19e" class="outline-2">
+<h2 id="orgb6ce19e"><span class="todo TODO">TODO</span> re: Longo&rsquo;s letter&rsquo;s to turing</h2>
+<div class="outline-text-2" id="text-orgb6ce19e">
+<p>
+In a letter addressed posthumously to Alan Turing, Giuseppe Longo laments the
+conceptual and technological cul-de-sac into which the state machinsts are
+driving us:
+</p>
+
+<blockquote>
+<p>
+To this we have to add the madness, as I mentioned, of the &ldquo;everything is
+computational&rdquo;, starting from the analysis of the living, the opposite of what
+you [Turing] were able to offer, and creating the myth of the Universe as a
+Turing Machine, against your very precise observations. These colleagues, who
+are using the only technique that they know, and applying it to every possible
+phenomenon, flattening it onto a universe that is witout meaning and made only
+of formal calculations, act as if yours is the last machine that [humans] will
+be capable of inventing: it is coterminous with the world! I am convinced that
+we shall invent others, but these prophesies risk becoming self-affirming:
+piling computational techniques onto computational techniques, always in the
+same theoretical universe, to grasp the complexity of the Universe (or the brain,
+of DNA &#x2026;), in increasingly and abstrusively difficult ways without the very
+simple purity and depth that mathematical invention requires &#x2013; all of this
+prevents us from being able to think about the &#x2026; next machine, which humankind
+will certainly find ways of inventing.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org1b9157f" class="outline-2">
+<h2 id="org1b9157f"><span class="todo TODO">TODO</span> Etymology</h2>
+<div class="outline-text-2" id="text-org1b9157f">
+<p>
+State is derived
+</p>
+
+<blockquote>
+<p>
+directly from <i>status</i> &ldquo;a station, position, place; way of standing, posture;
+order, arrangement, condition,&rdquo;
+</p>
+</blockquote>
+
+<p>
+and then figuratively a
+</p>
+
+<blockquote>
+<p>
+&ldquo;standing, rank; public order, community organization,&rdquo;
+</p>
+</blockquote>
+
+<p>
+Consult the hypothesized PIE root to see that <i>state</i> is rooted in the notion of
+a static standing, a set arrangement.
+</p>
+
+<p>
+<a href="https://www.etymonline.com/word/state#etymonline_v_22015">https://www.etymonline.com/word/state#etymonline_v_22015</a>
+</p>
+
+<p>
+State as in stasis, position, a standing. The notion of a state as &ldquo;political
+organization of a country, supreme civil power, government&rdquo; dates from c. 1300.
+</p>
+
+<p>
+Concretely and primarily, <a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0059%3Aentry%3Dstatus2"><i>status</i></a> conveyed a gradient of senses from physical
+posture, appearance, or stature, to position in space. Only  figuratively and
+derivatively did it come to mean one&rsquo;s social position, i.e., social status. And
+by this route, finally, to mean &ldquo;of countries, communities, etc., the condition of
+society, or the state, the public order, public affairs&rdquo;.
+</p>
+
+<p>
+Note that this determines sociality and the being together of community through
+static positionality and arrangement (this will become state in the sense of
+situated and configured resources) in a field of relative power or influence.
+Status still has this sense. The concept of the state has always intended an
+ordering of people based on static accumulation and hierarchical positioning.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfb8a8bf" class="outline-2">
+<h2 id="orgfb8a8bf">Positioning: pro-civilization/anti-state</h2>
+<div class="outline-text-2" id="text-orgfb8a8bf">
+<p>
+As per Bookchin, the state is opposed to, other than, and imposed at the expense
+of the urbs/city. Civilization as understood as a social order organized around
+the life of the civilis &ldquo;relating to a citizen, relating to public life,
+befitting a citizen; popular, affable, courteous&rdquo; (<a href="https://www.etymonline.com/word/civilize?ref=etymonline_crossreference">etymonline</a>). 
+</p>
+</div>
+</div>
+<div id="outline-container-org98f07de" class="outline-2">
+<h2 id="org98f07de">Models matter</h2>
+<div class="outline-text-2" id="text-org98f07de">
+<p>
+Rewriting vs. state
+</p>
+</div>
+</div>
+<div id="outline-container-org32bc74f" class="outline-2">
+<h2 id="org32bc74f"><span class="todo TODO">TODO</span> State Machine</h2>
+<div class="outline-text-2" id="text-org32bc74f">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Review <a href="https://en.wikipedia.org/wiki/State_(computer_science)">https://en.wikipedia.org/wiki/State_(computer_science)</a></li>
+</ul>
+</div>
+<div id="outline-container-orgf2d8e82" class="outline-3">
+<h3 id="orgf2d8e82"><span class="todo TODO">TODO</span> Genealogy</h3>
+<div class="outline-text-3" id="text-orgf2d8e82">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Review the google books results: <a href="https://www.google.com/search?q=%22+state+machine+%22&amp;lr=lang_en&amp;tbs=cdr:1,cd_min:1800,cd_max:1893,lr:lang_1en&amp;tbm=bks&amp;sxsrf=ALeKk02GRte-KyqD2-4ucj59go6NIFRnKQ:1608574479411&amp;ei=D-bgX-vIGIii5NoPhoWRqAo&amp;start=10&amp;sa=N&amp;ved=0ahUKEwirjMLz1t_tAhUIEVkFHYZCBKUQ8NMDCJ4B&amp;biw=1682&amp;bih=935&amp;dpr=2">https://www.google.com/search?q=%22+state+machine+%22&amp;lr=lang_en&amp;tbs=cdr:1,cd_min:1800,cd_max:1893,lr:lang_1en&amp;tbm=bks&amp;sxsrf=ALeKk02GRte-KyqD2-4ucj59go6NIFRnKQ:1608574479411&amp;ei=D-bgX-vIGIii5NoPhoWRqAo&amp;start=10&amp;sa=N&amp;ved=0ahUKEwirjMLz1t_tAhUIEVkFHYZCBKUQ8NMDCJ4B&amp;biw=1682&amp;bih=935&amp;dpr=2</a></li>
+</ul>
+</div>
+<div id="outline-container-org1080663" class="outline-4">
+<h4 id="org1080663">School as a machine that should belong to the state</h4>
+<div class="outline-text-4" id="text-org1080663">
+<blockquote>
+<p>
+We confront the whole programme, as an aggregate and all in all its parts, with
+the generic proposition that the public school should be made neither a Catholic
+nor a Protestant machine, ay more than it should be made a Jewish, a Mormon, or
+an infidel machine. It should be a State machine &#x2026;
+</p>
+</blockquote>
+
+<p>
+Samuel Thayer Spear · 1876
+<a href="https://books.google.ca/books?id=TOtMAQAAMAAJ&amp;pg=PA30&amp;dq=%22+state+machine+%22&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwirjMLz1t_tAhUIEVkFHYZCBKUQ6AEwCXoECAcQAg#v=onepage&amp;q=%22%20state%20machine%20%22&amp;f=false">https://books.google.ca/books?id=TOtMAQAAMAAJ&amp;pg=PA30&amp;dq=%22+state+machine+%22&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwirjMLz1t_tAhUIEVkFHYZCBKUQ6AEwCXoECAcQAg#v=onepage&amp;q=%22%20state%20machine%20%22&amp;f=false</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga10364c" class="outline-4">
+<h4 id="orga10364c">The state as a machine</h4>
+<div class="outline-text-4" id="text-orga10364c">
+<p>
+<a href="https://books.google.ca/books?id=10FcAAAAcAAJ&amp;pg=PA27&amp;dq=%22+state+machine+%22&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwjh-MGd2N_tAhXkFVkFHc9eD144ChDoATAHegQICRAC#v=onepage&amp;q=%22%20state%20machine%20%22&amp;f=false">https://books.google.ca/books?id=10FcAAAAcAAJ&amp;pg=PA27&amp;dq=%22+state+machine+%22&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwjh-MGd2N_tAhXkFVkFHc9eD144ChDoATAHegQICRAC#v=onepage&amp;q=%22%20state%20machine%20%22&amp;f=false</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb723de8" class="outline-2">
+<h2 id="orgb723de8"><span class="todo TODO">TODO</span> The State of Man</h2>
+<div class="outline-text-2" id="text-orgb723de8">
+</div>
+<div id="outline-container-org4a457e9" class="outline-3">
+<h3 id="org4a457e9">Jean Bodin&rsquo;s &ldquo;Six Books&#x2026;&rdquo;</h3>
+<div class="outline-text-3" id="text-org4a457e9">
+<p>
+<a href="https://constitution.org/2-Authors/bodin/bodin_1.htm">https://constitution.org/2-Authors/bodin/bodin_1.htm</a>
+</p>
+
+<blockquote>
+<p>
+A COMMONWEALTH may be defined as the rightly ordered government of a number of
+families, and of those things which are their common concern, by a sovereign
+power. 
+</p>
+</blockquote>
+</div>
+<div id="outline-container-org6195e88" class="outline-4">
+<h4 id="org6195e88">Manly hierarchical control as founding principle</h4>
+<div class="outline-text-4" id="text-org6195e88">
+<blockquote>
+<p>
+A FAMILY may be defined as the right ordering of a group of persons owing
+obedience to a head of a household, and of those interests which are his proper
+concern. 
+</p>
+</blockquote>
+
+<p>
+But this wasn&rsquo;t even consistently used as the organizing principle. Only
+<i>certain</i> males were allotted the defining role of head of household. 
+</p>
+
+<blockquote>
+<p>
+From the moment a marriage is consummated the woman is subject to her husband,
+unless he is still living as a dependant in his father&rsquo;s house. Neither slaves
+nor other dependants have any authority over their wives, still less over their
+children. They are all subject to the head of the family until such time as he
+shall have given his married son his independence. No household can have more
+than one head, one master, one seigneur. If there were more than one head there
+would be a conflict of command and incessant family disturbances&#x2026; wherefore a
+woman marrying a man still living in his father&rsquo;s house is subject to her
+father-in-law. &#x2026;
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org6ece764" class="outline-4">
+<h4 id="org6ece764">Control and command as the foundation of the state:</h4>
+<div class="outline-text-4" id="text-org6ece764">
+<blockquote>
+<p>
+The government of all commonwealths, colleges, corporate bodies, or households
+whatsoever, rests on the right to command on one side, and the obligation to
+obey on the other, which arises when the natural liberty which each man has to
+live as he chooses, is exercised subject to the power of another.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7acd6f0" class="outline-2">
+<h2 id="org7acd6f0"><span class="todo TODO">TODO</span> re: Leslie Lamport&rsquo;s definition of computation as clock</h2>
+<div class="outline-text-2" id="text-org7acd6f0">
+<p>
+From <a href="https://www.youtube.com/watch?v=BDPHfRuAFnU">https://www.youtube.com/watch?v=BDPHfRuAFnU</a>
+</p>
+
+<p>
+Compare with <a href="https://www.di.ens.fr/users/longo/files/PhilosophyAndCognition/clocksVSturingM.pdf">https://www.di.ens.fr/users/longo/files/PhilosophyAndCognition/clocksVSturingM.pdf</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org5c51836" class="outline-2">
+<h2 id="org5c51836"><span class="todo TODO">TODO</span> &ldquo;Social Media&rdquo; is a schizoid leviathan</h2>
+</div>
+
+<div id="outline-container-org2610c1b" class="outline-2">
+<h2 id="org2610c1b"><span class="todo TODO">TODO</span> Dress / Dressage</h2>
+<div class="outline-text-2" id="text-org2610c1b">
+<dl class="org-dl">
+<dt>Etymology</dt><dd><a href="https://www.etymonline.com/word/dress?ref=etymonline_crossreference#etymonline_v_15901">https://www.etymonline.com/word/dress?ref=etymonline_crossreference#etymonline_v_15901</a></dd>
+<dt>Lefebvre, rhythmanalysis</dt><dd>section 4</dd>
+</dl>
+
+<hr />
+</div>
+</div>
+<div id="outline-container-orga477d5d" class="outline-2">
+<h2 id="orga477d5d"><span class="todo TODO">TODO</span> Machine vs. State Machine</h2>
+</div>
+
+<div id="outline-container-org83bbefc" class="outline-2">
+<h2 id="org83bbefc">References</h2>
+<div class="outline-text-2" id="text-org83bbefc">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class='footer'>
+Copyright 2023 Shon Feder.<br>
+Last updated 2024-07-27 Sat 14:50. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.7.11).
+</div>
+</div>
+</body>
+</html>

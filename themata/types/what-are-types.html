@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-18 Wed 10:10 -->
+<!-- 2024-09-29 Sun 20:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What Are Types?</title>
 <meta name="author" content="um" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -247,26 +247,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc9b46d4">Computational Type Theory</a></li>
-<li><a href="#orgc7b4448">A Short Genealogy of Types</a>
+<li><a href="#org85099da">Computational Type Theory</a></li>
+<li><a href="#org7b20ed9">A Short Genealogy of Types</a>
 <ul>
-<li><a href="#org81f1b61">Prehistory of the Theories of Types</a></li>
-<li><a href="#orge961c68">Dawn of the Theories of Types</a></li>
+<li><a href="#org20669bb">Prehistory of the Theories of Types</a></li>
+<li><a href="#orga2e3dee">Dawn of the Theories of Types</a></li>
 </ul>
 </li>
-<li><a href="#org9e2f6d9">Metaphysical Foundations of the Computational Theory of Types</a>
+<li><a href="#org7ef4ad1">Metaphysical Foundations of the Computational Theory of Types</a>
 <ul>
-<li><a href="#org03d8708"><span class="todo TODO">TODO</span> Equality</a></li>
-<li><a href="#orga20102b"><span class="todo TODO">TODO</span> Belonging together</a></li>
+<li><a href="#org9d283a8"><span class="todo TODO">TODO</span> Equality</a></li>
+<li><a href="#org042677e"><span class="todo TODO">TODO</span> Belonging together</a></li>
 </ul>
 </li>
-<li><a href="#org92a81a0">Types as Theories</a></li>
+<li><a href="#org3f5c1fe">Types as Theories</a></li>
+<li><a href="#org2000ba3"><span class="done DONE">DONE</span> Types as Markers of Material incompatibility and consequence</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc9b46d4" class="outline-2">
-<h2 id="orgc9b46d4">Computational Type Theory</h2>
-<div class="outline-text-2" id="text-orgc9b46d4">
+<div id="outline-container-org85099da" class="outline-2">
+<h2 id="org85099da">Computational Type Theory</h2>
+<div class="outline-text-2" id="text-org85099da">
 <p>
 Robert Constable, in his article &ldquo;Computational Type Theory&rdquo;
 (Constable 2009):
@@ -316,7 +317,7 @@ telling us how to compute certain elements \(t_1, ..., t_n \in T\) from other
 elements \(t'_1, ..., t'_n \in T\), via the relation \(\to\), such that \(t' \to t\)
 reads &ldquo;\(t'\) reduces to \(t\)&rdquo;. We say a term in \(T\) is &ldquo;irreducible&rdquo; if it is only
 reducible to itself: \(t \to t\). Such a term is called &ldquo;canonical&rdquo;. That this
-sets up a (partial) ordering over a set of <i>signs</i>.<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+sets up a (partial) ordering over a set of <i>signs</i>.<sup><a id="fnr.rewriting" class="footref" href="#fn.rewriting" role="doc-backlink">1</a></sup>
 </p>
 
 <p>
@@ -356,17 +357,17 @@ together) and <i>equalization</i> (of terms that are taken to be the same).
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7b4448" class="outline-2">
-<h2 id="orgc7b4448">A Short Genealogy of Types</h2>
-<div class="outline-text-2" id="text-orgc7b4448">
+<div id="outline-container-org7b20ed9" class="outline-2">
+<h2 id="org7b20ed9">A Short Genealogy of Types</h2>
+<div class="outline-text-2" id="text-org7b20ed9">
 <p>
 The roots of type theories, computational or otherwise, extend back through the
 history of philosophy, at least to Aristotle (Constable 2009).
 </p>
 </div>
-<div id="outline-container-org81f1b61" class="outline-3">
-<h3 id="org81f1b61">Prehistory of the Theories of Types</h3>
-<div class="outline-text-3" id="text-org81f1b61">
+<div id="outline-container-org20669bb" class="outline-3">
+<h3 id="org20669bb">Prehistory of the Theories of Types</h3>
+<div class="outline-text-3" id="text-org20669bb">
 <blockquote>
 <p>
 In all subsumptions of an object under a concept the representations of the
@@ -382,9 +383,9 @@ contained under a concept&rdquo;.
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge961c68" class="outline-3">
-<h3 id="orge961c68">Dawn of the Theories of Types</h3>
-<div class="outline-text-3" id="text-orge961c68">
+<div id="outline-container-orga2e3dee" class="outline-3">
+<h3 id="orga2e3dee">Dawn of the Theories of Types</h3>
+<div class="outline-text-3" id="text-orga2e3dee">
 <p>
 Martin-Löf&rsquo;s, in his &ldquo;An intuitionistic theory of types&rdquo;, explicitly traces his
 concept of type back to Russel:
@@ -479,16 +480,16 @@ And, once we&rsquo;ve determined that belonging together, how do we enforce this
 </div>
 </div>
 </div>
-<div id="outline-container-org9e2f6d9" class="outline-2">
-<h2 id="org9e2f6d9">Metaphysical Foundations of the Computational Theory of Types</h2>
-<div class="outline-text-2" id="text-org9e2f6d9">
+<div id="outline-container-org7ef4ad1" class="outline-2">
+<h2 id="org7ef4ad1">Metaphysical Foundations of the Computational Theory of Types</h2>
+<div class="outline-text-2" id="text-org7ef4ad1">
 </div>
-<div id="outline-container-org03d8708" class="outline-3">
-<h3 id="org03d8708"><span class="todo TODO">TODO</span> Equality</h3>
+<div id="outline-container-org9d283a8" class="outline-3">
+<h3 id="org9d283a8"><span class="todo TODO">TODO</span> Equality</h3>
 </div>
-<div id="outline-container-orga20102b" class="outline-3">
-<h3 id="orga20102b"><span class="todo TODO">TODO</span> Belonging together</h3>
-<div class="outline-text-3" id="text-orga20102b">
+<div id="outline-container-org042677e" class="outline-3">
+<h3 id="org042677e"><span class="todo TODO">TODO</span> Belonging together</h3>
+<div class="outline-text-3" id="text-org042677e">
 <p>
 The types of the typed λ-calculi are <i>marks</i>, or <i>indexes</i>, used to enforce a
 sense of appropriateness that follows from presumptions of <i>belonging together</i>.
@@ -512,9 +513,9 @@ character; outline, sketch,&rdquo; from root of <i>typtein</i> &ldquo;to strike,
 </p>
 </blockquote>
 </div>
-<div id="outline-container-org996ff80" class="outline-4">
-<h4 id="org996ff80">Justification:</h4>
-<div class="outline-text-4" id="text-org996ff80">
+<div id="outline-container-orgd713087" class="outline-4">
+<h4 id="orgd713087">Justification:</h4>
+<div class="outline-text-4" id="text-orgd713087">
 <p>
 What justifies such enforcement?
 </p>
@@ -522,9 +523,9 @@ What justifies such enforcement?
 </div>
 </div>
 </div>
-<div id="outline-container-org92a81a0" class="outline-2">
-<h2 id="org92a81a0">Types as Theories</h2>
-<div class="outline-text-2" id="text-org92a81a0">
+<div id="outline-container-org3f5c1fe" class="outline-2">
+<h2 id="org3f5c1fe">Types as Theories</h2>
+<div class="outline-text-2" id="text-org3f5c1fe">
 <p>
 In <i>Types as Theories</i>, Goguen denies that &ldquo;type theory&rdquo; advances a general
 theory of types, in arguing instead that it presents a theory based on a
@@ -603,11 +604,26 @@ derivations of the lambda calculus).
 </p>
 </div>
 </div>
+<div id="outline-container-org2000ba3" class="outline-2">
+<h2 id="org2000ba3"><span class="done DONE">DONE</span> Types as Markers of Material incompatibility and consequence</h2>
+<div class="outline-text-2" id="text-org2000ba3">
+<p>
+As alternative to <span class="underline">equality</span> as determinations of &ldquo;type&rdquo; could we base types on
+the two relationships of <span class="underline">material incompatibility</span> and <span class="underline">consequence</span>, as per
+Robert Brandom?
+</p>
+
+<dl class="org-dl">
+<dt>A # B</dt><dd>A is incompatible with B</dd>
+<dt>A |~ B</dt><dd>B is a <span class="underline">material</span> consequence of A</dd>
+</dl>
+</div>
+</div>
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<div class="footdef"><sup><a id="fn.rewriting" class="footnum" href="#fnr.rewriting" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 We sketch out the barest form of a term-rewriting system here,
 to sidestep the complications introduced by the usual pratice of using the
 lambda calculus in particular. There&rsquo;s good reason to favor <a href="https://en.wikipedia.org/wiki/Cartesian_closed_category">typed lambda calculi</a>
@@ -623,8 +639,8 @@ aiming for here.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
-Last updated 2023-10-17 Tue 23:27. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Last updated 2023-12-17 Sun 23:42. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.7.11).
 </div>
 </div>
 </body>
