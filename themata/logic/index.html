@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-29 Sun 20:36 -->
+<!-- 2024-12-25 Wed 13:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Logic</title>
@@ -376,6 +376,10 @@ proof-theoretic formal systems that have been transforming computer science.
 <div id="outline-container-orgf5d84d1" class="outline-4">
 <h4 id="orgf5d84d1"><span class="todo TODO">TODO</span> Structural Proof Theory</h4>
 <div class="outline-text-4" id="text-orgf5d84d1">
+<p>
+(See also my <a href="structural-proof-theory.html">notes on structural proof theory</a>.)
+</p>
+
 <blockquote>
 <p>
 &#x2026; structural systems may be considered as providing a general framework of
@@ -677,7 +681,7 @@ these &ldquo;structural inference figures&rdquo;? How do they get introduced?
 <p>
 Gentzen&rsquo;s driving aim in introducing LJ is to preserve the ability to define the
 logic symbols by their introduction and elimination rules but to make a
-deductive calculus which is &ldquo;logicsitic&rdquo;. Being &ldquo;logistic&rdquo; means each formula
+deductive calculus which is &ldquo;logistic&rdquo;. Being &ldquo;logistic&rdquo; means each formula
 that occurs should be a logical truth, and not dependent on external
 assumptions.
 </p>
@@ -715,31 +719,29 @@ So, how do we make NJ &ldquo;logistic&rdquo;?
 <p>
 The most obvious method of converting an NJ-derivation into a logistic one is
 this: We replace a [derivation formula] \(B\), which depends on the assumption
-formula \(A_1, .., A_u\) by the new formula \((A_1 & ... & A_u) \supset B\). This we
+formula \(A_1, .., A_u\) by the new formula \((A_1 \& ... \& A_u) \supset B\). This we
 do with all [derivation formulae]
 </p>
 </blockquote>
 
 <p>
 Recapitulating with an example: we can render our proof of \(A \land B \supset B
-\land A\) logistic by noting the assumption formula in antecedents of
-conditionals preceding each of the three dependenc formulae. Since \(B\) depends
+\land A\) logistic by making the assumption formula explicit in the antecedents of
+conditionals preceding each of the three sub-formula. Since \(B\) depends
 on assumption <code>[1]</code>, we rewrite \(B\) as \(A \land B \supset B\). We do the same
 with the two remaining dependent formula, and, for consistency, add the trivial
 self-implication of the assumption to get:
 </p>
 
-<blockquote>
-<p>
+<div class="org-src-container">
+<pre class="src src-nil">------------- ax   ------------- ax
 A &amp; B ⊃ A &amp; B      A &amp; B ⊃ A &amp; B
---------&#x2013;&#x2014; &amp;Er  --------&#x2013;&#x2014; &amp;El
+------------- &amp;Er  ------------- &amp;El
   A &amp; B ⊃ B          A &amp; B ⊃ A
----------------------------&#x2013;&#x2014; &amp;I
+-------------------------------- &amp;I
         A &amp; B ⊃ B &amp; A
----------------------------&#x2013;&#x2014; -&gt;E
-    A &amp; B ⊃ A &amp; B ⊃ B &amp; A
-</p>
-</blockquote>
+</pre>
+</div>
 
 <blockquote>
 <p>
@@ -755,16 +757,16 @@ symbols.
 <p>
 This problematic complication is evident in our attempted rewrite! The principle
 operators in each formula are now \(\supset\), but (excepting the conclusion), the
-elimination and introduction rules are all meant to be working on \(\land\).
+elimination and introduction rules are all meant to be working on \(\&\).
 Worse, we&rsquo;d need another set of introduction and elimination rules for the &ldquo;new&rdquo;
-logical symbols, and prevent ourselves mixing them up with the identical &ldquo;old&rdquo;
+logical symbols, to prevent ourselves mixing them up with the identical &ldquo;old&rdquo;
 ones.
 </p>
 
 <blockquote>
 <p>
 For this reason, we have introduced the concept of a <i>sequent</i>. Instead of a
-formula \((A_1 & ... & A_u) \supset B\) we therefore write the sequent
+formula \((A_1 \& ... \& A_u) \supset B\) we therefore write the sequent
 </p>
 
 <p>
@@ -775,12 +777,12 @@ A_1, ..., A_2 \to B.
 
 <p>
 The informal meaning of this sequent is no different from that of the above
-formula; the expressions differe merely in their formal [syntactic] structure.
+formula; the expressions differ merely in their formal [syntactic] structure.
 </p>
 </blockquote>
 
 <p>
-I.e., Gentzen introduced an alternate surface syntax, to disambiguate the a
+I.e., Gentzen introduced an alternate surface syntax, to disambiguate a
 structure in the metalanguage which is (informally) synonymous with implication
 in the object language. But this didn&rsquo;t actually do away with the problem of
 needing new introduction and elimination rules:
@@ -1112,23 +1114,26 @@ Interesting to note that it is precisely these modal operators where linear
 logic loses the security of its footing:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nil">The exponentials $!$ and $?$ in linear logic are less carved in the marble than
+<blockquote>
+<p>
+The exponentials \(!\) and \(?\) in linear logic are less carved in the marble than
 the other connectives. Indeed, if one uses traditional sequent calculus
 presentations, the exponentials are not “canonical”: if you introduce another
-copy of exponentials, say $!′$ and $?′$, with the same rules as the original
-ones, there is no way to prove that $!$ is equivalent to $!′$, and $?$ to $?′$,
+copy of exponentials, say \(!′\) and \(?′\), with the same rules as the original
+ones, there is no way to prove that \(!\) is equivalent to \(!′\), and \(?\) to \(?′\),
 while for the other connectives this is easily established.
+</p>
 
-In this respect, the $!$ and $?$ resemble the box and diamond connectives found
+<p>
+In this respect, the \(!\) and \(?\) resemble the box and diamond connectives found
 in modal logic, and it is then possible and interesting to study variations for
 the logical rules of these connectives. For example, elementary linear logic
-(ELL) is obtained by replacing the $!$ and $?$ introduction by a single rule
-introducing $!$ and $?$ at the same time. As a consequence, ELL can encode all
+(ELL) is obtained by replacing the \(!\) and \(?\) introduction by a single rule
+introducing \(!\) and \(?\) at the same time. As a consequence, ELL can encode all
 and only the functions over integers that normalize in time bounded by an
 elementary function.
-</pre>
-</div>
+</p>
+</blockquote>
 
 <p>
 <a href="https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod">https://stanford.library.sydney.edu.au/archives/spr2014/entries/logic-linear/#DifTreMod</a>
@@ -1141,7 +1146,7 @@ the fact they mark the interjection of the subjective into the logic!
 
 <blockquote>
 <p>
-This means that !A is subjective, since depending on a viewpoint
+This means that \(!A\) is subjective, since depending on a viewpoint
 \(P\).
 </p>
 
@@ -1327,7 +1332,7 @@ Please pardon my inexpert translation.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
-Last updated 2024-09-29 Sun 19:55. <br>
+Last updated 2024-12-25 Wed 13:47. <br>
 Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.7.11).
 </div>
 </div>
