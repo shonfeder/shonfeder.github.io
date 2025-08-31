@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-09-29 Sun 20:36 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WIP: Nothing /Really/ Matters</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -214,9 +214,9 @@
 <br />
 <span class="subtitle">The option type as an icon of absence</span>
 </h1>
-<div id="outline-container-org3bcbbd8" class="outline-2">
-<h2 id="org3bcbbd8">A joke about nothing</h2>
-<div class="outline-text-2" id="text-org3bcbbd8">
+<div id="outline-container-orgcb45b55" class="outline-2">
+<h2 id="orgcb45b55">A joke about nothing</h2>
+<div class="outline-text-2" id="text-orgcb45b55">
 <p>
 There is an old philosophy joke, which I learned in this form:
 </p>
@@ -238,9 +238,9 @@ milk instead?&rdquo;
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orga2c4642" class="outline-2">
-<h2 id="orga2c4642">Explaining the joke</h2>
-<div class="outline-text-2" id="text-orga2c4642">
+<div id="outline-container-org501b4f8" class="outline-2">
+<h2 id="org501b4f8">Explaining the joke</h2>
+<div class="outline-text-2" id="text-org501b4f8">
 <p>
 The punchline&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> rests on the idea that non-presence is determined by
 that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>: milk is distinct from cream, so having no milk
@@ -290,9 +290,9 @@ non-presence, as we&rsquo;ve been doing.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb71b350" class="outline-2">
-<h2 id="orgb71b350"><span class="todo TODO">TODO</span> The option type as an icon of absence</h2>
-<div class="outline-text-2" id="text-orgb71b350">
+<div id="outline-container-org2060814" class="outline-2">
+<h2 id="org2060814"><span class="todo TODO">TODO</span> The option type as an icon of absence</h2>
+<div class="outline-text-2" id="text-org2060814">
 <p>
 We can interpret <a href="https://en.wikipedia.org/wiki/Option_type">the <code>option</code> type</a> as an <a href="https://en.wikipedia.org/wiki/Iconicity">icon</a> of the phenomena of absence. To
 aid in the exposition of this interpretation, we&rsquo;ll build up a small domain of
@@ -320,7 +320,7 @@ material constitutive of that substance.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="org1000814"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
+<pre class="src src-ocaml" id="org2157c84"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
   <span class="org-doc">(** The form of the substance is it's principle type. Depending on your</span>
 <span class="org-doc">      ontology, you might say that the form is given by the substance's</span>
@@ -334,7 +334,7 @@ material constitutive of that substance.
 </div>
 
 <p>
-The <a href="#org1000814">No description for this link</a> let&rsquo;s us distinguish between kinds of things and
+The <a href="#org2157c84">No description for this link</a> let&rsquo;s us distinguish between kinds of things and
 instances of that kind.
 </p>
 
@@ -398,7 +398,7 @@ Now we need a way of representing the absence of a liqid
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml" id="org8ec68b3"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
+<pre class="src src-ocaml" id="org67680ce"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Option</span> = <span class="org-tuareg-font-lock-governing">struct</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a t</span> =
     | <span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-keyword">of</span> 'a
     | <span class="org-tuareg-font-lock-constructor">None</span>
@@ -412,7 +412,7 @@ type 'a option = Some of 'a | None
 
 
 <p>
-Read the above <a href="#org8ec68b3">No description for this link</a> as follows:
+Read the above <a href="#org67680ce">No description for this link</a> as follows:
 </p>
 
 <ul class="org-ul">
@@ -440,32 +440,32 @@ of this type:
 </dl></li>
 </ul>
 </div>
-<div id="outline-container-orgb55061a" class="outline-3">
-<h3 id="orgb55061a"><span class="todo TODO">TODO</span> Absence of an additive</h3>
-<div class="outline-text-3" id="text-orgb55061a">
+<div id="outline-container-orgf1db17d" class="outline-3">
+<h3 id="orgf1db17d"><span class="todo TODO">TODO</span> Absence of an additive</h3>
+<div class="outline-text-3" id="text-orgf1db17d">
 <p>
 Coffee without milk is the same as coffee without cream.
 </p>
 </div>
 </div>
-<div id="outline-container-orged66a0d" class="outline-3">
-<h3 id="orged66a0d"><span class="todo TODO">TODO</span> Absence of a component</h3>
-<div class="outline-text-3" id="text-orged66a0d">
+<div id="outline-container-org230e21d" class="outline-3">
+<h3 id="org230e21d"><span class="todo TODO">TODO</span> Absence of a component</h3>
+<div class="outline-text-3" id="text-org230e21d">
 <p>
 I would be different without my arms than I would be without my legs.
 </p>
 </div>
 </div>
-<div id="outline-container-org6fcba5a" class="outline-3">
-<h3 id="org6fcba5a"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
-<div class="outline-text-3" id="text-org6fcba5a">
+<div id="outline-container-orgd6ec906" class="outline-3">
+<h3 id="orgd6ec906"><span class="todo TODO">TODO</span> Irreversable vs. reversable additives</h3>
+<div class="outline-text-3" id="text-orgd6ec906">
 <p>
 You can pick the pepperonis off a pizza, but cannot take the cream out of
 coffee.
 </p>
 </div>
-<div id="outline-container-org730c2f7" class="outline-4">
-<h4 id="org730c2f7">Conjunction vs. mixture</h4>
+<div id="outline-container-org05f434a" class="outline-4">
+<h4 id="org05f434a">Conjunction vs. mixture</h4>
 </div>
 </div>
 </div>
@@ -485,7 +485,7 @@ joke.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2024-07-27 Sat 15:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.4 (<a href="https://orgmode.org">Org</a> mode 9.7.11).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

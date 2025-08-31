@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-17 Tue 22:03 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lazy Evaluation in Ocaml: A Cheat Sheet</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -214,16 +214,16 @@
 <p>
 Notes to remind a forgetful OCaml user of the ways of laziness.
 </p>
-<div id="outline-container-org70e4d42" class="outline-2">
-<h2 id="org70e4d42">Basic concepts</h2>
-<div class="outline-text-2" id="text-org70e4d42">
+<div id="outline-container-org9c02e43" class="outline-2">
+<h2 id="org9c02e43">Basic concepts</h2>
+<div class="outline-text-2" id="text-org9c02e43">
 <p>
 Skip this if you&rsquo;re just looking for recipes and a refresher on use
 </p>
 </div>
-<div id="outline-container-org8937a76" class="outline-3">
-<h3 id="org8937a76">The Lazy Type and its Values: <code>lazy_t</code>, <code>Lazy.t</code>, and <code>lazy</code></h3>
-<div class="outline-text-3" id="text-org8937a76">
+<div id="outline-container-org581d599" class="outline-3">
+<h3 id="org581d599">The Lazy Type and its Values: <code>lazy_t</code>, <code>Lazy.t</code>, and <code>lazy</code></h3>
+<div class="outline-text-3" id="text-org581d599">
 <p>
 OCaml has built in support for memoized lazy evaluation. Three artifacts are
 all we need to take advantage of this feature:
@@ -239,21 +239,21 @@ type <code>'a</code> to values of type <code>'a lazy_t</code>.</dd>
 </dl>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">lazy</span> <span class="org-tree-sitter-hl-faceXnumber">3</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">int</span></span> <span class="org-tree-sitter-hl-faceXvariable">lazy_t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXnumber">3</span>
+<pre class="src src-ocaml">     utop # <span class="org-keyword">lazy</span> 3<span class="org-tuareg-font-double-semicolon">;;</span>
+     - : int lazy_t = <span class="org-keyword">lazy</span> 3
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">type</span> <span class="org-tree-sitter-hl-faceXvariable">t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXtag">T</span> <span class="org-tree-sitter-hl-faceXvariable">of</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXconstructor">Lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXvariable">t</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">T</span> <span class="org-tree-sitter-hl-faceXkeyword">of</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">lazy_t</span></span>
+     utop # <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">T</span> <span class="org-keyword">of</span> int <span class="org-tuareg-font-lock-module">Lazy.</span>t<span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span> = <span class="org-tuareg-font-lock-constructor">T</span> <span class="org-keyword">of</span> int lazy_t
 
-     <span class="org-tree-sitter-hl-faceXtype">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXconstructor">T</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-highlight-numbers-number">3</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> t <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">T</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-highlight-numbers-number">3</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+     utop # <span class="org-tuareg-font-lock-constructor">T</span> (<span class="org-keyword">lazy</span> 3)<span class="org-tuareg-font-double-semicolon">;;</span>
+     - : t = <span class="org-tuareg-font-lock-constructor">T</span> (<span class="org-keyword">lazy</span> 3)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga8429db" class="outline-3">
-<h3 id="orga8429db">Lazy values and thunks</h3>
-<div class="outline-text-3" id="text-orga8429db">
+<div id="outline-container-orgbf06ea6" class="outline-3">
+<h3 id="orgbf06ea6">Lazy values and thunks</h3>
+<div class="outline-text-3" id="text-orgbf06ea6">
 <p>
 <code>'a Lazy.t</code> ≢ <code>unit -&gt; 'a</code>
 </p>
@@ -268,8 +268,8 @@ That is, given
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXnumber">3</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">b</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXnumber">3</span>
+<pre class="src src-ocaml">     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">a</span> = <span class="org-keyword">lazy</span> 3
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">b</span> = <span class="org-keyword">fun</span> () -&gt; 3
 </pre>
 </div>
 
@@ -278,7 +278,7 @@ it&rsquo;s true that
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">assert</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">force</span></span> <span class="org-tree-sitter-hl-faceXvariable">a</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">b</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">())</span>
+<pre class="src src-ocaml">     <span class="org-tuareg-font-lock-governing">let</span> () = <span class="org-keyword">assert</span> (force a = b ())
 </pre>
 </div>
 
@@ -289,15 +289,15 @@ thunks in a way that diverges from those that use <code>lazy</code>. E.g.,
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">let</span> <span class="org-tree-sitter-hl-faceXvariable">c</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">print_endline</span></span> <span class="org-tree-sitter-hl-faceXstring">"Evaluating!"</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXnumber">2</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">val</span></span> <span class="org-tree-sitter-hl-faceXvariable">c</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXvariable">lazy_t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> &lt;<span class="org-tree-sitter-hl-faceXkeyword">lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
+<pre class="src src-ocaml">     utop # <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">c</span> = <span class="org-keyword">lazy</span> (print_endline <span class="org-string">"Evaluating!"</span>; 2)<span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">c</span> : int lazy_t = &lt;<span class="org-keyword">lazy</span>&gt;
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">force</span> c<span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXtag">Evaluating</span><span class="org-tree-sitter-hl-faceXoperator">!</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span>
+     utop # force c<span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-constructor">Evaluating</span><span class="org-tuareg-font-lock-operator">!</span>
+     - : int = 2
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">force</span> <span class="org-tree-sitter-hl-faceXvariable">c</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span>
+     utop # force c<span class="org-tuareg-font-double-semicolon">;;</span>
+     - : int = 2
 </pre>
 </div>
 
@@ -308,49 +308,49 @@ totally different results when dealing with impure programs:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span>
-     <span class="org-tree-sitter-hl-faceXfunctionXmethod">let</span> <span class="org-tree-sitter-hl-faceXvariable">lazy_incr</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXvariable">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">unit</span></span> <span class="org-tree-sitter-hl-faceXconstructor">Lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXvariable">t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">r</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">incr</span></span> <span class="org-tree-sitter-hl-faceXvariable">r</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<pre class="src src-ocaml">     utop #
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">lazy_incr</span> :<span class="org-type"> int </span><span class="org-builtin">ref</span><span class="org-type"> -&gt; unit </span><span class="org-tuareg-font-lock-module">Lazy.</span><span class="org-type">t </span>=
+         <span class="org-keyword">fun</span> <span class="org-variable-name">r</span> -&gt; <span class="org-keyword">lazy</span> (incr r)
 
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">thunk_incr</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">unit</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">unit</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">r</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">incr</span></span> <span class="org-tree-sitter-hl-faceXvariable">r</span>
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">thunk_incr</span> :<span class="org-type"> int </span><span class="org-builtin">ref</span><span class="org-type"> -&gt; unit -&gt; unit </span>=
+       <span class="org-keyword">fun</span> <span class="org-variable-name">r</span> -&gt; <span class="org-keyword">fun</span> () -&gt; incr r
 
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">ref_a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">ref</span></span> <span class="org-tree-sitter-hl-faceXnumber">1</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">ref</span></span> <span class="org-tree-sitter-hl-faceXnumber">1</span>
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">ref_a</span> = <span class="org-builtin">ref</span> 1
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">ref_b</span> = <span class="org-builtin">ref</span> 1
 
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">lazy_incr_ref_a</span>  <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">lazy_incr</span></span> <span class="org-tree-sitter-hl-faceXvariable">ref_a</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">thunk_incr_ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">thunk_incr</span></span> <span class="org-tree-sitter-hl-faceXvariable">ref_b</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">val</span></span> <span class="org-tree-sitter-hl-faceXvariable">lazy_incr</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXvariable">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">unit</span></span> <span class="org-tree-sitter-hl-faceXvariable">lazy_t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> &lt;<span class="org-tree-sitter-hl-faceXkeyword">fun</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">thunk_incr</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">unit</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">unit</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> &lt;<span class="org-tree-sitter-hl-faceXkeyword">fun</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">1</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">val</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">1</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">val</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">lazy_incr_ref_a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">unit</span></span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">lazy_t</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">&lt;</span><span class="org-tree-sitter-hl-faceXtype">lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXpunctuationXbracket">&gt;</span></span>
-     <span class="org-tree-sitter-hl-faceXtype">val</span> <span class="org-tree-sitter-hl-faceXtype">thunk_incr_ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">unit</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">unit</span> = &lt;<span class="org-tree-sitter-hl-faceXkeyword">fun</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">lazy_incr_ref_a</span>  = lazy_incr ref_a
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">thunk_incr_ref_b</span> = thunk_incr ref_b
+     <span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">lazy_incr</span> : int <span class="org-builtin">ref</span> -&gt; unit lazy_t = &lt;<span class="org-keyword">fun</span>&gt;
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">thunk_incr</span> : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> -&gt; unit -&gt; unit = &lt;<span class="org-keyword">fun</span>&gt;
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ref_a</span> : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 1}
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">ref_b</span> : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 1}
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">lazy_incr_ref_a</span> : <span class="org-variable-name">unit</span> lazy_t = &lt;<span class="org-keyword">lazy</span>&gt;
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">thunk_incr_ref_b</span> : <span class="org-variable-name">unit</span> -&gt; unit = &lt;<span class="org-keyword">fun</span>&gt;
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">1</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">ref_a</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 1}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">ref_b</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">1</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">ref_b</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 1}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">force</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">lazy_incr_ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">force</span> <span class="org-variable-name">lazy_incr_ref_a</span>; <span class="org-variable-name">ref_a</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 2}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">thnk_incr_ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_b</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">thnk_incr_ref_b</span> (); <span class="org-variable-name">ref_b</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 2}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">force</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">lazy_incr_ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">force</span> <span class="org-variable-name">lazy_incr_ref_a</span>; <span class="org-variable-name">ref_a</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 2}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">thunk_incr_ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_b</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">3</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">thunk_incr_ref_b</span> (); <span class="org-variable-name">ref_b</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 3}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">force</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">lazy_incr_ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_a</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">2</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">force</span> <span class="org-variable-name">lazy_incr_ref_a</span>; <span class="org-variable-name">ref_a</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 2}
 
-     <span class="org-tree-sitter-hl-faceXvariableXparameter">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXtype">thunk_incr_ref_b</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">ref_b</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">ref</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">{</span><span class="org-tree-sitter-hl-faceXproperty">contents</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXnumber">4</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">}</span>
+     <span class="org-variable-name">utop</span> # <span class="org-variable-name">thunk_incr_ref_b</span> (); <span class="org-variable-name">ref_b</span><span class="org-tuareg-font-double-semicolon">;;</span>
+     - : <span class="org-variable-name">int</span> <span class="org-builtin">ref</span> = {<span class="org-variable-name">contents</span> = 4}
 </pre>
 </div>
 
@@ -362,57 +362,57 @@ memoized result on each subsequent call. However, the thunk will increment the
 </div>
 </div>
 </div>
-<div id="outline-container-orgaba34ec" class="outline-2">
-<h2 id="orgaba34ec">How to make&#x2026;</h2>
-<div class="outline-text-2" id="text-orgaba34ec">
+<div id="outline-container-org8b4b798" class="outline-2">
+<h2 id="org8b4b798">How to make&#x2026;</h2>
+<div class="outline-text-2" id="text-org8b4b798">
 </div>
-<div id="outline-container-org2b85d32" class="outline-3">
-<h3 id="org2b85d32">a deferred value</h3>
-<div class="outline-text-3" id="text-org2b85d32">
+<div id="outline-container-org56a6fb7" class="outline-3">
+<h3 id="org56a6fb7">a deferred value</h3>
+<div class="outline-text-3" id="text-org56a6fb7">
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">let</span> <span class="org-tree-sitter-hl-faceXvariable">deferred_value</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">print_endline</span></span> <span class="org-tree-sitter-hl-faceXstring">"Now evaluating!"</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span> <span class="org-tree-sitter-hl-faceXnumber">3</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">val</span></span> <span class="org-tree-sitter-hl-faceXvariable">deferred_value</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXvariable">lazy_t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> &lt;<span class="org-tree-sitter-hl-faceXkeyword">lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
+<pre class="src src-ocaml">     utop # <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">deferred_value</span> = <span class="org-keyword">lazy</span> (print_endline <span class="org-string">"Now evaluating!"</span>; 3)<span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">deferred_value</span> : int lazy_t = &lt;<span class="org-keyword">lazy</span>&gt;
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">deferred_value</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">int</span></span> <span class="org-tree-sitter-hl-faceXvariable">lazy_t</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> &lt;<span class="org-tree-sitter-hl-faceXkeyword">lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">&gt;</span>
+     utop # deferred_value<span class="org-tuareg-font-double-semicolon">;;</span>
+     - : int lazy_t = &lt;<span class="org-keyword">lazy</span>&gt;
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> force <span class="org-tree-sitter-hl-faceXfunctionXmethod">deferred_value</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXtag">Now</span> <span class="org-tree-sitter-hl-faceXvariable">evaluating</span><span class="org-tree-sitter-hl-faceXoperator">!</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXnumber">3</span>
+     utop # force deferred_value<span class="org-tuareg-font-double-semicolon">;;</span>
+     <span class="org-tuareg-font-lock-constructor">Now</span> evaluating<span class="org-tuareg-font-lock-operator">!</span>
+     - : int = 3
 
-     <span class="org-tree-sitter-hl-faceXvariable">utop</span> <span class="org-tree-sitter-hl-faceXoperator">#</span> <span class="org-tree-sitter-hl-faceXfunctionXmethod">force</span> <span class="org-tree-sitter-hl-faceXvariable">deferred_value</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;;</span>
-     <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter"><span class="org-tree-sitter-hl-faceXoperator">-</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXoperator">=</span> <span class="org-tree-sitter-hl-faceXnumber">3</span> <span class="org-tree-sitter-hl-faceXcomment">(* retrieves the memoized result *)</span>
+     utop # force deferred_value<span class="org-tuareg-font-double-semicolon">;;</span>
+     - : int = 3 <span class="org-comment-delimiter">(* </span><span class="org-comment">retrieves the memoized result</span><span class="org-comment-delimiter"> *)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd594664" class="outline-3">
-<h3 id="orgd594664">a type that includes deferred evaluations</h3>
-<div class="outline-text-3" id="text-orgd594664">
+<div id="outline-container-org6d45f50" class="outline-3">
+<h3 id="org6d45f50">a type that includes deferred evaluations</h3>
+<div class="outline-text-3" id="text-org6d45f50">
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">deferred</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">T</span> <span class="org-tree-sitter-hl-faceXkeyword">of</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXconstructor">Lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">deffered_value</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXtype">deferred</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">T</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXnumber">3</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<pre class="src src-ocaml">     <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a deferred</span> = <span class="org-tuareg-font-lock-constructor">T</span> <span class="org-keyword">of</span> 'a <span class="org-tuareg-font-lock-module">Lazy.</span>t
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">deffered_value</span> :<span class="org-type"> int deferred </span>= <span class="org-tuareg-font-lock-constructor">T</span> (<span class="org-keyword">lazy</span> 3)
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8ad583" class="outline-3">
-<h3 id="orgd8ad583">a lazy list</h3>
-<div class="outline-text-3" id="text-orgd8ad583">
+<div id="outline-container-org1061512" class="outline-3">
+<h3 id="org1061512">a lazy list</h3>
+<div class="outline-text-3" id="text-org1061512">
 <div class="org-src-container">
-<pre class="src src-ocaml">     <span class="org-tree-sitter-hl-faceXkeyword">type</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXtag">Cons</span> <span class="org-tree-sitter-hl-faceXkeyword">of</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXoperator">*</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXconstructor">Lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span>
+<pre class="src src-ocaml">     <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'a stream</span> = <span class="org-tuareg-font-lock-constructor">Cons</span> <span class="org-keyword">of</span> 'a * 'a stream <span class="org-tuareg-font-lock-module">Lazy.</span>t
 
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">cons</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">x</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">s</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtag">Cons</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">x</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXkeyword">lazy</span> <span class="org-tree-sitter-hl-faceXvariable">s</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">head</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtag">Cons</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariableXparameter">x</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">_</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">))</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">x</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">tail</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtag">Cons</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariableXparameter">_</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">,</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">s</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">))</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Lazy</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">force</span></span> <span class="org-tree-sitter-hl-faceXvariable">s</span>
-     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXkeyword">rec</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">take</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype">stream</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">list</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">n</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">s</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">if</span> <span class="org-tree-sitter-hl-faceXvariable">n</span> <span class="org-tree-sitter-hl-faceXoperator">&lt;</span> <span class="org-tree-sitter-hl-faceXnumber">1</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">then</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">[]</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">else</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">head</span></span> <span class="org-tree-sitter-hl-faceXvariable">s</span> <span class="org-tree-sitter-hl-faceXoperator">::</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">take</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">pred</span></span> <span class="org-tree-sitter-hl-faceXvariable">n</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">tail</span></span> <span class="org-tree-sitter-hl-faceXvariable">s</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">cons</span> :<span class="org-type"> 'a -&gt; 'a stream -&gt; 'a stream </span>=
+       <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> <span class="org-variable-name">s</span> -&gt; <span class="org-tuareg-font-lock-constructor">Cons</span> (x, <span class="org-keyword">lazy</span> s)
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">head</span> :<span class="org-type"> 'a stream -&gt; 'a </span>=
+       <span class="org-keyword">fun</span> (<span class="org-tuareg-font-lock-constructor">Cons</span> (<span class="org-variable-name">x</span>, <span class="org-variable-name">_</span>)) -&gt; x
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">tail</span> :<span class="org-type"> 'a stream -&gt; 'a stream </span>=
+       <span class="org-keyword">fun</span> (<span class="org-tuareg-font-lock-constructor">Cons</span> (<span class="org-variable-name">_</span>, <span class="org-variable-name">s</span>)) -&gt; <span class="org-tuareg-font-lock-module">Lazy.</span>force s
+     <span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">rec</span> <span class="org-variable-name">take</span> :<span class="org-type"> int -&gt; 'a stream -&gt; 'a list </span>=
+       <span class="org-keyword">fun</span> <span class="org-variable-name">n</span> <span class="org-variable-name">s</span> -&gt;
+         <span class="org-keyword">if</span> n &lt; 1
+         <span class="org-keyword">then</span> <span class="org-tuareg-font-lock-constructor">[]</span>
+         <span class="org-keyword">else</span> head s <span class="org-tuareg-font-lock-constructor">::</span> take (pred n) (tail s)
 </pre>
 </div>
 </div>
@@ -423,7 +423,7 @@ memoized result on each subsequent call. However, the thunk will increment the
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2018-06-09 Sat 15:18. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

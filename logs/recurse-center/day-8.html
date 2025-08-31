@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-18 Wed 10:11 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 8: Unsure</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -228,17 +228,17 @@ antecedent abstraction. I must keep this tension and problematic in mind,
 without letting the lust for palpable production undermine my intention to
 cultivate theoretical foundations. <i>Counterparts are clearly not contraries.</i>
 </p>
-<div id="outline-container-org080a9d5" class="outline-2">
-<h2 id="org080a9d5">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org080a9d5">
+<div id="outline-container-org96543e9" class="outline-2">
+<h2 id="org96543e9">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org96543e9">
 </div>
-<div id="outline-container-orgdbdc8b2" class="outline-3">
-<h3 id="orgdbdc8b2">PLT</h3>
-<div class="outline-text-3" id="text-orgdbdc8b2">
+<div id="outline-container-orgbf9b050" class="outline-3">
+<h3 id="orgbf9b050">PLT</h3>
+<div class="outline-text-3" id="text-orgbf9b050">
 </div>
-<div id="outline-container-orgb8cade1" class="outline-4">
-<h4 id="orgb8cade1">Simplified Themis ABT library</h4>
-<div class="outline-text-4" id="text-orgb8cade1">
+<div id="outline-container-orgd58707e" class="outline-4">
+<h4 id="orgd58707e">Simplified Themis ABT library</h4>
+<div class="outline-text-4" id="text-orgd58707e">
 <p>
 Abstract Binding Trees (ABTs) extend abstract syntax trees (ASTs) with logic to
 handle variable binding. The motivation is as follows: Nearly every interesting
@@ -265,9 +265,9 @@ were only needed internally. I plugged that abstraction leak in
 </p>
 </div>
 </div>
-<div id="outline-container-orgff5e43e" class="outline-4">
-<h4 id="orgff5e43e">λ⟶</h4>
-<div class="outline-text-4" id="text-orgff5e43e">
+<div id="outline-container-orgec8a892" class="outline-4">
+<h4 id="orgec8a892">λ⟶</h4>
+<div class="outline-text-4" id="text-orgec8a892">
 <p>
 I finished adding type checking and term finding to the implementing of λ⟶ in
 themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e">commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e</a> . The API for the
@@ -275,27 +275,27 @@ themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Check</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXkeyword">sig</span>
-  <span class="org-tree-sitter-hl-faceXcomment">(** Check and infer various properties *)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Check</span> : <span class="org-tuareg-font-lock-governing">sig</span>
+  <span class="org-doc">(** Check and infer various properties *)</span>
 
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">infer_type</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Ctx</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Term</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Type</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">option</span></span>
-  <span class="org-tree-sitter-hl-faceXcomment">(** [infer_type ctx term] is [Some type] if [type] can be derived for the</span>
-<span class="org-tree-sitter-hl-faceXcomment">      [term] in the given [ctx]. Otherwise, it is [None]. *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">infer_type</span> : <span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Term.</span>t -&gt; <span class="org-tuareg-font-lock-module">Type.</span>t option
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_type ctx term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be derived for the</span>
+<span class="org-doc">      </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
 
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">infer_term</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Ctx</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Type</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">judgment</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">option</span></span>
-  <span class="org-tree-sitter-hl-faceXcomment">(** [infer_term ctx type] is [Some term] if [term] can be synthesized to</span>
-<span class="org-tree-sitter-hl-faceXcomment">      inhabit the [type] in the given [ctx]. Otherwise, it is [None]. *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">infer_term</span> : <span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Type.</span>t -&gt; <span class="org-tuareg-font-lock-module">Derivation.</span>judgment option
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_term ctx <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be synthesized to</span>
+<span class="org-doc">      inhabit the </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
 
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">typing</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">judgment</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">bool</span></span>
-  <span class="org-tree-sitter-hl-faceXcomment">(** [typing j] is [true] if a derivation can be found proving the judgment [j].*)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">typing</span> : <span class="org-tuareg-font-lock-module">Derivation.</span>judgment -&gt; bool
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>typing j<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-constant">true</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if a derivation can be found proving the judgment </span><span class="org-tuareg-font-lock-doc-markup">[</span>j<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">.*)</span>
 
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">well_typed</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">?</span><span class="org-tree-sitter-hl-faceXproperty">ctx</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span><span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Ctx</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Term</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">option</span></span>
-  <span class="org-tree-sitter-hl-faceXcomment">(** [well_typed term] is [Some derivation] if a type can inferred for [term]</span>
-<span class="org-tree-sitter-hl-faceXcomment">      and a [derivation] can be built demonstrating that the [term] has that</span>
-<span class="org-tree-sitter-hl-faceXcomment">      type in the given [ctx].</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">well_typed</span> : <span class="org-tuareg-font-lock-label">?ctx</span>:<span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Term.</span>t -&gt; <span class="org-tuareg-font-lock-module">Derivation.</span>t option
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>well_typed term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if a type can inferred for </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span>
+<span class="org-doc">      and a </span><span class="org-tuareg-font-lock-doc-markup">[</span>derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be built demonstrating that the </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> has that</span>
+<span class="org-doc">      type in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">.</span>
 
-<span class="org-tree-sitter-hl-faceXcomment">      [ctx] defaults to an empty context. *)</span>
-<span class="org-tree-sitter-hl-faceXkeyword">end</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
+<span class="org-doc">      </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> defaults to an empty context. *)</span>
+<span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
 </pre>
 </div>
 
@@ -317,17 +317,17 @@ instruction on the implementation of the above. I&rsquo;m getting started with C
 </div>
 </div>
 </div>
-<div id="outline-container-org9c45092" class="outline-2">
-<h2 id="org9c45092">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org9c45092">
+<div id="outline-container-org5c614ea" class="outline-2">
+<h2 id="org5c614ea">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org5c614ea">
 </div>
-<div id="outline-container-orgd215848" class="outline-3">
-<h3 id="orgd215848">PLT</h3>
-<div class="outline-text-3" id="text-orgd215848">
+<div id="outline-container-orgec54030" class="outline-3">
+<h3 id="orgec54030">PLT</h3>
+<div class="outline-text-3" id="text-orgec54030">
 </div>
-<div id="outline-container-org249bb13" class="outline-4">
-<h4 id="org249bb13">Begin implementing λ2</h4>
-<div class="outline-text-4" id="text-org249bb13">
+<div id="outline-container-org20af5ef" class="outline-4">
+<h4 id="org20af5ef">Begin implementing λ2</h4>
+<div class="outline-text-4" id="text-org20af5ef">
 <p>
 I think I&rsquo;ve learned some lessons from my implementations of λ and λ⟶, and there
 are some things I want to do differently as I dig in to λ2 to improve and
@@ -345,14 +345,14 @@ other implementations.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7c284a6" class="outline-4">
-<h4 id="org7c284a6">Finish Chapter 2 of (<a href="#citeproc_bib_item_1">Nederpelt and Geuvers 2014</a>)</h4>
+<div id="outline-container-org613503a" class="outline-4">
+<h4 id="org613503a">Finish Chapter 2 of (<a href="#citeproc_bib_item_1">Nederpelt and Geuvers 2014</a>)</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-orga1ffe06" class="outline-2">
-<h2 id="orga1ffe06">References</h2>
-<div class="outline-text-2" id="text-orga1ffe06">
+<div id="outline-container-org522d733" class="outline-2">
+<h2 id="org522d733">References</h2>
+<div class="outline-text-2" id="text-org522d733">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Nederpelt, Rob P., and Herman Geuvers. 2014. <i>Type Theory and Formal Proof: An Introduction</i>. Cambridge University Press.</div>
 </div>
@@ -363,7 +363,7 @@ other implementations.</li>
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-18 Wed 10:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

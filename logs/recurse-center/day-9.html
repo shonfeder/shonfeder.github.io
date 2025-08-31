@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-18 Wed 10:11 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 9: Capturing the Notion of Parametricity</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -223,9 +223,9 @@ made some notes in this entry recording what I learned. (I expect I will
 eventually end up reworking and incorporating them into my WIP <a href="file:///home/sf/Dropbox/synechepedia/org/themata/programming/the-measure-of-a-module.html">notes on
 modularity</a>).
 </p>
-<div id="outline-container-org913269c" class="outline-2">
-<h2 id="org913269c">A few notes on the history of System F</h2>
-<div class="outline-text-2" id="text-org913269c">
+<div id="outline-container-orgf3b4cba" class="outline-2">
+<h2 id="orgf3b4cba">A few notes on the history of System F</h2>
+<div class="outline-text-2" id="text-orgf3b4cba">
 <p>
 Jean-Yves Girard first defined System F in his PhD thesis in 1972. Writting
 about that work around 2010, Girard characterized the calculus thus:
@@ -276,7 +276,7 @@ Consider the identity function on integers:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">int_id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">x</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">x</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">int_id</span> :<span class="org-type"> int -&gt; int </span>= <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> -&gt; x
 </pre>
 </div>
 
@@ -288,7 +288,7 @@ close to valid <a href="file:///home/sf/Dropbox/synechepedia/org/themata/program
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariableXparameter">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">fun</span> <span class="org-tree-sitter-hl-faceXvariableXparameter">x</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">x</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">id</span> (<span class="org-variable-name">t</span> :<span class="org-type"> type</span>) :<span class="org-type"> t -&gt; t </span>= <span class="org-keyword">fun</span> <span class="org-variable-name">x</span> -&gt; x
 </pre>
 </div>
 
@@ -300,11 +300,11 @@ as a parameter:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">int_id</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">int</span></span>       <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">int</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
-<span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">str_id</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">string</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">string</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">string</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">int_id</span> :<span class="org-type"> int -&gt; int       </span>= id (int : <span class="org-keyword">type</span>)
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">str_id</span> :<span class="org-type"> string -&gt; string </span>= id (string : <span class="org-keyword">type</span>)
 
-<span class="org-tree-sitter-hl-faceXcomment">(* The identity function on functions of some parameterized type *)</span>
-<span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">fun_id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariableXparameter">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">t</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype">t</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">id</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> t <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXtype">type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<span class="org-comment-delimiter">(* </span><span class="org-comment">The identity function on functions of some parameterized type</span><span class="org-comment-delimiter"> *)</span>
+<span class="org-tuareg-font-lock-governing">let</span> <span class="org-function-name">fun_id</span> (<span class="org-variable-name">t</span> :<span class="org-type"> type</span>) :<span class="org-type"> (t -&gt; t) -&gt; (t -&gt; t) </span>= id (t -&gt; <span class="org-tuareg-font-lock-label">t</span> : <span class="org-keyword">type</span>)
 </pre>
 </div>
 
@@ -361,9 +361,9 @@ More on this in the future&#x2026;
 </p>
 </div>
 </div>
-<div id="outline-container-org04bba40" class="outline-2">
-<h2 id="org04bba40">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org04bba40">
+<div id="outline-container-orgb3ac8db" class="outline-2">
+<h2 id="orgb3ac8db">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgb3ac8db">
 <p>
 Overall, I&rsquo;m pleased with my progress today. I completed my program for today,
 as laid out in <a href="day-8.html">Day 8</a>. This is encouraging because it means I set realistic goals
@@ -372,17 +372,17 @@ scheduled socializing fell through&#x2026; so I may still need to tweak my
 expectations around feasible output.
 </p>
 </div>
-<div id="outline-container-orgf560cbb" class="outline-3">
-<h3 id="orgf560cbb">PLT</h3>
-<div class="outline-text-3" id="text-orgf560cbb">
+<div id="outline-container-orgf770894" class="outline-3">
+<h3 id="orgf770894">PLT</h3>
+<div class="outline-text-3" id="text-orgf770894">
 </div>
-<div id="outline-container-orgd234f36" class="outline-4">
-<h4 id="orgd234f36">Themis</h4>
-<div class="outline-text-4" id="text-orgd234f36">
+<div id="outline-container-org7539421" class="outline-4">
+<h4 id="org7539421">Themis</h4>
+<div class="outline-text-4" id="text-org7539421">
 </div>
 <ul class="org-ul">
-<li><a id="orge3ed793"></a>Parsing<br />
-<div class="outline-text-5" id="text-orge3ed793">
+<li><a id="org4289849"></a>Parsing<br />
+<div class="outline-text-5" id="text-org4289849">
 <p>
 I generalized the parser utility functions I was using for the simply typed
 lambda calculus so that a new parser can be produced by providing all the
@@ -391,25 +391,25 @@ front-ends for the simply typed lambda calculus and λ2, respectively:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Simply_typed</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Make</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">struct</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Tokens</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Simple_token</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Lexer</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Simple_lexer</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Ast</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Simple</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Term</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Parser</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Simple_parser</span>
-  <span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Simply_typed</span> = <span class="org-tuareg-font-lock-module">Make</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Tokens</span> = <span class="org-tuareg-font-lock-module">Simple_token</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Lexer</span> = <span class="org-tuareg-font-lock-module">Simple_lexer</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Ast</span> = <span class="org-tuareg-font-lock-module">Simple.Term</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Parser</span> = <span class="org-tuareg-font-lock-module">Simple_parser</span>
+  <span class="org-tuareg-font-lock-governing">end</span>)
 
-<span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">L2</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">Make</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">struct</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Tokens</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">L2_token</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Lexer</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">L2_lexer</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Ast</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">L2</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Term</span>
-    <span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Parser</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXconstructor">L2_parser</span>
-  <span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">L2</span> = <span class="org-tuareg-font-lock-module">Make</span> (<span class="org-tuareg-font-lock-governing">struct</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Tokens</span> = <span class="org-tuareg-font-lock-module">L2_token</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Lexer</span> = <span class="org-tuareg-font-lock-module">L2_lexer</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Ast</span> = <span class="org-tuareg-font-lock-module">L2.Term</span>
+    <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Parser</span> = <span class="org-tuareg-font-lock-module">L2_parser</span>
+  <span class="org-tuareg-font-lock-governing">end</span>)
 </pre>
 </div>
 </div>
 </li>
-<li><a id="orgd0fd9a5"></a>Deriving<br />
-<div class="outline-text-5" id="text-orgd0fd9a5">
+<li><a id="org2a54978"></a>Deriving<br />
+<div class="outline-text-5" id="text-org2a54978">
 <p>
 I refactored out and functorized the definition of a derivation, including
 concepts like <i>statement</i>, <i>declaration</i>, <i>context</i>, and <i>judgment</i>, as defined
@@ -422,7 +422,7 @@ for use in an module defining derivation rules with
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">include</span> <span class="org-tree-sitter-hl-faceXconstructor">Derivation</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Make</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">Term</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">Type</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Derivation.Make (Term) (Type)</span>
 </pre>
 </div>
 
@@ -434,9 +434,9 @@ calculus.
 </li>
 </ul>
 </div>
-<div id="outline-container-orgb48f1a3" class="outline-4">
-<h4 id="orgb48f1a3">λ2 / System F</h4>
-<div class="outline-text-4" id="text-orgb48f1a3">
+<div id="outline-container-orgc34b678" class="outline-4">
+<h4 id="orgc34b678">λ2 / System F</h4>
+<div class="outline-text-4" id="text-orgc34b678">
 <ul class="org-ul">
 <li>Defined a parser using ocamllex and menhir</li>
 <li>Wrote unit tests for the parser</li>
@@ -447,9 +447,9 @@ calculus.
 </div>
 </div>
 </div>
-<div id="outline-container-org9db520d" class="outline-3">
-<h3 id="org9db520d">Tooling</h3>
-<div class="outline-text-3" id="text-org9db520d">
+<div id="outline-container-orgdb1dde7" class="outline-3">
+<h3 id="orgdb1dde7">Tooling</h3>
+<div class="outline-text-3" id="text-orgdb1dde7">
 <p>
 I wrote some OCaml yas snippets, and am planning to expand this into a library
 of usable snippets to expedite OCaml code construction. Today I added
@@ -461,9 +461,9 @@ of usable snippets to expedite OCaml code construction. Today I added
 </ul>
 </div>
 </div>
-<div id="outline-container-org02a61c0" class="outline-3">
-<h3 id="org02a61c0">Category Theory</h3>
-<div class="outline-text-3" id="text-org02a61c0">
+<div id="outline-container-orgf614fc3" class="outline-3">
+<h3 id="orgf614fc3">Category Theory</h3>
+<div class="outline-text-3" id="text-orgf614fc3">
 <p>
 The category theory reading group met to agree on a schedule, a text, and a pace
 today. That&rsquo;s great progress :)
@@ -471,30 +471,30 @@ today. That&rsquo;s great progress :)
 </div>
 </div>
 </div>
-<div id="outline-container-orge3765ed" class="outline-2">
-<h2 id="orge3765ed">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-orge3765ed">
+<div id="outline-container-orgdec96a6" class="outline-2">
+<h2 id="orgdec96a6">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgdec96a6">
 </div>
-<div id="outline-container-org0859bfc" class="outline-3">
-<h3 id="org0859bfc">PLT</h3>
-<div class="outline-text-3" id="text-org0859bfc">
+<div id="outline-container-org5980939" class="outline-3">
+<h3 id="org5980939">PLT</h3>
+<div class="outline-text-3" id="text-org5980939">
 <ul class="org-ul">
 <li>Finish implementing λ2</li>
 <li>Read Chapter 4 of (<a href="#citeproc_bib_item_2">Nederpelt and Geuvers 2014</a>)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge3e5274" class="outline-3">
-<h3 id="orge3e5274">Community</h3>
-<div class="outline-text-3" id="text-orge3e5274">
+<div id="outline-container-org6fde395" class="outline-3">
+<h3 id="org6fde395">Community</h3>
+<div class="outline-text-3" id="text-org6fde395">
 <ul class="org-ul">
 <li>I have some pairing and coffee chats scheduled</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5b5c90" class="outline-3">
-<h3 id="orgf5b5c90">Writing</h3>
-<div class="outline-text-3" id="text-orgf5b5c90">
+<div id="outline-container-orgdf0f66b" class="outline-3">
+<h3 id="orgdf0f66b">Writing</h3>
+<div class="outline-text-3" id="text-orgdf0f66b">
 <ul class="org-ul">
 <li>The remarks on System F and its history in Reynolds work in this post has been
 helpful in maturing my own burgeoning understanding, and it helped me catch
@@ -504,9 +504,9 @@ back to its origin in Reynold&rsquo;s work.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd5021a3" class="outline-2">
-<h2 id="orgd5021a3">References</h2>
-<div class="outline-text-2" id="text-orgd5021a3">
+<div id="outline-container-orgfd84404" class="outline-2">
+<h2 id="orgfd84404">References</h2>
+<div class="outline-text-2" id="text-orgfd84404">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Girard, Jean-Yves. 2011. <i>The Blind Spot : Lectures on Logic</i>. European Mathematical Society. <a href="http://www.worldcat.org/oclc/757486610?referer=xid">http://www.worldcat.org/oclc/757486610?referer=xid</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Nederpelt, Rob P., and Herman Geuvers. 2014. <i>Type Theory and Formal Proof: An Introduction</i>. Cambridge University Press.</div>
@@ -520,7 +520,7 @@ back to its origin in Reynold&rsquo;s work.</li>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-For reasons explained in <a href="day-6.html#org1626af6">Day 6</a>, and because my studies
+For reasons explained in <a href="day-6.html#org71b0590">Day 6</a>, and because my studies
 here at the Recurse Center need to be skewed towards the practical, my current
 reading around the topic is orbitting around Reynold&rsquo;s work rather than
 Girard&rsquo;s.
@@ -533,7 +533,7 @@ Girard&rsquo;s.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-18 Wed 10:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

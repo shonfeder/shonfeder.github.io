@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-17 Tue 22:02 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>[[file:super-simple-ci-for-ocaml-on-circleci.org][Super Simple CI for OCaml on CircleCI]]</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -211,9 +211,9 @@
 </div>
 <div id="content" class="content">
 <h1 class="title"><a href="super-simple-ci-for-ocaml-on-circleci.html">Super Simple CI for OCaml on CircleCI</a></h1>
-<div id="outline-container-org1866f28" class="outline-2">
-<h2 id="org1866f28">Intro</h2>
-<div class="outline-text-2" id="text-org1866f28">
+<div id="outline-container-org896912b" class="outline-2">
+<h2 id="org896912b">Intro</h2>
+<div class="outline-text-2" id="text-org896912b">
 <p>
 These notes record the steps I took to set up a simple continuous integration
 system for an OCaml project using CircleCI.
@@ -229,9 +229,9 @@ I will keep improving these notes and the approach they document until it is
 superseded by something better.
 </p>
 </div>
-<div id="outline-container-org56d38cf" class="outline-3">
-<h3 id="org56d38cf">How to use this note</h3>
-<div class="outline-text-3" id="text-org56d38cf">
+<div id="outline-container-orgc9c46bd" class="outline-3">
+<h3 id="orgc9c46bd">How to use this note</h3>
+<div class="outline-text-3" id="text-orgc9c46bd">
 <ul class="org-ul">
 <li>You can follow step-by-step if this is all new to you and you&rsquo;re starting
 from scratch.</li>
@@ -242,13 +242,13 @@ source repository for these notes</a>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org344f4df" class="outline-3">
-<h3 id="org344f4df">My approach to basic CI</h3>
-<div class="outline-text-3" id="text-org344f4df">
+<div id="outline-container-org8965a30" class="outline-3">
+<h3 id="org8965a30">My approach to basic CI</h3>
+<div class="outline-text-3" id="text-org8965a30">
 </div>
-<div id="outline-container-orgf87059d" class="outline-4">
-<h4 id="orgf87059d">Maximal Flexibility</h4>
-<div class="outline-text-4" id="text-orgf87059d">
+<div id="outline-container-orgd1619da" class="outline-4">
+<h4 id="orgd1619da">Maximal Flexibility</h4>
+<div class="outline-text-4" id="text-orgd1619da">
 <p>
 I want a drop-in CI configuration that will provide quick builds for all my
 projects with no fuss. I am therefore inclined to opt for a relatively
@@ -257,9 +257,9 @@ dependencies for every project.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5c7ba0" class="outline-4">
-<h4 id="orgc5c7ba0">Minimal CI Configuration</h4>
-<div class="outline-text-4" id="text-orgc5c7ba0">
+<div id="outline-container-orgfa79121" class="outline-4">
+<h4 id="orgfa79121">Minimal CI Configuration</h4>
+<div class="outline-text-4" id="text-orgfa79121">
 <p>
 IMO, the current state of CI configuration and management is pretty
 miserable. The state of the art in build systems and package management is
@@ -271,37 +271,37 @@ the CI configuration and in the build system and package manager.
 </div>
 </div>
 </div>
-<div id="outline-container-org54dbb42" class="outline-2">
-<h2 id="org54dbb42">Prerequisites</h2>
-<div class="outline-text-2" id="text-org54dbb42">
+<div id="outline-container-orgac1b793" class="outline-2">
+<h2 id="orgac1b793">Prerequisites</h2>
+<div class="outline-text-2" id="text-orgac1b793">
 </div>
-<div id="outline-container-orgc649550" class="outline-3">
-<h3 id="orgc649550">A GitHub repository for the project</h3>
+<div id="outline-container-orgca2114d" class="outline-3">
+<h3 id="orgca2114d">A GitHub repository for the project</h3>
 </div>
-<div id="outline-container-orgfc9696c" class="outline-3">
-<h3 id="orgfc9696c">A CircleCI account with access to your repository</h3>
-<div class="outline-text-3" id="text-orgfc9696c">
+<div id="outline-container-org246b0d0" class="outline-3">
+<h3 id="org246b0d0">A CircleCI account with access to your repository</h3>
+<div class="outline-text-3" id="text-org246b0d0">
 <p>
 See <a href="https://circleci.com/docs/2.0/getting-started/">https://circleci.com/docs/2.0/getting-started/</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org28149a0" class="outline-3">
-<h3 id="org28149a0">An OCaml project built with dune</h3>
-<div class="outline-text-3" id="text-org28149a0">
+<div id="outline-container-org5990e59" class="outline-3">
+<h3 id="org5990e59">An OCaml project built with dune</h3>
+<div class="outline-text-3" id="text-org5990e59">
 <p>
 See <a href="https://dune.readthedocs.io/en/latest/quick-start.html">https://dune.readthedocs.io/en/latest/quick-start.html</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3cae1b7" class="outline-2">
-<h2 id="org3cae1b7">Setup</h2>
-<div class="outline-text-2" id="text-org3cae1b7">
+<div id="outline-container-org4bddb07" class="outline-2">
+<h2 id="org4bddb07">Setup</h2>
+<div class="outline-text-2" id="text-org4bddb07">
 </div>
-<div id="outline-container-org030cea8" class="outline-3">
-<h3 id="org030cea8">A minimally testable project</h3>
-<div class="outline-text-3" id="text-org030cea8">
+<div id="outline-container-org386129b" class="outline-3">
+<h3 id="org386129b">A minimally testable project</h3>
+<div class="outline-text-3" id="text-org386129b">
 <p>
 Where <code>.</code> is the root directory of your project:
 </p>
@@ -319,9 +319,9 @@ Where <code>.</code> is the root directory of your project:
 </pre>
 </div>
 </div>
-<div id="outline-container-org5adeec9" class="outline-4">
-<h4 id="org5adeec9">The top-level directories and files</h4>
-<div class="outline-text-4" id="text-org5adeec9">
+<div id="outline-container-orgaa0b891" class="outline-4">
+<h4 id="orgaa0b891">The top-level directories and files</h4>
+<div class="outline-text-4" id="text-orgaa0b891">
 <dl class="org-dl">
 <dt><code>.circleci</code></dt><dd>The configuration for your CI consulted by the CircleCI
 service</dd>
@@ -339,9 +339,9 @@ sections.
 </div>
 </div>
 </div>
-<div id="outline-container-org6aeb330" class="outline-3">
-<h3 id="org6aeb330">Configure opam to install your package</h3>
-<div class="outline-text-3" id="text-org6aeb330">
+<div id="outline-container-org187235d" class="outline-3">
+<h3 id="org187235d">Configure opam to install your package</h3>
+<div class="outline-text-3" id="text-org187235d">
 <p>
 A minimal package configuration for our example
 </p>
@@ -379,9 +379,9 @@ of, respectively, an external library dependency and a test dependency.
 example project.)</li>
 </ul>
 </div>
-<div id="outline-container-orgb2149c3" class="outline-4">
-<h4 id="orgb2149c3">Validate your opam configuration</h4>
-<div class="outline-text-4" id="text-orgb2149c3">
+<div id="outline-container-orgc34d449" class="outline-4">
+<h4 id="orgc34d449">Validate your opam configuration</h4>
+<div class="outline-text-4" id="text-orgc34d449">
 <p>
 To validate the syntax and configuration your opam package, run
 </p>
@@ -397,13 +397,13 @@ some warnings for missing fields. You can supply these if you wish. Consult
 opam packaging documentation for more info.
 </p>
 </div>
-<div id="outline-container-orgd4502a1" class="outline-5">
-<h5 id="orgd4502a1"><span class="todo TODO">TODO</span> Supply link to opam packaging reference</h5>
+<div id="outline-container-org0390fb8" class="outline-5">
+<h5 id="org0390fb8"><span class="todo TODO">TODO</span> Supply link to opam packaging reference</h5>
 </div>
 </div>
-<div id="outline-container-orgd61f569" class="outline-4">
-<h4 id="orgd61f569">Locally test the installation</h4>
-<div class="outline-text-4" id="text-orgd61f569">
+<div id="outline-container-orgd061bee" class="outline-4">
+<h4 id="orgd061bee">Locally test the installation</h4>
+<div class="outline-text-4" id="text-orgd061bee">
 <p>
 To locally test the installation from within the root directory of your
 project, run
@@ -416,9 +416,9 @@ project, run
 </div>
 </div>
 </div>
-<div id="outline-container-org8b373db" class="outline-3">
-<h3 id="org8b373db">Configure dune to run your tests</h3>
-<div class="outline-text-3" id="text-org8b373db">
+<div id="outline-container-org1c88473" class="outline-3">
+<h3 id="org1c88473">Configure dune to run your tests</h3>
+<div class="outline-text-3" id="text-org1c88473">
 <p>
 The following setup provides a minimum configuration for failing test:
 </p>
@@ -438,7 +438,7 @@ The following setup provides a minimum configuration for failing test:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-tuareg">     <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">()</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXkeyword">assert</span> <span class="org-tree-sitter-hl-faceXconstant">false</span>
+<pre class="src src-tuareg">     <span class="org-tuareg-font-lock-governing">let</span> () = <span class="org-keyword">assert</span> <span class="org-constant">false</span>
 </pre>
 </div>
 
@@ -455,9 +455,9 @@ isn&rsquo;t pretty, but it proves the point:
 </pre>
 </div>
 </div>
-<div id="outline-container-orgcb3401e" class="outline-4">
-<h4 id="orgcb3401e"><span class="todo TODO">TODO</span> Provide link</h4>
-<div class="outline-text-4" id="text-orgcb3401e">
+<div id="outline-container-org654bdfc" class="outline-4">
+<h4 id="org654bdfc"><span class="todo TODO">TODO</span> Provide link</h4>
+<div class="outline-text-4" id="text-org654bdfc">
 <p>
 Follow the dune documentation on configuring and running tests with your
 preferred testing tools.
@@ -465,9 +465,9 @@ preferred testing tools.
 </div>
 </div>
 </div>
-<div id="outline-container-org9aa3569" class="outline-3">
-<h3 id="org9aa3569">Write your CircleCI configuration</h3>
-<div class="outline-text-3" id="text-org9aa3569">
+<div id="outline-container-org6cc0747" class="outline-3">
+<h3 id="org6cc0747">Write your CircleCI configuration</h3>
+<div class="outline-text-3" id="text-org6cc0747">
 <p>
 <code>$ cat .circleci/config.yml</code>
 </p>
@@ -496,9 +496,9 @@ preferred testing tools.
 </div>
 </div>
 </div>
-<div id="outline-container-org194217b" class="outline-2">
-<h2 id="org194217b">Conclusion</h2>
-<div class="outline-text-2" id="text-org194217b">
+<div id="outline-container-org2842fcb" class="outline-2">
+<h2 id="org2842fcb">Conclusion</h2>
+<div class="outline-text-2" id="text-org2842fcb">
 <p>
 Voila: super simple CI for OCaml on CircleCI.
 </p>
@@ -508,9 +508,9 @@ This configuration has plenty of limitations and shortcomings, but it suffice
 get a project up and running with CI.
 </p>
 </div>
-<div id="outline-container-org460e614" class="outline-3">
-<h3 id="org460e614">Anticipated improvements <code>[0/5]</code></h3>
-<div class="outline-text-3" id="text-org460e614">
+<div id="outline-container-orgde24cfc" class="outline-3">
+<h3 id="orgde24cfc">Anticipated improvements <code>[0/5]</code></h3>
+<div class="outline-text-3" id="text-orgde24cfc">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Local caching of build artifacts and built dependencies</li>
 <li class="off"><code>[&#xa0;]</code> A smaller Docker base image</li>
@@ -519,9 +519,9 @@ get a project up and running with CI.
 </ul>
 </div>
 </div>
-<div id="outline-container-org6d1f0a4" class="outline-3">
-<h3 id="org6d1f0a4">A more robust examples</h3>
-<div class="outline-text-3" id="text-org6d1f0a4">
+<div id="outline-container-org3626138" class="outline-3">
+<h3 id="org3626138">A more robust examples</h3>
+<div class="outline-text-3" id="text-org3626138">
 <ul class="org-ul">
 <li><a href="https://github.com/shonfeder/ocobs">https://github.com/shonfeder/ocobs</a></li>
 </ul>
@@ -533,7 +533,7 @@ get a project up and running with CI.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2019-04-04 Thu 19:27. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

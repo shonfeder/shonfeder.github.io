@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-18 Wed 10:11 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 7: Weekend 1.2</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -211,9 +211,9 @@
 </div>
 <div id="content" class="content">
 <h1 class="title">Day 7: Weekend 1.2</h1>
-<div id="outline-container-org191951a" class="outline-2">
-<h2 id="org191951a">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org191951a">
+<div id="outline-container-org2ed89f8" class="outline-2">
+<h2 id="org2ed89f8">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org2ed89f8">
 <p>
 Our Surfing adventure this morning knocked me out for the rest of the day, and I
 only managed to accomplish a tiny optimization on my blogging flow. We had a
@@ -221,9 +221,9 @@ blast tho, and I&rsquo;m going to bed absurdly early, so I should be starting th
 week out relaxed andfully recharged.
 </p>
 </div>
-<div id="outline-container-org7152b54" class="outline-3">
-<h3 id="org7152b54">Tooling</h3>
-<div class="outline-text-3" id="text-org7152b54">
+<div id="outline-container-org28a29eb" class="outline-3">
+<h3 id="org28a29eb">Tooling</h3>
+<div class="outline-text-3" id="text-org28a29eb">
 <p>
 <code>org-publish</code> was taking an absurd amount of time to publish updates. <a href="https://bastibe.de/2014-05-07-speeding-up-org-publishing.html">Bastion
 Bechtold&rsquo;s note</a> describing how they diagnosed and fixed a similar slowdown
@@ -232,7 +232,7 @@ causing the slowdown:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">progn</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-function-name">profiler-start</span> <span class="org-highlight-quoted-quote">'</span><span class="org-highlight-quoted-symbol">cpu</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>function-to-profile<span class="org-rainbow-delimiters-depth-2">)</span> <span class="org-rainbow-delimiters-depth-2">(</span>profiler-report<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">progn</span> (<span class="org-function-name">profiler-start</span> <span class="org-highlight-quoted-quote">'</span><span class="org-highlight-quoted-symbol">cpu</span>) (function-to-profile) (profiler-report))
 </pre>
 </div>
 
@@ -243,9 +243,9 @@ files to HTML is down by at least 75%.
 </div>
 </div>
 </div>
-<div id="outline-container-org46ee785" class="outline-2">
-<h2 id="org46ee785">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org46ee785">
+<div id="outline-container-orgebbcec6" class="outline-2">
+<h2 id="orgebbcec6">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgebbcec6">
 <ul class="org-ul">
 <li>Finish CH. 2 of (<a href="#citeproc_bib_item_1">Nederpelt and Geuvers 2014</a>)</li>
 <li>Add type checking to themis&rsquo; simply typed lambda calculus</li>
@@ -253,9 +253,9 @@ files to HTML is down by at least 75%.
 </ul>
 </div>
 </div>
-<div id="outline-container-org78648a5" class="outline-2">
-<h2 id="org78648a5">References</h2>
-<div class="outline-text-2" id="text-org78648a5">
+<div id="outline-container-org0b94cd7" class="outline-2">
+<h2 id="org0b94cd7">References</h2>
+<div class="outline-text-2" id="text-org0b94cd7">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Nederpelt, Rob P., and Herman Geuvers. 2014. <i>Type Theory and Formal Proof: An Introduction</i>. Cambridge University Press.</div>
 </div>
@@ -266,7 +266,7 @@ files to HTML is down by at least 75%.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-18 Wed 10:02. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>

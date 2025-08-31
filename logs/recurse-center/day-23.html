@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-10-17 Tue 22:03 -->
+<!-- 2025-08-31 Sun 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 23: Fuzzy</title>
-<meta name="author" content="um" />
+<meta name="author" content="Shon Feder" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -214,22 +214,22 @@
 <p>
 Feeling fuzzy today. Posting any how, just to keep up the ritual.
 </p>
-<div id="outline-container-org263645f" class="outline-2">
-<h2 id="org263645f">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org263645f">
+<div id="outline-container-org66c02e0" class="outline-2">
+<h2 id="org66c02e0">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org66c02e0">
 </div>
-<div id="outline-container-orgd5660ee" class="outline-3">
-<h3 id="orgd5660ee">Community</h3>
-<div class="outline-text-3" id="text-orgd5660ee">
+<div id="outline-container-orge32d5b7" class="outline-3">
+<h3 id="orge32d5b7">Community</h3>
+<div class="outline-text-3" id="text-orge32d5b7">
 <ul class="org-ul">
 <li>Nice coffee chat, discussed community and music making.</li>
 <li>Delightful and thought provoking non-technical talks.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org18c7b66" class="outline-3">
-<h3 id="org18c7b66">PLT</h3>
-<div class="outline-text-3" id="text-org18c7b66">
+<div id="outline-container-org3443496" class="outline-3">
+<h3 id="org3443496">PLT</h3>
+<div class="outline-text-3" id="text-org3443496">
 <p>
 More time documenting and testing <code>Alg</code>. It&rsquo;s been a quite involved process. A
 lot of the time has been devoted to developing a nice abstraction for the
@@ -250,24 +250,24 @@ module for <code>Functor</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXcomment">(** [Law] notes the laws that should be obeyed by any instantiation of</span>
-<span class="org-tree-sitter-hl-faceXcomment">    {{!module-type:S} Functor} in the form of predicates that should be true</span>
-<span class="org-tree-sitter-hl-faceXcomment">    for any arguments of the appropriate type.</span>
+<pre class="src src-ocaml"><span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Law</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> notes the laws that should be obeyed by any instantiation of</span>
+<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type:S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> in the form of predicates that should be true</span>
+<span class="org-doc">    for any arguments of the appropriate type.</span>
 
-<span class="org-tree-sitter-hl-faceXcomment">    You can use {!module:Alg_qcheck.Functor} to generate property based tests of</span>
-<span class="org-tree-sitter-hl-faceXcomment">    these laws for new modules satisfying this interface.</span>
+<span class="org-doc">    You can use </span><span class="org-tuareg-font-lock-doc-markup">{!module:</span><span class="org-tuareg-font-lock-module">Alg_qcheck.</span><span class="org-tuareg-font-lock-constructor">Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> to generate property based tests of</span>
+<span class="org-doc">    these laws for new modules satisfying this interface.</span>
 
-<span class="org-tree-sitter-hl-faceXcomment">    @param F An implementation of a {{!module-type: S} Functor} *)</span>
-<span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXconstructor">Law</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXconstructor">F</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXconstructor">S</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXcomment">(** *)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXkeyword">sig</span>
+<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">@param</span><span class="org-doc"> </span><span class="org-tuareg-font-lock-constructor">F</span><span class="org-doc"> An implementation of a </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type: S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> *)</span>
+<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Law</span> <span class="org-variable-name">(F : </span><span class="org-type">S</span><span class="org-variable-name">) </span><span class="org-doc">(** *)</span> : <span class="org-tuareg-font-lock-governing">sig</span>
 
-  <span class="org-tree-sitter-hl-faceXcomment">(** [identity x]: [F.map ~f:Fun.id x = Fun.id x] *)</span>
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">identity</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXconstructor">F</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">bool</span></span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>identity x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:<span class="org-tuareg-font-lock-module">Fun.</span>id x = <span class="org-tuareg-font-lock-module">Fun.</span>id x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">identity</span> : 'a <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
 
-  <span class="org-tree-sitter-hl-faceXcomment">(** [composition f g x]: [F.map ~f:(f % g) x = (F.map ~f % F.map ~f:g) x]</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>composition f g x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:(f <span class="org-tuareg-font-lock-operator">%</span> g) x = (<span class="org-tuareg-font-lock-module">F.</span>map ~f <span class="org-tuareg-font-lock-operator">%</span> <span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:g) x<span class="org-tuareg-font-lock-doc-markup">]</span>
 
-<span class="org-tree-sitter-hl-faceXcomment">      where [%] is composition. *)</span>
-  <span class="org-tree-sitter-hl-faceXkeyword">val</span> <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">composition</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">:</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">'a</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'b</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable">'c</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'a</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">)</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXvariable">'c</span> <span class="org-tree-sitter-hl-faceXconstructor">F</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXtype">t</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">-&gt;</span> <span class="org-tree-sitter-hl-faceXtype"><span class="org-tree-sitter-hl-faceXtypeXbuiltin">bool</span></span>
-<span class="org-tree-sitter-hl-faceXkeyword">end</span>
+<span class="org-doc">      where </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-operator">%</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is composition. *)</span>
+  <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">composition</span> : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
+<span class="org-tuareg-font-lock-governing">end</span>
 </pre>
 </div>
 
@@ -290,27 +290,27 @@ value of that functor):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">functor_laws</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span>
-  <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXkeyword">open</span> <span class="org-tree-sitter-hl-faceXconstructor">Alg_qcheck</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Functor</span> <span class="org-tree-sitter-hl-faceXkeyword">in</span>
-  <span class="org-tree-sitter-hl-faceXpunctuationXbracket">[</span>
-    <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">suite</span></span> <span class="org-tree-sitter-hl-faceXstring">"Functor Laws for Option"</span>
-      <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">test</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">include</span> <span class="org-tree-sitter-hl-faceXconstructor">Alg</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Functor</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Option</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">arbitrary</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable">option</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">))</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">functor_laws</span> =
+  <span class="org-tuareg-font-lock-governing">let</span> <span class="org-tuareg-font-lock-governing">open </span><span class="org-tuareg-font-lock-module">Alg_qcheck.Functor</span> <span class="org-tuareg-font-lock-governing">in</span>
+  [
+    suite <span class="org-string">"Functor Laws for Option"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.Option</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = option
+       <span class="org-tuareg-font-lock-governing">end</span>));
 
-    <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">suite</span></span> <span class="org-tree-sitter-hl-faceXstring">"Functor Laws for List"</span>
-      <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">test</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">include</span> <span class="org-tree-sitter-hl-faceXconstructor">Alg</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Functor</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">List</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">arbitrary</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable">list</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">))</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
+    suite <span class="org-string">"Functor Laws for List"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.List</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = list
+       <span class="org-tuareg-font-lock-governing">end</span>));
 
-    <span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">suite</span></span> <span class="org-tree-sitter-hl-faceXstring">"Functor Laws for Array"</span>
-      <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXvariable"><span class="org-tree-sitter-hl-faceXfunction">test</span></span> <span class="org-tree-sitter-hl-faceXpunctuationXbracket">(</span><span class="org-tree-sitter-hl-faceXkeyword">module</span> <span class="org-tree-sitter-hl-faceXkeyword">struct</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">include</span> <span class="org-tree-sitter-hl-faceXconstructor">Alg</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Functor</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">.</span><span class="org-tree-sitter-hl-faceXconstructor">Array</span>
-         <span class="org-tree-sitter-hl-faceXkeyword">let</span> <span class="org-tree-sitter-hl-faceXvariable">arbitrary</span> <span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">=</span> <span class="org-tree-sitter-hl-faceXvariable">array</span>
-       <span class="org-tree-sitter-hl-faceXkeyword">end</span><span class="org-tree-sitter-hl-faceXpunctuationXbracket">))</span><span class="org-tree-sitter-hl-faceXpunctuationXdelimiter">;</span>
-  <span class="org-tree-sitter-hl-faceXpunctuationXbracket">]</span>
+    suite <span class="org-string">"Functor Laws for Array"</span>
+      (test (<span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-governing">struct</span>
+         <span class="org-tuareg-font-lock-governing">include</span> <span class="org-tuareg-font-lock-module">Alg.Functor.Array</span>
+         <span class="org-tuareg-font-lock-governing">let</span> <span class="org-variable-name">arbitrary</span> = array
+       <span class="org-tuareg-font-lock-governing">end</span>));
+  ]
 </pre>
 </div>
 
@@ -336,13 +336,13 @@ And the output of the tests:
 </div>
 </div>
 </div>
-<div id="outline-container-org40b93cf" class="outline-2">
-<h2 id="org40b93cf">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org40b93cf">
+<div id="outline-container-orgda21a85" class="outline-2">
+<h2 id="orgda21a85">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgda21a85">
 </div>
-<div id="outline-container-org8f5ec87" class="outline-3">
-<h3 id="org8f5ec87">PLT</h3>
-<div class="outline-text-3" id="text-org8f5ec87">
+<div id="outline-container-org3079560" class="outline-3">
+<h3 id="org3079560">PLT</h3>
+<div class="outline-text-3" id="text-org3079560">
 <p>
 Finish up documenting and testing [Alg], hopefully open a PR to publish the
 package in the <code>opam</code> repository.
@@ -355,7 +355,7 @@ package in the <code>opam</code> repository.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2019-10-17 Thu 01:06. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 29.1 (<a href="https://orgmode.org">Org</a> mode 9.7).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
 </div>
 </div>
 </body>
