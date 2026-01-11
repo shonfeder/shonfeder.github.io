@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2026-01-10 Sat 21:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>WIP: Nothing /Really/ Matters</title>
@@ -236,29 +236,38 @@ The server goes to fetch the coffee, but quickly returns.
 milk instead?&rdquo;
 </p>
 </blockquote>
+
+<ul class="org-ul">
+<li><a href="https://quoteinvestigator.com/2024/06/01/coffee-cream/">https://quoteinvestigator.com/2024/06/01/coffee-cream/</a></li>
+<li><a href="https://www.thephilosophicalsalon.com/you-are-not-having-milk/">https://www.thephilosophicalsalon.com/you-are-not-having-milk/</a></li>
+<li><a href="https://www.youtube.com/watch?v=jU6nB-uJh68">https://www.youtube.com/watch?v=jU6nB-uJh68</a></li>
+</ul>
 </div>
 </div>
 <div id="outline-container-org501b4f8" class="outline-2">
 <h2 id="org501b4f8">Explaining the joke</h2>
 <div class="outline-text-2" id="text-org501b4f8">
 <p>
-The punchline&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> rests on the idea that non-presence is determined by
-that which is not present<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>: milk is distinct from cream, so having no milk
-is distinct from having no cream, and therefore having coffee with no milk is
-distinct from having coffee with no cream.
+The joke plays on the tension between extensional and intentional semantics.
 </p>
 
 <p>
-An important basis of the humor is that, viewed purely <a href="https://en.wikipedia.org/wiki/Extensional_and_intensional_definitions">extensionally</a>, concerned
-only with the denotation, this is a &ldquo;<a href="https://en.wikipedia.org/wiki/Distinction_without_a_difference">distinction without a difference</a>&rdquo;. The set
-of all cups of coffee without cream is identical to the set of all cups of
-coffee without milk, so if you just want a black coffee, it makes no difference
-which dairy product is ommitted. But the key <a href="https://en.wiktionary.org/wiki/gimmick#Noun">gimmick</a> at work in the joke is
-this, viewed intensionally, concerned with the sense, the distinction does make
-a difference, it&rsquo;s not a distinction that makes any difference to our common
-sense. The frivolousness of <i>this</i> additive omission is tied to the similarity
-of the dairy. But not all distinctions in non-presence are equally
-indistinguishable.
+The joke&rsquo;s <a href="https://www.merriam-webster.com/dictionary/gimmick">gimmick</a> is the idea that non-presence is determined by that
+which is not present<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>: since milk is distinct from cream, the non-presence
+of milk is distinct from the non-presence of cream; therefore, ordering coffee
+without milk is distinct from ordering coffee without cream.
+</p>
+
+<p>
+The it&rsquo;s is that when, viewed <a href="https://en.wikipedia.org/wiki/Extensional_and_intensional_definitions">extensionally</a>, concerned only with the
+denotation, this is a &ldquo;<a href="https://en.wikipedia.org/wiki/Distinction_without_a_difference">distinction without a difference</a>&rdquo;. The set of all cups of
+coffee without cream is identical to the set of all cups of coffee without milk,
+so if you just want a black coffee, it makes no difference which dairy product
+is omitted. But the key <a href="https://en.wiktionary.org/wiki/gimmick#Noun">gimmick</a> at work in the joke is this, viewed
+intensionally, concerned with the sense, the distinction does make a difference,
+it&rsquo;s not a distinction that makes any difference to our common sense. The
+frivolousness of <i>this</i> additive omission is tied to the similarity of the
+dairy. But not all distinctions in non-presence are equally indistinguishable.
 </p>
 
 <p>
@@ -305,11 +314,11 @@ the following types of liquid
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">milk</span> = [ <span class="org-tuareg-font-lock-constructor">`Milk</span> ]
+<pre class="src src-fstar"><span class="org-fstar-structure"><span class="org-fstar-structure">type</span></span><span class="org-function-name"><span class="org-fstar-structure"> </span></span><span class="org-function-name">milk</span> = [ <span class="org-negation-char">`</span><span class="org-type">Milk</span> ]
 
-<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">cream</span> = [ <span class="org-tuareg-font-lock-constructor">`Cream</span> ]
+<span class="org-fstar-structure"><span class="org-fstar-structure">type</span></span><span class="org-function-name"><span class="org-fstar-structure"> </span></span><span class="org-function-name">cream</span> = [ <span class="org-negation-char">`</span><span class="org-type">Cream</span> ]
 
-<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">coffee</span> = [ <span class="org-tuareg-font-lock-constructor">`Coffee</span> ]
+<span class="org-fstar-structure"><span class="org-fstar-structure">type</span></span><span class="org-function-name"><span class="org-fstar-structure"> </span></span><span class="org-function-name">coffee</span> = [ <span class="org-negation-char">`</span><span class="org-type">Coffee</span> ]
 </pre>
 </div>
 
@@ -322,22 +331,22 @@ material constitutive of that substance.
 <div class="org-src-container">
 <pre class="src src-ocaml" id="org2157c84"><span class="org-tuareg-font-lock-governing">module type</span> <span class="org-tuareg-font-lock-module">Substance</span> = <span class="org-tuareg-font-lock-governing">sig</span>
   <span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">t</span>
-  <span class="org-doc">(** The form of the substance is it's principle type. Depending on your</span>
-<span class="org-doc">      ontology, you might say that the form is given by the substance's</span>
-<span class="org-doc">      chemical composition, its platonic idea, or whatever. *)</span>
+  <span class="org-doc">(** The form of the substance is it's principle type. Depending on your
+      ontology, you might say that the form is given by the substance's
+      chemical composition, its platonic idea, or whatever. *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">v</span> : t
-  <span class="org-doc">(** A material instances of the substance, e.g., chemical compounds, monads,</span>
-<span class="org-doc">      or divine eminations. *)</span>
+  <span class="org-doc">(** A material instances of the substance, e.g., chemical compounds, monads,
+      or divine eminations. *)</span>
 <span class="org-tuareg-font-lock-governing">end</span>
 </pre>
 </div>
+
 
 <p>
 The <a href="#org2157c84">No description for this link</a> let&rsquo;s us distinguish between kinds of things and
 instances of that kind.
 </p>
-
 
 <p>
 Let&rsquo;s define a way of constructing measures of different kinds of liquid:
@@ -394,7 +403,7 @@ Let there be some liquids:
 </div>
 
 <p>
-Now we need a way of representing the absence of a liqid
+Now we need a way of representing the absence of a liquid
 </p>
 
 <div class="org-src-container">
@@ -466,7 +475,39 @@ coffee.
 </div>
 <div id="outline-container-org05f434a" class="outline-4">
 <h4 id="org05f434a">Conjunction vs. mixture</h4>
+<div class="outline-text-4" id="text-org05f434a">
+<p>
+Hart on stuff
+</p>
 </div>
+</div>
+<div id="outline-container-org1ecbacd" class="outline-4">
+<h4 id="org1ecbacd">This shows us why we should model the order differently than the product</h4>
+</div>
+</div>
+<div id="outline-container-orgf597e23" class="outline-3">
+<h3 id="orgf597e23">Types of things</h3>
+<div class="outline-text-3" id="text-orgf597e23">
+<p>
+Things are of a different type when we can&rsquo;t gather them together.
+<code>[a ; b; c] : 't list</code>. We can only form this list if <code>a : 't</code> and <code>b : 't</code> and
+<code>c : 't</code>. So we can form <code>[1;2;3]</code> since <code>1 : int</code>, <code>2 : int</code>, and <code>3 : int</code>,
+but we cannot form <code>[1; "2"]</code> since <code>1 : int</code> and <code>"2" : string</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ocaml"><span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">drink</span> = <span class="org-tuareg-font-lock-constructor">Coffee</span> | <span class="org-tuareg-font-lock-constructor">Tea</span>
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">additive</span> = <span class="org-tuareg-font-lock-constructor">Milk</span> | <span class="org-tuareg-font-lock-constructor">Cream</span> | <span class="org-tuareg-font-lock-constructor">Honey</span>
+
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">order</span> = {drink = drink; additive = additive}
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">'additive coffe</span> = <span class="org-tuareg-font-lock-constructor">Coffe</span> <span class="org-keyword">of</span> 'additive option
+<span class="org-tuareg-font-lock-governing">type</span> <span class="org-type">additive</span> = <span class="org-tuareg-font-lock-constructor">Cream</span> | Milk
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4cb6b94" class="outline-3">
+<h3 id="org4cb6b94">How do we specify Sartre&rsquo;s order?</h3>
 </div>
 </div>
 <div id="footnotes">
@@ -484,8 +525,8 @@ joke.
 <div id="postamble" class="status">
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
-Last updated 2024-07-27 Sat 15:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Last updated 2026-01-02 Fri 21:58. <br>
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>

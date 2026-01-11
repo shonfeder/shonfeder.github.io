@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2025-09-22 Mon 22:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 23: Fuzzy</title>
@@ -214,22 +214,22 @@
 <p>
 Feeling fuzzy today. Posting any how, just to keep up the ritual.
 </p>
-<div id="outline-container-org66c02e0" class="outline-2">
-<h2 id="org66c02e0">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org66c02e0">
+<div id="outline-container-org20f6dbe" class="outline-2">
+<h2 id="org20f6dbe">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-org20f6dbe">
 </div>
-<div id="outline-container-orge32d5b7" class="outline-3">
-<h3 id="orge32d5b7">Community</h3>
-<div class="outline-text-3" id="text-orge32d5b7">
+<div id="outline-container-org82cbe5b" class="outline-3">
+<h3 id="org82cbe5b">Community</h3>
+<div class="outline-text-3" id="text-org82cbe5b">
 <ul class="org-ul">
 <li>Nice coffee chat, discussed community and music making.</li>
 <li>Delightful and thought provoking non-technical talks.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org3443496" class="outline-3">
-<h3 id="org3443496">PLT</h3>
-<div class="outline-text-3" id="text-org3443496">
+<div id="outline-container-orgfe7a491" class="outline-3">
+<h3 id="orgfe7a491">PLT</h3>
+<div class="outline-text-3" id="text-orgfe7a491">
 <p>
 More time documenting and testing <code>Alg</code>. It&rsquo;s been a quite involved process. A
 lot of the time has been devoted to developing a nice abstraction for the
@@ -250,22 +250,22 @@ module for <code>Functor</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ocaml"><span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Law</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> notes the laws that should be obeyed by any instantiation of</span>
-<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type:S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> in the form of predicates that should be true</span>
-<span class="org-doc">    for any arguments of the appropriate type.</span>
+<pre class="src src-ocaml"><span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Law</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> notes the laws that should be obeyed by any instantiation of
+    </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type:S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> in the form of predicates that should be true
+    for any arguments of the appropriate type.
 
-<span class="org-doc">    You can use </span><span class="org-tuareg-font-lock-doc-markup">{!module:</span><span class="org-tuareg-font-lock-module">Alg_qcheck.</span><span class="org-tuareg-font-lock-constructor">Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> to generate property based tests of</span>
-<span class="org-doc">    these laws for new modules satisfying this interface.</span>
+    You can use </span><span class="org-tuareg-font-lock-doc-markup">{!module:</span><span class="org-tuareg-font-lock-module">Alg_qcheck.</span><span class="org-tuareg-font-lock-constructor">Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> to generate property based tests of
+    these laws for new modules satisfying this interface.
 
-<span class="org-doc">    </span><span class="org-tuareg-font-lock-doc-markup">@param</span><span class="org-doc"> </span><span class="org-tuareg-font-lock-constructor">F</span><span class="org-doc"> An implementation of a </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type: S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> *)</span>
+    </span><span class="org-tuareg-font-lock-doc-markup">@param</span><span class="org-doc"> </span><span class="org-tuareg-font-lock-constructor">F</span><span class="org-doc"> An implementation of a </span><span class="org-tuareg-font-lock-doc-markup">{{!</span><span class="org-tuareg-font-lock-governing">module</span><span class="org-doc">-type: S</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> Functor</span><span class="org-tuareg-font-lock-doc-markup">}</span><span class="org-doc"> *)</span>
 <span class="org-tuareg-font-lock-governing">module</span> <span class="org-tuareg-font-lock-module">Law</span> <span class="org-variable-name">(F : </span><span class="org-type">S</span><span class="org-variable-name">) </span><span class="org-doc">(** *)</span> : <span class="org-tuareg-font-lock-governing">sig</span>
 
   <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>identity x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:<span class="org-tuareg-font-lock-module">Fun.</span>id x = <span class="org-tuareg-font-lock-module">Fun.</span>id x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> *)</span>
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">identity</span> : 'a <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
 
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>composition f g x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:(f <span class="org-tuareg-font-lock-operator">%</span> g) x = (<span class="org-tuareg-font-lock-module">F.</span>map ~f <span class="org-tuareg-font-lock-operator">%</span> <span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:g) x<span class="org-tuareg-font-lock-doc-markup">]</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>composition f g x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">: </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:(f <span class="org-tuareg-font-lock-operator">%</span> g) x = (<span class="org-tuareg-font-lock-module">F.</span>map ~f <span class="org-tuareg-font-lock-operator">%</span> <span class="org-tuareg-font-lock-module">F.</span>map <span class="org-tuareg-font-lock-label">~f</span>:g) x<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">
 
-<span class="org-doc">      where </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-operator">%</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is composition. *)</span>
+      where </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-operator">%</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is composition. *)</span>
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">composition</span> : ('a -&gt; 'b) -&gt; ('c -&gt; 'a) -&gt; 'c <span class="org-tuareg-font-lock-module">F.</span>t -&gt; bool
 <span class="org-tuareg-font-lock-governing">end</span>
 </pre>
@@ -336,13 +336,13 @@ And the output of the tests:
 </div>
 </div>
 </div>
-<div id="outline-container-orgda21a85" class="outline-2">
-<h2 id="orgda21a85">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-orgda21a85">
+<div id="outline-container-org88b4a30" class="outline-2">
+<h2 id="org88b4a30">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org88b4a30">
 </div>
-<div id="outline-container-org3079560" class="outline-3">
-<h3 id="org3079560">PLT</h3>
-<div class="outline-text-3" id="text-org3079560">
+<div id="outline-container-orgcb9a9a5" class="outline-3">
+<h3 id="orgcb9a9a5">PLT</h3>
+<div class="outline-text-3" id="text-orgcb9a9a5">
 <p>
 Finish up documenting and testing [Alg], hopefully open a PR to publish the
 package in the <code>opam</code> repository.
@@ -355,7 +355,7 @@ package in the <code>opam</code> repository.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2019-10-17 Thu 01:06. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>

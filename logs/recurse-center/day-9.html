@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2025-09-22 Mon 21:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 9: Capturing the Notion of Parametricity</title>
@@ -220,12 +220,12 @@ original motive driving Reynolds&rsquo; work on the polymorphic lambda calculus 
 the pursuit of modularity. The latter has been one of the driving urges of my
 life for at least a decade, and it is at the root of my interest in 1ML. I have
 made some notes in this entry recording what I learned. (I expect I will
-eventually end up reworking and incorporating them into my WIP <a href="file:///home/sf/Dropbox/synechepedia/org/themata/programming/the-measure-of-a-module.html">notes on
+eventually end up reworking and incorporating them into my WIP <a href="themata/programming/the-measure-of-a-module.html">notes on
 modularity</a>).
 </p>
-<div id="outline-container-orgf3b4cba" class="outline-2">
-<h2 id="orgf3b4cba">A few notes on the history of System F</h2>
-<div class="outline-text-2" id="text-orgf3b4cba">
+<div id="outline-container-orgbacee2e" class="outline-2">
+<h2 id="orgbacee2e">A few notes on the history of System F</h2>
+<div class="outline-text-2" id="text-orgbacee2e">
 <p>
 Jean-Yves Girard first defined System F in his PhD thesis in 1972. Writting
 about that work around 2010, Girard characterized the calculus thus:
@@ -284,7 +284,7 @@ Consider the identity function on integers:
 λ2 allows parameterizing such functions by including functions that can take a
 type as an argument, returning expressions whose types may depend on the type
 parameter supplied. We can depict this in the pseudo OCaml below (which is quite
-close to valid <a href="file:///home/sf/Dropbox/synechepedia/org/themata/programming/notes-on-1ml.html">1ML</a>):
+close to valid <a href="themata/programming/notes-on-1ml.html">1ML</a>):
 </p>
 
 <div class="org-src-container">
@@ -361,9 +361,9 @@ More on this in the future&#x2026;
 </p>
 </div>
 </div>
-<div id="outline-container-orgb3ac8db" class="outline-2">
-<h2 id="orgb3ac8db">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-orgb3ac8db">
+<div id="outline-container-orgbb454a1" class="outline-2">
+<h2 id="orgbb454a1">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orgbb454a1">
 <p>
 Overall, I&rsquo;m pleased with my progress today. I completed my program for today,
 as laid out in <a href="day-8.html">Day 8</a>. This is encouraging because it means I set realistic goals
@@ -372,17 +372,17 @@ scheduled socializing fell through&#x2026; so I may still need to tweak my
 expectations around feasible output.
 </p>
 </div>
-<div id="outline-container-orgf770894" class="outline-3">
-<h3 id="orgf770894">PLT</h3>
-<div class="outline-text-3" id="text-orgf770894">
+<div id="outline-container-org87c4214" class="outline-3">
+<h3 id="org87c4214">PLT</h3>
+<div class="outline-text-3" id="text-org87c4214">
 </div>
-<div id="outline-container-org7539421" class="outline-4">
-<h4 id="org7539421">Themis</h4>
-<div class="outline-text-4" id="text-org7539421">
+<div id="outline-container-org387cd45" class="outline-4">
+<h4 id="org387cd45">Themis</h4>
+<div class="outline-text-4" id="text-org387cd45">
 </div>
-<ul class="org-ul">
-<li><a id="org4289849"></a>Parsing<br />
-<div class="outline-text-5" id="text-org4289849">
+<div id="outline-container-org5c53d68" class="outline-5">
+<h5 id="org5c53d68">Parsing</h5>
+<div class="outline-text-5" id="text-org5c53d68">
 <p>
 I generalized the parser utility functions I was using for the simply typed
 lambda calculus so that a new parser can be produced by providing all the
@@ -407,9 +407,10 @@ front-ends for the simply typed lambda calculus and λ2, respectively:
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org2a54978"></a>Deriving<br />
-<div class="outline-text-5" id="text-org2a54978">
+</div>
+<div id="outline-container-orgc938e3e" class="outline-5">
+<h5 id="orgc938e3e">Deriving</h5>
+<div class="outline-text-5" id="text-orgc938e3e">
 <p>
 I refactored out and functorized the definition of a derivation, including
 concepts like <i>statement</i>, <i>declaration</i>, <i>context</i>, and <i>judgment</i>, as defined
@@ -431,12 +432,11 @@ where, as expected, <code>Term</code> and <code>Type</code> define the terms and
 calculus.
 </p>
 </div>
-</li>
-</ul>
 </div>
-<div id="outline-container-orgc34b678" class="outline-4">
-<h4 id="orgc34b678">λ2 / System F</h4>
-<div class="outline-text-4" id="text-orgc34b678">
+</div>
+<div id="outline-container-orga082e50" class="outline-4">
+<h4 id="orga082e50">λ2 / System F</h4>
+<div class="outline-text-4" id="text-orga082e50">
 <ul class="org-ul">
 <li>Defined a parser using ocamllex and menhir</li>
 <li>Wrote unit tests for the parser</li>
@@ -447,9 +447,9 @@ calculus.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb1dde7" class="outline-3">
-<h3 id="orgdb1dde7">Tooling</h3>
-<div class="outline-text-3" id="text-orgdb1dde7">
+<div id="outline-container-org1979956" class="outline-3">
+<h3 id="org1979956">Tooling</h3>
+<div class="outline-text-3" id="text-org1979956">
 <p>
 I wrote some OCaml yas snippets, and am planning to expand this into a library
 of usable snippets to expedite OCaml code construction. Today I added
@@ -461,9 +461,9 @@ of usable snippets to expedite OCaml code construction. Today I added
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf614fc3" class="outline-3">
-<h3 id="orgf614fc3">Category Theory</h3>
-<div class="outline-text-3" id="text-orgf614fc3">
+<div id="outline-container-org0b94f77" class="outline-3">
+<h3 id="org0b94f77">Category Theory</h3>
+<div class="outline-text-3" id="text-org0b94f77">
 <p>
 The category theory reading group met to agree on a schedule, a text, and a pace
 today. That&rsquo;s great progress :)
@@ -471,30 +471,30 @@ today. That&rsquo;s great progress :)
 </div>
 </div>
 </div>
-<div id="outline-container-orgdec96a6" class="outline-2">
-<h2 id="orgdec96a6">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-orgdec96a6">
+<div id="outline-container-org9b6bfbd" class="outline-2">
+<h2 id="org9b6bfbd">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-org9b6bfbd">
 </div>
-<div id="outline-container-org5980939" class="outline-3">
-<h3 id="org5980939">PLT</h3>
-<div class="outline-text-3" id="text-org5980939">
+<div id="outline-container-org68eda13" class="outline-3">
+<h3 id="org68eda13">PLT</h3>
+<div class="outline-text-3" id="text-org68eda13">
 <ul class="org-ul">
 <li>Finish implementing λ2</li>
 <li>Read Chapter 4 of (<a href="#citeproc_bib_item_2">Nederpelt and Geuvers 2014</a>)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org6fde395" class="outline-3">
-<h3 id="org6fde395">Community</h3>
-<div class="outline-text-3" id="text-org6fde395">
+<div id="outline-container-orgf09dc6f" class="outline-3">
+<h3 id="orgf09dc6f">Community</h3>
+<div class="outline-text-3" id="text-orgf09dc6f">
 <ul class="org-ul">
 <li>I have some pairing and coffee chats scheduled</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdf0f66b" class="outline-3">
-<h3 id="orgdf0f66b">Writing</h3>
-<div class="outline-text-3" id="text-orgdf0f66b">
+<div id="outline-container-orgfb451a9" class="outline-3">
+<h3 id="orgfb451a9">Writing</h3>
+<div class="outline-text-3" id="text-orgfb451a9">
 <ul class="org-ul">
 <li>The remarks on System F and its history in Reynolds work in this post has been
 helpful in maturing my own burgeoning understanding, and it helped me catch
@@ -504,9 +504,9 @@ back to its origin in Reynold&rsquo;s work.</li>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd84404" class="outline-2">
-<h2 id="orgfd84404">References</h2>
-<div class="outline-text-2" id="text-orgfd84404">
+<div id="outline-container-org33148da" class="outline-2">
+<h2 id="org33148da">References</h2>
+<div class="outline-text-2" id="text-org33148da">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Girard, Jean-Yves. 2011. <i>The Blind Spot : Lectures on Logic</i>. European Mathematical Society. <a href="http://www.worldcat.org/oclc/757486610?referer=xid">http://www.worldcat.org/oclc/757486610?referer=xid</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Nederpelt, Rob P., and Herman Geuvers. 2014. <i>Type Theory and Formal Proof: An Introduction</i>. Cambridge University Press.</div>
@@ -520,7 +520,7 @@ back to its origin in Reynold&rsquo;s work.</li>
 <div id="text-footnotes">
 
 <div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
-For reasons explained in <a href="day-6.html#org71b0590">Day 6</a>, and because my studies
+For reasons explained in <a href="day-6.html#org09763a0">Day 6</a>, and because my studies
 here at the Recurse Center need to be skewed towards the practical, my current
 reading around the topic is orbitting around Reynold&rsquo;s work rather than
 Girard&rsquo;s.
@@ -533,7 +533,7 @@ Girard&rsquo;s.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-18 Wed 10:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>

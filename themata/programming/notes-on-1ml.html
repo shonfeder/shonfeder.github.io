@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2025-09-22 Mon 22:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on 1ML</title>
@@ -222,27 +222,27 @@ in <a href="the-measure-of-a-module.html">The Measure of a Module</a>. These not
 which I have learned and discovered while studying the theory and implementation
 of the language.
 </p>
-<div id="outline-container-org76c8545" class="outline-2">
-<h2 id="org76c8545">Comments</h2>
-<div class="outline-text-2" id="text-org76c8545">
+<div id="outline-container-org5382ab9" class="outline-2">
+<h2 id="org5382ab9">Comments</h2>
+<div class="outline-text-2" id="text-org5382ab9">
 <ul class="org-ul">
 <li><code>(; ... ;)</code> designate wrapped (possibly inline) comments</li>
 <li><code>;;</code> designates the start of a comment that extends to the end of a line</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org52171fb" class="outline-2">
-<h2 id="org52171fb">Modules</h2>
-<div class="outline-text-2" id="text-org52171fb">
+<div id="outline-container-org4d1170d" class="outline-2">
+<h2 id="org4d1170d">Modules</h2>
+<div class="outline-text-2" id="text-org4d1170d">
 <p>
 According to one perspective, in 1ML &ldquo;everything is just (&lsquo;a mode of use of&rsquo;)
 modules&rdquo; (<a href="https://people.mpi-sws.org/~rossberg/1ml/">Rossberg</a>). Therefore, in thinking through the nature of 1ML it is
 reasonable that we begin with its modules.
 </p>
 </div>
-<div id="outline-container-org97bfdab" class="outline-3">
-<h3 id="org97bfdab">Module definition syntax</h3>
-<div class="outline-text-3" id="text-org97bfdab">
+<div id="outline-container-org4327048" class="outline-3">
+<h3 id="org4327048">Module definition syntax</h3>
+<div class="outline-text-3" id="text-org4327048">
 <p>
 To define a named module, we follow this schema:
 </p>
@@ -260,9 +260,9 @@ indicate that they are optional.
 </p>
 </div>
 </div>
-<div id="outline-container-orge8d31d9" class="outline-3">
-<h3 id="orge8d31d9">The empty module</h3>
-<div class="outline-text-3" id="text-orge8d31d9">
+<div id="outline-container-org8448072" class="outline-3">
+<h3 id="org8448072">The empty module</h3>
+<div class="outline-text-3" id="text-org8448072">
 <p>
 The minimal module is the empty module. We can assign <code>M</code> to be the empty module
 thus:
@@ -274,9 +274,9 @@ thus:
 </div>
 </div>
 </div>
-<div id="outline-container-org12af72c" class="outline-3">
-<h3 id="org12af72c">Module types</h3>
-<div class="outline-text-3" id="text-org12af72c">
+<div id="outline-container-orga867755" class="outline-3">
+<h3 id="orga867755">Module types</h3>
+<div class="outline-text-3" id="text-orga867755">
 <p>
 In dialects of ML, every value has a type. Modules are values in 1ML, so they
 too have a type.
@@ -372,9 +372,9 @@ The key points to take away form this brief discussion of 1ML modules:
 </ul>
 </div>
 </div>
-<div id="outline-container-org8166faf" class="outline-3">
-<h3 id="org8166faf">A concrete example: implementing a stack</h3>
-<div class="outline-text-3" id="text-org8166faf">
+<div id="outline-container-orgdad712e" class="outline-3">
+<h3 id="orgdad712e">A concrete example: implementing a stack</h3>
+<div class="outline-text-3" id="text-orgdad712e">
 <p>
 Fair warning: the following code is a working implemention that can be run in
 Rossberg&rsquo;s <a href="https://github.com/rossberg/1ml">prototype interpreter</a>. As Rossberg notes in the README for the
@@ -401,9 +401,9 @@ As a result of these limitations, the following code is less clear than it
 otherwise could be (and eventually will be!) in a more robust implementation.
 </p>
 </div>
-<div id="outline-container-orgfb7a542" class="outline-4">
-<h4 id="orgfb7a542">Specifying the ADT</h4>
-<div class="outline-text-4" id="text-orgfb7a542">
+<div id="outline-container-orgbc7ba77" class="outline-4">
+<h4 id="orgbc7ba77">Specifying the ADT</h4>
+<div class="outline-text-4" id="text-orgbc7ba77">
 <blockquote>
 <p>
 One of the most importnat features of modern programming is abstract data types
@@ -495,9 +495,9 @@ implementation:
 </p>
 </div>
 </div>
-<div id="outline-container-orgc5cd201" class="outline-4">
-<h4 id="orgc5cd201">Implementing the ADT</h4>
-<div class="outline-text-4" id="text-orgc5cd201">
+<div id="outline-container-org3c381c2" class="outline-4">
+<h4 id="org3c381c2">Implementing the ADT</h4>
+<div class="outline-text-4" id="text-org3c381c2">
 <div class="org-src-container">
 <pre class="src src-1ml">Stack :&gt; STACK = {
   type t a = {size: int; content: list a};
@@ -586,21 +586,21 @@ like something like this:
 </div>
 </div>
 </div>
-<div id="outline-container-org7ebecbf" class="outline-4">
-<h4 id="org7ebecbf"><span class="todo TODO">TODO</span> On abstract types, sealing, and security</h4>
+<div id="outline-container-org0187781" class="outline-4">
+<h4 id="org0187781"><span class="todo TODO">TODO</span> On abstract types, sealing, and security</h4>
 </div>
-<div id="outline-container-org5b8a5ab" class="outline-4">
-<h4 id="org5b8a5ab"><span class="todo TODO">TODO</span> Wait, why do the modules look just like the records?</h4>
+<div id="outline-container-org51ea4a4" class="outline-4">
+<h4 id="org51ea4a4"><span class="todo TODO">TODO</span> Wait, why do the modules look just like the records?</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb837b9d" class="outline-2">
-<h2 id="orgb837b9d">Types</h2>
-<div class="outline-text-2" id="text-orgb837b9d">
+<div id="outline-container-org61a7d5d" class="outline-2">
+<h2 id="org61a7d5d">Types</h2>
+<div class="outline-text-2" id="text-org61a7d5d">
 </div>
-<div id="outline-container-org7a8a035" class="outline-3">
-<h3 id="org7a8a035"><span class="todo TODO">TODO</span> The size of a types</h3>
-<div class="outline-text-3" id="text-org7a8a035">
+<div id="outline-container-orga203c1c" class="outline-3">
+<h3 id="orga203c1c"><span class="todo TODO">TODO</span> The size of a types</h3>
+<div class="outline-text-3" id="text-orga203c1c">
 <p>
 1ML&rsquo;s novelty is in unifying the core and module languages from traditional MLs
 into a single language. The gimmick used to achieve this is a clever elaboration
@@ -617,7 +617,7 @@ famous, constrained version of System F known as the <a href="https://en.wikiped
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-17 Tue 23:27. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>

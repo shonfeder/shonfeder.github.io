@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2025-09-22 Mon 21:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day 8: Unsure</title>
@@ -228,17 +228,17 @@ antecedent abstraction. I must keep this tension and problematic in mind,
 without letting the lust for palpable production undermine my intention to
 cultivate theoretical foundations. <i>Counterparts are clearly not contraries.</i>
 </p>
-<div id="outline-container-org96543e9" class="outline-2">
-<h2 id="org96543e9">Today&rsquo;s Progress</h2>
-<div class="outline-text-2" id="text-org96543e9">
+<div id="outline-container-orge361555" class="outline-2">
+<h2 id="orge361555">Today&rsquo;s Progress</h2>
+<div class="outline-text-2" id="text-orge361555">
 </div>
-<div id="outline-container-orgbf9b050" class="outline-3">
-<h3 id="orgbf9b050">PLT</h3>
-<div class="outline-text-3" id="text-orgbf9b050">
+<div id="outline-container-org15fe0d6" class="outline-3">
+<h3 id="org15fe0d6">PLT</h3>
+<div class="outline-text-3" id="text-org15fe0d6">
 </div>
-<div id="outline-container-orgd58707e" class="outline-4">
-<h4 id="orgd58707e">Simplified Themis ABT library</h4>
-<div class="outline-text-4" id="text-orgd58707e">
+<div id="outline-container-org2130dcc" class="outline-4">
+<h4 id="org2130dcc">Simplified Themis ABT library</h4>
+<div class="outline-text-4" id="text-org2130dcc">
 <p>
 Abstract Binding Trees (ABTs) extend abstract syntax trees (ASTs) with logic to
 handle variable binding. The motivation is as follows: Nearly every interesting
@@ -265,9 +265,9 @@ were only needed internally. I plugged that abstraction leak in
 </p>
 </div>
 </div>
-<div id="outline-container-orgec8a892" class="outline-4">
-<h4 id="orgec8a892">λ⟶</h4>
-<div class="outline-text-4" id="text-orgec8a892">
+<div id="outline-container-orgabd8afb" class="outline-4">
+<h4 id="orgabd8afb">λ⟶</h4>
+<div class="outline-text-4" id="text-orgabd8afb">
 <p>
 I finished adding type checking and term finding to the implementing of λ⟶ in
 themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e">commit/d06be73862b9d0f4eabb57c102b312fe0cfb323e</a> . The API for the
@@ -279,22 +279,22 @@ themis with <a href="https://gitlab.com/shonfeder/themis/commit/d06be73862b9d0f4
   <span class="org-doc">(** Check and infer various properties *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">infer_type</span> : <span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Term.</span>t -&gt; <span class="org-tuareg-font-lock-module">Type.</span>t option
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_type ctx term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be derived for the</span>
-<span class="org-doc">      </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_type ctx term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be derived for the
+      </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">infer_term</span> : <span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Type.</span>t -&gt; <span class="org-tuareg-font-lock-module">Derivation.</span>judgment option
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_term ctx <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be synthesized to</span>
-<span class="org-doc">      inhabit the </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>infer_term ctx <span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be synthesized to
+      inhabit the </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-governing">type</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. Otherwise, it is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">None</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">. *)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">typing</span> : <span class="org-tuareg-font-lock-module">Derivation.</span>judgment -&gt; bool
   <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>typing j<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-constant">true</span><span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if a derivation can be found proving the judgment </span><span class="org-tuareg-font-lock-doc-markup">[</span>j<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">.*)</span>
 
   <span class="org-tuareg-font-lock-governing">val</span> <span class="org-function-name">well_typed</span> : <span class="org-tuareg-font-lock-label">?ctx</span>:<span class="org-tuareg-font-lock-module">Derivation.Ctx.</span>t -&gt; <span class="org-tuareg-font-lock-module">Term.</span>t -&gt; <span class="org-tuareg-font-lock-module">Derivation.</span>t option
-  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>well_typed term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if a type can inferred for </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span>
-<span class="org-doc">      and a </span><span class="org-tuareg-font-lock-doc-markup">[</span>derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be built demonstrating that the </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> has that</span>
-<span class="org-doc">      type in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">.</span>
+  <span class="org-doc">(** </span><span class="org-tuareg-font-lock-doc-markup">[</span>well_typed term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> is </span><span class="org-tuareg-font-lock-doc-markup">[</span><span class="org-tuareg-font-lock-constructor">Some</span> derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> if a type can inferred for </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">
+      and a </span><span class="org-tuareg-font-lock-doc-markup">[</span>derivation<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> can be built demonstrating that the </span><span class="org-tuareg-font-lock-doc-markup">[</span>term<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> has that
+      type in the given </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc">.
 
-<span class="org-doc">      </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> defaults to an empty context. *)</span>
+      </span><span class="org-tuareg-font-lock-doc-markup">[</span>ctx<span class="org-tuareg-font-lock-doc-markup">]</span><span class="org-doc"> defaults to an empty context. *)</span>
 <span class="org-tuareg-font-lock-governing">end</span> = <span class="org-tuareg-font-lock-governing">struct</span>
 </pre>
 </div>
@@ -317,17 +317,17 @@ instruction on the implementation of the above. I&rsquo;m getting started with C
 </div>
 </div>
 </div>
-<div id="outline-container-org5c614ea" class="outline-2">
-<h2 id="org5c614ea">Tomorrow&rsquo;s Program</h2>
-<div class="outline-text-2" id="text-org5c614ea">
+<div id="outline-container-orgf686352" class="outline-2">
+<h2 id="orgf686352">Tomorrow&rsquo;s Program</h2>
+<div class="outline-text-2" id="text-orgf686352">
 </div>
-<div id="outline-container-orgec54030" class="outline-3">
-<h3 id="orgec54030">PLT</h3>
-<div class="outline-text-3" id="text-orgec54030">
+<div id="outline-container-orgafa29cd" class="outline-3">
+<h3 id="orgafa29cd">PLT</h3>
+<div class="outline-text-3" id="text-orgafa29cd">
 </div>
-<div id="outline-container-org20af5ef" class="outline-4">
-<h4 id="org20af5ef">Begin implementing λ2</h4>
-<div class="outline-text-4" id="text-org20af5ef">
+<div id="outline-container-org0985050" class="outline-4">
+<h4 id="org0985050">Begin implementing λ2</h4>
+<div class="outline-text-4" id="text-org0985050">
 <p>
 I think I&rsquo;ve learned some lessons from my implementations of λ and λ⟶, and there
 are some things I want to do differently as I dig in to λ2 to improve and
@@ -345,14 +345,14 @@ other implementations.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org613503a" class="outline-4">
-<h4 id="org613503a">Finish Chapter 2 of (<a href="#citeproc_bib_item_1">Nederpelt and Geuvers 2014</a>)</h4>
+<div id="outline-container-org91d7719" class="outline-4">
+<h4 id="org91d7719">Finish Chapter 2 of (<a href="#citeproc_bib_item_1">Nederpelt and Geuvers 2014</a>)</h4>
 </div>
 </div>
 </div>
-<div id="outline-container-org522d733" class="outline-2">
-<h2 id="org522d733">References</h2>
-<div class="outline-text-2" id="text-org522d733">
+<div id="outline-container-orga57dc0e" class="outline-2">
+<h2 id="orga57dc0e">References</h2>
+<div class="outline-text-2" id="text-orga57dc0e">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Nederpelt, Rob P., and Herman Geuvers. 2014. <i>Type Theory and Formal Proof: An Introduction</i>. Cambridge University Press.</div>
 </div>
@@ -363,7 +363,7 @@ other implementations.</li>
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2023-10-18 Wed 10:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>

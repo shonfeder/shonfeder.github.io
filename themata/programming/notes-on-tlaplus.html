@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-08-31 Sun 17:31 -->
+<!-- 2025-09-22 Mon 22:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Notes on TLA+</title>
@@ -257,9 +257,9 @@ of my learning process, and, until this notice is removed, any critical remarks
 here should be read as an exclamatory rather than an assertoric utterance. I
 don&rsquo;t know enough yet to have a justified critical opinion.
 </p>
-<div id="outline-container-orgc07c321" class="outline-2">
-<h2 id="orgc07c321">My Initial Point of View</h2>
-<div class="outline-text-2" id="text-orgc07c321">
+<div id="outline-container-orga318068" class="outline-2">
+<h2 id="orga318068">My Initial Point of View</h2>
+<div class="outline-text-2" id="text-orga318068">
 <p>
 Over the last few years, I have spent some time reading about the
 <i>constructivist</i> tradition of formal verification, which is currently
@@ -285,25 +285,25 @@ of Rust).
 However, the success and popularity of the model-checking approach should not be
 overlooked, and recent discussions with a prospective employer have given me
 good reason to learn the basics. So I&rsquo;m digging in now, using the noted
-<a href="#org087dc3e">Resources</a> and, and remarking what I learn and figure out along the way here.
+<a href="#org9c389c5">Resources</a> and, and remarking what I learn and figure out along the way here.
 </p>
 </div>
 </div>
-<div id="outline-container-org4c1fdfd" class="outline-2">
-<h2 id="org4c1fdfd">Installation</h2>
-<div class="outline-text-2" id="text-org4c1fdfd">
+<div id="outline-container-orgf57b497" class="outline-2">
+<h2 id="orgf57b497">Installation</h2>
+<div class="outline-text-2" id="text-orgf57b497">
 <p>
 This is a Linux-centric summary of the key steps mentioned by
 <a href="http://lamport.azurewebsites.net/tla/toolbox.html">http://lamport.azurewebsites.net/tla/toolbox.html</a>.
 </p>
 </div>
-<div id="outline-container-org1db0a24" class="outline-3">
-<h3 id="org1db0a24">Prerequisites</h3>
-<div class="outline-text-3" id="text-org1db0a24">
+<div id="outline-container-orgbfb9199" class="outline-3">
+<h3 id="orgbfb9199">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgbfb9199">
 </div>
-<div id="outline-container-org27374d4" class="outline-4">
-<h4 id="org27374d4">A java runtime &gt;= 1.8</h4>
-<div class="outline-text-4" id="text-org27374d4">
+<div id="outline-container-org78b95c2" class="outline-4">
+<h4 id="org78b95c2">A java runtime &gt;= 1.8</h4>
+<div class="outline-text-4" id="text-org78b95c2">
 <p>
 For my system (Arch):
 </p>
@@ -314,26 +314,26 @@ For my system (Arch):
 </div>
 </div>
 </div>
-<div id="outline-container-org397b306" class="outline-4">
-<h4 id="org397b306">pdflatex</h4>
-<div class="outline-text-4" id="text-org397b306">
+<div id="outline-container-org5e0caa4" class="outline-4">
+<h4 id="org5e0caa4">pdflatex</h4>
+<div class="outline-text-4" id="text-org5e0caa4">
 <p>
 See <a href="https://www.tug.org/applications/pdftex/">https://www.tug.org/applications/pdftex/</a>
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-org9723058" class="outline-3">
-<h3 id="org9723058">Download the release</h3>
-<div class="outline-text-3" id="text-org9723058">
+<div id="outline-container-org341a661" class="outline-3">
+<h3 id="org341a661">Download the release</h3>
+<div class="outline-text-3" id="text-org341a661">
 <p>
 Available from <a href="https://github.com/tlaplus/tlaplus/releases">https://github.com/tlaplus/tlaplus/releases</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc962dfa" class="outline-3">
-<h3 id="orgc962dfa">Unzip to your desired installation directory</h3>
-<div class="outline-text-3" id="text-orgc962dfa">
+<div id="outline-container-org98f9d3f" class="outline-3">
+<h3 id="org98f9d3f">Unzip to your desired installation directory</h3>
+<div class="outline-text-3" id="text-org98f9d3f">
 <p>
 E.g.,
 </p>
@@ -345,9 +345,9 @@ E.g.,
 </div>
 </div>
 </div>
-<div id="outline-container-org19b6144" class="outline-3">
-<h3 id="org19b6144">Run the executable</h3>
-<div class="outline-text-3" id="text-org19b6144">
+<div id="outline-container-org2d04d9e" class="outline-3">
+<h3 id="org2d04d9e">Run the executable</h3>
+<div class="outline-text-3" id="text-org2d04d9e">
 <div class="org-src-container">
 <pre class="src src-sh">/opt/TLAToolbox/toolbox/toolbox
 </pre>
@@ -358,9 +358,9 @@ The TLA+ Toolbox GUI should launch
 </p>
 </div>
 </div>
-<div id="outline-container-org0387581" class="outline-3">
-<h3 id="org0387581">Fixing the colors (in Manjaro with a dark global theme)</h3>
-<div class="outline-text-3" id="text-org0387581">
+<div id="outline-container-org5da21e8" class="outline-3">
+<h3 id="org5da21e8">Fixing the colors (in Manjaro with a dark global theme)</h3>
+<div class="outline-text-3" id="text-org5da21e8">
 <p>
 I&rsquo;m on Linux, specifically using the i3 edition of the <a href="https://manjaro.org/">Manjaro</a> distribution
 (largely a wrapper around Arch). I opted for a dark global theme, which
@@ -377,8 +377,8 @@ I created the following shell script to launch the toolbox:
 
 <div class="org-src-container">
 <pre class="src src-sh">$ <span class="org-type">cat</span> /usr/bin/tlaplus
-<span class="org-comment-delimiter"># </span><span class="org-comment">Need to override the dark themeing since the TLAToolbox is insufficently configurable</span>
-<span class="org-builtin">export</span> <span class="org-variable-name">GTK_THEME</span>=Adwaita
+<span class="org-comment-delimiter"># </span><span class="org-comment">Need to override the dark themeing since the TLAToolbox is insufficently configurable
+</span><span class="org-builtin">export</span> <span class="org-variable-name">GTK_THEME</span>=Adwaita
 <span class="org-keyword">exec</span> /opt/TLAToolbox/toolbox/toolbox
 </pre>
 </div>
@@ -390,13 +390,13 @@ After a <code>sudo chmod +x /usr/bin/tlaplus</code>, I can launch the toolbox by
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4a1899" class="outline-2">
-<h2 id="orgd4a1899">First Impressions</h2>
-<div class="outline-text-2" id="text-orgd4a1899">
+<div id="outline-container-org08aef50" class="outline-2">
+<h2 id="org08aef50">First Impressions</h2>
+<div class="outline-text-2" id="text-org08aef50">
 </div>
-<div id="outline-container-orgb744e61" class="outline-3">
-<h3 id="orgb744e61">Syntax</h3>
-<div class="outline-text-3" id="text-orgb744e61">
+<div id="outline-container-org65a73a9" class="outline-3">
+<h3 id="org65a73a9">Syntax</h3>
+<div class="outline-text-3" id="text-org65a73a9">
 <p>
 Compared with the theorem proving languages (Coq, Agda, Lean), logic programming
 languages (Prolog, Datalog), and algebraic specification languages (CafeOBJ and
@@ -411,9 +411,9 @@ surface syntaxes for the same underlying language. The tutorial I&rsquo;m workin
 through uses PlusCal P, so I&rsquo;ll only address the syntax of TLC and PlusCal P.
 </p>
 </div>
-<div id="outline-container-orgb65a39c" class="outline-4">
-<h4 id="orgb65a39c">TLC</h4>
-<div class="outline-text-4" id="text-orgb65a39c">
+<div id="outline-container-org309f203" class="outline-4">
+<h4 id="org309f203">TLC</h4>
+<div class="outline-text-4" id="text-org309f203">
 <p>
 Executable code must be enclosed in ASCII boilerplate matching this pattern:
 </p>
@@ -481,13 +481,13 @@ helpful output: <code>No error information</code>.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org7293dce" class="outline-4">
-<h4 id="org7293dce">PlusCal P</h4>
-<div class="outline-text-4" id="text-org7293dce">
+<div id="outline-container-orgae41c14" class="outline-4">
+<h4 id="orgae41c14">PlusCal P</h4>
+<div class="outline-text-4" id="text-orgae41c14">
 </div>
-<div id="outline-container-orgb646362" class="outline-5">
-<h5 id="orgb646362">Why PlusCal?</h5>
-<div class="outline-text-5" id="text-orgb646362">
+<div id="outline-container-org141a43f" class="outline-5">
+<h5 id="org141a43f">Why PlusCal?</h5>
+<div class="outline-text-5" id="text-org141a43f">
 <blockquote>
 <p>
 In contrast to TLA+&rsquo;s action-oriented focus on distributed systems, PlusCal most
@@ -518,9 +518,9 @@ executable programs.
 </p>
 </div>
 </div>
-<div id="outline-container-orgab39ea5" class="outline-5">
-<h5 id="orgab39ea5">Comments in your algorithms in your comments</h5>
-<div class="outline-text-5" id="text-orgab39ea5">
+<div id="outline-container-orgdebfe8c" class="outline-5">
+<h5 id="orgdebfe8c">Comments in your algorithms in your comments</h5>
+<div class="outline-text-5" id="text-orgdebfe8c">
 <p>
 PlusCal code must be written within a comment with a new kind of adhoc
 delimiter:
@@ -547,9 +547,9 @@ artifacts and source code</b>.
 </p>
 </div>
 </div>
-<div id="outline-container-org28775e2" class="outline-5">
-<h5 id="org28775e2">Contex switch, syntax switch</h5>
-<div class="outline-text-5" id="text-org28775e2">
+<div id="outline-container-orge187a35" class="outline-5">
+<h5 id="orge187a35">Contex switch, syntax switch</h5>
+<div class="outline-text-5" id="text-orge187a35">
 <p>
 In a PlusCal algorithm, variables are defined before the procedure:
 </p>
@@ -572,9 +572,9 @@ Note these arbitrary differences from TLC:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb2fbab7" class="outline-5">
-<h5 id="orgb2fbab7">Manually labeling your lines</h5>
-<div class="outline-text-5" id="text-orgb2fbab7">
+<div id="outline-container-org5bf57e0" class="outline-5">
+<h5 id="org5bf57e0">Manually labeling your lines</h5>
+<div class="outline-text-5" id="text-org5bf57e0">
 <p>
 Do you (or did you) miss the tedium of manually labeling your steps and using
 GOTOs for control flow? PlusCal has you covered.
@@ -583,9 +583,9 @@ GOTOs for control flow? PlusCal has you covered.
 </div>
 </div>
 </div>
-<div id="outline-container-org4565db9" class="outline-3">
-<h3 id="org4565db9">IDE</h3>
-<div class="outline-text-3" id="text-org4565db9">
+<div id="outline-container-org8e8e0a5" class="outline-3">
+<h3 id="org8e8e0a5">IDE</h3>
+<div class="outline-text-3" id="text-org8e8e0a5">
 <ul class="org-ul">
 <li>Since it&rsquo;s a JVM app, it didn&rsquo;t initially integrate well with my OS, and I had
 to employ the workaround indicated above.</li>
@@ -598,9 +598,9 @@ else I&rsquo;ve used</li>
 </ul></li>
 </ul>
 </div>
-<div id="outline-container-org53d8472" class="outline-4">
-<h4 id="org53d8472">Invariants have to be input via the GUI?</h4>
-<div class="outline-text-4" id="text-org53d8472">
+<div id="outline-container-org333de27" class="outline-4">
+<h4 id="org333de27">Invariants have to be input via the GUI?</h4>
+<div class="outline-text-4" id="text-org333de27">
 <p>
 I hope you like programming with checkboxes and drop down menus! Apparently, in
 order to actually get TLA+ to check invariants, you have to navigate to the
@@ -611,9 +611,9 @@ expression. Why wouldn&rsquo;t the invariants be part of the source code?
 </div>
 </div>
 </div>
-<div id="outline-container-org4b49ea9" class="outline-2">
-<h2 id="org4b49ea9">Excerpts</h2>
-<div class="outline-text-2" id="text-org4b49ea9">
+<div id="outline-container-orgeee635f" class="outline-2">
+<h2 id="orgeee635f">Excerpts</h2>
+<div class="outline-text-2" id="text-orgeee635f">
 <blockquote>
 <p>
 In complex systems, simplicity isn&rsquo;t achieved by coding tricks.  It&rsquo;s achieved
@@ -629,9 +629,9 @@ thinking as possible.)
 </p>
 </div>
 </div>
-<div id="outline-container-org89d5e28" class="outline-2">
-<h2 id="org89d5e28">On Model Checking vs. theorem proving</h2>
-<div class="outline-text-2" id="text-org89d5e28">
+<div id="outline-container-orgf884c90" class="outline-2">
+<h2 id="orgf884c90">On Model Checking vs. theorem proving</h2>
+<div class="outline-text-2" id="text-orgf884c90">
 <p>
 <a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/W/4315/_media/public:lecture24.pdf">https://wiki.eecs.yorku.ca/course_archive/2016-17/W/4315/_media/public:lecture24.pdf</a>
 </p>
@@ -644,9 +644,9 @@ verification depends on synthesizing a (relatively) complete construction of
 the problem to be solved (we can only prove what we can construct).</li>
 </ul>
 </div>
-<div id="outline-container-org3bdce8c" class="outline-3">
-<h3 id="org3bdce8c">Questions</h3>
-<div class="outline-text-3" id="text-org3bdce8c">
+<div id="outline-container-orga9f37f0" class="outline-3">
+<h3 id="orga9f37f0">Questions</h3>
+<div class="outline-text-3" id="text-orga9f37f0">
 <ul class="org-ul">
 <li>Do the differences between the model checking and theorem proving approaches
 trace back to a difference between the model-theoretic vs. proof-theoretic
@@ -655,9 +655,9 @@ approaches to logic?</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org087dc3e" class="outline-2">
-<h2 id="org087dc3e">Resources</h2>
-<div class="outline-text-2" id="text-org087dc3e">
+<div id="outline-container-org9c389c5" class="outline-2">
+<h2 id="org9c389c5">Resources</h2>
+<div class="outline-text-2" id="text-org9c389c5">
 <ul class="org-ul">
 <li><a href="https://learntla.com/introduction/about-this-guide/">Learn TLA+ Website</a></li>
 <li><a href="http://lamport.azurewebsites.net/tla/summary-standalone.pdf">TLA+ Cheatsheet</a></li>
@@ -681,7 +681,7 @@ expertise on the philosophy of mathematics.
 <div class='footer'>
 Copyright 2023 Shon Feder.<br>
 Last updated 2021-04-03 Sat 22:03. <br>
-Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.1 (<a href="https://orgmode.org">Org</a> mode 9.7.31).
+Built with <a href="https://www.gnu.org/software/emacs/">Emacs</a> 30.2 (<a href="https://orgmode.org">Org</a> mode 9.7.34).
 </div>
 </div>
 </body>
